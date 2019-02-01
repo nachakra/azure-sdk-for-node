@@ -16,165 +16,6 @@ export {
 };
 
 /**
- * The presentation time range, this is asset related and not recommended for Account Filter.
- */
-export interface PresentationTimeRange {
-  /**
-   * The absolute start time boundary.
-   */
-  startTimestamp?: number;
-  /**
-   * The absolute end time boundary.
-   */
-  endTimestamp?: number;
-  /**
-   * The relative to end sliding window.
-   */
-  presentationWindowDuration?: number;
-  /**
-   * The relative to end right edge.
-   */
-  liveBackoffDuration?: number;
-  /**
-   * The time scale of time stamps.
-   */
-  timescale?: number;
-  /**
-   * The indicator of forcing exsiting of end time stamp.
-   */
-  forceEndTimestamp?: boolean;
-}
-
-/**
- * The class to specify one track property condition.
- */
-export interface FilterTrackPropertyCondition {
-  /**
-   * The track property type. Possible values include: 'Unknown', 'Type', 'Name', 'Language',
-   * 'FourCC', 'Bitrate'
-   */
-  property: string;
-  /**
-   * The track proprty value.
-   */
-  value: string;
-  /**
-   * The track property condition operation. Possible values include: 'Equal', 'NotEqual'
-   */
-  operation: string;
-}
-
-/**
- * Filter First Quality
- */
-export interface FirstQuality {
-  /**
-   * The first quality bitrate.
-   */
-  bitrate: number;
-}
-
-/**
- * Representing a list of FilterTrackPropertyConditions to select a track.  The filters are
- * combined using a logical AND operation.
- */
-export interface FilterTrackSelection {
-  /**
-   * The track selections.
-   */
-  trackSelections: FilterTrackPropertyCondition[];
-}
-
-/**
- * The core properties of ARM resources.
- */
-export interface Resource extends BaseResource {
-  /**
-   * Fully qualified resource ID for the resource.
-   */
-  readonly id?: string;
-  /**
-   * The name of the resource.
-   */
-  readonly name?: string;
-  /**
-   * The type of the resource.
-   */
-  readonly type?: string;
-}
-
-/**
- * The resource model definition for a ARM proxy resource.
- */
-export interface ProxyResource extends Resource {
-}
-
-/**
- * An Account Filter.
- */
-export interface AccountFilter extends ProxyResource {
-  /**
-   * The presentation time range.
-   */
-  presentationTimeRange?: PresentationTimeRange;
-  /**
-   * The first quality.
-   */
-  firstQuality?: FirstQuality;
-  /**
-   * The tracks selection conditions.
-   */
-  tracks?: FilterTrackSelection[];
-}
-
-/**
- * Information about an error.
- */
-export interface ODataError {
-  /**
-   * A language-independent error name.
-   */
-  code?: string;
-  /**
-   * The error message.
-   */
-  message?: string;
-  /**
-   * The target of the error (for example, the name of the property in error).
-   */
-  target?: string;
-  /**
-   * The error details.
-   */
-  details?: ODataError[];
-}
-
-/**
- * The API error.
- */
-export interface ApiError {
-  /**
-   * @summary ApiError
-   * @description The error properties.
-   */
-  error?: ODataError;
-}
-
-/**
- * The resource model definition for a ARM tracked resource.
- */
-export interface TrackedResource extends Resource {
-  /**
-   * Resource tags.
-   */
-  tags?: { [propertyName: string]: string };
-  /**
-   * The Azure Region of the resource.
-   */
-  location?: string;
-}
-
-/**
  * A resource provider.
  */
 export interface Provider {
@@ -207,74 +48,6 @@ export interface OperationDisplay {
 }
 
 /**
- * A metric dimension.
- */
-export interface MetricDimension {
-  /**
-   * The metric dimension name.
-   */
-  readonly name?: string;
-  /**
-   * The display name for the dimension.
-   */
-  readonly displayName?: string;
-  /**
-   * Whether to export metric to shoebox.
-   */
-  readonly toBeExportedForShoebox?: boolean;
-}
-
-/**
- * A metric emitted by service.
- */
-export interface Metric {
-  /**
-   * The metric name.
-   */
-  readonly name?: string;
-  /**
-   * The metric display name.
-   */
-  readonly displayName?: string;
-  /**
-   * The metric display description.
-   */
-  readonly displayDescription?: string;
-  /**
-   * The metric unit. Possible values include: 'Bytes', 'Count', 'Milliseconds'
-   */
-  readonly unit?: string;
-  /**
-   * The metric aggregation type. Possible values include: 'Average', 'Count', 'Total'
-   */
-  readonly aggregationType?: string;
-  /**
-   * The metric dimensions.
-   */
-  readonly dimensions?: MetricDimension[];
-}
-
-/**
- * The service metric specifications.
- */
-export interface ServiceSpecification {
-  /**
-   * List of metric specifications.
-   */
-  readonly metricSpecifications?: Metric[];
-}
-
-/**
- * Metric properties.
- */
-export interface MetricProperties {
-  /**
-   * The service specifications.
-   */
-  readonly serviceSpecification?: ServiceSpecification;
-}
-
-/**
  * An operation.
  */
 export interface Operation {
@@ -286,14 +59,6 @@ export interface Operation {
    * The operation display name.
    */
   display?: OperationDisplay;
-  /**
-   * Origin of the operation.
-   */
-  origin?: string;
-  /**
-   * Operation properties format.
-   */
-  properties?: MetricProperties;
 }
 
 export interface Location {
@@ -346,6 +111,38 @@ export interface SyncStorageKeysInput {
 }
 
 /**
+ * The core properties of ARM resources.
+*/
+export interface Resource extends BaseResource {
+  /**
+   * Fully qualified resource ID for the resource.
+  */
+  readonly id?: string;
+  /**
+   * The name of the resource.
+  */
+  readonly name?: string;
+  /**
+   * The type of the resource.
+  */
+  readonly type?: string;
+}
+
+/**
+ * The resource model definition for a ARM tracked resource.
+*/
+export interface TrackedResource extends Resource {
+  /**
+   * Resource tags.
+  */
+  tags?: { [propertyName: string]: string };
+  /**
+   * The Azure Region of the resource.
+  */
+  location?: string;
+}
+
+/**
  * A Media Services account.
 */
 export interface MediaService extends TrackedResource {
@@ -374,6 +171,38 @@ export interface SubscriptionMediaService extends TrackedResource {
 }
 
 /**
+ * Information about an error.
+*/
+export interface ODataError {
+  /**
+   * A language-independent error name.
+  */
+  code?: string;
+  /**
+   * The error message.
+  */
+  message?: string;
+  /**
+   * The target of the error (for example, the name of the property in error).
+  */
+  target?: string;
+  /**
+   * The error details.
+  */
+  details?: ODataError[];
+}
+
+/**
+ * The API error.
+*/
+export interface ApiError {
+  /**
+   * The error properties.
+  */
+  error?: ODataError;
+}
+
+/**
  * The input to the check name availability request.
 */
 export interface CheckNameAvailabilityInput {
@@ -388,6 +217,12 @@ export interface CheckNameAvailabilityInput {
 }
 
 /**
+ * The resource model definition for a ARM proxy resource.
+*/
+export interface ProxyResource extends Resource {
+}
+
+/**
  * The Asset Storage container SAS URLs.
 */
 export interface AssetContainerSas {
@@ -398,83 +233,13 @@ export interface AssetContainerSas {
 }
 
 /**
- * The Asset File Storage encryption metadata.
+ * The Asset Storage encryption key.
 */
-export interface AssetFileEncryptionMetadata {
+export interface AssetStorageEncryptionKey {
   /**
-   * The Asset File initialization vector.
+   * The Asset storage encryption key.
   */
-  initializationVector?: string;
-  /**
-   * The Asset File name.
-  */
-  assetFileName?: string;
-  /**
-   * The Asset File Id.
-  */
-  assetFileId: string;
-}
-
-/**
- * Data needed to decrypt asset files encrypted with legacy storage encryption.
-*/
-export interface StorageEncryptedAssetDecryptionData {
-  /**
-   * The Asset File storage encryption key.
-  */
-  key?: Buffer;
-  /**
-   * Asset File encryption metadata.
-  */
-  assetFileEncryptionMetadata?: AssetFileEncryptionMetadata[];
-}
-
-/**
- * Properties of the Streaming Locator.
-*/
-export interface AssetStreamingLocator {
-  /**
-   * Streaming Locator name.
-  */
-  readonly name?: string;
-  /**
-   * Asset Name.
-  */
-  readonly assetName?: string;
-  /**
-   * The creation time of the Streaming Locator.
-  */
-  readonly created?: Date;
-  /**
-   * The start time of the Streaming Locator.
-  */
-  readonly startTime?: Date;
-  /**
-   * The end time of the Streaming Locator.
-  */
-  readonly endTime?: Date;
-  /**
-   * StreamingLocatorId of the Streaming Locator.
-  */
-  readonly streamingLocatorId?: string;
-  /**
-   * Name of the Streaming Policy used by this Streaming Locator.
-  */
-  readonly streamingPolicyName?: string;
-  /**
-   * Name of the default ContentKeyPolicy used by this Streaming Locator.
-  */
-  readonly defaultContentKeyPolicyName?: string;
-}
-
-/**
- * The Streaming Locators associated with this Asset.
-*/
-export interface ListStreamingLocatorsResponse {
-  /**
-   * The list of Streaming Locators.
-  */
-  readonly streamingLocators?: AssetStreamingLocator[];
+  storageEncryptionKey?: string;
 }
 
 /**
@@ -517,25 +282,7 @@ export interface Asset extends ProxyResource {
 }
 
 /**
- * An Asset Filter.
-*/
-export interface AssetFilter extends ProxyResource {
-  /**
-   * The presentation time range.
-  */
-  presentationTimeRange?: PresentationTimeRange;
-  /**
-   * The first quality.
-  */
-  firstQuality?: FirstQuality;
-  /**
-   * The tracks selection conditions.
-  */
-  tracks?: FilterTrackSelection[];
-}
-
-/**
- * The parameters to the list SAS request.
+ * The parameters to the list SAS requet.
 */
 export interface ListContainerSasInput {
   /**
@@ -872,7 +619,7 @@ export interface ContentKeyPolicyPlayReadyConfiguration extends ContentKeyPolicy
 */
 export interface ContentKeyPolicyFairPlayConfiguration extends ContentKeyPolicyConfiguration {
   /**
-   * The key that must be used as FairPlay Application Secret key.
+   * The key that must be used as FairPlay ASk.
   */
   ask: Buffer;
   /**
@@ -1032,11 +779,7 @@ export interface AudioAnalyzerPreset extends Preset {
   /**
    * The language for the audio payload in the input using the BCP-47 format of 'language
    * tag-region' (e.g: 'en-US'). The list of supported languages are, 'en-US', 'en-GB', 'es-ES',
-   * 'es-MX', 'fr-FR', 'it-IT', 'ja-JP', 'pt-BR', 'zh-CN', 'de-DE', 'ar-EG', 'ru-RU', 'hi-IN'. If
-   * not specified, automatic language detection would be employed. This feature currently supports
-   * English, Chinese, French, German, Italian, Japanese, Spanish, Russian, and Portuguese. The
-   * automatic detection works best with audio recordings with clearly discernable speech. If
-   * automatic detection fails to find the language, transcription would fallback to English.
+   * 'es-MX', 'fr-FR', 'it-IT', 'ja-JP', 'pt-BR', 'zh-CN'.
   */
   audioLanguage?: string;
 }
@@ -1452,9 +1195,8 @@ export interface PngImage extends Image {
 export interface BuiltInStandardEncoderPreset extends Preset {
   /**
    * The built-in preset to be used for encoding videos. Possible values include:
-   * 'H264SingleBitrateSD', 'H264SingleBitrate720p', 'H264SingleBitrate1080p', 'AdaptiveStreaming',
-   * 'AACGoodQualityAudio', 'H264MultipleBitrate1080p', 'H264MultipleBitrate720p',
-   * 'H264MultipleBitrateSD'
+   * 'AdaptiveStreaming', 'AACGoodQualityAudio', 'H264MultipleBitrate1080p',
+   * 'H264MultipleBitrate720p', 'H264MultipleBitrateSD'
   */
   presetName: string;
 }
@@ -1483,11 +1225,9 @@ export interface StandardEncoderPreset extends Preset {
 */
 export interface VideoAnalyzerPreset extends AudioAnalyzerPreset {
   /**
-   * The type of insights to be extracted. If not set then based on the content the type will
-   * selected.  If the content is audio only then only audio insights are extracted and if it is
-   * video only. Possible values include: 'AudioInsightsOnly', 'VideoInsightsOnly', 'AllInsights'
+   * Whether to only extract audio insights when processing a video file.
   */
-  insightsToExtract?: string;
+  audioInsightsOnly?: boolean;
 }
 
 /**
@@ -1524,9 +1264,7 @@ export interface TransformOutput {
   /**
    * A Transform can define more than one outputs. This property defines what the service should do
    * when one output fails - either continue to produce other outputs, or, stop the other outputs.
-   * The overall Job state will not reflect failures of outputs that are specified with
-   * 'ContinueJob'. The default is 'StopProcessingJob'. Possible values include:
-   * 'StopProcessingJob', 'ContinueJob'
+   * The default is stop. Possible values include: 'StopProcessingJob', 'ContinueJob'
   */
   onError?: string;
   /**
@@ -1571,6 +1309,14 @@ export interface Transform extends ProxyResource {
 */
 export interface JobInput {
   /**
+   * A label that is assigned to a JobInput, that is used to satisfy a reference used in the
+   * Transform. For example, a Transform can be authored so as to take an image file with the label
+   * 'xyz' and apply it as an overlay onto the input video before it is encoded. When submitting a
+   * Job, exactly one of the JobInputs should be the image file, and it should have the label
+   * 'xyz'.
+  */
+  label?: string;
+  /**
    * Polymorphic Discriminator
   */
   odatatype: string;
@@ -1584,14 +1330,6 @@ export interface JobInputClip extends JobInput {
    * List of files. Required for JobInputHttp.
   */
   files?: string[];
-  /**
-   * A label that is assigned to a JobInputClip, that is used to satisfy a reference used in the
-   * Transform. For example, a Transform can be authored so as to take an image file with the label
-   * 'xyz' and apply it as an overlay onto the input video before it is encoded. When submitting a
-   * Job, exactly one of the JobInputs should be the image file, and it should have the label
-   * 'xyz'.
-  */
-  label?: string;
 }
 
 /**
@@ -1684,24 +1422,11 @@ export interface JobOutput {
   */
   readonly state?: string;
   /**
-   * If the JobOutput is in a Processing state, this contains the Job completion percentage. The
-   * value is an estimate and not intended to be used to predict Job completion times. To determine
+   * If the JobOutput is in a Processing state, this contains the job completion percentage.  The
+   * value is an estimate and not intended to be used to predict job completion times. To determine
    * if the JobOutput is complete, use the State property.
   */
   readonly progress?: number;
-  /**
-   * A label that is assigned to a JobOutput in order to help uniquely identify it. This is useful
-   * when your Transform has more than one TransformOutput, whereby your Job has more than one
-   * JobOutput. In such cases, when you submit the Job, you will add two or more JobOutputs, in the
-   * same order as TransformOutputs in the Transform. Subsequently, when you retrieve the Job,
-   * either through events or on a GET request, you can use the label to easily identify the
-   * JobOutput. If a label is not provided, a default value of '{presetName}_{outputIndex}' will be
-   * used, where the preset name is the name of the preset in the corresponding TransformOutput and
-   * the output index is the relative index of the this JobOutput within the Job. Note that this
-   * index is the same as the relative index of the corresponding TransformOutput within its
-   * Transform.
-  */
-  label?: string;
   /**
    * Polymorphic Discriminator
   */
@@ -1755,7 +1480,7 @@ export interface Job extends ProxyResource {
   */
   priority?: string;
   /**
-   * Customer provided correlation data that will be returned in Job and JobOutput state events.
+   * Customer provided correlation data that will be returned in Job completed events.
   */
   correlationData?: { [propertyName: string]: string };
 }
@@ -2052,9 +1777,9 @@ export interface StreamingLocatorContentKey {
   */
   readonly type?: string;
   /**
-   * Label of Content Key as specified in the Streaming Policy
+   * Label of Content Key
   */
-  labelReferenceInStreamingPolicy?: string;
+  label?: string;
   /**
    * Value of Content Key
   */
@@ -2066,7 +1791,7 @@ export interface StreamingLocatorContentKey {
   /**
    * Tracks which use this Content Key
   */
-  readonly tracks?: TrackSelection[];
+  tracks?: TrackSelection[];
 }
 
 /**
@@ -2121,39 +1846,42 @@ export interface StreamingLocator extends ProxyResource {
   */
   assetName: string;
   /**
-   * The creation time of the Streaming Locator.
+   * Creation time of Streaming Locator
   */
   readonly created?: Date;
   /**
-   * The start time of the Streaming Locator.
+   * StartTime of Streaming Locator
   */
   startTime?: Date;
   /**
-   * The end time of the Streaming Locator.
+   * EndTime of Streaming Locator
   */
   endTime?: Date;
   /**
-   * The StreamingLocatorId of the Streaming Locator.
+   * StreamingLocatorId of Streaming Locator
   */
   streamingLocatorId?: string;
   /**
-   * Name of the Streaming Policy used by this Streaming Locator. Either specify the name of
-   * Streaming Policy you created or use one of the predefined Streaming Policies. The predefined
-   * Streaming Policies available are: 'Predefined_DownloadOnly', 'Predefined_ClearStreamingOnly',
-   * 'Predefined_DownloadAndClearStreaming', 'Predefined_ClearKey',
-   * 'Predefined_MultiDrmCencStreaming' and 'Predefined_MultiDrmStreaming'
+   * Streaming policy name used by this streaming locator. Either specify the name of streaming
+   * policy you created or use one of the predefined streaming polices. The predefined streaming
+   * policies available are: 'Predefined_DownloadOnly', 'Predefined_ClearStreamingOnly',
+   * 'Predefined_DownloadAndClearStreaming', 'Predefined_ClearKey', 'Predefined_SecureStreaming'
+   * and 'Predefined_SecureStreamingWithFairPlay'
   */
   streamingPolicyName: string;
   /**
-   * Name of the default ContentKeyPolicy used by this Streaming Locator.
+   * Default ContentKeyPolicy used by this Streaming Locator
   */
   defaultContentKeyPolicyName?: string;
   /**
-   * The ContentKeys used by this Streaming Locator.
+   * ContentKeys used by this Streaming Locator
   */
   contentKeys?: StreamingLocatorContentKey[];
   /**
-   * Alternative Media ID of this Streaming Locator
+   * An Alternative Media Identifier associated with the StreamingLocator.  This identifier can be
+   * used to distinguish different StreamingLocators for the same Asset for authorization purposes
+   * in the CustomLicenseAcquisitionUrlTemplate or the CustomKeyAcquisitionUrlTemplate of the
+   * StreamingPolicy specified in the StreamingPolicyName field.
   */
   alternativeMediaId?: string;
 }
@@ -2186,7 +1914,7 @@ export interface LiveOutput extends ProxyResource {
   */
   archiveWindowLength: moment.Duration;
   /**
-   * The manifest file name.  If not provided, the service will generate one automatically.
+   * The manifest file name.
   */
   manifestName?: string;
   /**
@@ -2231,6 +1959,28 @@ export interface LiveEventEndpoint {
 }
 
 /**
+ * The Live Event input.
+*/
+export interface LiveEventInput {
+  /**
+   * The streaming protocol for the Live Event. Possible values include: 'FragmentedMP4', 'RTMP'
+  */
+  streamingProtocol: string;
+  /**
+   * ISO 8601 timespan duration of the key frame interval duration.
+  */
+  keyFrameIntervalDuration?: string;
+  /**
+   * The access token.
+  */
+  accessToken?: string;
+  /**
+   * The input endpoints for the Live Event.
+  */
+  endpoints?: LiveEventEndpoint[];
+}
+
+/**
  * The IP address range in the CIDR scheme.
 */
 export interface IPRange {
@@ -2259,44 +2009,6 @@ export interface IPAccessControl {
 }
 
 /**
- * The IP access control for Live Event Input.
-*/
-export interface LiveEventInputAccessControl {
-  /**
-   * The IP access control properties.
-  */
-  ip?: IPAccessControl;
-}
-
-/**
- * The Live Event input.
-*/
-export interface LiveEventInput {
-  /**
-   * The streaming protocol for the Live Event.  This is specified at creation time and cannot be
-   * updated. Possible values include: 'FragmentedMP4', 'RTMP'
-  */
-  streamingProtocol: string;
-  /**
-   * The access control for LiveEvent Input.
-  */
-  accessControl?: LiveEventInputAccessControl;
-  /**
-   * ISO 8601 timespan duration of the key frame interval duration.
-  */
-  keyFrameIntervalDuration?: string;
-  /**
-   * A unique identifier for a stream.  This can be specified at creation time but cannot be
-   * updated.  If omitted, the service will generate a unique value.
-  */
-  accessToken?: string;
-  /**
-   * The input endpoints for the Live Event.
-  */
-  endpoints?: LiveEventEndpoint[];
-}
-
-/**
  * The IP access control for Live Event preview.
 */
 export interface LiveEventPreviewAccessControl {
@@ -2319,21 +2031,17 @@ export interface LiveEventPreview {
   */
   accessControl?: LiveEventPreviewAccessControl;
   /**
-   * The identifier of the preview locator in Guid format.  Specifying this at creation time allows
-   * the caller to know the preview locator url before the event is created.  If omitted, the
-   * service will generate a random identifier.  This value cannot be updated once the live event
-   * is created.
+   * The preview locator Guid.
   */
   previewLocator?: string;
   /**
-   * The name of streaming policy used for the LiveEvent preview.  This value is specified at
-   * creation time and cannot be updated.
+   * The name of streaming policy used for LiveEvent preview
   */
   streamingPolicyName?: string;
   /**
-   * An Alternative Media Identifier associated with the StreamingLocator created for the preview.
-   * This value is specified at creation time and cannot be updated.  The identifier can be used in
-   * the CustomLicenseAcquisitionUrlTemplate or the CustomKeyAcquisitionUrlTemplate of the
+   * An Alternative Media Identifier associated with the preview url.  This identifier can be used
+   * to distinguish the preview of different live events for authorization purposes in the
+   * CustomLicenseAcquisitionUrlTemplate or the CustomKeyAcquisitionUrlTemplate of the
    * StreamingPolicy specified in the StreamingPolicyName field.
   */
   alternativeMediaId?: string;
@@ -2344,12 +2052,11 @@ export interface LiveEventPreview {
 */
 export interface LiveEventEncoding {
   /**
-   * The encoding type for Live Event.  This value is specified at creation time and cannot be
-   * updated. Possible values include: 'None', 'Basic', 'Standard'
+   * The encoding type for Live Event. Possible values include: 'None', 'Basic'
   */
   encodingType?: string;
   /**
-   * The encoding preset name.  This value is specified at creation time and cannot be updated.
+   * The encoding preset name.
   */
   presetName?: string;
 }
@@ -2412,13 +2119,11 @@ export interface LiveEvent extends TrackedResource {
   */
   crossSiteAccessPolicies?: CrossSiteAccessPolicies;
   /**
-   * Specifies whether to use a vanity url with the Live Event.  This value is specified at
-   * creation time and cannot be updated.
+   * The Live Event vanity URL flag.
   */
   vanityUrl?: boolean;
   /**
-   * The options to use for the LiveEvent.  This value is specified at creation time and cannot be
-   * updated.
+   * The stream options.
   */
   streamOptions?: string[];
   /**
@@ -2444,7 +2149,7 @@ export interface AkamaiSignatureHeaderAuthenticationKey {
   */
   base64Key?: string;
   /**
-   * The expiration time of the authentication key.
+   * The exact time the authentication key.
   */
   expiration?: Date;
 }
@@ -2478,7 +2183,8 @@ export interface StreamingEndpointAccessControl {
 */
 export interface StreamingEntityScaleUnit {
   /**
-   * The scale unit number of the StreamingEndpoint.
+   * @summary ScaleUnit
+   * @description The scale unit number of the StreamingEndpoint.
   */
   scaleUnit?: number;
 }
@@ -2492,12 +2198,11 @@ export interface StreamingEndpoint extends TrackedResource {
   */
   description?: string;
   /**
-   * The number of scale units.  Use the Scale operation to adjust this value.
+   * The number of scale units.
   */
-  scaleUnits: number;
+  scaleUnits?: number;
   /**
-   * The name of the AvailabilitySet used with this StreamingEndpoint for high availability
-   * streaming.  This value can only be set at creation time.
+   * AvailabilitySet name
   */
   availabilitySetName?: string;
   /**
@@ -2556,17 +2261,6 @@ export interface StreamingEndpoint extends TrackedResource {
 }
 
 /**
- * A collection of AccountFilter items.
-*/
-export interface AccountFilterCollection extends Array<AccountFilter> {
-  /**
-   * A link to the next page of the collection (when the collection contains too many results to
-   * return in one response).
-  */
-  odatanextLink?: string;
-}
-
-/**
  * A collection of Operation items.
 */
 export interface OperationCollection extends Array<Operation> {
@@ -2603,17 +2297,6 @@ export interface SubscriptionMediaServiceCollection extends Array<SubscriptionMe
  * A collection of Asset items.
 */
 export interface AssetCollection extends Array<Asset> {
-  /**
-   * A link to the next page of the collection (when the collection contains too many results to
-   * return in one response).
-  */
-  odatanextLink?: string;
-}
-
-/**
- * A collection of AssetFilter items.
-*/
-export interface AssetFilterCollection extends Array<AssetFilter> {
   /**
    * A link to the next page of the collection (when the collection contains too many results to
    * return in one response).

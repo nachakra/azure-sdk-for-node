@@ -20,7 +20,7 @@ npm install azure-arm-mediaservices
 
 ### How to use
 
-#### Authentication, client creation, and list accountFilters as an example.
+#### Authentication, client creation, and list operations as an example.
 
 ```javascript
 const msRestAzure = require("ms-rest-azure");
@@ -28,10 +28,8 @@ const AzureMediaServices = require("azure-arm-mediaservices");
 msRestAzure.interactiveLogin().then((creds) => {
   const subscriptionId = "<Subscription_Id>";
   const client = new AzureMediaServices(creds, subscriptionId);
-  const resourceGroupName = "testresourceGroupName";
-  const accountName = "testaccountName";
 
-  return client.accountFilters.list(resourceGroupName, accountName).then((result) => {
+  return client.operations.list().then((result) => {
     console.log("The result is:");
     console.log(result);
   });
