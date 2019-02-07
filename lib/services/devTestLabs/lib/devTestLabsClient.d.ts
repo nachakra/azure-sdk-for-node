@@ -56,31 +56,19 @@ export default class DevTestLabsClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  providerOperations: operations.ProviderOperations;
-  labs: operations.Labs;
-  operations: operations.Operations;
-  globalSchedules: operations.GlobalSchedules;
-  artifactSources: operations.ArtifactSources;
-  armTemplates: operations.ArmTemplates;
-  artifacts: operations.Artifacts;
-  costs: operations.Costs;
-  customImages: operations.CustomImages;
-  formulas: operations.Formulas;
-  galleryImages: operations.GalleryImages;
-  notificationChannels: operations.NotificationChannels;
-  policySets: operations.PolicySets;
-  policies: operations.Policies;
-  schedules: operations.Schedules;
-  serviceRunners: operations.ServiceRunners;
-  users: operations.Users;
-  disks: operations.Disks;
-  environments: operations.Environments;
-  secrets: operations.Secrets;
-  serviceFabrics: operations.ServiceFabrics;
-  serviceFabricSchedules: operations.ServiceFabricSchedules;
-  virtualMachines: operations.VirtualMachines;
-  virtualMachineSchedules: operations.VirtualMachineSchedules;
-  virtualNetworks: operations.VirtualNetworks;
+  labOperations: operations.LabOperations;
+  artifactSourceOperations: operations.ArtifactSourceOperations;
+  artifactOperations: operations.ArtifactOperations;
+  costInsightOperations: operations.CostInsightOperations;
+  costOperations: operations.CostOperations;
+  customImageOperations: operations.CustomImageOperations;
+  formulaOperations: operations.FormulaOperations;
+  galleryImageOperations: operations.GalleryImageOperations;
+  policySet: operations.PolicySet;
+  policyOperations: operations.PolicyOperations;
+  scheduleOperations: operations.ScheduleOperations;
+  virtualMachine: operations.VirtualMachine;
+  virtualNetworkOperations: operations.VirtualNetworkOperations;
 }
 
 export { DevTestLabsClient, models as DevTestLabsModels };
