@@ -14,33 +14,45 @@ import * as models from '../models';
 
 /**
  * @class
- * ProviderOperations
+ * LabOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DevTestLabsClient.
  */
-export interface ProviderOperations {
+export interface LabOperations {
 
 
     /**
-     * Result of the request to list REST API operations
+     * List labs.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.top]
+     *
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ProviderOperationResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationLab>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProviderOperationResult>>;
+    listBySubscriptionWithHttpOperationResponse(options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationLab>>;
 
     /**
-     * Result of the request to list REST API operations
+     * List labs.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.top]
+     *
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -52,7 +64,7 @@ export interface ProviderOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ProviderOperationResult} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationLab} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -60,45 +72,55 @@ export interface ProviderOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ProviderOperationResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ProviderOperationResult} for more
+     *                      {ResponseWithContinuationLab} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationLab} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProviderOperationResult>;
-    list(callback: ServiceCallback<models.ProviderOperationResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProviderOperationResult>): void;
+    listBySubscription(options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationLab>;
+    listBySubscription(callback: ServiceCallback<models.ResponseWithContinuationLab>): void;
+    listBySubscription(options: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationLab>): void;
 
 
     /**
-     * Result of the request to list REST API operations
+     * List labs.
      *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
+     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.top]
+     *
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ProviderOperationResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationLab>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProviderOperationResult>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationLab>>;
 
     /**
-     * Result of the request to list REST API operations
+     * List labs.
      *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
+     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.top]
+     *
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -110,7 +132,7 @@ export interface ProviderOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ProviderOperationResult} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationLab} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -118,180 +140,17 @@ export interface ProviderOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ProviderOperationResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ProviderOperationResult} for more
+     *                      {ResponseWithContinuationLab} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationLab} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProviderOperationResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ProviderOperationResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProviderOperationResult>): void;
-}
-
-/**
- * @class
- * Labs
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DevTestLabsClient.
- */
-export interface Labs {
-
-
-    /**
-     * List labs in a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=defaultStorageAccount)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<LabList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBySubscriptionWithHttpOperationResponse(options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabList>>;
-
-    /**
-     * List labs in a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=defaultStorageAccount)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {LabList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {LabList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LabList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listBySubscription(options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.LabList>;
-    listBySubscription(callback: ServiceCallback<models.LabList>): void;
-    listBySubscription(options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabList>): void;
-
-
-    /**
-     * List labs in a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=defaultStorageAccount)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<LabList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabList>>;
-
-    /**
-     * List labs in a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=defaultStorageAccount)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {LabList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {LabList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LabList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroup(resourceGroupName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.LabList>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.LabList>): void;
-    listByResourceGroup(resourceGroupName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabList>): void;
+    listByResourceGroup(resourceGroupName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationLab>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ResponseWithContinuationLab>): void;
+    listByResourceGroup(resourceGroupName: string, options: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationLab>): void;
 
 
     /**
@@ -302,9 +161,6 @@ export interface Labs {
      * @param {string} name The name of the lab.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=defaultStorageAccount)'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -315,7 +171,7 @@ export interface Labs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Lab>>;
+    getResourceWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Lab>>;
 
     /**
      * Get lab.
@@ -325,9 +181,6 @@ export interface Labs {
      * @param {string} name The name of the lab.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=defaultStorageAccount)'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -354,72 +207,47 @@ export interface Labs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Lab>;
-    get(resourceGroupName: string, name: string, callback: ServiceCallback<models.Lab>): void;
-    get(resourceGroupName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Lab>): void;
+    getResource(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Lab>;
+    getResource(resourceGroupName: string, name: string, callback: ServiceCallback<models.Lab>): void;
+    getResource(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Lab>): void;
 
 
     /**
-     * Create or replace an existing lab. This operation can take a while to
+     * Create or replace an existing Lab. This operation can take a while to
      * complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} name The name of the lab.
      *
-     * @param {object} lab A lab.
+     * @param {object} lab
      *
-     * @param {string} [lab.labStorageType] Type of storage used by the lab. It can
-     * be either Premium or Standard. Default is Premium. Possible values include:
-     * 'Standard', 'Premium'
+     * @param {string} [lab.defaultStorageAccount] The lab's default storage
+     * account.
      *
-     * @param {array} [lab.mandatoryArtifactsResourceIdsLinux] The ordered list of
-     * artifact resource IDs that should be applied on all Linux VM creations by
-     * default, prior to the artifacts specified by the user.
+     * @param {string} [lab.artifactsStorageAccount] The artifact storage account
+     * of the lab.
      *
-     * @param {array} [lab.mandatoryArtifactsResourceIdsWindows] The ordered list
-     * of artifact resource IDs that should be applied on all Windows VM creations
-     * by default, prior to the artifacts specified by the user.
+     * @param {array} [lab.storageAccounts] The storage accounts of the lab.
      *
-     * @param {string} [lab.premiumDataDisks] The setting to enable usage of
-     * premium data disks.
-     * When its value is 'Enabled', creation of standard or premium data disks is
-     * allowed.
-     * When its value is 'Disabled', only creation of standard data disks is
-     * allowed. Possible values include: 'Disabled', 'Enabled'
+     * @param {string} [lab.vaultName] The name of the key vault of the lab.
      *
-     * @param {string} [lab.environmentPermission] The access rights to be granted
-     * to the user when provisioning an environment. Possible values include:
-     * 'Reader', 'Contributor'
+     * @param {string} [lab.labStorageType] The type of the lab storage. Possible
+     * values include: 'Standard', 'Premium'
      *
-     * @param {object} [lab.announcement] The properties of any lab announcement
-     * associated with this lab
+     * @param {string} [lab.defaultVirtualNetworkId] The default virtual network
+     * identifier of the lab.
      *
-     * @param {string} [lab.announcement.title] The plain text title for the lab
-     * announcement
+     * @param {date} [lab.createdDate] The creation date of the lab.
      *
-     * @param {string} [lab.announcement.markdown] The markdown text (if any) that
-     * this lab displays in the UI. If left empty/null, nothing will be shown.
+     * @param {string} [lab.provisioningState] The provisioning status of the
+     * resource.
      *
-     * @param {string} [lab.announcement.enabled] Is the lab announcement
-     * active/enabled at this time?. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [lab.id] The identifier of the resource.
      *
-     * @param {date} [lab.announcement.expirationDate] The time at which the
-     * announcement expires (null for never)
+     * @param {string} [lab.name] The name of the resource.
      *
-     * @param {boolean} [lab.announcement.expired] Has this announcement expired?
-     *
-     * @param {object} [lab.support] The properties of any lab support message
-     * associated with this lab
-     *
-     * @param {string} [lab.support.enabled] Is the lab support banner
-     * active/enabled at this time?. Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [lab.support.markdown] The markdown text (if any) that this
-     * lab displays in the UI. If left empty/null, nothing will be shown.
-     *
-     * @param {object} [lab.extendedProperties] Extended properties of the lab used
-     * for experimental features
+     * @param {string} [lab.type] The type of the resource.
      *
      * @param {string} [lab.location] The location of the resource.
      *
@@ -436,69 +264,44 @@ export interface Labs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, name: string, lab: models.Lab, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Lab>>;
+    createOrUpdateResourceWithHttpOperationResponse(resourceGroupName: string, name: string, lab: models.Lab, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Lab>>;
 
     /**
-     * Create or replace an existing lab. This operation can take a while to
+     * Create or replace an existing Lab. This operation can take a while to
      * complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} name The name of the lab.
      *
-     * @param {object} lab A lab.
+     * @param {object} lab
      *
-     * @param {string} [lab.labStorageType] Type of storage used by the lab. It can
-     * be either Premium or Standard. Default is Premium. Possible values include:
-     * 'Standard', 'Premium'
+     * @param {string} [lab.defaultStorageAccount] The lab's default storage
+     * account.
      *
-     * @param {array} [lab.mandatoryArtifactsResourceIdsLinux] The ordered list of
-     * artifact resource IDs that should be applied on all Linux VM creations by
-     * default, prior to the artifacts specified by the user.
+     * @param {string} [lab.artifactsStorageAccount] The artifact storage account
+     * of the lab.
      *
-     * @param {array} [lab.mandatoryArtifactsResourceIdsWindows] The ordered list
-     * of artifact resource IDs that should be applied on all Windows VM creations
-     * by default, prior to the artifacts specified by the user.
+     * @param {array} [lab.storageAccounts] The storage accounts of the lab.
      *
-     * @param {string} [lab.premiumDataDisks] The setting to enable usage of
-     * premium data disks.
-     * When its value is 'Enabled', creation of standard or premium data disks is
-     * allowed.
-     * When its value is 'Disabled', only creation of standard data disks is
-     * allowed. Possible values include: 'Disabled', 'Enabled'
+     * @param {string} [lab.vaultName] The name of the key vault of the lab.
      *
-     * @param {string} [lab.environmentPermission] The access rights to be granted
-     * to the user when provisioning an environment. Possible values include:
-     * 'Reader', 'Contributor'
+     * @param {string} [lab.labStorageType] The type of the lab storage. Possible
+     * values include: 'Standard', 'Premium'
      *
-     * @param {object} [lab.announcement] The properties of any lab announcement
-     * associated with this lab
+     * @param {string} [lab.defaultVirtualNetworkId] The default virtual network
+     * identifier of the lab.
      *
-     * @param {string} [lab.announcement.title] The plain text title for the lab
-     * announcement
+     * @param {date} [lab.createdDate] The creation date of the lab.
      *
-     * @param {string} [lab.announcement.markdown] The markdown text (if any) that
-     * this lab displays in the UI. If left empty/null, nothing will be shown.
+     * @param {string} [lab.provisioningState] The provisioning status of the
+     * resource.
      *
-     * @param {string} [lab.announcement.enabled] Is the lab announcement
-     * active/enabled at this time?. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [lab.id] The identifier of the resource.
      *
-     * @param {date} [lab.announcement.expirationDate] The time at which the
-     * announcement expires (null for never)
+     * @param {string} [lab.name] The name of the resource.
      *
-     * @param {boolean} [lab.announcement.expired] Has this announcement expired?
-     *
-     * @param {object} [lab.support] The properties of any lab support message
-     * associated with this lab
-     *
-     * @param {string} [lab.support.enabled] Is the lab support banner
-     * active/enabled at this time?. Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [lab.support.markdown] The markdown text (if any) that this
-     * lab displays in the UI. If left empty/null, nothing will be shown.
-     *
-     * @param {object} [lab.extendedProperties] Extended properties of the lab used
-     * for experimental features
+     * @param {string} [lab.type] The type of the resource.
      *
      * @param {string} [lab.location] The location of the resource.
      *
@@ -531,9 +334,9 @@ export interface Labs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, name: string, lab: models.Lab, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Lab>;
-    createOrUpdate(resourceGroupName: string, name: string, lab: models.Lab, callback: ServiceCallback<models.Lab>): void;
-    createOrUpdate(resourceGroupName: string, name: string, lab: models.Lab, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Lab>): void;
+    createOrUpdateResource(resourceGroupName: string, name: string, lab: models.Lab, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Lab>;
+    createOrUpdateResource(resourceGroupName: string, name: string, lab: models.Lab, callback: ServiceCallback<models.Lab>): void;
+    createOrUpdateResource(resourceGroupName: string, name: string, lab: models.Lab, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Lab>): void;
 
 
     /**
@@ -554,7 +357,7 @@ export interface Labs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteResourceWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete lab. This operation can take a while to complete.
@@ -589,9 +392,9 @@ export interface Labs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteResource(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteResource(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
+    deleteResource(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -601,59 +404,36 @@ export interface Labs {
      *
      * @param {string} name The name of the lab.
      *
-     * @param {object} lab A lab.
+     * @param {object} lab
      *
-     * @param {string} [lab.labStorageType] Type of storage used by the lab. It can
-     * be either Premium or Standard. Default is Premium. Possible values include:
-     * 'Standard', 'Premium'
+     * @param {string} [lab.defaultStorageAccount] The lab's default storage
+     * account.
      *
-     * @param {array} [lab.mandatoryArtifactsResourceIdsLinux] The ordered list of
-     * artifact resource IDs that should be applied on all Linux VM creations by
-     * default, prior to the artifacts specified by the user.
+     * @param {string} [lab.artifactsStorageAccount] The artifact storage account
+     * of the lab.
      *
-     * @param {array} [lab.mandatoryArtifactsResourceIdsWindows] The ordered list
-     * of artifact resource IDs that should be applied on all Windows VM creations
-     * by default, prior to the artifacts specified by the user.
+     * @param {array} [lab.storageAccounts] The storage accounts of the lab.
      *
-     * @param {string} [lab.premiumDataDisks] The setting to enable usage of
-     * premium data disks.
-     * When its value is 'Enabled', creation of standard or premium data disks is
-     * allowed.
-     * When its value is 'Disabled', only creation of standard data disks is
-     * allowed. Possible values include: 'Disabled', 'Enabled'
+     * @param {string} [lab.vaultName] The name of the key vault of the lab.
      *
-     * @param {string} [lab.environmentPermission] The access rights to be granted
-     * to the user when provisioning an environment. Possible values include:
-     * 'Reader', 'Contributor'
+     * @param {string} [lab.labStorageType] The type of the lab storage. Possible
+     * values include: 'Standard', 'Premium'
      *
-     * @param {object} [lab.announcement] The properties of any lab announcement
-     * associated with this lab
+     * @param {string} [lab.defaultVirtualNetworkId] The default virtual network
+     * identifier of the lab.
      *
-     * @param {string} [lab.announcement.title] The plain text title for the lab
-     * announcement
+     * @param {date} [lab.createdDate] The creation date of the lab.
      *
-     * @param {string} [lab.announcement.markdown] The markdown text (if any) that
-     * this lab displays in the UI. If left empty/null, nothing will be shown.
+     * @param {string} [lab.provisioningState] The provisioning status of the
+     * resource.
      *
-     * @param {string} [lab.announcement.enabled] Is the lab announcement
-     * active/enabled at this time?. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [lab.id] The identifier of the resource.
      *
-     * @param {date} [lab.announcement.expirationDate] The time at which the
-     * announcement expires (null for never)
+     * @param {string} [lab.name] The name of the resource.
      *
-     * @param {boolean} [lab.announcement.expired] Has this announcement expired?
+     * @param {string} [lab.type] The type of the resource.
      *
-     * @param {object} [lab.support] The properties of any lab support message
-     * associated with this lab
-     *
-     * @param {string} [lab.support.enabled] Is the lab support banner
-     * active/enabled at this time?. Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [lab.support.markdown] The markdown text (if any) that this
-     * lab displays in the UI. If left empty/null, nothing will be shown.
-     *
-     * @param {object} [lab.extendedProperties] Extended properties of the lab used
-     * for experimental features
+     * @param {string} [lab.location] The location of the resource.
      *
      * @param {object} [lab.tags] The tags of the resource.
      *
@@ -668,7 +448,7 @@ export interface Labs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, name: string, lab: models.LabFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Lab>>;
+    patchResourceWithHttpOperationResponse(resourceGroupName: string, name: string, lab: models.Lab, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Lab>>;
 
     /**
      * Modify properties of labs.
@@ -677,59 +457,36 @@ export interface Labs {
      *
      * @param {string} name The name of the lab.
      *
-     * @param {object} lab A lab.
+     * @param {object} lab
      *
-     * @param {string} [lab.labStorageType] Type of storage used by the lab. It can
-     * be either Premium or Standard. Default is Premium. Possible values include:
-     * 'Standard', 'Premium'
+     * @param {string} [lab.defaultStorageAccount] The lab's default storage
+     * account.
      *
-     * @param {array} [lab.mandatoryArtifactsResourceIdsLinux] The ordered list of
-     * artifact resource IDs that should be applied on all Linux VM creations by
-     * default, prior to the artifacts specified by the user.
+     * @param {string} [lab.artifactsStorageAccount] The artifact storage account
+     * of the lab.
      *
-     * @param {array} [lab.mandatoryArtifactsResourceIdsWindows] The ordered list
-     * of artifact resource IDs that should be applied on all Windows VM creations
-     * by default, prior to the artifacts specified by the user.
+     * @param {array} [lab.storageAccounts] The storage accounts of the lab.
      *
-     * @param {string} [lab.premiumDataDisks] The setting to enable usage of
-     * premium data disks.
-     * When its value is 'Enabled', creation of standard or premium data disks is
-     * allowed.
-     * When its value is 'Disabled', only creation of standard data disks is
-     * allowed. Possible values include: 'Disabled', 'Enabled'
+     * @param {string} [lab.vaultName] The name of the key vault of the lab.
      *
-     * @param {string} [lab.environmentPermission] The access rights to be granted
-     * to the user when provisioning an environment. Possible values include:
-     * 'Reader', 'Contributor'
+     * @param {string} [lab.labStorageType] The type of the lab storage. Possible
+     * values include: 'Standard', 'Premium'
      *
-     * @param {object} [lab.announcement] The properties of any lab announcement
-     * associated with this lab
+     * @param {string} [lab.defaultVirtualNetworkId] The default virtual network
+     * identifier of the lab.
      *
-     * @param {string} [lab.announcement.title] The plain text title for the lab
-     * announcement
+     * @param {date} [lab.createdDate] The creation date of the lab.
      *
-     * @param {string} [lab.announcement.markdown] The markdown text (if any) that
-     * this lab displays in the UI. If left empty/null, nothing will be shown.
+     * @param {string} [lab.provisioningState] The provisioning status of the
+     * resource.
      *
-     * @param {string} [lab.announcement.enabled] Is the lab announcement
-     * active/enabled at this time?. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [lab.id] The identifier of the resource.
      *
-     * @param {date} [lab.announcement.expirationDate] The time at which the
-     * announcement expires (null for never)
+     * @param {string} [lab.name] The name of the resource.
      *
-     * @param {boolean} [lab.announcement.expired] Has this announcement expired?
+     * @param {string} [lab.type] The type of the resource.
      *
-     * @param {object} [lab.support] The properties of any lab support message
-     * associated with this lab
-     *
-     * @param {string} [lab.support.enabled] Is the lab support banner
-     * active/enabled at this time?. Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [lab.support.markdown] The markdown text (if any) that this
-     * lab displays in the UI. If left empty/null, nothing will be shown.
-     *
-     * @param {object} [lab.extendedProperties] Extended properties of the lab used
-     * for experimental features
+     * @param {string} [lab.location] The location of the resource.
      *
      * @param {object} [lab.tags] The tags of the resource.
      *
@@ -760,269 +517,114 @@ export interface Labs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, name: string, lab: models.LabFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Lab>;
-    update(resourceGroupName: string, name: string, lab: models.LabFragment, callback: ServiceCallback<models.Lab>): void;
-    update(resourceGroupName: string, name: string, lab: models.LabFragment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Lab>): void;
+    patchResource(resourceGroupName: string, name: string, lab: models.Lab, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Lab>;
+    patchResource(resourceGroupName: string, name: string, lab: models.Lab, callback: ServiceCallback<models.Lab>): void;
+    patchResource(resourceGroupName: string, name: string, lab: models.Lab, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Lab>): void;
 
 
     /**
-     * Claim a random claimable virtual machine in the lab. This operation can take
-     * a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the lab.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    claimAnyVmWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Claim a random claimable virtual machine in the lab. This operation can take
-     * a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the lab.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    claimAnyVm(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    claimAnyVm(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
-    claimAnyVm(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Create virtual machines in a lab. This operation can take a while to
+     * Create virtual machines in a Lab. This operation can take a while to
      * complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} name The name of the lab.
      *
-     * @param {object} labVirtualMachineCreationParameter Properties for creating a
-     * virtual machine.
+     * @param {object} labVirtualMachine
      *
-     * @param {object} [labVirtualMachineCreationParameter.bulkCreationParameters]
-     * The number of virtual machine instances to create.
+     * @param {string} [labVirtualMachine.notes] The notes of the virtual machine.
      *
-     * @param {number}
-     * [labVirtualMachineCreationParameter.bulkCreationParameters.instanceCount]
-     * The number of virtual machine instances to create.
+     * @param {string} [labVirtualMachine.ownerObjectId] The object identifier of
+     * the owner of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.notes] The notes of the
-     * virtual machine.
+     * @param {string} [labVirtualMachine.createdByUserId] The object identifier of
+     * the creator of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.ownerObjectId] The
-     * object identifier of the owner of the virtual machine.
+     * @param {string} [labVirtualMachine.createdByUser] The email address of
+     * creator of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.ownerUserPrincipalName]
-     * The user principal name of the virtual machine owner.
+     * @param {string} [labVirtualMachine.computeId] The resource identifier
+     * (Microsoft.Compute) of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.createdByUserId] The
-     * object identifier of the creator of the virtual machine.
+     * @param {string} [labVirtualMachine.customImageId] The custom image
+     * identifier of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.createdByUser] The email
-     * address of creator of the virtual machine.
+     * @param {string} [labVirtualMachine.osType] The OS type of the virtual
+     * machine.
      *
-     * @param {date} [labVirtualMachineCreationParameter.createdDate] The creation
-     * date of the virtual machine.
+     * @param {string} [labVirtualMachine.size] The size of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.computeId] The resource
-     * identifier (Microsoft.Compute) of the virtual machine.
+     * @param {string} [labVirtualMachine.userName] The user name of the virtual
+     * machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.customImageId] The
-     * custom image identifier of the virtual machine.
+     * @param {string} [labVirtualMachine.password] The password of the virtual
+     * machine administrator.
      *
-     * @param {string} [labVirtualMachineCreationParameter.osType] The OS type of
+     * @param {string} [labVirtualMachine.sshKey] The SSH key of the virtual
+     * machine administrator.
+     *
+     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
+     *
+     * @param {string} [labVirtualMachine.fqdn] The fully-qualified domain name of
      * the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.size] The size of the
+     * @param {string} [labVirtualMachine.labSubnetName] The lab subnet name of the
      * virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.userName] The user name
-     * of the virtual machine.
+     * @param {string} [labVirtualMachine.labVirtualNetworkId] The lab virtual
+     * network identifier of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.password] The password
-     * of the virtual machine administrator.
-     *
-     * @param {string} [labVirtualMachineCreationParameter.sshKey] The SSH key of
-     * the virtual machine administrator.
-     *
-     * @param {boolean}
-     * [labVirtualMachineCreationParameter.isAuthenticationWithSshKey] Indicates
-     * whether this virtual machine uses an SSH key for authentication.
-     *
-     * @param {string} [labVirtualMachineCreationParameter.fqdn] The
-     * fully-qualified domain name of the virtual machine.
-     *
-     * @param {string} [labVirtualMachineCreationParameter.labSubnetName] The lab
-     * subnet name of the virtual machine.
-     *
-     * @param {string} [labVirtualMachineCreationParameter.labVirtualNetworkId] The
-     * lab virtual network identifier of the virtual machine.
-     *
-     * @param {boolean}
-     * [labVirtualMachineCreationParameter.disallowPublicIpAddress] Indicates
+     * @param {boolean} [labVirtualMachine.disallowPublicIpAddress] Indicates
      * whether the virtual machine is to be created without a public IP address.
      *
-     * @param {array} [labVirtualMachineCreationParameter.artifacts] The artifacts
-     * to be installed on the virtual machine.
+     * @param {array} [labVirtualMachine.artifacts] The artifacts to be installed
+     * on the virtual machine.
      *
-     * @param {object}
-     * [labVirtualMachineCreationParameter.artifactDeploymentStatus] The artifact
+     * @param {object} [labVirtualMachine.artifactDeploymentStatus] The artifact
      * deployment status for the virtual machine.
      *
      * @param {string}
-     * [labVirtualMachineCreationParameter.artifactDeploymentStatus.deploymentStatus]
-     * The deployment status of the artifact.
+     * [labVirtualMachine.artifactDeploymentStatus.deploymentStatus] The deployment
+     * status of the artifact.
      *
      * @param {number}
-     * [labVirtualMachineCreationParameter.artifactDeploymentStatus.artifactsApplied]
-     * The total count of the artifacts that were successfully applied.
+     * [labVirtualMachine.artifactDeploymentStatus.artifactsApplied] The total
+     * count of the artifacts that were successfully applied.
      *
-     * @param {number}
-     * [labVirtualMachineCreationParameter.artifactDeploymentStatus.totalArtifacts]
+     * @param {number} [labVirtualMachine.artifactDeploymentStatus.totalArtifacts]
      * The total count of the artifacts that were tentatively applied.
      *
-     * @param {object} [labVirtualMachineCreationParameter.galleryImageReference]
-     * The Microsoft Azure Marketplace image reference of the virtual machine.
+     * @param {object} [labVirtualMachine.galleryImageReference] The Microsoft
+     * Azure Marketplace image reference of the virtual machine.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.offer] The offer
-     * of the gallery image.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.publisher] The
-     * publisher of the gallery image.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.sku] The SKU of
+     * @param {string} [labVirtualMachine.galleryImageReference.offer] The offer of
      * the gallery image.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.osType] The OS
-     * type of the gallery image.
+     * @param {string} [labVirtualMachine.galleryImageReference.publisher] The
+     * publisher of the gallery image.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.version] The
+     * @param {string} [labVirtualMachine.galleryImageReference.sku] The SKU of the
+     * gallery image.
+     *
+     * @param {string} [labVirtualMachine.galleryImageReference.osType] The OS type
+     * of the gallery image.
+     *
+     * @param {string} [labVirtualMachine.galleryImageReference.version] The
      * version of the gallery image.
      *
-     * @param {string} [labVirtualMachineCreationParameter.planId] The id of the
-     * plan associated with the virtual machine image
+     * @param {string} [labVirtualMachine.provisioningState] The provisioning
+     * status of the resource.
      *
-     * @param {object} [labVirtualMachineCreationParameter.networkInterface] The
-     * network interface properties.
+     * @param {string} [labVirtualMachine.id] The identifier of the resource.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.virtualNetworkId] The
-     * resource ID of the virtual network.
+     * @param {string} [labVirtualMachine.name] The name of the resource.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.subnetId] The resource
-     * ID of the sub net.
+     * @param {string} [labVirtualMachine.type] The type of the resource.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.publicIpAddressId] The
-     * resource ID of the public IP address.
+     * @param {string} [labVirtualMachine.location] The location of the resource.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.publicIpAddress] The
-     * public IP address.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.privateIpAddress] The
-     * private IP address.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.dnsName] The DNS name.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.rdpAuthority] The
-     * RdpAuthority property is a server DNS host name or IP address followed by
-     * the service port number for RDP (Remote Desktop Protocol).
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.sshAuthority] The
-     * SshAuthority property is a server DNS host name or IP address followed by
-     * the service port number for SSH.
-     *
-     * @param {object}
-     * [labVirtualMachineCreationParameter.networkInterface.sharedPublicIpAddressConfiguration]
-     * The configuration for sharing a public IP address across multiple virtual
-     * machines.
-     *
-     * @param {array}
-     * [labVirtualMachineCreationParameter.networkInterface.sharedPublicIpAddressConfiguration.inboundNatRules]
-     * The incoming NAT rules
-     *
-     * @param {date} [labVirtualMachineCreationParameter.expirationDate] The
-     * expiration date for VM.
-     *
-     * @param {boolean} [labVirtualMachineCreationParameter.allowClaim] Indicates
-     * whether another user can take ownership of the virtual machine
-     *
-     * @param {string} [labVirtualMachineCreationParameter.storageType] Storage
-     * type to use for virtual machine (i.e. Standard, Premium).
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.virtualMachineCreationSource] Tells
-     * source of creation of lab virtual machine. Output property only. Possible
-     * values include: 'FromCustomImage', 'FromGalleryImage'
-     *
-     * @param {string} [labVirtualMachineCreationParameter.environmentId] The
-     * resource ID of the environment that contains this virtual machine, if any.
-     *
-     * @param {array} [labVirtualMachineCreationParameter.dataDiskParameters] New
-     * or existing data disks to attach to the virtual machine after creation
-     *
-     * @param {array} [labVirtualMachineCreationParameter.scheduleParameters]
-     * Virtual Machine schedules to be created
-     *
-     * @param {string} [labVirtualMachineCreationParameter.lastKnownPowerState]
-     * Last known compute power state captured in DTL
-     *
-     * @param {string} [labVirtualMachineCreationParameter.name] The name of the
-     * virtual machine or environment
-     *
-     * @param {string} [labVirtualMachineCreationParameter.location] The location
-     * of the new virtual machine or environment
-     *
-     * @param {object} [labVirtualMachineCreationParameter.tags] The tags of the
-     * resource.
+     * @param {object} [labVirtualMachine.tags] The tags of the resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1035,206 +637,111 @@ export interface Labs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createEnvironmentWithHttpOperationResponse(resourceGroupName: string, name: string, labVirtualMachineCreationParameter: models.LabVirtualMachineCreationParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    createEnvironmentWithHttpOperationResponse(resourceGroupName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Create virtual machines in a lab. This operation can take a while to
+     * Create virtual machines in a Lab. This operation can take a while to
      * complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} name The name of the lab.
      *
-     * @param {object} labVirtualMachineCreationParameter Properties for creating a
-     * virtual machine.
+     * @param {object} labVirtualMachine
      *
-     * @param {object} [labVirtualMachineCreationParameter.bulkCreationParameters]
-     * The number of virtual machine instances to create.
+     * @param {string} [labVirtualMachine.notes] The notes of the virtual machine.
      *
-     * @param {number}
-     * [labVirtualMachineCreationParameter.bulkCreationParameters.instanceCount]
-     * The number of virtual machine instances to create.
+     * @param {string} [labVirtualMachine.ownerObjectId] The object identifier of
+     * the owner of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.notes] The notes of the
-     * virtual machine.
+     * @param {string} [labVirtualMachine.createdByUserId] The object identifier of
+     * the creator of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.ownerObjectId] The
-     * object identifier of the owner of the virtual machine.
+     * @param {string} [labVirtualMachine.createdByUser] The email address of
+     * creator of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.ownerUserPrincipalName]
-     * The user principal name of the virtual machine owner.
+     * @param {string} [labVirtualMachine.computeId] The resource identifier
+     * (Microsoft.Compute) of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.createdByUserId] The
-     * object identifier of the creator of the virtual machine.
+     * @param {string} [labVirtualMachine.customImageId] The custom image
+     * identifier of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.createdByUser] The email
-     * address of creator of the virtual machine.
+     * @param {string} [labVirtualMachine.osType] The OS type of the virtual
+     * machine.
      *
-     * @param {date} [labVirtualMachineCreationParameter.createdDate] The creation
-     * date of the virtual machine.
+     * @param {string} [labVirtualMachine.size] The size of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.computeId] The resource
-     * identifier (Microsoft.Compute) of the virtual machine.
+     * @param {string} [labVirtualMachine.userName] The user name of the virtual
+     * machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.customImageId] The
-     * custom image identifier of the virtual machine.
+     * @param {string} [labVirtualMachine.password] The password of the virtual
+     * machine administrator.
      *
-     * @param {string} [labVirtualMachineCreationParameter.osType] The OS type of
+     * @param {string} [labVirtualMachine.sshKey] The SSH key of the virtual
+     * machine administrator.
+     *
+     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
+     *
+     * @param {string} [labVirtualMachine.fqdn] The fully-qualified domain name of
      * the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.size] The size of the
+     * @param {string} [labVirtualMachine.labSubnetName] The lab subnet name of the
      * virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.userName] The user name
-     * of the virtual machine.
+     * @param {string} [labVirtualMachine.labVirtualNetworkId] The lab virtual
+     * network identifier of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.password] The password
-     * of the virtual machine administrator.
-     *
-     * @param {string} [labVirtualMachineCreationParameter.sshKey] The SSH key of
-     * the virtual machine administrator.
-     *
-     * @param {boolean}
-     * [labVirtualMachineCreationParameter.isAuthenticationWithSshKey] Indicates
-     * whether this virtual machine uses an SSH key for authentication.
-     *
-     * @param {string} [labVirtualMachineCreationParameter.fqdn] The
-     * fully-qualified domain name of the virtual machine.
-     *
-     * @param {string} [labVirtualMachineCreationParameter.labSubnetName] The lab
-     * subnet name of the virtual machine.
-     *
-     * @param {string} [labVirtualMachineCreationParameter.labVirtualNetworkId] The
-     * lab virtual network identifier of the virtual machine.
-     *
-     * @param {boolean}
-     * [labVirtualMachineCreationParameter.disallowPublicIpAddress] Indicates
+     * @param {boolean} [labVirtualMachine.disallowPublicIpAddress] Indicates
      * whether the virtual machine is to be created without a public IP address.
      *
-     * @param {array} [labVirtualMachineCreationParameter.artifacts] The artifacts
-     * to be installed on the virtual machine.
+     * @param {array} [labVirtualMachine.artifacts] The artifacts to be installed
+     * on the virtual machine.
      *
-     * @param {object}
-     * [labVirtualMachineCreationParameter.artifactDeploymentStatus] The artifact
+     * @param {object} [labVirtualMachine.artifactDeploymentStatus] The artifact
      * deployment status for the virtual machine.
      *
      * @param {string}
-     * [labVirtualMachineCreationParameter.artifactDeploymentStatus.deploymentStatus]
-     * The deployment status of the artifact.
+     * [labVirtualMachine.artifactDeploymentStatus.deploymentStatus] The deployment
+     * status of the artifact.
      *
      * @param {number}
-     * [labVirtualMachineCreationParameter.artifactDeploymentStatus.artifactsApplied]
-     * The total count of the artifacts that were successfully applied.
+     * [labVirtualMachine.artifactDeploymentStatus.artifactsApplied] The total
+     * count of the artifacts that were successfully applied.
      *
-     * @param {number}
-     * [labVirtualMachineCreationParameter.artifactDeploymentStatus.totalArtifacts]
+     * @param {number} [labVirtualMachine.artifactDeploymentStatus.totalArtifacts]
      * The total count of the artifacts that were tentatively applied.
      *
-     * @param {object} [labVirtualMachineCreationParameter.galleryImageReference]
-     * The Microsoft Azure Marketplace image reference of the virtual machine.
+     * @param {object} [labVirtualMachine.galleryImageReference] The Microsoft
+     * Azure Marketplace image reference of the virtual machine.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.offer] The offer
-     * of the gallery image.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.publisher] The
-     * publisher of the gallery image.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.sku] The SKU of
+     * @param {string} [labVirtualMachine.galleryImageReference.offer] The offer of
      * the gallery image.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.osType] The OS
-     * type of the gallery image.
+     * @param {string} [labVirtualMachine.galleryImageReference.publisher] The
+     * publisher of the gallery image.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.version] The
+     * @param {string} [labVirtualMachine.galleryImageReference.sku] The SKU of the
+     * gallery image.
+     *
+     * @param {string} [labVirtualMachine.galleryImageReference.osType] The OS type
+     * of the gallery image.
+     *
+     * @param {string} [labVirtualMachine.galleryImageReference.version] The
      * version of the gallery image.
      *
-     * @param {string} [labVirtualMachineCreationParameter.planId] The id of the
-     * plan associated with the virtual machine image
+     * @param {string} [labVirtualMachine.provisioningState] The provisioning
+     * status of the resource.
      *
-     * @param {object} [labVirtualMachineCreationParameter.networkInterface] The
-     * network interface properties.
+     * @param {string} [labVirtualMachine.id] The identifier of the resource.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.virtualNetworkId] The
-     * resource ID of the virtual network.
+     * @param {string} [labVirtualMachine.name] The name of the resource.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.subnetId] The resource
-     * ID of the sub net.
+     * @param {string} [labVirtualMachine.type] The type of the resource.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.publicIpAddressId] The
-     * resource ID of the public IP address.
+     * @param {string} [labVirtualMachine.location] The location of the resource.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.publicIpAddress] The
-     * public IP address.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.privateIpAddress] The
-     * private IP address.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.dnsName] The DNS name.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.rdpAuthority] The
-     * RdpAuthority property is a server DNS host name or IP address followed by
-     * the service port number for RDP (Remote Desktop Protocol).
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.sshAuthority] The
-     * SshAuthority property is a server DNS host name or IP address followed by
-     * the service port number for SSH.
-     *
-     * @param {object}
-     * [labVirtualMachineCreationParameter.networkInterface.sharedPublicIpAddressConfiguration]
-     * The configuration for sharing a public IP address across multiple virtual
-     * machines.
-     *
-     * @param {array}
-     * [labVirtualMachineCreationParameter.networkInterface.sharedPublicIpAddressConfiguration.inboundNatRules]
-     * The incoming NAT rules
-     *
-     * @param {date} [labVirtualMachineCreationParameter.expirationDate] The
-     * expiration date for VM.
-     *
-     * @param {boolean} [labVirtualMachineCreationParameter.allowClaim] Indicates
-     * whether another user can take ownership of the virtual machine
-     *
-     * @param {string} [labVirtualMachineCreationParameter.storageType] Storage
-     * type to use for virtual machine (i.e. Standard, Premium).
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.virtualMachineCreationSource] Tells
-     * source of creation of lab virtual machine. Output property only. Possible
-     * values include: 'FromCustomImage', 'FromGalleryImage'
-     *
-     * @param {string} [labVirtualMachineCreationParameter.environmentId] The
-     * resource ID of the environment that contains this virtual machine, if any.
-     *
-     * @param {array} [labVirtualMachineCreationParameter.dataDiskParameters] New
-     * or existing data disks to attach to the virtual machine after creation
-     *
-     * @param {array} [labVirtualMachineCreationParameter.scheduleParameters]
-     * Virtual Machine schedules to be created
-     *
-     * @param {string} [labVirtualMachineCreationParameter.lastKnownPowerState]
-     * Last known compute power state captured in DTL
-     *
-     * @param {string} [labVirtualMachineCreationParameter.name] The name of the
-     * virtual machine or environment
-     *
-     * @param {string} [labVirtualMachineCreationParameter.location] The location
-     * of the new virtual machine or environment
-     *
-     * @param {object} [labVirtualMachineCreationParameter.tags] The tags of the
-     * resource.
+     * @param {object} [labVirtualMachine.tags] The tags of the resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1262,91 +769,9 @@ export interface Labs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createEnvironment(resourceGroupName: string, name: string, labVirtualMachineCreationParameter: models.LabVirtualMachineCreationParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    createEnvironment(resourceGroupName: string, name: string, labVirtualMachineCreationParameter: models.LabVirtualMachineCreationParameter, callback: ServiceCallback<void>): void;
-    createEnvironment(resourceGroupName: string, name: string, labVirtualMachineCreationParameter: models.LabVirtualMachineCreationParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Exports the lab resource usage into a storage account This operation can
-     * take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the lab.
-     *
-     * @param {object} exportResourceUsageParameters The parameters of the export
-     * operation.
-     *
-     * @param {string} [exportResourceUsageParameters.blobStorageAbsoluteSasUri]
-     * The blob storage absolute sas uri with write permission to the container
-     * which the usage data needs to be uploaded to.
-     *
-     * @param {date} [exportResourceUsageParameters.usageStartDate] The start time
-     * of the usage. If not provided, usage will be reported since the beginning of
-     * data collection.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    exportResourceUsageWithHttpOperationResponse(resourceGroupName: string, name: string, exportResourceUsageParameters: models.ExportResourceUsageParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Exports the lab resource usage into a storage account This operation can
-     * take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the lab.
-     *
-     * @param {object} exportResourceUsageParameters The parameters of the export
-     * operation.
-     *
-     * @param {string} [exportResourceUsageParameters.blobStorageAbsoluteSasUri]
-     * The blob storage absolute sas uri with write permission to the container
-     * which the usage data needs to be uploaded to.
-     *
-     * @param {date} [exportResourceUsageParameters.usageStartDate] The start time
-     * of the usage. If not provided, usage will be reported since the beginning of
-     * data collection.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    exportResourceUsage(resourceGroupName: string, name: string, exportResourceUsageParameters: models.ExportResourceUsageParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    exportResourceUsage(resourceGroupName: string, name: string, exportResourceUsageParameters: models.ExportResourceUsageParameters, callback: ServiceCallback<void>): void;
-    exportResourceUsage(resourceGroupName: string, name: string, exportResourceUsageParameters: models.ExportResourceUsageParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    createEnvironment(resourceGroupName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    createEnvironment(resourceGroupName: string, name: string, labVirtualMachine: models.LabVirtualMachine, callback: ServiceCallback<void>): void;
+    createEnvironment(resourceGroupName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1356,8 +781,7 @@ export interface Labs {
      *
      * @param {string} name The name of the lab.
      *
-     * @param {object} generateUploadUriParameter Properties for generating an
-     * upload URI.
+     * @param {object} generateUploadUriParameter
      *
      * @param {string} [generateUploadUriParameter.blobName] The blob name of the
      * upload URI.
@@ -1382,8 +806,7 @@ export interface Labs {
      *
      * @param {string} name The name of the lab.
      *
-     * @param {object} generateUploadUriParameter Properties for generating an
-     * upload URI.
+     * @param {object} generateUploadUriParameter
      *
      * @param {string} [generateUploadUriParameter.blobName] The blob name of the
      * upload URI.
@@ -1422,90 +845,6 @@ export interface Labs {
 
 
     /**
-     * Import a virtual machine into a different lab. This operation can take a
-     * while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the lab.
-     *
-     * @param {object} importLabVirtualMachineRequest This represents the payload
-     * required to import a virtual machine from a different lab into the current
-     * one
-     *
-     * @param {string}
-     * [importLabVirtualMachineRequest.sourceVirtualMachineResourceId] The full
-     * resource ID of the virtual machine to be imported.
-     *
-     * @param {string}
-     * [importLabVirtualMachineRequest.destinationVirtualMachineName] The name of
-     * the virtual machine in the destination lab
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    importVirtualMachineWithHttpOperationResponse(resourceGroupName: string, name: string, importLabVirtualMachineRequest: models.ImportLabVirtualMachineRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Import a virtual machine into a different lab. This operation can take a
-     * while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the lab.
-     *
-     * @param {object} importLabVirtualMachineRequest This represents the payload
-     * required to import a virtual machine from a different lab into the current
-     * one
-     *
-     * @param {string}
-     * [importLabVirtualMachineRequest.sourceVirtualMachineResourceId] The full
-     * resource ID of the virtual machine to be imported.
-     *
-     * @param {string}
-     * [importLabVirtualMachineRequest.destinationVirtualMachineName] The name of
-     * the virtual machine in the destination lab
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    importVirtualMachine(resourceGroupName: string, name: string, importLabVirtualMachineRequest: models.ImportLabVirtualMachineRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    importVirtualMachine(resourceGroupName: string, name: string, importLabVirtualMachineRequest: models.ImportLabVirtualMachineRequest, callback: ServiceCallback<void>): void;
-    importVirtualMachine(resourceGroupName: string, name: string, importLabVirtualMachineRequest: models.ImportLabVirtualMachineRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
      * List disk images available for custom image creation.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -1519,11 +858,11 @@ export interface Labs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<LabVhdList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationLabVhd>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listVhdsWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabVhdList>>;
+    listVhdsWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationLabVhd>>;
 
     /**
      * List disk images available for custom image creation.
@@ -1544,7 +883,7 @@ export interface Labs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {LabVhdList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationLabVhd} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1552,79 +891,55 @@ export interface Labs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {LabVhdList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LabVhdList} for more information.
+     *                      {ResponseWithContinuationLabVhd} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationLabVhd} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listVhds(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LabVhdList>;
-    listVhds(resourceGroupName: string, name: string, callback: ServiceCallback<models.LabVhdList>): void;
-    listVhds(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabVhdList>): void;
+    listVhds(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationLabVhd>;
+    listVhds(resourceGroupName: string, name: string, callback: ServiceCallback<models.ResponseWithContinuationLabVhd>): void;
+    listVhds(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationLabVhd>): void;
 
 
     /**
-     * Create or replace an existing lab. This operation can take a while to
+     * Create or replace an existing Lab. This operation can take a while to
      * complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} name The name of the lab.
      *
-     * @param {object} lab A lab.
+     * @param {object} lab
      *
-     * @param {string} [lab.labStorageType] Type of storage used by the lab. It can
-     * be either Premium or Standard. Default is Premium. Possible values include:
-     * 'Standard', 'Premium'
+     * @param {string} [lab.defaultStorageAccount] The lab's default storage
+     * account.
      *
-     * @param {array} [lab.mandatoryArtifactsResourceIdsLinux] The ordered list of
-     * artifact resource IDs that should be applied on all Linux VM creations by
-     * default, prior to the artifacts specified by the user.
+     * @param {string} [lab.artifactsStorageAccount] The artifact storage account
+     * of the lab.
      *
-     * @param {array} [lab.mandatoryArtifactsResourceIdsWindows] The ordered list
-     * of artifact resource IDs that should be applied on all Windows VM creations
-     * by default, prior to the artifacts specified by the user.
+     * @param {array} [lab.storageAccounts] The storage accounts of the lab.
      *
-     * @param {string} [lab.premiumDataDisks] The setting to enable usage of
-     * premium data disks.
-     * When its value is 'Enabled', creation of standard or premium data disks is
-     * allowed.
-     * When its value is 'Disabled', only creation of standard data disks is
-     * allowed. Possible values include: 'Disabled', 'Enabled'
+     * @param {string} [lab.vaultName] The name of the key vault of the lab.
      *
-     * @param {string} [lab.environmentPermission] The access rights to be granted
-     * to the user when provisioning an environment. Possible values include:
-     * 'Reader', 'Contributor'
+     * @param {string} [lab.labStorageType] The type of the lab storage. Possible
+     * values include: 'Standard', 'Premium'
      *
-     * @param {object} [lab.announcement] The properties of any lab announcement
-     * associated with this lab
+     * @param {string} [lab.defaultVirtualNetworkId] The default virtual network
+     * identifier of the lab.
      *
-     * @param {string} [lab.announcement.title] The plain text title for the lab
-     * announcement
+     * @param {date} [lab.createdDate] The creation date of the lab.
      *
-     * @param {string} [lab.announcement.markdown] The markdown text (if any) that
-     * this lab displays in the UI. If left empty/null, nothing will be shown.
+     * @param {string} [lab.provisioningState] The provisioning status of the
+     * resource.
      *
-     * @param {string} [lab.announcement.enabled] Is the lab announcement
-     * active/enabled at this time?. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [lab.id] The identifier of the resource.
      *
-     * @param {date} [lab.announcement.expirationDate] The time at which the
-     * announcement expires (null for never)
+     * @param {string} [lab.name] The name of the resource.
      *
-     * @param {boolean} [lab.announcement.expired] Has this announcement expired?
-     *
-     * @param {object} [lab.support] The properties of any lab support message
-     * associated with this lab
-     *
-     * @param {string} [lab.support.enabled] Is the lab support banner
-     * active/enabled at this time?. Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [lab.support.markdown] The markdown text (if any) that this
-     * lab displays in the UI. If left empty/null, nothing will be shown.
-     *
-     * @param {object} [lab.extendedProperties] Extended properties of the lab used
-     * for experimental features
+     * @param {string} [lab.type] The type of the resource.
      *
      * @param {string} [lab.location] The location of the resource.
      *
@@ -1641,69 +956,44 @@ export interface Labs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, name: string, lab: models.Lab, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Lab>>;
+    beginCreateOrUpdateResourceWithHttpOperationResponse(resourceGroupName: string, name: string, lab: models.Lab, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Lab>>;
 
     /**
-     * Create or replace an existing lab. This operation can take a while to
+     * Create or replace an existing Lab. This operation can take a while to
      * complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} name The name of the lab.
      *
-     * @param {object} lab A lab.
+     * @param {object} lab
      *
-     * @param {string} [lab.labStorageType] Type of storage used by the lab. It can
-     * be either Premium or Standard. Default is Premium. Possible values include:
-     * 'Standard', 'Premium'
+     * @param {string} [lab.defaultStorageAccount] The lab's default storage
+     * account.
      *
-     * @param {array} [lab.mandatoryArtifactsResourceIdsLinux] The ordered list of
-     * artifact resource IDs that should be applied on all Linux VM creations by
-     * default, prior to the artifacts specified by the user.
+     * @param {string} [lab.artifactsStorageAccount] The artifact storage account
+     * of the lab.
      *
-     * @param {array} [lab.mandatoryArtifactsResourceIdsWindows] The ordered list
-     * of artifact resource IDs that should be applied on all Windows VM creations
-     * by default, prior to the artifacts specified by the user.
+     * @param {array} [lab.storageAccounts] The storage accounts of the lab.
      *
-     * @param {string} [lab.premiumDataDisks] The setting to enable usage of
-     * premium data disks.
-     * When its value is 'Enabled', creation of standard or premium data disks is
-     * allowed.
-     * When its value is 'Disabled', only creation of standard data disks is
-     * allowed. Possible values include: 'Disabled', 'Enabled'
+     * @param {string} [lab.vaultName] The name of the key vault of the lab.
      *
-     * @param {string} [lab.environmentPermission] The access rights to be granted
-     * to the user when provisioning an environment. Possible values include:
-     * 'Reader', 'Contributor'
+     * @param {string} [lab.labStorageType] The type of the lab storage. Possible
+     * values include: 'Standard', 'Premium'
      *
-     * @param {object} [lab.announcement] The properties of any lab announcement
-     * associated with this lab
+     * @param {string} [lab.defaultVirtualNetworkId] The default virtual network
+     * identifier of the lab.
      *
-     * @param {string} [lab.announcement.title] The plain text title for the lab
-     * announcement
+     * @param {date} [lab.createdDate] The creation date of the lab.
      *
-     * @param {string} [lab.announcement.markdown] The markdown text (if any) that
-     * this lab displays in the UI. If left empty/null, nothing will be shown.
+     * @param {string} [lab.provisioningState] The provisioning status of the
+     * resource.
      *
-     * @param {string} [lab.announcement.enabled] Is the lab announcement
-     * active/enabled at this time?. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [lab.id] The identifier of the resource.
      *
-     * @param {date} [lab.announcement.expirationDate] The time at which the
-     * announcement expires (null for never)
+     * @param {string} [lab.name] The name of the resource.
      *
-     * @param {boolean} [lab.announcement.expired] Has this announcement expired?
-     *
-     * @param {object} [lab.support] The properties of any lab support message
-     * associated with this lab
-     *
-     * @param {string} [lab.support.enabled] Is the lab support banner
-     * active/enabled at this time?. Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [lab.support.markdown] The markdown text (if any) that this
-     * lab displays in the UI. If left empty/null, nothing will be shown.
-     *
-     * @param {object} [lab.extendedProperties] Extended properties of the lab used
-     * for experimental features
+     * @param {string} [lab.type] The type of the resource.
      *
      * @param {string} [lab.location] The location of the resource.
      *
@@ -1736,9 +1026,9 @@ export interface Labs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, name: string, lab: models.Lab, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Lab>;
-    beginCreateOrUpdate(resourceGroupName: string, name: string, lab: models.Lab, callback: ServiceCallback<models.Lab>): void;
-    beginCreateOrUpdate(resourceGroupName: string, name: string, lab: models.Lab, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Lab>): void;
+    beginCreateOrUpdateResource(resourceGroupName: string, name: string, lab: models.Lab, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Lab>;
+    beginCreateOrUpdateResource(resourceGroupName: string, name: string, lab: models.Lab, callback: ServiceCallback<models.Lab>): void;
+    beginCreateOrUpdateResource(resourceGroupName: string, name: string, lab: models.Lab, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Lab>): void;
 
 
     /**
@@ -1759,7 +1049,7 @@ export interface Labs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteResourceWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete lab. This operation can take a while to complete.
@@ -1794,269 +1084,114 @@ export interface Labs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteResource(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteResource(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
+    beginDeleteResource(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Claim a random claimable virtual machine in the lab. This operation can take
-     * a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the lab.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginClaimAnyVmWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Claim a random claimable virtual machine in the lab. This operation can take
-     * a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the lab.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginClaimAnyVm(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginClaimAnyVm(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
-    beginClaimAnyVm(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Create virtual machines in a lab. This operation can take a while to
+     * Create virtual machines in a Lab. This operation can take a while to
      * complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} name The name of the lab.
      *
-     * @param {object} labVirtualMachineCreationParameter Properties for creating a
-     * virtual machine.
+     * @param {object} labVirtualMachine
      *
-     * @param {object} [labVirtualMachineCreationParameter.bulkCreationParameters]
-     * The number of virtual machine instances to create.
+     * @param {string} [labVirtualMachine.notes] The notes of the virtual machine.
      *
-     * @param {number}
-     * [labVirtualMachineCreationParameter.bulkCreationParameters.instanceCount]
-     * The number of virtual machine instances to create.
+     * @param {string} [labVirtualMachine.ownerObjectId] The object identifier of
+     * the owner of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.notes] The notes of the
-     * virtual machine.
+     * @param {string} [labVirtualMachine.createdByUserId] The object identifier of
+     * the creator of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.ownerObjectId] The
-     * object identifier of the owner of the virtual machine.
+     * @param {string} [labVirtualMachine.createdByUser] The email address of
+     * creator of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.ownerUserPrincipalName]
-     * The user principal name of the virtual machine owner.
+     * @param {string} [labVirtualMachine.computeId] The resource identifier
+     * (Microsoft.Compute) of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.createdByUserId] The
-     * object identifier of the creator of the virtual machine.
+     * @param {string} [labVirtualMachine.customImageId] The custom image
+     * identifier of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.createdByUser] The email
-     * address of creator of the virtual machine.
+     * @param {string} [labVirtualMachine.osType] The OS type of the virtual
+     * machine.
      *
-     * @param {date} [labVirtualMachineCreationParameter.createdDate] The creation
-     * date of the virtual machine.
+     * @param {string} [labVirtualMachine.size] The size of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.computeId] The resource
-     * identifier (Microsoft.Compute) of the virtual machine.
+     * @param {string} [labVirtualMachine.userName] The user name of the virtual
+     * machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.customImageId] The
-     * custom image identifier of the virtual machine.
+     * @param {string} [labVirtualMachine.password] The password of the virtual
+     * machine administrator.
      *
-     * @param {string} [labVirtualMachineCreationParameter.osType] The OS type of
+     * @param {string} [labVirtualMachine.sshKey] The SSH key of the virtual
+     * machine administrator.
+     *
+     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
+     *
+     * @param {string} [labVirtualMachine.fqdn] The fully-qualified domain name of
      * the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.size] The size of the
+     * @param {string} [labVirtualMachine.labSubnetName] The lab subnet name of the
      * virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.userName] The user name
-     * of the virtual machine.
+     * @param {string} [labVirtualMachine.labVirtualNetworkId] The lab virtual
+     * network identifier of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.password] The password
-     * of the virtual machine administrator.
-     *
-     * @param {string} [labVirtualMachineCreationParameter.sshKey] The SSH key of
-     * the virtual machine administrator.
-     *
-     * @param {boolean}
-     * [labVirtualMachineCreationParameter.isAuthenticationWithSshKey] Indicates
-     * whether this virtual machine uses an SSH key for authentication.
-     *
-     * @param {string} [labVirtualMachineCreationParameter.fqdn] The
-     * fully-qualified domain name of the virtual machine.
-     *
-     * @param {string} [labVirtualMachineCreationParameter.labSubnetName] The lab
-     * subnet name of the virtual machine.
-     *
-     * @param {string} [labVirtualMachineCreationParameter.labVirtualNetworkId] The
-     * lab virtual network identifier of the virtual machine.
-     *
-     * @param {boolean}
-     * [labVirtualMachineCreationParameter.disallowPublicIpAddress] Indicates
+     * @param {boolean} [labVirtualMachine.disallowPublicIpAddress] Indicates
      * whether the virtual machine is to be created without a public IP address.
      *
-     * @param {array} [labVirtualMachineCreationParameter.artifacts] The artifacts
-     * to be installed on the virtual machine.
+     * @param {array} [labVirtualMachine.artifacts] The artifacts to be installed
+     * on the virtual machine.
      *
-     * @param {object}
-     * [labVirtualMachineCreationParameter.artifactDeploymentStatus] The artifact
+     * @param {object} [labVirtualMachine.artifactDeploymentStatus] The artifact
      * deployment status for the virtual machine.
      *
      * @param {string}
-     * [labVirtualMachineCreationParameter.artifactDeploymentStatus.deploymentStatus]
-     * The deployment status of the artifact.
+     * [labVirtualMachine.artifactDeploymentStatus.deploymentStatus] The deployment
+     * status of the artifact.
      *
      * @param {number}
-     * [labVirtualMachineCreationParameter.artifactDeploymentStatus.artifactsApplied]
-     * The total count of the artifacts that were successfully applied.
+     * [labVirtualMachine.artifactDeploymentStatus.artifactsApplied] The total
+     * count of the artifacts that were successfully applied.
      *
-     * @param {number}
-     * [labVirtualMachineCreationParameter.artifactDeploymentStatus.totalArtifacts]
+     * @param {number} [labVirtualMachine.artifactDeploymentStatus.totalArtifacts]
      * The total count of the artifacts that were tentatively applied.
      *
-     * @param {object} [labVirtualMachineCreationParameter.galleryImageReference]
-     * The Microsoft Azure Marketplace image reference of the virtual machine.
+     * @param {object} [labVirtualMachine.galleryImageReference] The Microsoft
+     * Azure Marketplace image reference of the virtual machine.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.offer] The offer
-     * of the gallery image.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.publisher] The
-     * publisher of the gallery image.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.sku] The SKU of
+     * @param {string} [labVirtualMachine.galleryImageReference.offer] The offer of
      * the gallery image.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.osType] The OS
-     * type of the gallery image.
+     * @param {string} [labVirtualMachine.galleryImageReference.publisher] The
+     * publisher of the gallery image.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.version] The
+     * @param {string} [labVirtualMachine.galleryImageReference.sku] The SKU of the
+     * gallery image.
+     *
+     * @param {string} [labVirtualMachine.galleryImageReference.osType] The OS type
+     * of the gallery image.
+     *
+     * @param {string} [labVirtualMachine.galleryImageReference.version] The
      * version of the gallery image.
      *
-     * @param {string} [labVirtualMachineCreationParameter.planId] The id of the
-     * plan associated with the virtual machine image
+     * @param {string} [labVirtualMachine.provisioningState] The provisioning
+     * status of the resource.
      *
-     * @param {object} [labVirtualMachineCreationParameter.networkInterface] The
-     * network interface properties.
+     * @param {string} [labVirtualMachine.id] The identifier of the resource.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.virtualNetworkId] The
-     * resource ID of the virtual network.
+     * @param {string} [labVirtualMachine.name] The name of the resource.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.subnetId] The resource
-     * ID of the sub net.
+     * @param {string} [labVirtualMachine.type] The type of the resource.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.publicIpAddressId] The
-     * resource ID of the public IP address.
+     * @param {string} [labVirtualMachine.location] The location of the resource.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.publicIpAddress] The
-     * public IP address.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.privateIpAddress] The
-     * private IP address.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.dnsName] The DNS name.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.rdpAuthority] The
-     * RdpAuthority property is a server DNS host name or IP address followed by
-     * the service port number for RDP (Remote Desktop Protocol).
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.sshAuthority] The
-     * SshAuthority property is a server DNS host name or IP address followed by
-     * the service port number for SSH.
-     *
-     * @param {object}
-     * [labVirtualMachineCreationParameter.networkInterface.sharedPublicIpAddressConfiguration]
-     * The configuration for sharing a public IP address across multiple virtual
-     * machines.
-     *
-     * @param {array}
-     * [labVirtualMachineCreationParameter.networkInterface.sharedPublicIpAddressConfiguration.inboundNatRules]
-     * The incoming NAT rules
-     *
-     * @param {date} [labVirtualMachineCreationParameter.expirationDate] The
-     * expiration date for VM.
-     *
-     * @param {boolean} [labVirtualMachineCreationParameter.allowClaim] Indicates
-     * whether another user can take ownership of the virtual machine
-     *
-     * @param {string} [labVirtualMachineCreationParameter.storageType] Storage
-     * type to use for virtual machine (i.e. Standard, Premium).
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.virtualMachineCreationSource] Tells
-     * source of creation of lab virtual machine. Output property only. Possible
-     * values include: 'FromCustomImage', 'FromGalleryImage'
-     *
-     * @param {string} [labVirtualMachineCreationParameter.environmentId] The
-     * resource ID of the environment that contains this virtual machine, if any.
-     *
-     * @param {array} [labVirtualMachineCreationParameter.dataDiskParameters] New
-     * or existing data disks to attach to the virtual machine after creation
-     *
-     * @param {array} [labVirtualMachineCreationParameter.scheduleParameters]
-     * Virtual Machine schedules to be created
-     *
-     * @param {string} [labVirtualMachineCreationParameter.lastKnownPowerState]
-     * Last known compute power state captured in DTL
-     *
-     * @param {string} [labVirtualMachineCreationParameter.name] The name of the
-     * virtual machine or environment
-     *
-     * @param {string} [labVirtualMachineCreationParameter.location] The location
-     * of the new virtual machine or environment
-     *
-     * @param {object} [labVirtualMachineCreationParameter.tags] The tags of the
-     * resource.
+     * @param {object} [labVirtualMachine.tags] The tags of the resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2069,206 +1204,111 @@ export interface Labs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateEnvironmentWithHttpOperationResponse(resourceGroupName: string, name: string, labVirtualMachineCreationParameter: models.LabVirtualMachineCreationParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginCreateEnvironmentWithHttpOperationResponse(resourceGroupName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Create virtual machines in a lab. This operation can take a while to
+     * Create virtual machines in a Lab. This operation can take a while to
      * complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} name The name of the lab.
      *
-     * @param {object} labVirtualMachineCreationParameter Properties for creating a
-     * virtual machine.
+     * @param {object} labVirtualMachine
      *
-     * @param {object} [labVirtualMachineCreationParameter.bulkCreationParameters]
-     * The number of virtual machine instances to create.
+     * @param {string} [labVirtualMachine.notes] The notes of the virtual machine.
      *
-     * @param {number}
-     * [labVirtualMachineCreationParameter.bulkCreationParameters.instanceCount]
-     * The number of virtual machine instances to create.
+     * @param {string} [labVirtualMachine.ownerObjectId] The object identifier of
+     * the owner of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.notes] The notes of the
-     * virtual machine.
+     * @param {string} [labVirtualMachine.createdByUserId] The object identifier of
+     * the creator of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.ownerObjectId] The
-     * object identifier of the owner of the virtual machine.
+     * @param {string} [labVirtualMachine.createdByUser] The email address of
+     * creator of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.ownerUserPrincipalName]
-     * The user principal name of the virtual machine owner.
+     * @param {string} [labVirtualMachine.computeId] The resource identifier
+     * (Microsoft.Compute) of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.createdByUserId] The
-     * object identifier of the creator of the virtual machine.
+     * @param {string} [labVirtualMachine.customImageId] The custom image
+     * identifier of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.createdByUser] The email
-     * address of creator of the virtual machine.
+     * @param {string} [labVirtualMachine.osType] The OS type of the virtual
+     * machine.
      *
-     * @param {date} [labVirtualMachineCreationParameter.createdDate] The creation
-     * date of the virtual machine.
+     * @param {string} [labVirtualMachine.size] The size of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.computeId] The resource
-     * identifier (Microsoft.Compute) of the virtual machine.
+     * @param {string} [labVirtualMachine.userName] The user name of the virtual
+     * machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.customImageId] The
-     * custom image identifier of the virtual machine.
+     * @param {string} [labVirtualMachine.password] The password of the virtual
+     * machine administrator.
      *
-     * @param {string} [labVirtualMachineCreationParameter.osType] The OS type of
+     * @param {string} [labVirtualMachine.sshKey] The SSH key of the virtual
+     * machine administrator.
+     *
+     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
+     *
+     * @param {string} [labVirtualMachine.fqdn] The fully-qualified domain name of
      * the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.size] The size of the
+     * @param {string} [labVirtualMachine.labSubnetName] The lab subnet name of the
      * virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.userName] The user name
-     * of the virtual machine.
+     * @param {string} [labVirtualMachine.labVirtualNetworkId] The lab virtual
+     * network identifier of the virtual machine.
      *
-     * @param {string} [labVirtualMachineCreationParameter.password] The password
-     * of the virtual machine administrator.
-     *
-     * @param {string} [labVirtualMachineCreationParameter.sshKey] The SSH key of
-     * the virtual machine administrator.
-     *
-     * @param {boolean}
-     * [labVirtualMachineCreationParameter.isAuthenticationWithSshKey] Indicates
-     * whether this virtual machine uses an SSH key for authentication.
-     *
-     * @param {string} [labVirtualMachineCreationParameter.fqdn] The
-     * fully-qualified domain name of the virtual machine.
-     *
-     * @param {string} [labVirtualMachineCreationParameter.labSubnetName] The lab
-     * subnet name of the virtual machine.
-     *
-     * @param {string} [labVirtualMachineCreationParameter.labVirtualNetworkId] The
-     * lab virtual network identifier of the virtual machine.
-     *
-     * @param {boolean}
-     * [labVirtualMachineCreationParameter.disallowPublicIpAddress] Indicates
+     * @param {boolean} [labVirtualMachine.disallowPublicIpAddress] Indicates
      * whether the virtual machine is to be created without a public IP address.
      *
-     * @param {array} [labVirtualMachineCreationParameter.artifacts] The artifacts
-     * to be installed on the virtual machine.
+     * @param {array} [labVirtualMachine.artifacts] The artifacts to be installed
+     * on the virtual machine.
      *
-     * @param {object}
-     * [labVirtualMachineCreationParameter.artifactDeploymentStatus] The artifact
+     * @param {object} [labVirtualMachine.artifactDeploymentStatus] The artifact
      * deployment status for the virtual machine.
      *
      * @param {string}
-     * [labVirtualMachineCreationParameter.artifactDeploymentStatus.deploymentStatus]
-     * The deployment status of the artifact.
+     * [labVirtualMachine.artifactDeploymentStatus.deploymentStatus] The deployment
+     * status of the artifact.
      *
      * @param {number}
-     * [labVirtualMachineCreationParameter.artifactDeploymentStatus.artifactsApplied]
-     * The total count of the artifacts that were successfully applied.
+     * [labVirtualMachine.artifactDeploymentStatus.artifactsApplied] The total
+     * count of the artifacts that were successfully applied.
      *
-     * @param {number}
-     * [labVirtualMachineCreationParameter.artifactDeploymentStatus.totalArtifacts]
+     * @param {number} [labVirtualMachine.artifactDeploymentStatus.totalArtifacts]
      * The total count of the artifacts that were tentatively applied.
      *
-     * @param {object} [labVirtualMachineCreationParameter.galleryImageReference]
-     * The Microsoft Azure Marketplace image reference of the virtual machine.
+     * @param {object} [labVirtualMachine.galleryImageReference] The Microsoft
+     * Azure Marketplace image reference of the virtual machine.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.offer] The offer
-     * of the gallery image.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.publisher] The
-     * publisher of the gallery image.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.sku] The SKU of
+     * @param {string} [labVirtualMachine.galleryImageReference.offer] The offer of
      * the gallery image.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.osType] The OS
-     * type of the gallery image.
+     * @param {string} [labVirtualMachine.galleryImageReference.publisher] The
+     * publisher of the gallery image.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.galleryImageReference.version] The
+     * @param {string} [labVirtualMachine.galleryImageReference.sku] The SKU of the
+     * gallery image.
+     *
+     * @param {string} [labVirtualMachine.galleryImageReference.osType] The OS type
+     * of the gallery image.
+     *
+     * @param {string} [labVirtualMachine.galleryImageReference.version] The
      * version of the gallery image.
      *
-     * @param {string} [labVirtualMachineCreationParameter.planId] The id of the
-     * plan associated with the virtual machine image
+     * @param {string} [labVirtualMachine.provisioningState] The provisioning
+     * status of the resource.
      *
-     * @param {object} [labVirtualMachineCreationParameter.networkInterface] The
-     * network interface properties.
+     * @param {string} [labVirtualMachine.id] The identifier of the resource.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.virtualNetworkId] The
-     * resource ID of the virtual network.
+     * @param {string} [labVirtualMachine.name] The name of the resource.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.subnetId] The resource
-     * ID of the sub net.
+     * @param {string} [labVirtualMachine.type] The type of the resource.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.publicIpAddressId] The
-     * resource ID of the public IP address.
+     * @param {string} [labVirtualMachine.location] The location of the resource.
      *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.publicIpAddress] The
-     * public IP address.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.privateIpAddress] The
-     * private IP address.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.dnsName] The DNS name.
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.rdpAuthority] The
-     * RdpAuthority property is a server DNS host name or IP address followed by
-     * the service port number for RDP (Remote Desktop Protocol).
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.networkInterface.sshAuthority] The
-     * SshAuthority property is a server DNS host name or IP address followed by
-     * the service port number for SSH.
-     *
-     * @param {object}
-     * [labVirtualMachineCreationParameter.networkInterface.sharedPublicIpAddressConfiguration]
-     * The configuration for sharing a public IP address across multiple virtual
-     * machines.
-     *
-     * @param {array}
-     * [labVirtualMachineCreationParameter.networkInterface.sharedPublicIpAddressConfiguration.inboundNatRules]
-     * The incoming NAT rules
-     *
-     * @param {date} [labVirtualMachineCreationParameter.expirationDate] The
-     * expiration date for VM.
-     *
-     * @param {boolean} [labVirtualMachineCreationParameter.allowClaim] Indicates
-     * whether another user can take ownership of the virtual machine
-     *
-     * @param {string} [labVirtualMachineCreationParameter.storageType] Storage
-     * type to use for virtual machine (i.e. Standard, Premium).
-     *
-     * @param {string}
-     * [labVirtualMachineCreationParameter.virtualMachineCreationSource] Tells
-     * source of creation of lab virtual machine. Output property only. Possible
-     * values include: 'FromCustomImage', 'FromGalleryImage'
-     *
-     * @param {string} [labVirtualMachineCreationParameter.environmentId] The
-     * resource ID of the environment that contains this virtual machine, if any.
-     *
-     * @param {array} [labVirtualMachineCreationParameter.dataDiskParameters] New
-     * or existing data disks to attach to the virtual machine after creation
-     *
-     * @param {array} [labVirtualMachineCreationParameter.scheduleParameters]
-     * Virtual Machine schedules to be created
-     *
-     * @param {string} [labVirtualMachineCreationParameter.lastKnownPowerState]
-     * Last known compute power state captured in DTL
-     *
-     * @param {string} [labVirtualMachineCreationParameter.name] The name of the
-     * virtual machine or environment
-     *
-     * @param {string} [labVirtualMachineCreationParameter.location] The location
-     * of the new virtual machine or environment
-     *
-     * @param {object} [labVirtualMachineCreationParameter.tags] The tags of the
-     * resource.
+     * @param {object} [labVirtualMachine.tags] The tags of the resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2296,179 +1336,13 @@ export interface Labs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateEnvironment(resourceGroupName: string, name: string, labVirtualMachineCreationParameter: models.LabVirtualMachineCreationParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginCreateEnvironment(resourceGroupName: string, name: string, labVirtualMachineCreationParameter: models.LabVirtualMachineCreationParameter, callback: ServiceCallback<void>): void;
-    beginCreateEnvironment(resourceGroupName: string, name: string, labVirtualMachineCreationParameter: models.LabVirtualMachineCreationParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginCreateEnvironment(resourceGroupName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginCreateEnvironment(resourceGroupName: string, name: string, labVirtualMachine: models.LabVirtualMachine, callback: ServiceCallback<void>): void;
+    beginCreateEnvironment(resourceGroupName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Exports the lab resource usage into a storage account This operation can
-     * take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the lab.
-     *
-     * @param {object} exportResourceUsageParameters The parameters of the export
-     * operation.
-     *
-     * @param {string} [exportResourceUsageParameters.blobStorageAbsoluteSasUri]
-     * The blob storage absolute sas uri with write permission to the container
-     * which the usage data needs to be uploaded to.
-     *
-     * @param {date} [exportResourceUsageParameters.usageStartDate] The start time
-     * of the usage. If not provided, usage will be reported since the beginning of
-     * data collection.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginExportResourceUsageWithHttpOperationResponse(resourceGroupName: string, name: string, exportResourceUsageParameters: models.ExportResourceUsageParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Exports the lab resource usage into a storage account This operation can
-     * take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the lab.
-     *
-     * @param {object} exportResourceUsageParameters The parameters of the export
-     * operation.
-     *
-     * @param {string} [exportResourceUsageParameters.blobStorageAbsoluteSasUri]
-     * The blob storage absolute sas uri with write permission to the container
-     * which the usage data needs to be uploaded to.
-     *
-     * @param {date} [exportResourceUsageParameters.usageStartDate] The start time
-     * of the usage. If not provided, usage will be reported since the beginning of
-     * data collection.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginExportResourceUsage(resourceGroupName: string, name: string, exportResourceUsageParameters: models.ExportResourceUsageParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginExportResourceUsage(resourceGroupName: string, name: string, exportResourceUsageParameters: models.ExportResourceUsageParameters, callback: ServiceCallback<void>): void;
-    beginExportResourceUsage(resourceGroupName: string, name: string, exportResourceUsageParameters: models.ExportResourceUsageParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Import a virtual machine into a different lab. This operation can take a
-     * while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the lab.
-     *
-     * @param {object} importLabVirtualMachineRequest This represents the payload
-     * required to import a virtual machine from a different lab into the current
-     * one
-     *
-     * @param {string}
-     * [importLabVirtualMachineRequest.sourceVirtualMachineResourceId] The full
-     * resource ID of the virtual machine to be imported.
-     *
-     * @param {string}
-     * [importLabVirtualMachineRequest.destinationVirtualMachineName] The name of
-     * the virtual machine in the destination lab
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginImportVirtualMachineWithHttpOperationResponse(resourceGroupName: string, name: string, importLabVirtualMachineRequest: models.ImportLabVirtualMachineRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Import a virtual machine into a different lab. This operation can take a
-     * while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the lab.
-     *
-     * @param {object} importLabVirtualMachineRequest This represents the payload
-     * required to import a virtual machine from a different lab into the current
-     * one
-     *
-     * @param {string}
-     * [importLabVirtualMachineRequest.sourceVirtualMachineResourceId] The full
-     * resource ID of the virtual machine to be imported.
-     *
-     * @param {string}
-     * [importLabVirtualMachineRequest.destinationVirtualMachineName] The name of
-     * the virtual machine in the destination lab
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginImportVirtualMachine(resourceGroupName: string, name: string, importLabVirtualMachineRequest: models.ImportLabVirtualMachineRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginImportVirtualMachine(resourceGroupName: string, name: string, importLabVirtualMachineRequest: models.ImportLabVirtualMachineRequest, callback: ServiceCallback<void>): void;
-    beginImportVirtualMachine(resourceGroupName: string, name: string, importLabVirtualMachineRequest: models.ImportLabVirtualMachineRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * List labs in a subscription.
+     * List labs.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2480,14 +1354,14 @@ export interface Labs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<LabList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationLab>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabList>>;
+    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationLab>>;
 
     /**
-     * List labs in a subscription.
+     * List labs.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2504,7 +1378,7 @@ export interface Labs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {LabList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationLab} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2512,20 +1386,21 @@ export interface Labs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {LabList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LabList} for more information.
+     *                      {ResponseWithContinuationLab} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationLab} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LabList>;
-    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.LabList>): void;
-    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabList>): void;
+    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationLab>;
+    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.ResponseWithContinuationLab>): void;
+    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationLab>): void;
 
 
     /**
-     * List labs in a resource group.
+     * List labs.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2537,14 +1412,14 @@ export interface Labs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<LabList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationLab>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabList>>;
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationLab>>;
 
     /**
-     * List labs in a resource group.
+     * List labs.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2561,7 +1436,7 @@ export interface Labs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {LabList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationLab} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2569,16 +1444,17 @@ export interface Labs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {LabList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LabList} for more information.
+     *                      {ResponseWithContinuationLab} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationLab} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LabList>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.LabList>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabList>): void;
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationLab>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ResponseWithContinuationLab>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationLab>): void;
 
 
     /**
@@ -2594,11 +1470,11 @@ export interface Labs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<LabVhdList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationLabVhd>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listVhdsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabVhdList>>;
+    listVhdsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationLabVhd>>;
 
     /**
      * List disk images available for custom image creation.
@@ -2618,7 +1494,7 @@ export interface Labs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {LabVhdList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationLabVhd} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2626,1119 +1502,30 @@ export interface Labs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {LabVhdList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LabVhdList} for more information.
+     *                      {ResponseWithContinuationLabVhd} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationLabVhd} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listVhdsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LabVhdList>;
-    listVhdsNext(nextPageLink: string, callback: ServiceCallback<models.LabVhdList>): void;
-    listVhdsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabVhdList>): void;
+    listVhdsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationLabVhd>;
+    listVhdsNext(nextPageLink: string, callback: ServiceCallback<models.ResponseWithContinuationLabVhd>): void;
+    listVhdsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationLabVhd>): void;
 }
 
 /**
  * @class
- * Operations
+ * ArtifactSourceOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DevTestLabsClient.
  */
-export interface Operations {
+export interface ArtifactSourceOperations {
 
 
     /**
-     * Get operation.
-     *
-     * @param {string} locationName The name of the location.
-     *
-     * @param {string} name The name of the operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(locationName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationResult>>;
-
-    /**
-     * Get operation.
-     *
-     * @param {string} locationName The name of the location.
-     *
-     * @param {string} name The name of the operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(locationName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationResult>;
-    get(locationName: string, name: string, callback: ServiceCallback<models.OperationResult>): void;
-    get(locationName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationResult>): void;
-}
-
-/**
- * @class
- * GlobalSchedules
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DevTestLabsClient.
- */
-export interface GlobalSchedules {
-
-
-    /**
-     * List schedules in a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ScheduleList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBySubscriptionWithHttpOperationResponse(options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduleList>>;
-
-    /**
-     * List schedules in a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ScheduleList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ScheduleList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ScheduleList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listBySubscription(options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduleList>;
-    listBySubscription(callback: ServiceCallback<models.ScheduleList>): void;
-    listBySubscription(options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduleList>): void;
-
-
-    /**
-     * List schedules in a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ScheduleList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduleList>>;
-
-    /**
-     * List schedules in a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ScheduleList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ScheduleList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ScheduleList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroup(resourceGroupName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduleList>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ScheduleList>): void;
-    listByResourceGroup(resourceGroupName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduleList>): void;
-
-
-    /**
-     * Get schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Schedule>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
-
-    /**
-     * Get schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Schedule} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Schedule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Schedule} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
-    get(resourceGroupName: string, name: string, callback: ServiceCallback<models.Schedule>): void;
-    get(resourceGroupName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
-
-
-    /**
-     * Create or replace an existing schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} schedule A schedule.
-     *
-     * @param {string} [schedule.status] The status of the schedule (i.e. Enabled,
-     * Disabled). Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [schedule.taskType] The task type of the schedule (e.g.
-     * LabVmsShutdownTask, LabVmAutoStart).
-     *
-     * @param {object} [schedule.weeklyRecurrence] If the schedule will occur only
-     * some days of the week, specify the weekly recurrence.
-     *
-     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week for
-     * which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
-     *
-     * @param {string} [schedule.weeklyRecurrence.time] The time of the day the
-     * schedule will occur.
-     *
-     * @param {object} [schedule.dailyRecurrence] If the schedule will occur once
-     * each day of the week, specify the daily recurrence.
-     *
-     * @param {string} [schedule.dailyRecurrence.time] The time of day the schedule
-     * will occur.
-     *
-     * @param {object} [schedule.hourlyRecurrence] If the schedule will occur
-     * multiple times a day, specify the hourly recurrence.
-     *
-     * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
-     * schedule will run.
-     *
-     * @param {string} [schedule.timeZoneId] The time zone ID (e.g. Pacific
-     * Standard time).
-     *
-     * @param {object} [schedule.notificationSettings] Notification settings.
-     *
-     * @param {string} [schedule.notificationSettings.status] If notifications are
-     * enabled for this schedule (i.e. Enabled, Disabled). Possible values include:
-     * 'Enabled', 'Disabled'
-     *
-     * @param {number} [schedule.notificationSettings.timeInMinutes] Time in
-     * minutes before event at which notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.webhookUrl] The webhook URL
-     * to which the notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon separated
-     * email addresses).
-     *
-     * @param {string} [schedule.notificationSettings.notificationLocale] The
-     * locale to use when sending a notification (fallback for unsupported
-     * languages is EN).
-     *
-     * @param {string} [schedule.targetResourceId] The resource ID to which the
-     * schedule belongs
-     *
-     * @param {string} [schedule.location] The location of the resource.
-     *
-     * @param {object} [schedule.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Schedule>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, name: string, schedule: models.Schedule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
-
-    /**
-     * Create or replace an existing schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} schedule A schedule.
-     *
-     * @param {string} [schedule.status] The status of the schedule (i.e. Enabled,
-     * Disabled). Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [schedule.taskType] The task type of the schedule (e.g.
-     * LabVmsShutdownTask, LabVmAutoStart).
-     *
-     * @param {object} [schedule.weeklyRecurrence] If the schedule will occur only
-     * some days of the week, specify the weekly recurrence.
-     *
-     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week for
-     * which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
-     *
-     * @param {string} [schedule.weeklyRecurrence.time] The time of the day the
-     * schedule will occur.
-     *
-     * @param {object} [schedule.dailyRecurrence] If the schedule will occur once
-     * each day of the week, specify the daily recurrence.
-     *
-     * @param {string} [schedule.dailyRecurrence.time] The time of day the schedule
-     * will occur.
-     *
-     * @param {object} [schedule.hourlyRecurrence] If the schedule will occur
-     * multiple times a day, specify the hourly recurrence.
-     *
-     * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
-     * schedule will run.
-     *
-     * @param {string} [schedule.timeZoneId] The time zone ID (e.g. Pacific
-     * Standard time).
-     *
-     * @param {object} [schedule.notificationSettings] Notification settings.
-     *
-     * @param {string} [schedule.notificationSettings.status] If notifications are
-     * enabled for this schedule (i.e. Enabled, Disabled). Possible values include:
-     * 'Enabled', 'Disabled'
-     *
-     * @param {number} [schedule.notificationSettings.timeInMinutes] Time in
-     * minutes before event at which notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.webhookUrl] The webhook URL
-     * to which the notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon separated
-     * email addresses).
-     *
-     * @param {string} [schedule.notificationSettings.notificationLocale] The
-     * locale to use when sending a notification (fallback for unsupported
-     * languages is EN).
-     *
-     * @param {string} [schedule.targetResourceId] The resource ID to which the
-     * schedule belongs
-     *
-     * @param {string} [schedule.location] The location of the resource.
-     *
-     * @param {object} [schedule.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Schedule} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Schedule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Schedule} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, name: string, schedule: models.Schedule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
-    createOrUpdate(resourceGroupName: string, name: string, schedule: models.Schedule, callback: ServiceCallback<models.Schedule>): void;
-    createOrUpdate(resourceGroupName: string, name: string, schedule: models.Schedule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
-
-
-    /**
-     * Delete schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Modify properties of schedules.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} schedule A schedule.
-     *
-     * @param {string} [schedule.status] The status of the schedule (i.e. Enabled,
-     * Disabled). Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [schedule.taskType] The task type of the schedule (e.g.
-     * LabVmsShutdownTask, LabVmAutoStart).
-     *
-     * @param {object} [schedule.weeklyRecurrence] If the schedule will occur only
-     * some days of the week, specify the weekly recurrence.
-     *
-     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week for
-     * which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
-     *
-     * @param {string} [schedule.weeklyRecurrence.time] The time of the day the
-     * schedule will occur.
-     *
-     * @param {object} [schedule.dailyRecurrence] If the schedule will occur once
-     * each day of the week, specify the daily recurrence.
-     *
-     * @param {string} [schedule.dailyRecurrence.time] The time of day the schedule
-     * will occur.
-     *
-     * @param {object} [schedule.hourlyRecurrence] If the schedule will occur
-     * multiple times a day, specify the hourly recurrence.
-     *
-     * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
-     * schedule will run.
-     *
-     * @param {string} [schedule.timeZoneId] The time zone ID (e.g. Pacific
-     * Standard time).
-     *
-     * @param {object} [schedule.notificationSettings] Notification settings.
-     *
-     * @param {string} [schedule.notificationSettings.status] If notifications are
-     * enabled for this schedule (i.e. Enabled, Disabled). Possible values include:
-     * 'Enabled', 'Disabled'
-     *
-     * @param {number} [schedule.notificationSettings.timeInMinutes] Time in
-     * minutes before event at which notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.webhookUrl] The webhook URL
-     * to which the notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon separated
-     * email addresses).
-     *
-     * @param {string} [schedule.notificationSettings.notificationLocale] The
-     * locale to use when sending a notification (fallback for unsupported
-     * languages is EN).
-     *
-     * @param {string} [schedule.targetResourceId] The resource ID to which the
-     * schedule belongs
-     *
-     * @param {object} [schedule.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Schedule>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, name: string, schedule: models.ScheduleFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
-
-    /**
-     * Modify properties of schedules.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} schedule A schedule.
-     *
-     * @param {string} [schedule.status] The status of the schedule (i.e. Enabled,
-     * Disabled). Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [schedule.taskType] The task type of the schedule (e.g.
-     * LabVmsShutdownTask, LabVmAutoStart).
-     *
-     * @param {object} [schedule.weeklyRecurrence] If the schedule will occur only
-     * some days of the week, specify the weekly recurrence.
-     *
-     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week for
-     * which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
-     *
-     * @param {string} [schedule.weeklyRecurrence.time] The time of the day the
-     * schedule will occur.
-     *
-     * @param {object} [schedule.dailyRecurrence] If the schedule will occur once
-     * each day of the week, specify the daily recurrence.
-     *
-     * @param {string} [schedule.dailyRecurrence.time] The time of day the schedule
-     * will occur.
-     *
-     * @param {object} [schedule.hourlyRecurrence] If the schedule will occur
-     * multiple times a day, specify the hourly recurrence.
-     *
-     * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
-     * schedule will run.
-     *
-     * @param {string} [schedule.timeZoneId] The time zone ID (e.g. Pacific
-     * Standard time).
-     *
-     * @param {object} [schedule.notificationSettings] Notification settings.
-     *
-     * @param {string} [schedule.notificationSettings.status] If notifications are
-     * enabled for this schedule (i.e. Enabled, Disabled). Possible values include:
-     * 'Enabled', 'Disabled'
-     *
-     * @param {number} [schedule.notificationSettings.timeInMinutes] Time in
-     * minutes before event at which notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.webhookUrl] The webhook URL
-     * to which the notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon separated
-     * email addresses).
-     *
-     * @param {string} [schedule.notificationSettings.notificationLocale] The
-     * locale to use when sending a notification (fallback for unsupported
-     * languages is EN).
-     *
-     * @param {string} [schedule.targetResourceId] The resource ID to which the
-     * schedule belongs
-     *
-     * @param {object} [schedule.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Schedule} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Schedule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Schedule} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, name: string, schedule: models.ScheduleFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
-    update(resourceGroupName: string, name: string, schedule: models.ScheduleFragment, callback: ServiceCallback<models.Schedule>): void;
-    update(resourceGroupName: string, name: string, schedule: models.ScheduleFragment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
-
-
-    /**
-     * Execute a schedule. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    executeWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Execute a schedule. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    execute(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    execute(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
-    execute(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Updates a schedule's target resource Id. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} retargetScheduleProperties Properties for retargeting a
-     * virtual machine schedule.
-     *
-     * @param {string} [retargetScheduleProperties.currentResourceId] The resource
-     * Id of the virtual machine on which the schedule operates
-     *
-     * @param {string} [retargetScheduleProperties.targetResourceId] The resource
-     * Id of the virtual machine that the schedule should be retargeted to
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    retargetWithHttpOperationResponse(resourceGroupName: string, name: string, retargetScheduleProperties: models.RetargetScheduleProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Updates a schedule's target resource Id. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} retargetScheduleProperties Properties for retargeting a
-     * virtual machine schedule.
-     *
-     * @param {string} [retargetScheduleProperties.currentResourceId] The resource
-     * Id of the virtual machine on which the schedule operates
-     *
-     * @param {string} [retargetScheduleProperties.targetResourceId] The resource
-     * Id of the virtual machine that the schedule should be retargeted to
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    retarget(resourceGroupName: string, name: string, retargetScheduleProperties: models.RetargetScheduleProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    retarget(resourceGroupName: string, name: string, retargetScheduleProperties: models.RetargetScheduleProperties, callback: ServiceCallback<void>): void;
-    retarget(resourceGroupName: string, name: string, retargetScheduleProperties: models.RetargetScheduleProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Execute a schedule. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginExecuteWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Execute a schedule. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginExecute(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginExecute(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
-    beginExecute(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Updates a schedule's target resource Id. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} retargetScheduleProperties Properties for retargeting a
-     * virtual machine schedule.
-     *
-     * @param {string} [retargetScheduleProperties.currentResourceId] The resource
-     * Id of the virtual machine on which the schedule operates
-     *
-     * @param {string} [retargetScheduleProperties.targetResourceId] The resource
-     * Id of the virtual machine that the schedule should be retargeted to
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginRetargetWithHttpOperationResponse(resourceGroupName: string, name: string, retargetScheduleProperties: models.RetargetScheduleProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Updates a schedule's target resource Id. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} retargetScheduleProperties Properties for retargeting a
-     * virtual machine schedule.
-     *
-     * @param {string} [retargetScheduleProperties.currentResourceId] The resource
-     * Id of the virtual machine on which the schedule operates
-     *
-     * @param {string} [retargetScheduleProperties.targetResourceId] The resource
-     * Id of the virtual machine that the schedule should be retargeted to
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginRetarget(resourceGroupName: string, name: string, retargetScheduleProperties: models.RetargetScheduleProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginRetarget(resourceGroupName: string, name: string, retargetScheduleProperties: models.RetargetScheduleProperties, callback: ServiceCallback<void>): void;
-    beginRetarget(resourceGroupName: string, name: string, retargetScheduleProperties: models.RetargetScheduleProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * List schedules in a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ScheduleList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduleList>>;
-
-    /**
-     * List schedules in a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ScheduleList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ScheduleList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ScheduleList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduleList>;
-    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.ScheduleList>): void;
-    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduleList>): void;
-
-
-    /**
-     * List schedules in a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ScheduleList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduleList>>;
-
-    /**
-     * List schedules in a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ScheduleList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ScheduleList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ScheduleList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduleList>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ScheduleList>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduleList>): void;
-}
-
-/**
- * @class
- * ArtifactSources
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DevTestLabsClient.
- */
-export interface ArtifactSources {
-
-
-    /**
-     * List artifact sources in a given lab.
+     * List artifact sources.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -3746,31 +1533,25 @@ export interface ArtifactSources {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=displayName)'
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
+     * @param {number} [options.top]
      *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ArtifactSourceList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationArtifactSource>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArtifactSourceList>>;
+    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationArtifactSource>>;
 
     /**
-     * List artifact sources in a given lab.
+     * List artifact sources.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -3778,17 +1559,11 @@ export interface ArtifactSources {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=displayName)'
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
+     * @param {number} [options.top]
      *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3800,7 +1575,7 @@ export interface ArtifactSources {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ArtifactSourceList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationArtifactSource} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3808,16 +1583,17 @@ export interface ArtifactSources {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ArtifactSourceList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ArtifactSourceList} for more information.
+     *                      {ResponseWithContinuationArtifactSource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationArtifactSource} for
+     *                      more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ArtifactSourceList>;
-    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.ArtifactSourceList>): void;
-    list(resourceGroupName: string, labName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArtifactSourceList>): void;
+    list(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationArtifactSource>;
+    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.ResponseWithContinuationArtifactSource>): void;
+    list(resourceGroupName: string, labName: string, options: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationArtifactSource>): void;
 
 
     /**
@@ -3830,9 +1606,6 @@ export interface ArtifactSources {
      * @param {string} name The name of the artifact source.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=displayName)'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3843,7 +1616,7 @@ export interface ArtifactSources {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArtifactSource>>;
+    getResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArtifactSource>>;
 
     /**
      * Get artifact source.
@@ -3855,9 +1628,6 @@ export interface ArtifactSources {
      * @param {string} name The name of the artifact source.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=displayName)'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3884,9 +1654,9 @@ export interface ArtifactSources {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ArtifactSource>;
-    get(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.ArtifactSource>): void;
-    get(resourceGroupName: string, labName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArtifactSource>): void;
+    getResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ArtifactSource>;
+    getResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.ArtifactSource>): void;
+    getResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArtifactSource>): void;
 
 
     /**
@@ -3898,30 +1668,36 @@ export interface ArtifactSources {
      *
      * @param {string} name The name of the artifact source.
      *
-     * @param {object} artifactSource Properties of an artifact source.
+     * @param {object} artifactSource
      *
-     * @param {string} [artifactSource.displayName] The artifact source's display
-     * name.
+     * @param {string} [artifactSource.displayName] The display name of the
+     * artifact source.
      *
-     * @param {string} [artifactSource.uri] The artifact source's URI.
+     * @param {string} [artifactSource.uri] The URI of the artifact source.
      *
-     * @param {string} [artifactSource.sourceType] The artifact source's type.
+     * @param {string} [artifactSource.sourceType] The type of the artifact source.
      * Possible values include: 'VsoGit', 'GitHub'
      *
-     * @param {string} [artifactSource.folderPath] The folder containing artifacts.
+     * @param {string} [artifactSource.folderPath] The folder path of the artifact
+     * source.
      *
-     * @param {string} [artifactSource.armTemplateFolderPath] The folder containing
-     * Azure Resource Manager templates.
+     * @param {string} [artifactSource.branchRef] The branch reference of the
+     * artifact source.
      *
-     * @param {string} [artifactSource.branchRef] The artifact source's branch
-     * reference.
+     * @param {string} [artifactSource.securityToken] The security token of the
+     * artifact source.
      *
-     * @param {string} [artifactSource.securityToken] The security token to
-     * authenticate to the artifact source.
+     * @param {string} [artifactSource.status] The status of the artifact source.
+     * Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [artifactSource.status] Indicates if the artifact source is
-     * enabled (values: Enabled, Disabled). Possible values include: 'Enabled',
-     * 'Disabled'
+     * @param {string} [artifactSource.provisioningState] The provisioning status
+     * of the resource.
+     *
+     * @param {string} [artifactSource.id] The identifier of the resource.
+     *
+     * @param {string} [artifactSource.name] The name of the resource.
+     *
+     * @param {string} [artifactSource.type] The type of the resource.
      *
      * @param {string} [artifactSource.location] The location of the resource.
      *
@@ -3938,7 +1714,7 @@ export interface ArtifactSources {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, artifactSource: models.ArtifactSource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArtifactSource>>;
+    createOrUpdateResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, artifactSource: models.ArtifactSource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArtifactSource>>;
 
     /**
      * Create or replace an existing artifact source.
@@ -3949,30 +1725,36 @@ export interface ArtifactSources {
      *
      * @param {string} name The name of the artifact source.
      *
-     * @param {object} artifactSource Properties of an artifact source.
+     * @param {object} artifactSource
      *
-     * @param {string} [artifactSource.displayName] The artifact source's display
-     * name.
+     * @param {string} [artifactSource.displayName] The display name of the
+     * artifact source.
      *
-     * @param {string} [artifactSource.uri] The artifact source's URI.
+     * @param {string} [artifactSource.uri] The URI of the artifact source.
      *
-     * @param {string} [artifactSource.sourceType] The artifact source's type.
+     * @param {string} [artifactSource.sourceType] The type of the artifact source.
      * Possible values include: 'VsoGit', 'GitHub'
      *
-     * @param {string} [artifactSource.folderPath] The folder containing artifacts.
+     * @param {string} [artifactSource.folderPath] The folder path of the artifact
+     * source.
      *
-     * @param {string} [artifactSource.armTemplateFolderPath] The folder containing
-     * Azure Resource Manager templates.
+     * @param {string} [artifactSource.branchRef] The branch reference of the
+     * artifact source.
      *
-     * @param {string} [artifactSource.branchRef] The artifact source's branch
-     * reference.
+     * @param {string} [artifactSource.securityToken] The security token of the
+     * artifact source.
      *
-     * @param {string} [artifactSource.securityToken] The security token to
-     * authenticate to the artifact source.
+     * @param {string} [artifactSource.status] The status of the artifact source.
+     * Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [artifactSource.status] Indicates if the artifact source is
-     * enabled (values: Enabled, Disabled). Possible values include: 'Enabled',
-     * 'Disabled'
+     * @param {string} [artifactSource.provisioningState] The provisioning status
+     * of the resource.
+     *
+     * @param {string} [artifactSource.id] The identifier of the resource.
+     *
+     * @param {string} [artifactSource.name] The name of the resource.
+     *
+     * @param {string} [artifactSource.type] The type of the resource.
      *
      * @param {string} [artifactSource.location] The location of the resource.
      *
@@ -4005,9 +1787,9 @@ export interface ArtifactSources {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, artifactSource: models.ArtifactSource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ArtifactSource>;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, artifactSource: models.ArtifactSource, callback: ServiceCallback<models.ArtifactSource>): void;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, artifactSource: models.ArtifactSource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArtifactSource>): void;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, artifactSource: models.ArtifactSource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ArtifactSource>;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, artifactSource: models.ArtifactSource, callback: ServiceCallback<models.ArtifactSource>): void;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, artifactSource: models.ArtifactSource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArtifactSource>): void;
 
 
     /**
@@ -4030,7 +1812,7 @@ export interface ArtifactSources {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete artifact source.
@@ -4067,9 +1849,9 @@ export interface ArtifactSources {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+    deleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -4081,30 +1863,38 @@ export interface ArtifactSources {
      *
      * @param {string} name The name of the artifact source.
      *
-     * @param {object} artifactSource Properties of an artifact source.
+     * @param {object} artifactSource
      *
-     * @param {string} [artifactSource.displayName] The artifact source's display
-     * name.
+     * @param {string} [artifactSource.displayName] The display name of the
+     * artifact source.
      *
-     * @param {string} [artifactSource.uri] The artifact source's URI.
+     * @param {string} [artifactSource.uri] The URI of the artifact source.
      *
-     * @param {string} [artifactSource.sourceType] The artifact source's type.
+     * @param {string} [artifactSource.sourceType] The type of the artifact source.
      * Possible values include: 'VsoGit', 'GitHub'
      *
-     * @param {string} [artifactSource.folderPath] The folder containing artifacts.
+     * @param {string} [artifactSource.folderPath] The folder path of the artifact
+     * source.
      *
-     * @param {string} [artifactSource.armTemplateFolderPath] The folder containing
-     * Azure Resource Manager templates.
+     * @param {string} [artifactSource.branchRef] The branch reference of the
+     * artifact source.
      *
-     * @param {string} [artifactSource.branchRef] The artifact source's branch
-     * reference.
+     * @param {string} [artifactSource.securityToken] The security token of the
+     * artifact source.
      *
-     * @param {string} [artifactSource.securityToken] The security token to
-     * authenticate to the artifact source.
+     * @param {string} [artifactSource.status] The status of the artifact source.
+     * Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [artifactSource.status] Indicates if the artifact source is
-     * enabled (values: Enabled, Disabled). Possible values include: 'Enabled',
-     * 'Disabled'
+     * @param {string} [artifactSource.provisioningState] The provisioning status
+     * of the resource.
+     *
+     * @param {string} [artifactSource.id] The identifier of the resource.
+     *
+     * @param {string} [artifactSource.name] The name of the resource.
+     *
+     * @param {string} [artifactSource.type] The type of the resource.
+     *
+     * @param {string} [artifactSource.location] The location of the resource.
      *
      * @param {object} [artifactSource.tags] The tags of the resource.
      *
@@ -4119,7 +1909,7 @@ export interface ArtifactSources {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, artifactSource: models.ArtifactSourceFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArtifactSource>>;
+    patchResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, artifactSource: models.ArtifactSource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArtifactSource>>;
 
     /**
      * Modify properties of artifact sources.
@@ -4130,30 +1920,38 @@ export interface ArtifactSources {
      *
      * @param {string} name The name of the artifact source.
      *
-     * @param {object} artifactSource Properties of an artifact source.
+     * @param {object} artifactSource
      *
-     * @param {string} [artifactSource.displayName] The artifact source's display
-     * name.
+     * @param {string} [artifactSource.displayName] The display name of the
+     * artifact source.
      *
-     * @param {string} [artifactSource.uri] The artifact source's URI.
+     * @param {string} [artifactSource.uri] The URI of the artifact source.
      *
-     * @param {string} [artifactSource.sourceType] The artifact source's type.
+     * @param {string} [artifactSource.sourceType] The type of the artifact source.
      * Possible values include: 'VsoGit', 'GitHub'
      *
-     * @param {string} [artifactSource.folderPath] The folder containing artifacts.
+     * @param {string} [artifactSource.folderPath] The folder path of the artifact
+     * source.
      *
-     * @param {string} [artifactSource.armTemplateFolderPath] The folder containing
-     * Azure Resource Manager templates.
+     * @param {string} [artifactSource.branchRef] The branch reference of the
+     * artifact source.
      *
-     * @param {string} [artifactSource.branchRef] The artifact source's branch
-     * reference.
+     * @param {string} [artifactSource.securityToken] The security token of the
+     * artifact source.
      *
-     * @param {string} [artifactSource.securityToken] The security token to
-     * authenticate to the artifact source.
+     * @param {string} [artifactSource.status] The status of the artifact source.
+     * Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [artifactSource.status] Indicates if the artifact source is
-     * enabled (values: Enabled, Disabled). Possible values include: 'Enabled',
-     * 'Disabled'
+     * @param {string} [artifactSource.provisioningState] The provisioning status
+     * of the resource.
+     *
+     * @param {string} [artifactSource.id] The identifier of the resource.
+     *
+     * @param {string} [artifactSource.name] The name of the resource.
+     *
+     * @param {string} [artifactSource.type] The type of the resource.
+     *
+     * @param {string} [artifactSource.location] The location of the resource.
      *
      * @param {object} [artifactSource.tags] The tags of the resource.
      *
@@ -4184,13 +1982,13 @@ export interface ArtifactSources {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, labName: string, name: string, artifactSource: models.ArtifactSourceFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ArtifactSource>;
-    update(resourceGroupName: string, labName: string, name: string, artifactSource: models.ArtifactSourceFragment, callback: ServiceCallback<models.ArtifactSource>): void;
-    update(resourceGroupName: string, labName: string, name: string, artifactSource: models.ArtifactSourceFragment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArtifactSource>): void;
+    patchResource(resourceGroupName: string, labName: string, name: string, artifactSource: models.ArtifactSource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ArtifactSource>;
+    patchResource(resourceGroupName: string, labName: string, name: string, artifactSource: models.ArtifactSource, callback: ServiceCallback<models.ArtifactSource>): void;
+    patchResource(resourceGroupName: string, labName: string, name: string, artifactSource: models.ArtifactSource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArtifactSource>): void;
 
 
     /**
-     * List artifact sources in a given lab.
+     * List artifact sources.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -4202,14 +2000,14 @@ export interface ArtifactSources {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ArtifactSourceList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationArtifactSource>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArtifactSourceList>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationArtifactSource>>;
 
     /**
-     * List artifact sources in a given lab.
+     * List artifact sources.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -4226,7 +2024,7 @@ export interface ArtifactSources {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ArtifactSourceList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationArtifactSource} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4234,29 +2032,30 @@ export interface ArtifactSources {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ArtifactSourceList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ArtifactSourceList} for more information.
+     *                      {ResponseWithContinuationArtifactSource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationArtifactSource} for
+     *                      more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ArtifactSourceList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ArtifactSourceList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArtifactSourceList>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationArtifactSource>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ResponseWithContinuationArtifactSource>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationArtifactSource>): void;
 }
 
 /**
  * @class
- * ArmTemplates
+ * ArtifactOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DevTestLabsClient.
  */
-export interface ArmTemplates {
+export interface ArtifactOperations {
 
 
     /**
-     * List azure resource manager templates in a given artifact source.
+     * List artifacts.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -4266,31 +2065,25 @@ export interface ArmTemplates {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=displayName)'
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
+     * @param {number} [options.top]
      *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ArmTemplateList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationArtifact>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, artifactSourceName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArmTemplateList>>;
+    listWithHttpOperationResponse(resourceGroupName: string, labName: string, artifactSourceName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationArtifact>>;
 
     /**
-     * List azure resource manager templates in a given artifact source.
+     * List artifacts.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -4300,17 +2093,11 @@ export interface ArmTemplates {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=displayName)'
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
+     * @param {number} [options.top]
      *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4322,7 +2109,7 @@ export interface ArmTemplates {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ArmTemplateList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationArtifact} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4330,242 +2117,17 @@ export interface ArmTemplates {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ArmTemplateList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ArmTemplateList} for more information.
+     *                      {ResponseWithContinuationArtifact} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationArtifact} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, labName: string, artifactSourceName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ArmTemplateList>;
-    list(resourceGroupName: string, labName: string, artifactSourceName: string, callback: ServiceCallback<models.ArmTemplateList>): void;
-    list(resourceGroupName: string, labName: string, artifactSourceName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArmTemplateList>): void;
-
-
-    /**
-     * Get azure resource manager template.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} artifactSourceName The name of the artifact source.
-     *
-     * @param {string} name The name of the azure Resource Manager template.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=displayName)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ArmTemplate>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, artifactSourceName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArmTemplate>>;
-
-    /**
-     * Get azure resource manager template.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} artifactSourceName The name of the artifact source.
-     *
-     * @param {string} name The name of the azure Resource Manager template.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=displayName)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ArmTemplate} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ArmTemplate} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ArmTemplate} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, labName: string, artifactSourceName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ArmTemplate>;
-    get(resourceGroupName: string, labName: string, artifactSourceName: string, name: string, callback: ServiceCallback<models.ArmTemplate>): void;
-    get(resourceGroupName: string, labName: string, artifactSourceName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArmTemplate>): void;
-
-
-    /**
-     * List azure resource manager templates in a given artifact source.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ArmTemplateList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArmTemplateList>>;
-
-    /**
-     * List azure resource manager templates in a given artifact source.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ArmTemplateList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ArmTemplateList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ArmTemplateList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ArmTemplateList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ArmTemplateList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArmTemplateList>): void;
-}
-
-/**
- * @class
- * Artifacts
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DevTestLabsClient.
- */
-export interface Artifacts {
-
-
-    /**
-     * List artifacts in a given artifact source.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} artifactSourceName The name of the artifact source.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=title)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ArtifactList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, artifactSourceName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArtifactList>>;
-
-    /**
-     * List artifacts in a given artifact source.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} artifactSourceName The name of the artifact source.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=title)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ArtifactList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ArtifactList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ArtifactList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, labName: string, artifactSourceName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ArtifactList>;
-    list(resourceGroupName: string, labName: string, artifactSourceName: string, callback: ServiceCallback<models.ArtifactList>): void;
-    list(resourceGroupName: string, labName: string, artifactSourceName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArtifactList>): void;
+    list(resourceGroupName: string, labName: string, artifactSourceName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationArtifact>;
+    list(resourceGroupName: string, labName: string, artifactSourceName: string, callback: ServiceCallback<models.ResponseWithContinuationArtifact>): void;
+    list(resourceGroupName: string, labName: string, artifactSourceName: string, options: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationArtifact>): void;
 
 
     /**
@@ -4580,9 +2142,6 @@ export interface Artifacts {
      * @param {string} name The name of the artifact.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=title)'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4593,7 +2152,7 @@ export interface Artifacts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, artifactSourceName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Artifact>>;
+    getResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, artifactSourceName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Artifact>>;
 
     /**
      * Get artifact.
@@ -4607,9 +2166,6 @@ export interface Artifacts {
      * @param {string} name The name of the artifact.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=title)'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4636,9 +2192,9 @@ export interface Artifacts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, labName: string, artifactSourceName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Artifact>;
-    get(resourceGroupName: string, labName: string, artifactSourceName: string, name: string, callback: ServiceCallback<models.Artifact>): void;
-    get(resourceGroupName: string, labName: string, artifactSourceName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Artifact>): void;
+    getResource(resourceGroupName: string, labName: string, artifactSourceName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Artifact>;
+    getResource(resourceGroupName: string, labName: string, artifactSourceName: string, name: string, callback: ServiceCallback<models.Artifact>): void;
+    getResource(resourceGroupName: string, labName: string, artifactSourceName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Artifact>): void;
 
 
     /**
@@ -4653,8 +2209,7 @@ export interface Artifacts {
      *
      * @param {string} name The name of the artifact.
      *
-     * @param {object} generateArmTemplateRequest Parameters for generating an ARM
-     * template for deploying artifacts.
+     * @param {object} generateArmTemplateRequest
      *
      * @param {string} [generateArmTemplateRequest.virtualMachineName] The resource
      * name of the virtual machine.
@@ -4664,11 +2219,6 @@ export interface Artifacts {
      *
      * @param {string} [generateArmTemplateRequest.location] The location of the
      * virtual machine.
-     *
-     * @param {string} [generateArmTemplateRequest.fileUploadOptions] Options for
-     * uploading the files for the artifact. UploadFilesAndGenerateSasTokens is the
-     * default value. Possible values include: 'UploadFilesAndGenerateSasTokens',
-     * 'None'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4695,8 +2245,7 @@ export interface Artifacts {
      *
      * @param {string} name The name of the artifact.
      *
-     * @param {object} generateArmTemplateRequest Parameters for generating an ARM
-     * template for deploying artifacts.
+     * @param {object} generateArmTemplateRequest
      *
      * @param {string} [generateArmTemplateRequest.virtualMachineName] The resource
      * name of the virtual machine.
@@ -4706,11 +2255,6 @@ export interface Artifacts {
      *
      * @param {string} [generateArmTemplateRequest.location] The location of the
      * virtual machine.
-     *
-     * @param {string} [generateArmTemplateRequest.fileUploadOptions] Options for
-     * uploading the files for the artifact. UploadFilesAndGenerateSasTokens is the
-     * default value. Possible values include: 'UploadFilesAndGenerateSasTokens',
-     * 'None'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4745,7 +2289,7 @@ export interface Artifacts {
 
 
     /**
-     * List artifacts in a given artifact source.
+     * List artifacts.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -4757,14 +2301,14 @@ export interface Artifacts {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ArtifactList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationArtifact>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArtifactList>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationArtifact>>;
 
     /**
-     * List artifacts in a given artifact source.
+     * List artifacts.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -4781,7 +2325,7 @@ export interface Artifacts {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ArtifactList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationArtifact} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4789,25 +2333,428 @@ export interface Artifacts {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ArtifactList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ArtifactList} for more information.
+     *                      {ResponseWithContinuationArtifact} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationArtifact} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ArtifactList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ArtifactList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArtifactList>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationArtifact>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ResponseWithContinuationArtifact>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationArtifact>): void;
 }
 
 /**
  * @class
- * Costs
+ * CostInsightOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DevTestLabsClient.
  */
-export interface Costs {
+export interface CostInsightOperations {
+
+
+    /**
+     * List cost insights.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.top]
+     *
+     * @param {string} [options.orderBy]
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResponseWithContinuationCostInsight>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationCostInsight>>;
+
+    /**
+     * List cost insights.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.top]
+     *
+     * @param {string} [options.orderBy]
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResponseWithContinuationCostInsight} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResponseWithContinuationCostInsight} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationCostInsight} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationCostInsight>;
+    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.ResponseWithContinuationCostInsight>): void;
+    list(resourceGroupName: string, labName: string, options: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationCostInsight>): void;
+
+
+    /**
+     * Get cost insight.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {string} name The name of the cost insight.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CostInsight>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostInsight>>;
+
+    /**
+     * Get cost insight.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {string} name The name of the cost insight.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CostInsight} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CostInsight} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CostInsight} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostInsight>;
+    getResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.CostInsight>): void;
+    getResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostInsight>): void;
+
+
+    /**
+     * Refresh Lab's Cost Insight Data. This operation can take a while to
+     * complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {string} name The name of the cost insight.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    refreshDataWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Refresh Lab's Cost Insight Data. This operation can take a while to
+     * complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {string} name The name of the cost insight.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    refreshData(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    refreshData(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+    refreshData(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Refresh Lab's Cost Insight Data. This operation can take a while to
+     * complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {string} name The name of the cost insight.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRefreshDataWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Refresh Lab's Cost Insight Data. This operation can take a while to
+     * complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {string} name The name of the cost insight.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRefreshData(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRefreshData(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+    beginRefreshData(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List cost insights.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResponseWithContinuationCostInsight>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationCostInsight>>;
+
+    /**
+     * List cost insights.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResponseWithContinuationCostInsight} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResponseWithContinuationCostInsight} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationCostInsight} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationCostInsight>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ResponseWithContinuationCostInsight>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationCostInsight>): void;
+}
+
+/**
+ * @class
+ * CostOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DevTestLabsClient.
+ */
+export interface CostOperations {
+
+
+    /**
+     * List costs.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.top]
+     *
+     * @param {string} [options.orderBy]
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResponseWithContinuationCost>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationCost>>;
+
+    /**
+     * List costs.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.top]
+     *
+     * @param {string} [options.orderBy]
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResponseWithContinuationCost} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResponseWithContinuationCost} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationCost} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationCost>;
+    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.ResponseWithContinuationCost>): void;
+    list(resourceGroupName: string, labName: string, options: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationCost>): void;
 
 
     /**
@@ -4821,19 +2768,16 @@ export interface Costs {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($expand=labCostDetails)'
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<LabCost>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Cost>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabCost>>;
+    getResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cost>>;
 
     /**
      * Get cost.
@@ -4846,9 +2790,6 @@ export interface Costs {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($expand=labCostDetails)'
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -4859,7 +2800,7 @@ export interface Costs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {LabCost} - The deserialized result object.
+     *                      @resolve {Cost} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4867,58 +2808,26 @@ export interface Costs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {LabCost} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LabCost} for more information.
+     *                      {Cost} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Cost} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.LabCost>;
-    get(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.LabCost>): void;
-    get(resourceGroupName: string, labName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabCost>): void;
+    getResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cost>;
+    getResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.Cost>): void;
+    getResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cost>): void;
 
 
     /**
-     * Create or replace an existing cost.
+     * Refresh Lab's Cost Data. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
      * @param {string} name The name of the cost.
-     *
-     * @param {object} labCost A cost item.
-     *
-     * @param {object} [labCost.targetCost] The target cost properties
-     *
-     * @param {string} [labCost.targetCost.status] Target cost status. Possible
-     * values include: 'Enabled', 'Disabled'
-     *
-     * @param {number} [labCost.targetCost.target] Lab target cost
-     *
-     * @param {array} [labCost.targetCost.costThresholds] Cost thresholds.
-     *
-     * @param {date} [labCost.targetCost.cycleStartDateTime] Reporting cycle start
-     * date.
-     *
-     * @param {date} [labCost.targetCost.cycleEndDateTime] Reporting cycle end
-     * date.
-     *
-     * @param {string} [labCost.targetCost.cycleType] Reporting cycle type.
-     * Possible values include: 'CalendarMonth', 'Custom'
-     *
-     * @param {string} [labCost.currencyCode] The currency code of the cost.
-     *
-     * @param {date} [labCost.startDateTime] The start time of the cost data.
-     *
-     * @param {date} [labCost.endDateTime] The end time of the cost data.
-     *
-     * @param {date} [labCost.createdDate] The creation date of the cost.
-     *
-     * @param {string} [labCost.location] The location of the resource.
-     *
-     * @param {object} [labCost.tags] The tags of the resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4927,52 +2836,20 @@ export interface Costs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<LabCost>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, labCost: models.LabCost, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabCost>>;
+    refreshDataWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Create or replace an existing cost.
+     * Refresh Lab's Cost Data. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
      * @param {string} name The name of the cost.
-     *
-     * @param {object} labCost A cost item.
-     *
-     * @param {object} [labCost.targetCost] The target cost properties
-     *
-     * @param {string} [labCost.targetCost.status] Target cost status. Possible
-     * values include: 'Enabled', 'Disabled'
-     *
-     * @param {number} [labCost.targetCost.target] Lab target cost
-     *
-     * @param {array} [labCost.targetCost.costThresholds] Cost thresholds.
-     *
-     * @param {date} [labCost.targetCost.cycleStartDateTime] Reporting cycle start
-     * date.
-     *
-     * @param {date} [labCost.targetCost.cycleEndDateTime] Reporting cycle end
-     * date.
-     *
-     * @param {string} [labCost.targetCost.cycleType] Reporting cycle type.
-     * Possible values include: 'CalendarMonth', 'Custom'
-     *
-     * @param {string} [labCost.currencyCode] The currency code of the cost.
-     *
-     * @param {date} [labCost.startDateTime] The start time of the cost data.
-     *
-     * @param {date} [labCost.endDateTime] The end time of the cost data.
-     *
-     * @param {date} [labCost.createdDate] The creation date of the cost.
-     *
-     * @param {string} [labCost.location] The location of the resource.
-     *
-     * @param {object} [labCost.tags] The tags of the resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4986,7 +2863,7 @@ export interface Costs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {LabCost} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4994,29 +2871,148 @@ export interface Costs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {LabCost} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LabCost} for more information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, labCost: models.LabCost, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LabCost>;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, labCost: models.LabCost, callback: ServiceCallback<models.LabCost>): void;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, labCost: models.LabCost, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabCost>): void;
+    refreshData(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    refreshData(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+    refreshData(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Refresh Lab's Cost Data. This operation can take a while to complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {string} name The name of the cost.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRefreshDataWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Refresh Lab's Cost Data. This operation can take a while to complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {string} name The name of the cost.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRefreshData(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRefreshData(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+    beginRefreshData(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List costs.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResponseWithContinuationCost>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationCost>>;
+
+    /**
+     * List costs.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResponseWithContinuationCost} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResponseWithContinuationCost} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationCost} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationCost>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ResponseWithContinuationCost>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationCost>): void;
 }
 
 /**
  * @class
- * CustomImages
+ * CustomImageOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DevTestLabsClient.
  */
-export interface CustomImages {
+export interface CustomImageOperations {
 
 
     /**
-     * List custom images in a given lab.
+     * List custom images.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -5024,31 +3020,25 @@ export interface CustomImages {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=vm)'
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
+     * @param {number} [options.top]
      *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<CustomImageList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationCustomImage>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomImageList>>;
+    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationCustomImage>>;
 
     /**
-     * List custom images in a given lab.
+     * List custom images.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -5056,17 +3046,11 @@ export interface CustomImages {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=vm)'
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
+     * @param {number} [options.top]
      *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5078,7 +3062,7 @@ export interface CustomImages {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {CustomImageList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationCustomImage} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5086,16 +3070,17 @@ export interface CustomImages {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {CustomImageList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CustomImageList} for more information.
+     *                      {ResponseWithContinuationCustomImage} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationCustomImage} for
+     *                      more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomImageList>;
-    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.CustomImageList>): void;
-    list(resourceGroupName: string, labName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomImageList>): void;
+    list(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationCustomImage>;
+    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.ResponseWithContinuationCustomImage>): void;
+    list(resourceGroupName: string, labName: string, options: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationCustomImage>): void;
 
 
     /**
@@ -5108,9 +3093,6 @@ export interface CustomImages {
      * @param {string} name The name of the custom image.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=vm)'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5121,7 +3103,7 @@ export interface CustomImages {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomImage>>;
+    getResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomImage>>;
 
     /**
      * Get custom image.
@@ -5133,9 +3115,6 @@ export interface CustomImages {
      * @param {string} name The name of the custom image.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=vm)'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5162,9 +3141,9 @@ export interface CustomImages {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomImage>;
-    get(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.CustomImage>): void;
-    get(resourceGroupName: string, labName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomImage>): void;
+    getResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomImage>;
+    getResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.CustomImage>): void;
+    getResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomImage>): void;
 
 
     /**
@@ -5177,28 +3156,28 @@ export interface CustomImages {
      *
      * @param {string} name The name of the custom image.
      *
-     * @param {object} customImage A custom image.
+     * @param {object} customImage
      *
-     * @param {object} [customImage.vm] The virtual machine from which the image is
-     * to be created.
+     * @param {object} [customImage.vm]
      *
      * @param {string} [customImage.vm.sourceVmId] The source vm identifier.
+     *
+     * @param {boolean} [customImage.vm.sysPrep] Indicates whether sysprep has been
+     * run on the VHD.
      *
      * @param {object} [customImage.vm.windowsOsInfo] The Windows OS information of
      * the VM.
      *
      * @param {string} [customImage.vm.windowsOsInfo.windowsOsState] The state of
-     * the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied).
-     * Possible values include: 'NonSysprepped', 'SysprepRequested',
-     * 'SysprepApplied'
+     * the Windows OS. Possible values include: 'NonSysprepped',
+     * 'SysprepRequested', 'SysprepApplied'
      *
      * @param {object} [customImage.vm.linuxOsInfo] The Linux OS information of the
      * VM.
      *
      * @param {string} [customImage.vm.linuxOsInfo.linuxOsState] The state of the
-     * Linux OS (i.e. NonDeprovisioned, DeprovisionRequested, DeprovisionApplied).
-     * Possible values include: 'NonDeprovisioned', 'DeprovisionRequested',
-     * 'DeprovisionApplied'
+     * Linux OS. Possible values include: 'NonDeprovisioned',
+     * 'DeprovisionRequested', 'DeprovisionApplied'
      *
      * @param {object} [customImage.vhd] The VHD from which the image is to be
      * created.
@@ -5208,37 +3187,25 @@ export interface CustomImages {
      * @param {boolean} [customImage.vhd.sysPrep] Indicates whether sysprep has
      * been run on the VHD.
      *
-     * @param {string} customImage.vhd.osType The OS type of the custom image (i.e.
-     * Windows, Linux). Possible values include: 'Windows', 'Linux', 'None'
-     *
      * @param {string} [customImage.description] The description of the custom
      * image.
      *
+     * @param {string} [customImage.osType] The OS type of the custom image.
+     * Possible values include: 'Windows', 'Linux', 'None'
+     *
      * @param {string} [customImage.author] The author of the custom image.
      *
-     * @param {string} [customImage.managedImageId] The Managed Image Id backing
-     * the custom image.
+     * @param {date} [customImage.creationDate] The creation date of the custom
+     * image.
      *
-     * @param {string} [customImage.managedSnapshotId] The Managed Snapshot Id
-     * backing the custom image.
+     * @param {string} [customImage.provisioningState] The provisioning status of
+     * the resource.
      *
-     * @param {array} [customImage.dataDiskStorageInfo] Storage information about
-     * the data disks present in the custom image
+     * @param {string} [customImage.id] The identifier of the resource.
      *
-     * @param {object} [customImage.customImagePlan] Storage information about the
-     * plan related to this custom image
+     * @param {string} [customImage.name] The name of the resource.
      *
-     * @param {string} [customImage.customImagePlan.id] The id of the plan,
-     * equivalent to name of the plan
-     *
-     * @param {string} [customImage.customImagePlan.publisher] The publisher for
-     * the plan from the marketplace image the custom image is derived from
-     *
-     * @param {string} [customImage.customImagePlan.offer] The offer for the plan
-     * from the marketplace image the custom image is derived from
-     *
-     * @param {boolean} [customImage.isPlanAuthorized] Whether or not the custom
-     * images underlying offer/plan has been enabled for programmatic deployment
+     * @param {string} [customImage.type] The type of the resource.
      *
      * @param {string} [customImage.location] The location of the resource.
      *
@@ -5255,7 +3222,7 @@ export interface CustomImages {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomImage>>;
+    createOrUpdateResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomImage>>;
 
     /**
      * Create or replace an existing custom image. This operation can take a while
@@ -5267,28 +3234,28 @@ export interface CustomImages {
      *
      * @param {string} name The name of the custom image.
      *
-     * @param {object} customImage A custom image.
+     * @param {object} customImage
      *
-     * @param {object} [customImage.vm] The virtual machine from which the image is
-     * to be created.
+     * @param {object} [customImage.vm]
      *
      * @param {string} [customImage.vm.sourceVmId] The source vm identifier.
+     *
+     * @param {boolean} [customImage.vm.sysPrep] Indicates whether sysprep has been
+     * run on the VHD.
      *
      * @param {object} [customImage.vm.windowsOsInfo] The Windows OS information of
      * the VM.
      *
      * @param {string} [customImage.vm.windowsOsInfo.windowsOsState] The state of
-     * the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied).
-     * Possible values include: 'NonSysprepped', 'SysprepRequested',
-     * 'SysprepApplied'
+     * the Windows OS. Possible values include: 'NonSysprepped',
+     * 'SysprepRequested', 'SysprepApplied'
      *
      * @param {object} [customImage.vm.linuxOsInfo] The Linux OS information of the
      * VM.
      *
      * @param {string} [customImage.vm.linuxOsInfo.linuxOsState] The state of the
-     * Linux OS (i.e. NonDeprovisioned, DeprovisionRequested, DeprovisionApplied).
-     * Possible values include: 'NonDeprovisioned', 'DeprovisionRequested',
-     * 'DeprovisionApplied'
+     * Linux OS. Possible values include: 'NonDeprovisioned',
+     * 'DeprovisionRequested', 'DeprovisionApplied'
      *
      * @param {object} [customImage.vhd] The VHD from which the image is to be
      * created.
@@ -5298,37 +3265,25 @@ export interface CustomImages {
      * @param {boolean} [customImage.vhd.sysPrep] Indicates whether sysprep has
      * been run on the VHD.
      *
-     * @param {string} customImage.vhd.osType The OS type of the custom image (i.e.
-     * Windows, Linux). Possible values include: 'Windows', 'Linux', 'None'
-     *
      * @param {string} [customImage.description] The description of the custom
      * image.
      *
+     * @param {string} [customImage.osType] The OS type of the custom image.
+     * Possible values include: 'Windows', 'Linux', 'None'
+     *
      * @param {string} [customImage.author] The author of the custom image.
      *
-     * @param {string} [customImage.managedImageId] The Managed Image Id backing
-     * the custom image.
+     * @param {date} [customImage.creationDate] The creation date of the custom
+     * image.
      *
-     * @param {string} [customImage.managedSnapshotId] The Managed Snapshot Id
-     * backing the custom image.
+     * @param {string} [customImage.provisioningState] The provisioning status of
+     * the resource.
      *
-     * @param {array} [customImage.dataDiskStorageInfo] Storage information about
-     * the data disks present in the custom image
+     * @param {string} [customImage.id] The identifier of the resource.
      *
-     * @param {object} [customImage.customImagePlan] Storage information about the
-     * plan related to this custom image
+     * @param {string} [customImage.name] The name of the resource.
      *
-     * @param {string} [customImage.customImagePlan.id] The id of the plan,
-     * equivalent to name of the plan
-     *
-     * @param {string} [customImage.customImagePlan.publisher] The publisher for
-     * the plan from the marketplace image the custom image is derived from
-     *
-     * @param {string} [customImage.customImagePlan.offer] The offer for the plan
-     * from the marketplace image the custom image is derived from
-     *
-     * @param {boolean} [customImage.isPlanAuthorized] Whether or not the custom
-     * images underlying offer/plan has been enabled for programmatic deployment
+     * @param {string} [customImage.type] The type of the resource.
      *
      * @param {string} [customImage.location] The location of the resource.
      *
@@ -5361,9 +3316,9 @@ export interface CustomImages {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomImage>;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImage, callback: ServiceCallback<models.CustomImage>): void;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImage, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomImage>): void;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomImage>;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImage, callback: ServiceCallback<models.CustomImage>): void;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImage, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomImage>): void;
 
 
     /**
@@ -5386,7 +3341,7 @@ export interface CustomImages {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete custom image. This operation can take a while to complete.
@@ -5423,202 +3378,9 @@ export interface CustomImages {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Modify properties of custom images.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the custom image.
-     *
-     * @param {object} customImage A custom image.
-     *
-     * @param {object} [customImage.vm] The virtual machine from which the image is
-     * to be created.
-     *
-     * @param {string} [customImage.vm.sourceVmId] The source vm identifier.
-     *
-     * @param {object} [customImage.vm.windowsOsInfo] The Windows OS information of
-     * the VM.
-     *
-     * @param {string} [customImage.vm.windowsOsInfo.windowsOsState] The state of
-     * the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied).
-     * Possible values include: 'NonSysprepped', 'SysprepRequested',
-     * 'SysprepApplied'
-     *
-     * @param {object} [customImage.vm.linuxOsInfo] The Linux OS information of the
-     * VM.
-     *
-     * @param {string} [customImage.vm.linuxOsInfo.linuxOsState] The state of the
-     * Linux OS (i.e. NonDeprovisioned, DeprovisionRequested, DeprovisionApplied).
-     * Possible values include: 'NonDeprovisioned', 'DeprovisionRequested',
-     * 'DeprovisionApplied'
-     *
-     * @param {object} [customImage.vhd] The VHD from which the image is to be
-     * created.
-     *
-     * @param {string} [customImage.vhd.imageName] The image name.
-     *
-     * @param {boolean} [customImage.vhd.sysPrep] Indicates whether sysprep has
-     * been run on the VHD.
-     *
-     * @param {string} [customImage.vhd.osType] The OS type of the custom image
-     * (i.e. Windows, Linux). Possible values include: 'Windows', 'Linux', 'None'
-     *
-     * @param {string} [customImage.description] The description of the custom
-     * image.
-     *
-     * @param {string} [customImage.author] The author of the custom image.
-     *
-     * @param {string} [customImage.managedImageId] The Managed Image Id backing
-     * the custom image.
-     *
-     * @param {string} [customImage.managedSnapshotId] The Managed Snapshot Id
-     * backing the custom image.
-     *
-     * @param {array} [customImage.dataDiskStorageInfo] Storage information about
-     * the data disks present in the custom image
-     *
-     * @param {object} [customImage.customImagePlan] Storage information about the
-     * plan related to this custom image
-     *
-     * @param {string} [customImage.customImagePlan.id] The id of the plan,
-     * equivalent to name of the plan
-     *
-     * @param {string} [customImage.customImagePlan.publisher] The publisher for
-     * the plan from the marketplace image the custom image is derived from
-     *
-     * @param {string} [customImage.customImagePlan.offer] The offer for the plan
-     * from the marketplace image the custom image is derived from
-     *
-     * @param {boolean} [customImage.isPlanAuthorized] Whether or not the custom
-     * images underlying offer/plan has been enabled for programmatic deployment
-     *
-     * @param {object} [customImage.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<CustomImage>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImageFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomImage>>;
-
-    /**
-     * Modify properties of custom images.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the custom image.
-     *
-     * @param {object} customImage A custom image.
-     *
-     * @param {object} [customImage.vm] The virtual machine from which the image is
-     * to be created.
-     *
-     * @param {string} [customImage.vm.sourceVmId] The source vm identifier.
-     *
-     * @param {object} [customImage.vm.windowsOsInfo] The Windows OS information of
-     * the VM.
-     *
-     * @param {string} [customImage.vm.windowsOsInfo.windowsOsState] The state of
-     * the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied).
-     * Possible values include: 'NonSysprepped', 'SysprepRequested',
-     * 'SysprepApplied'
-     *
-     * @param {object} [customImage.vm.linuxOsInfo] The Linux OS information of the
-     * VM.
-     *
-     * @param {string} [customImage.vm.linuxOsInfo.linuxOsState] The state of the
-     * Linux OS (i.e. NonDeprovisioned, DeprovisionRequested, DeprovisionApplied).
-     * Possible values include: 'NonDeprovisioned', 'DeprovisionRequested',
-     * 'DeprovisionApplied'
-     *
-     * @param {object} [customImage.vhd] The VHD from which the image is to be
-     * created.
-     *
-     * @param {string} [customImage.vhd.imageName] The image name.
-     *
-     * @param {boolean} [customImage.vhd.sysPrep] Indicates whether sysprep has
-     * been run on the VHD.
-     *
-     * @param {string} [customImage.vhd.osType] The OS type of the custom image
-     * (i.e. Windows, Linux). Possible values include: 'Windows', 'Linux', 'None'
-     *
-     * @param {string} [customImage.description] The description of the custom
-     * image.
-     *
-     * @param {string} [customImage.author] The author of the custom image.
-     *
-     * @param {string} [customImage.managedImageId] The Managed Image Id backing
-     * the custom image.
-     *
-     * @param {string} [customImage.managedSnapshotId] The Managed Snapshot Id
-     * backing the custom image.
-     *
-     * @param {array} [customImage.dataDiskStorageInfo] Storage information about
-     * the data disks present in the custom image
-     *
-     * @param {object} [customImage.customImagePlan] Storage information about the
-     * plan related to this custom image
-     *
-     * @param {string} [customImage.customImagePlan.id] The id of the plan,
-     * equivalent to name of the plan
-     *
-     * @param {string} [customImage.customImagePlan.publisher] The publisher for
-     * the plan from the marketplace image the custom image is derived from
-     *
-     * @param {string} [customImage.customImagePlan.offer] The offer for the plan
-     * from the marketplace image the custom image is derived from
-     *
-     * @param {boolean} [customImage.isPlanAuthorized] Whether or not the custom
-     * images underlying offer/plan has been enabled for programmatic deployment
-     *
-     * @param {object} [customImage.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {CustomImage} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {CustomImage} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CustomImage} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImageFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomImage>;
-    update(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImageFragment, callback: ServiceCallback<models.CustomImage>): void;
-    update(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImageFragment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomImage>): void;
+    deleteResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+    deleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -5631,28 +3393,28 @@ export interface CustomImages {
      *
      * @param {string} name The name of the custom image.
      *
-     * @param {object} customImage A custom image.
+     * @param {object} customImage
      *
-     * @param {object} [customImage.vm] The virtual machine from which the image is
-     * to be created.
+     * @param {object} [customImage.vm]
      *
      * @param {string} [customImage.vm.sourceVmId] The source vm identifier.
+     *
+     * @param {boolean} [customImage.vm.sysPrep] Indicates whether sysprep has been
+     * run on the VHD.
      *
      * @param {object} [customImage.vm.windowsOsInfo] The Windows OS information of
      * the VM.
      *
      * @param {string} [customImage.vm.windowsOsInfo.windowsOsState] The state of
-     * the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied).
-     * Possible values include: 'NonSysprepped', 'SysprepRequested',
-     * 'SysprepApplied'
+     * the Windows OS. Possible values include: 'NonSysprepped',
+     * 'SysprepRequested', 'SysprepApplied'
      *
      * @param {object} [customImage.vm.linuxOsInfo] The Linux OS information of the
      * VM.
      *
      * @param {string} [customImage.vm.linuxOsInfo.linuxOsState] The state of the
-     * Linux OS (i.e. NonDeprovisioned, DeprovisionRequested, DeprovisionApplied).
-     * Possible values include: 'NonDeprovisioned', 'DeprovisionRequested',
-     * 'DeprovisionApplied'
+     * Linux OS. Possible values include: 'NonDeprovisioned',
+     * 'DeprovisionRequested', 'DeprovisionApplied'
      *
      * @param {object} [customImage.vhd] The VHD from which the image is to be
      * created.
@@ -5662,37 +3424,25 @@ export interface CustomImages {
      * @param {boolean} [customImage.vhd.sysPrep] Indicates whether sysprep has
      * been run on the VHD.
      *
-     * @param {string} customImage.vhd.osType The OS type of the custom image (i.e.
-     * Windows, Linux). Possible values include: 'Windows', 'Linux', 'None'
-     *
      * @param {string} [customImage.description] The description of the custom
      * image.
      *
+     * @param {string} [customImage.osType] The OS type of the custom image.
+     * Possible values include: 'Windows', 'Linux', 'None'
+     *
      * @param {string} [customImage.author] The author of the custom image.
      *
-     * @param {string} [customImage.managedImageId] The Managed Image Id backing
-     * the custom image.
+     * @param {date} [customImage.creationDate] The creation date of the custom
+     * image.
      *
-     * @param {string} [customImage.managedSnapshotId] The Managed Snapshot Id
-     * backing the custom image.
+     * @param {string} [customImage.provisioningState] The provisioning status of
+     * the resource.
      *
-     * @param {array} [customImage.dataDiskStorageInfo] Storage information about
-     * the data disks present in the custom image
+     * @param {string} [customImage.id] The identifier of the resource.
      *
-     * @param {object} [customImage.customImagePlan] Storage information about the
-     * plan related to this custom image
+     * @param {string} [customImage.name] The name of the resource.
      *
-     * @param {string} [customImage.customImagePlan.id] The id of the plan,
-     * equivalent to name of the plan
-     *
-     * @param {string} [customImage.customImagePlan.publisher] The publisher for
-     * the plan from the marketplace image the custom image is derived from
-     *
-     * @param {string} [customImage.customImagePlan.offer] The offer for the plan
-     * from the marketplace image the custom image is derived from
-     *
-     * @param {boolean} [customImage.isPlanAuthorized] Whether or not the custom
-     * images underlying offer/plan has been enabled for programmatic deployment
+     * @param {string} [customImage.type] The type of the resource.
      *
      * @param {string} [customImage.location] The location of the resource.
      *
@@ -5709,7 +3459,7 @@ export interface CustomImages {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomImage>>;
+    beginCreateOrUpdateResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomImage>>;
 
     /**
      * Create or replace an existing custom image. This operation can take a while
@@ -5721,28 +3471,28 @@ export interface CustomImages {
      *
      * @param {string} name The name of the custom image.
      *
-     * @param {object} customImage A custom image.
+     * @param {object} customImage
      *
-     * @param {object} [customImage.vm] The virtual machine from which the image is
-     * to be created.
+     * @param {object} [customImage.vm]
      *
      * @param {string} [customImage.vm.sourceVmId] The source vm identifier.
+     *
+     * @param {boolean} [customImage.vm.sysPrep] Indicates whether sysprep has been
+     * run on the VHD.
      *
      * @param {object} [customImage.vm.windowsOsInfo] The Windows OS information of
      * the VM.
      *
      * @param {string} [customImage.vm.windowsOsInfo.windowsOsState] The state of
-     * the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied).
-     * Possible values include: 'NonSysprepped', 'SysprepRequested',
-     * 'SysprepApplied'
+     * the Windows OS. Possible values include: 'NonSysprepped',
+     * 'SysprepRequested', 'SysprepApplied'
      *
      * @param {object} [customImage.vm.linuxOsInfo] The Linux OS information of the
      * VM.
      *
      * @param {string} [customImage.vm.linuxOsInfo.linuxOsState] The state of the
-     * Linux OS (i.e. NonDeprovisioned, DeprovisionRequested, DeprovisionApplied).
-     * Possible values include: 'NonDeprovisioned', 'DeprovisionRequested',
-     * 'DeprovisionApplied'
+     * Linux OS. Possible values include: 'NonDeprovisioned',
+     * 'DeprovisionRequested', 'DeprovisionApplied'
      *
      * @param {object} [customImage.vhd] The VHD from which the image is to be
      * created.
@@ -5752,37 +3502,25 @@ export interface CustomImages {
      * @param {boolean} [customImage.vhd.sysPrep] Indicates whether sysprep has
      * been run on the VHD.
      *
-     * @param {string} customImage.vhd.osType The OS type of the custom image (i.e.
-     * Windows, Linux). Possible values include: 'Windows', 'Linux', 'None'
-     *
      * @param {string} [customImage.description] The description of the custom
      * image.
      *
+     * @param {string} [customImage.osType] The OS type of the custom image.
+     * Possible values include: 'Windows', 'Linux', 'None'
+     *
      * @param {string} [customImage.author] The author of the custom image.
      *
-     * @param {string} [customImage.managedImageId] The Managed Image Id backing
-     * the custom image.
+     * @param {date} [customImage.creationDate] The creation date of the custom
+     * image.
      *
-     * @param {string} [customImage.managedSnapshotId] The Managed Snapshot Id
-     * backing the custom image.
+     * @param {string} [customImage.provisioningState] The provisioning status of
+     * the resource.
      *
-     * @param {array} [customImage.dataDiskStorageInfo] Storage information about
-     * the data disks present in the custom image
+     * @param {string} [customImage.id] The identifier of the resource.
      *
-     * @param {object} [customImage.customImagePlan] Storage information about the
-     * plan related to this custom image
+     * @param {string} [customImage.name] The name of the resource.
      *
-     * @param {string} [customImage.customImagePlan.id] The id of the plan,
-     * equivalent to name of the plan
-     *
-     * @param {string} [customImage.customImagePlan.publisher] The publisher for
-     * the plan from the marketplace image the custom image is derived from
-     *
-     * @param {string} [customImage.customImagePlan.offer] The offer for the plan
-     * from the marketplace image the custom image is derived from
-     *
-     * @param {boolean} [customImage.isPlanAuthorized] Whether or not the custom
-     * images underlying offer/plan has been enabled for programmatic deployment
+     * @param {string} [customImage.type] The type of the resource.
      *
      * @param {string} [customImage.location] The location of the resource.
      *
@@ -5815,9 +3553,9 @@ export interface CustomImages {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomImage>;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImage, callback: ServiceCallback<models.CustomImage>): void;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImage, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomImage>): void;
+    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomImage>;
+    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImage, callback: ServiceCallback<models.CustomImage>): void;
+    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImage, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomImage>): void;
 
 
     /**
@@ -5840,7 +3578,7 @@ export interface CustomImages {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete custom image. This operation can take a while to complete.
@@ -5877,13 +3615,13 @@ export interface CustomImages {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+    beginDeleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * List custom images in a given lab.
+     * List custom images.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -5895,14 +3633,14 @@ export interface CustomImages {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<CustomImageList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationCustomImage>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomImageList>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationCustomImage>>;
 
     /**
-     * List custom images in a given lab.
+     * List custom images.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -5919,7 +3657,7 @@ export interface CustomImages {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {CustomImageList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationCustomImage} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5927,29 +3665,30 @@ export interface CustomImages {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {CustomImageList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CustomImageList} for more information.
+     *                      {ResponseWithContinuationCustomImage} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationCustomImage} for
+     *                      more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomImageList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.CustomImageList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomImageList>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationCustomImage>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ResponseWithContinuationCustomImage>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationCustomImage>): void;
 }
 
 /**
  * @class
- * Formulas
+ * FormulaOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DevTestLabsClient.
  */
-export interface Formulas {
+export interface FormulaOperations {
 
 
     /**
-     * List formulas in a given lab.
+     * List formulas.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -5957,31 +3696,25 @@ export interface Formulas {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=description)'
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
+     * @param {number} [options.top]
      *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<FormulaList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationFormula>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FormulaList>>;
+    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationFormula>>;
 
     /**
-     * List formulas in a given lab.
+     * List formulas.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -5989,17 +3722,11 @@ export interface Formulas {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=description)'
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
+     * @param {number} [options.top]
      *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -6011,7 +3738,7 @@ export interface Formulas {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {FormulaList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationFormula} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -6019,16 +3746,17 @@ export interface Formulas {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {FormulaList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link FormulaList} for more information.
+     *                      {ResponseWithContinuationFormula} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationFormula} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.FormulaList>;
-    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.FormulaList>): void;
-    list(resourceGroupName: string, labName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FormulaList>): void;
+    list(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationFormula>;
+    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.ResponseWithContinuationFormula>): void;
+    list(resourceGroupName: string, labName: string, options: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationFormula>): void;
 
 
     /**
@@ -6041,9 +3769,6 @@ export interface Formulas {
      * @param {string} name The name of the formula.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=description)'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -6054,7 +3779,7 @@ export interface Formulas {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Formula>>;
+    getResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Formula>>;
 
     /**
      * Get formula.
@@ -6066,9 +3791,6 @@ export interface Formulas {
      * @param {string} name The name of the formula.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=description)'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -6095,9 +3817,9 @@ export interface Formulas {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Formula>;
-    get(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.Formula>): void;
-    get(resourceGroupName: string, labName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Formula>): void;
+    getResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Formula>;
+    getResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.Formula>): void;
+    getResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Formula>): void;
 
 
     /**
@@ -6110,8 +3832,7 @@ export interface Formulas {
      *
      * @param {string} name The name of the formula.
      *
-     * @param {object} formula A formula for creating a VM, specifying an image
-     * base and other parameters
+     * @param {object} formula
      *
      * @param {string} [formula.description] The description of the formula.
      *
@@ -6119,14 +3840,9 @@ export interface Formulas {
      *
      * @param {string} [formula.osType] The OS type of the formula.
      *
+     * @param {date} [formula.creationDate] The creation date of the formula.
+     *
      * @param {object} [formula.formulaContent] The content of the formula.
-     *
-     * @param {object} [formula.formulaContent.bulkCreationParameters] The number
-     * of virtual machine instances to create.
-     *
-     * @param {number}
-     * [formula.formulaContent.bulkCreationParameters.instanceCount] The number of
-     * virtual machine instances to create.
      *
      * @param {string} [formula.formulaContent.notes] The notes of the virtual
      * machine.
@@ -6134,17 +3850,11 @@ export interface Formulas {
      * @param {string} [formula.formulaContent.ownerObjectId] The object identifier
      * of the owner of the virtual machine.
      *
-     * @param {string} [formula.formulaContent.ownerUserPrincipalName] The user
-     * principal name of the virtual machine owner.
-     *
      * @param {string} [formula.formulaContent.createdByUserId] The object
      * identifier of the creator of the virtual machine.
      *
      * @param {string} [formula.formulaContent.createdByUser] The email address of
      * creator of the virtual machine.
-     *
-     * @param {date} [formula.formulaContent.createdDate] The creation date of the
-     * virtual machine.
      *
      * @param {string} [formula.formulaContent.computeId] The resource identifier
      * (Microsoft.Compute) of the virtual machine.
@@ -6167,8 +3877,8 @@ export interface Formulas {
      * @param {string} [formula.formulaContent.sshKey] The SSH key of the virtual
      * machine administrator.
      *
-     * @param {boolean} [formula.formulaContent.isAuthenticationWithSshKey]
-     * Indicates whether this virtual machine uses an SSH key for authentication.
+     * @param {boolean} [formula.formulaContent.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
      *
      * @param {string} [formula.formulaContent.fqdn] The fully-qualified domain
      * name of the virtual machine.
@@ -6218,77 +3928,17 @@ export interface Formulas {
      * @param {string} [formula.formulaContent.galleryImageReference.version] The
      * version of the gallery image.
      *
-     * @param {string} [formula.formulaContent.planId] The id of the plan
-     * associated with the virtual machine image
+     * @param {string} [formula.formulaContent.provisioningState] The provisioning
+     * status of the resource.
      *
-     * @param {object} [formula.formulaContent.networkInterface] The network
-     * interface properties.
+     * @param {string} [formula.formulaContent.id] The identifier of the resource.
      *
-     * @param {string} [formula.formulaContent.networkInterface.virtualNetworkId]
-     * The resource ID of the virtual network.
+     * @param {string} [formula.formulaContent.name] The name of the resource.
      *
-     * @param {string} [formula.formulaContent.networkInterface.subnetId] The
-     * resource ID of the sub net.
+     * @param {string} [formula.formulaContent.type] The type of the resource.
      *
-     * @param {string} [formula.formulaContent.networkInterface.publicIpAddressId]
-     * The resource ID of the public IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.publicIpAddress]
-     * The public IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.privateIpAddress]
-     * The private IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.dnsName] The DNS
-     * name.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.rdpAuthority] The
-     * RdpAuthority property is a server DNS host name or IP address followed by
-     * the service port number for RDP (Remote Desktop Protocol).
-     *
-     * @param {string} [formula.formulaContent.networkInterface.sshAuthority] The
-     * SshAuthority property is a server DNS host name or IP address followed by
-     * the service port number for SSH.
-     *
-     * @param {object}
-     * [formula.formulaContent.networkInterface.sharedPublicIpAddressConfiguration]
-     * The configuration for sharing a public IP address across multiple virtual
-     * machines.
-     *
-     * @param {array}
-     * [formula.formulaContent.networkInterface.sharedPublicIpAddressConfiguration.inboundNatRules]
-     * The incoming NAT rules
-     *
-     * @param {date} [formula.formulaContent.expirationDate] The expiration date
-     * for VM.
-     *
-     * @param {boolean} [formula.formulaContent.allowClaim] Indicates whether
-     * another user can take ownership of the virtual machine
-     *
-     * @param {string} [formula.formulaContent.storageType] Storage type to use for
-     * virtual machine (i.e. Standard, Premium).
-     *
-     * @param {string} [formula.formulaContent.virtualMachineCreationSource] Tells
-     * source of creation of lab virtual machine. Output property only. Possible
-     * values include: 'FromCustomImage', 'FromGalleryImage'
-     *
-     * @param {string} [formula.formulaContent.environmentId] The resource ID of
-     * the environment that contains this virtual machine, if any.
-     *
-     * @param {array} [formula.formulaContent.dataDiskParameters] New or existing
-     * data disks to attach to the virtual machine after creation
-     *
-     * @param {array} [formula.formulaContent.scheduleParameters] Virtual Machine
-     * schedules to be created
-     *
-     * @param {string} [formula.formulaContent.lastKnownPowerState] Last known
-     * compute power state captured in DTL
-     *
-     * @param {string} [formula.formulaContent.name] The name of the virtual
-     * machine or environment
-     *
-     * @param {string} [formula.formulaContent.location] The location of the new
-     * virtual machine or environment
+     * @param {string} [formula.formulaContent.location] The location of the
+     * resource.
      *
      * @param {object} [formula.formulaContent.tags] The tags of the resource.
      *
@@ -6297,6 +3947,15 @@ export interface Formulas {
      *
      * @param {string} [formula.vm.labVmId] The identifier of the VM from which a
      * formula is to be created.
+     *
+     * @param {string} [formula.provisioningState] The provisioning status of the
+     * resource.
+     *
+     * @param {string} [formula.id] The identifier of the resource.
+     *
+     * @param {string} [formula.name] The name of the resource.
+     *
+     * @param {string} [formula.type] The type of the resource.
      *
      * @param {string} [formula.location] The location of the resource.
      *
@@ -6313,7 +3972,7 @@ export interface Formulas {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, formula: models.Formula, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Formula>>;
+    createOrUpdateResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, formula: models.Formula, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Formula>>;
 
     /**
      * Create or replace an existing Formula. This operation can take a while to
@@ -6325,8 +3984,7 @@ export interface Formulas {
      *
      * @param {string} name The name of the formula.
      *
-     * @param {object} formula A formula for creating a VM, specifying an image
-     * base and other parameters
+     * @param {object} formula
      *
      * @param {string} [formula.description] The description of the formula.
      *
@@ -6334,14 +3992,9 @@ export interface Formulas {
      *
      * @param {string} [formula.osType] The OS type of the formula.
      *
+     * @param {date} [formula.creationDate] The creation date of the formula.
+     *
      * @param {object} [formula.formulaContent] The content of the formula.
-     *
-     * @param {object} [formula.formulaContent.bulkCreationParameters] The number
-     * of virtual machine instances to create.
-     *
-     * @param {number}
-     * [formula.formulaContent.bulkCreationParameters.instanceCount] The number of
-     * virtual machine instances to create.
      *
      * @param {string} [formula.formulaContent.notes] The notes of the virtual
      * machine.
@@ -6349,17 +4002,11 @@ export interface Formulas {
      * @param {string} [formula.formulaContent.ownerObjectId] The object identifier
      * of the owner of the virtual machine.
      *
-     * @param {string} [formula.formulaContent.ownerUserPrincipalName] The user
-     * principal name of the virtual machine owner.
-     *
      * @param {string} [formula.formulaContent.createdByUserId] The object
      * identifier of the creator of the virtual machine.
      *
      * @param {string} [formula.formulaContent.createdByUser] The email address of
      * creator of the virtual machine.
-     *
-     * @param {date} [formula.formulaContent.createdDate] The creation date of the
-     * virtual machine.
      *
      * @param {string} [formula.formulaContent.computeId] The resource identifier
      * (Microsoft.Compute) of the virtual machine.
@@ -6382,8 +4029,8 @@ export interface Formulas {
      * @param {string} [formula.formulaContent.sshKey] The SSH key of the virtual
      * machine administrator.
      *
-     * @param {boolean} [formula.formulaContent.isAuthenticationWithSshKey]
-     * Indicates whether this virtual machine uses an SSH key for authentication.
+     * @param {boolean} [formula.formulaContent.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
      *
      * @param {string} [formula.formulaContent.fqdn] The fully-qualified domain
      * name of the virtual machine.
@@ -6433,77 +4080,17 @@ export interface Formulas {
      * @param {string} [formula.formulaContent.galleryImageReference.version] The
      * version of the gallery image.
      *
-     * @param {string} [formula.formulaContent.planId] The id of the plan
-     * associated with the virtual machine image
+     * @param {string} [formula.formulaContent.provisioningState] The provisioning
+     * status of the resource.
      *
-     * @param {object} [formula.formulaContent.networkInterface] The network
-     * interface properties.
+     * @param {string} [formula.formulaContent.id] The identifier of the resource.
      *
-     * @param {string} [formula.formulaContent.networkInterface.virtualNetworkId]
-     * The resource ID of the virtual network.
+     * @param {string} [formula.formulaContent.name] The name of the resource.
      *
-     * @param {string} [formula.formulaContent.networkInterface.subnetId] The
-     * resource ID of the sub net.
+     * @param {string} [formula.formulaContent.type] The type of the resource.
      *
-     * @param {string} [formula.formulaContent.networkInterface.publicIpAddressId]
-     * The resource ID of the public IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.publicIpAddress]
-     * The public IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.privateIpAddress]
-     * The private IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.dnsName] The DNS
-     * name.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.rdpAuthority] The
-     * RdpAuthority property is a server DNS host name or IP address followed by
-     * the service port number for RDP (Remote Desktop Protocol).
-     *
-     * @param {string} [formula.formulaContent.networkInterface.sshAuthority] The
-     * SshAuthority property is a server DNS host name or IP address followed by
-     * the service port number for SSH.
-     *
-     * @param {object}
-     * [formula.formulaContent.networkInterface.sharedPublicIpAddressConfiguration]
-     * The configuration for sharing a public IP address across multiple virtual
-     * machines.
-     *
-     * @param {array}
-     * [formula.formulaContent.networkInterface.sharedPublicIpAddressConfiguration.inboundNatRules]
-     * The incoming NAT rules
-     *
-     * @param {date} [formula.formulaContent.expirationDate] The expiration date
-     * for VM.
-     *
-     * @param {boolean} [formula.formulaContent.allowClaim] Indicates whether
-     * another user can take ownership of the virtual machine
-     *
-     * @param {string} [formula.formulaContent.storageType] Storage type to use for
-     * virtual machine (i.e. Standard, Premium).
-     *
-     * @param {string} [formula.formulaContent.virtualMachineCreationSource] Tells
-     * source of creation of lab virtual machine. Output property only. Possible
-     * values include: 'FromCustomImage', 'FromGalleryImage'
-     *
-     * @param {string} [formula.formulaContent.environmentId] The resource ID of
-     * the environment that contains this virtual machine, if any.
-     *
-     * @param {array} [formula.formulaContent.dataDiskParameters] New or existing
-     * data disks to attach to the virtual machine after creation
-     *
-     * @param {array} [formula.formulaContent.scheduleParameters] Virtual Machine
-     * schedules to be created
-     *
-     * @param {string} [formula.formulaContent.lastKnownPowerState] Last known
-     * compute power state captured in DTL
-     *
-     * @param {string} [formula.formulaContent.name] The name of the virtual
-     * machine or environment
-     *
-     * @param {string} [formula.formulaContent.location] The location of the new
-     * virtual machine or environment
+     * @param {string} [formula.formulaContent.location] The location of the
+     * resource.
      *
      * @param {object} [formula.formulaContent.tags] The tags of the resource.
      *
@@ -6512,6 +4099,15 @@ export interface Formulas {
      *
      * @param {string} [formula.vm.labVmId] The identifier of the VM from which a
      * formula is to be created.
+     *
+     * @param {string} [formula.provisioningState] The provisioning status of the
+     * resource.
+     *
+     * @param {string} [formula.id] The identifier of the resource.
+     *
+     * @param {string} [formula.name] The name of the resource.
+     *
+     * @param {string} [formula.type] The type of the resource.
      *
      * @param {string} [formula.location] The location of the resource.
      *
@@ -6544,9 +4140,9 @@ export interface Formulas {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, formula: models.Formula, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Formula>;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, formula: models.Formula, callback: ServiceCallback<models.Formula>): void;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, formula: models.Formula, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Formula>): void;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, formula: models.Formula, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Formula>;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, formula: models.Formula, callback: ServiceCallback<models.Formula>): void;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, formula: models.Formula, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Formula>): void;
 
 
     /**
@@ -6569,7 +4165,7 @@ export interface Formulas {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete formula.
@@ -6606,452 +4202,9 @@ export interface Formulas {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Modify properties of formulas.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the formula.
-     *
-     * @param {object} formula A formula for creating a VM, specifying an image
-     * base and other parameters
-     *
-     * @param {string} [formula.description] The description of the formula.
-     *
-     * @param {string} [formula.author] The author of the formula.
-     *
-     * @param {string} [formula.osType] The OS type of the formula.
-     *
-     * @param {object} [formula.formulaContent] The content of the formula.
-     *
-     * @param {object} [formula.formulaContent.bulkCreationParameters] The number
-     * of virtual machine instances to create.
-     *
-     * @param {number}
-     * [formula.formulaContent.bulkCreationParameters.instanceCount] The number of
-     * virtual machine instances to create.
-     *
-     * @param {string} [formula.formulaContent.notes] The notes of the virtual
-     * machine.
-     *
-     * @param {string} [formula.formulaContent.ownerObjectId] The object identifier
-     * of the owner of the virtual machine.
-     *
-     * @param {string} [formula.formulaContent.ownerUserPrincipalName] The user
-     * principal name of the virtual machine owner.
-     *
-     * @param {string} [formula.formulaContent.createdByUserId] The object
-     * identifier of the creator of the virtual machine.
-     *
-     * @param {string} [formula.formulaContent.createdByUser] The email address of
-     * creator of the virtual machine.
-     *
-     * @param {date} [formula.formulaContent.createdDate] The creation date of the
-     * virtual machine.
-     *
-     * @param {string} [formula.formulaContent.computeId] The resource identifier
-     * (Microsoft.Compute) of the virtual machine.
-     *
-     * @param {string} [formula.formulaContent.customImageId] The custom image
-     * identifier of the virtual machine.
-     *
-     * @param {string} [formula.formulaContent.osType] The OS type of the virtual
-     * machine.
-     *
-     * @param {string} [formula.formulaContent.size] The size of the virtual
-     * machine.
-     *
-     * @param {string} [formula.formulaContent.userName] The user name of the
-     * virtual machine.
-     *
-     * @param {string} [formula.formulaContent.password] The password of the
-     * virtual machine administrator.
-     *
-     * @param {string} [formula.formulaContent.sshKey] The SSH key of the virtual
-     * machine administrator.
-     *
-     * @param {boolean} [formula.formulaContent.isAuthenticationWithSshKey]
-     * Indicates whether this virtual machine uses an SSH key for authentication.
-     *
-     * @param {string} [formula.formulaContent.fqdn] The fully-qualified domain
-     * name of the virtual machine.
-     *
-     * @param {string} [formula.formulaContent.labSubnetName] The lab subnet name
-     * of the virtual machine.
-     *
-     * @param {string} [formula.formulaContent.labVirtualNetworkId] The lab virtual
-     * network identifier of the virtual machine.
-     *
-     * @param {boolean} [formula.formulaContent.disallowPublicIpAddress] Indicates
-     * whether the virtual machine is to be created without a public IP address.
-     *
-     * @param {array} [formula.formulaContent.artifacts] The artifacts to be
-     * installed on the virtual machine.
-     *
-     * @param {object} [formula.formulaContent.artifactDeploymentStatus] The
-     * artifact deployment status for the virtual machine.
-     *
-     * @param {string}
-     * [formula.formulaContent.artifactDeploymentStatus.deploymentStatus] The
-     * deployment status of the artifact.
-     *
-     * @param {number}
-     * [formula.formulaContent.artifactDeploymentStatus.artifactsApplied] The total
-     * count of the artifacts that were successfully applied.
-     *
-     * @param {number}
-     * [formula.formulaContent.artifactDeploymentStatus.totalArtifacts] The total
-     * count of the artifacts that were tentatively applied.
-     *
-     * @param {object} [formula.formulaContent.galleryImageReference] The Microsoft
-     * Azure Marketplace image reference of the virtual machine.
-     *
-     * @param {string} [formula.formulaContent.galleryImageReference.offer] The
-     * offer of the gallery image.
-     *
-     * @param {string} [formula.formulaContent.galleryImageReference.publisher] The
-     * publisher of the gallery image.
-     *
-     * @param {string} [formula.formulaContent.galleryImageReference.sku] The SKU
-     * of the gallery image.
-     *
-     * @param {string} [formula.formulaContent.galleryImageReference.osType] The OS
-     * type of the gallery image.
-     *
-     * @param {string} [formula.formulaContent.galleryImageReference.version] The
-     * version of the gallery image.
-     *
-     * @param {string} [formula.formulaContent.planId] The id of the plan
-     * associated with the virtual machine image
-     *
-     * @param {object} [formula.formulaContent.networkInterface] The network
-     * interface properties.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.virtualNetworkId]
-     * The resource ID of the virtual network.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.subnetId] The
-     * resource ID of the sub net.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.publicIpAddressId]
-     * The resource ID of the public IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.publicIpAddress]
-     * The public IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.privateIpAddress]
-     * The private IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.dnsName] The DNS
-     * name.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.rdpAuthority] The
-     * RdpAuthority property is a server DNS host name or IP address followed by
-     * the service port number for RDP (Remote Desktop Protocol).
-     *
-     * @param {string} [formula.formulaContent.networkInterface.sshAuthority] The
-     * SshAuthority property is a server DNS host name or IP address followed by
-     * the service port number for SSH.
-     *
-     * @param {object}
-     * [formula.formulaContent.networkInterface.sharedPublicIpAddressConfiguration]
-     * The configuration for sharing a public IP address across multiple virtual
-     * machines.
-     *
-     * @param {array}
-     * [formula.formulaContent.networkInterface.sharedPublicIpAddressConfiguration.inboundNatRules]
-     * The incoming NAT rules
-     *
-     * @param {date} [formula.formulaContent.expirationDate] The expiration date
-     * for VM.
-     *
-     * @param {boolean} [formula.formulaContent.allowClaim] Indicates whether
-     * another user can take ownership of the virtual machine
-     *
-     * @param {string} [formula.formulaContent.storageType] Storage type to use for
-     * virtual machine (i.e. Standard, Premium).
-     *
-     * @param {string} [formula.formulaContent.virtualMachineCreationSource] Tells
-     * source of creation of lab virtual machine. Output property only. Possible
-     * values include: 'FromCustomImage', 'FromGalleryImage'
-     *
-     * @param {string} [formula.formulaContent.environmentId] The resource ID of
-     * the environment that contains this virtual machine, if any.
-     *
-     * @param {array} [formula.formulaContent.dataDiskParameters] New or existing
-     * data disks to attach to the virtual machine after creation
-     *
-     * @param {array} [formula.formulaContent.scheduleParameters] Virtual Machine
-     * schedules to be created
-     *
-     * @param {string} [formula.formulaContent.lastKnownPowerState] Last known
-     * compute power state captured in DTL
-     *
-     * @param {string} [formula.formulaContent.name] The name of the virtual
-     * machine or environment
-     *
-     * @param {string} [formula.formulaContent.location] The location of the new
-     * virtual machine or environment
-     *
-     * @param {object} [formula.formulaContent.tags] The tags of the resource.
-     *
-     * @param {object} [formula.vm] Information about a VM from which a formula is
-     * to be created.
-     *
-     * @param {string} [formula.vm.labVmId] The identifier of the VM from which a
-     * formula is to be created.
-     *
-     * @param {object} [formula.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Formula>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, formula: models.FormulaFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Formula>>;
-
-    /**
-     * Modify properties of formulas.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the formula.
-     *
-     * @param {object} formula A formula for creating a VM, specifying an image
-     * base and other parameters
-     *
-     * @param {string} [formula.description] The description of the formula.
-     *
-     * @param {string} [formula.author] The author of the formula.
-     *
-     * @param {string} [formula.osType] The OS type of the formula.
-     *
-     * @param {object} [formula.formulaContent] The content of the formula.
-     *
-     * @param {object} [formula.formulaContent.bulkCreationParameters] The number
-     * of virtual machine instances to create.
-     *
-     * @param {number}
-     * [formula.formulaContent.bulkCreationParameters.instanceCount] The number of
-     * virtual machine instances to create.
-     *
-     * @param {string} [formula.formulaContent.notes] The notes of the virtual
-     * machine.
-     *
-     * @param {string} [formula.formulaContent.ownerObjectId] The object identifier
-     * of the owner of the virtual machine.
-     *
-     * @param {string} [formula.formulaContent.ownerUserPrincipalName] The user
-     * principal name of the virtual machine owner.
-     *
-     * @param {string} [formula.formulaContent.createdByUserId] The object
-     * identifier of the creator of the virtual machine.
-     *
-     * @param {string} [formula.formulaContent.createdByUser] The email address of
-     * creator of the virtual machine.
-     *
-     * @param {date} [formula.formulaContent.createdDate] The creation date of the
-     * virtual machine.
-     *
-     * @param {string} [formula.formulaContent.computeId] The resource identifier
-     * (Microsoft.Compute) of the virtual machine.
-     *
-     * @param {string} [formula.formulaContent.customImageId] The custom image
-     * identifier of the virtual machine.
-     *
-     * @param {string} [formula.formulaContent.osType] The OS type of the virtual
-     * machine.
-     *
-     * @param {string} [formula.formulaContent.size] The size of the virtual
-     * machine.
-     *
-     * @param {string} [formula.formulaContent.userName] The user name of the
-     * virtual machine.
-     *
-     * @param {string} [formula.formulaContent.password] The password of the
-     * virtual machine administrator.
-     *
-     * @param {string} [formula.formulaContent.sshKey] The SSH key of the virtual
-     * machine administrator.
-     *
-     * @param {boolean} [formula.formulaContent.isAuthenticationWithSshKey]
-     * Indicates whether this virtual machine uses an SSH key for authentication.
-     *
-     * @param {string} [formula.formulaContent.fqdn] The fully-qualified domain
-     * name of the virtual machine.
-     *
-     * @param {string} [formula.formulaContent.labSubnetName] The lab subnet name
-     * of the virtual machine.
-     *
-     * @param {string} [formula.formulaContent.labVirtualNetworkId] The lab virtual
-     * network identifier of the virtual machine.
-     *
-     * @param {boolean} [formula.formulaContent.disallowPublicIpAddress] Indicates
-     * whether the virtual machine is to be created without a public IP address.
-     *
-     * @param {array} [formula.formulaContent.artifacts] The artifacts to be
-     * installed on the virtual machine.
-     *
-     * @param {object} [formula.formulaContent.artifactDeploymentStatus] The
-     * artifact deployment status for the virtual machine.
-     *
-     * @param {string}
-     * [formula.formulaContent.artifactDeploymentStatus.deploymentStatus] The
-     * deployment status of the artifact.
-     *
-     * @param {number}
-     * [formula.formulaContent.artifactDeploymentStatus.artifactsApplied] The total
-     * count of the artifacts that were successfully applied.
-     *
-     * @param {number}
-     * [formula.formulaContent.artifactDeploymentStatus.totalArtifacts] The total
-     * count of the artifacts that were tentatively applied.
-     *
-     * @param {object} [formula.formulaContent.galleryImageReference] The Microsoft
-     * Azure Marketplace image reference of the virtual machine.
-     *
-     * @param {string} [formula.formulaContent.galleryImageReference.offer] The
-     * offer of the gallery image.
-     *
-     * @param {string} [formula.formulaContent.galleryImageReference.publisher] The
-     * publisher of the gallery image.
-     *
-     * @param {string} [formula.formulaContent.galleryImageReference.sku] The SKU
-     * of the gallery image.
-     *
-     * @param {string} [formula.formulaContent.galleryImageReference.osType] The OS
-     * type of the gallery image.
-     *
-     * @param {string} [formula.formulaContent.galleryImageReference.version] The
-     * version of the gallery image.
-     *
-     * @param {string} [formula.formulaContent.planId] The id of the plan
-     * associated with the virtual machine image
-     *
-     * @param {object} [formula.formulaContent.networkInterface] The network
-     * interface properties.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.virtualNetworkId]
-     * The resource ID of the virtual network.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.subnetId] The
-     * resource ID of the sub net.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.publicIpAddressId]
-     * The resource ID of the public IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.publicIpAddress]
-     * The public IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.privateIpAddress]
-     * The private IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.dnsName] The DNS
-     * name.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.rdpAuthority] The
-     * RdpAuthority property is a server DNS host name or IP address followed by
-     * the service port number for RDP (Remote Desktop Protocol).
-     *
-     * @param {string} [formula.formulaContent.networkInterface.sshAuthority] The
-     * SshAuthority property is a server DNS host name or IP address followed by
-     * the service port number for SSH.
-     *
-     * @param {object}
-     * [formula.formulaContent.networkInterface.sharedPublicIpAddressConfiguration]
-     * The configuration for sharing a public IP address across multiple virtual
-     * machines.
-     *
-     * @param {array}
-     * [formula.formulaContent.networkInterface.sharedPublicIpAddressConfiguration.inboundNatRules]
-     * The incoming NAT rules
-     *
-     * @param {date} [formula.formulaContent.expirationDate] The expiration date
-     * for VM.
-     *
-     * @param {boolean} [formula.formulaContent.allowClaim] Indicates whether
-     * another user can take ownership of the virtual machine
-     *
-     * @param {string} [formula.formulaContent.storageType] Storage type to use for
-     * virtual machine (i.e. Standard, Premium).
-     *
-     * @param {string} [formula.formulaContent.virtualMachineCreationSource] Tells
-     * source of creation of lab virtual machine. Output property only. Possible
-     * values include: 'FromCustomImage', 'FromGalleryImage'
-     *
-     * @param {string} [formula.formulaContent.environmentId] The resource ID of
-     * the environment that contains this virtual machine, if any.
-     *
-     * @param {array} [formula.formulaContent.dataDiskParameters] New or existing
-     * data disks to attach to the virtual machine after creation
-     *
-     * @param {array} [formula.formulaContent.scheduleParameters] Virtual Machine
-     * schedules to be created
-     *
-     * @param {string} [formula.formulaContent.lastKnownPowerState] Last known
-     * compute power state captured in DTL
-     *
-     * @param {string} [formula.formulaContent.name] The name of the virtual
-     * machine or environment
-     *
-     * @param {string} [formula.formulaContent.location] The location of the new
-     * virtual machine or environment
-     *
-     * @param {object} [formula.formulaContent.tags] The tags of the resource.
-     *
-     * @param {object} [formula.vm] Information about a VM from which a formula is
-     * to be created.
-     *
-     * @param {string} [formula.vm.labVmId] The identifier of the VM from which a
-     * formula is to be created.
-     *
-     * @param {object} [formula.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Formula} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Formula} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Formula} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, labName: string, name: string, formula: models.FormulaFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Formula>;
-    update(resourceGroupName: string, labName: string, name: string, formula: models.FormulaFragment, callback: ServiceCallback<models.Formula>): void;
-    update(resourceGroupName: string, labName: string, name: string, formula: models.FormulaFragment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Formula>): void;
+    deleteResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+    deleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -7064,8 +4217,7 @@ export interface Formulas {
      *
      * @param {string} name The name of the formula.
      *
-     * @param {object} formula A formula for creating a VM, specifying an image
-     * base and other parameters
+     * @param {object} formula
      *
      * @param {string} [formula.description] The description of the formula.
      *
@@ -7073,14 +4225,9 @@ export interface Formulas {
      *
      * @param {string} [formula.osType] The OS type of the formula.
      *
+     * @param {date} [formula.creationDate] The creation date of the formula.
+     *
      * @param {object} [formula.formulaContent] The content of the formula.
-     *
-     * @param {object} [formula.formulaContent.bulkCreationParameters] The number
-     * of virtual machine instances to create.
-     *
-     * @param {number}
-     * [formula.formulaContent.bulkCreationParameters.instanceCount] The number of
-     * virtual machine instances to create.
      *
      * @param {string} [formula.formulaContent.notes] The notes of the virtual
      * machine.
@@ -7088,17 +4235,11 @@ export interface Formulas {
      * @param {string} [formula.formulaContent.ownerObjectId] The object identifier
      * of the owner of the virtual machine.
      *
-     * @param {string} [formula.formulaContent.ownerUserPrincipalName] The user
-     * principal name of the virtual machine owner.
-     *
      * @param {string} [formula.formulaContent.createdByUserId] The object
      * identifier of the creator of the virtual machine.
      *
      * @param {string} [formula.formulaContent.createdByUser] The email address of
      * creator of the virtual machine.
-     *
-     * @param {date} [formula.formulaContent.createdDate] The creation date of the
-     * virtual machine.
      *
      * @param {string} [formula.formulaContent.computeId] The resource identifier
      * (Microsoft.Compute) of the virtual machine.
@@ -7121,8 +4262,8 @@ export interface Formulas {
      * @param {string} [formula.formulaContent.sshKey] The SSH key of the virtual
      * machine administrator.
      *
-     * @param {boolean} [formula.formulaContent.isAuthenticationWithSshKey]
-     * Indicates whether this virtual machine uses an SSH key for authentication.
+     * @param {boolean} [formula.formulaContent.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
      *
      * @param {string} [formula.formulaContent.fqdn] The fully-qualified domain
      * name of the virtual machine.
@@ -7172,77 +4313,17 @@ export interface Formulas {
      * @param {string} [formula.formulaContent.galleryImageReference.version] The
      * version of the gallery image.
      *
-     * @param {string} [formula.formulaContent.planId] The id of the plan
-     * associated with the virtual machine image
+     * @param {string} [formula.formulaContent.provisioningState] The provisioning
+     * status of the resource.
      *
-     * @param {object} [formula.formulaContent.networkInterface] The network
-     * interface properties.
+     * @param {string} [formula.formulaContent.id] The identifier of the resource.
      *
-     * @param {string} [formula.formulaContent.networkInterface.virtualNetworkId]
-     * The resource ID of the virtual network.
+     * @param {string} [formula.formulaContent.name] The name of the resource.
      *
-     * @param {string} [formula.formulaContent.networkInterface.subnetId] The
-     * resource ID of the sub net.
+     * @param {string} [formula.formulaContent.type] The type of the resource.
      *
-     * @param {string} [formula.formulaContent.networkInterface.publicIpAddressId]
-     * The resource ID of the public IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.publicIpAddress]
-     * The public IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.privateIpAddress]
-     * The private IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.dnsName] The DNS
-     * name.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.rdpAuthority] The
-     * RdpAuthority property is a server DNS host name or IP address followed by
-     * the service port number for RDP (Remote Desktop Protocol).
-     *
-     * @param {string} [formula.formulaContent.networkInterface.sshAuthority] The
-     * SshAuthority property is a server DNS host name or IP address followed by
-     * the service port number for SSH.
-     *
-     * @param {object}
-     * [formula.formulaContent.networkInterface.sharedPublicIpAddressConfiguration]
-     * The configuration for sharing a public IP address across multiple virtual
-     * machines.
-     *
-     * @param {array}
-     * [formula.formulaContent.networkInterface.sharedPublicIpAddressConfiguration.inboundNatRules]
-     * The incoming NAT rules
-     *
-     * @param {date} [formula.formulaContent.expirationDate] The expiration date
-     * for VM.
-     *
-     * @param {boolean} [formula.formulaContent.allowClaim] Indicates whether
-     * another user can take ownership of the virtual machine
-     *
-     * @param {string} [formula.formulaContent.storageType] Storage type to use for
-     * virtual machine (i.e. Standard, Premium).
-     *
-     * @param {string} [formula.formulaContent.virtualMachineCreationSource] Tells
-     * source of creation of lab virtual machine. Output property only. Possible
-     * values include: 'FromCustomImage', 'FromGalleryImage'
-     *
-     * @param {string} [formula.formulaContent.environmentId] The resource ID of
-     * the environment that contains this virtual machine, if any.
-     *
-     * @param {array} [formula.formulaContent.dataDiskParameters] New or existing
-     * data disks to attach to the virtual machine after creation
-     *
-     * @param {array} [formula.formulaContent.scheduleParameters] Virtual Machine
-     * schedules to be created
-     *
-     * @param {string} [formula.formulaContent.lastKnownPowerState] Last known
-     * compute power state captured in DTL
-     *
-     * @param {string} [formula.formulaContent.name] The name of the virtual
-     * machine or environment
-     *
-     * @param {string} [formula.formulaContent.location] The location of the new
-     * virtual machine or environment
+     * @param {string} [formula.formulaContent.location] The location of the
+     * resource.
      *
      * @param {object} [formula.formulaContent.tags] The tags of the resource.
      *
@@ -7251,6 +4332,15 @@ export interface Formulas {
      *
      * @param {string} [formula.vm.labVmId] The identifier of the VM from which a
      * formula is to be created.
+     *
+     * @param {string} [formula.provisioningState] The provisioning status of the
+     * resource.
+     *
+     * @param {string} [formula.id] The identifier of the resource.
+     *
+     * @param {string} [formula.name] The name of the resource.
+     *
+     * @param {string} [formula.type] The type of the resource.
      *
      * @param {string} [formula.location] The location of the resource.
      *
@@ -7267,7 +4357,7 @@ export interface Formulas {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, formula: models.Formula, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Formula>>;
+    beginCreateOrUpdateResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, formula: models.Formula, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Formula>>;
 
     /**
      * Create or replace an existing Formula. This operation can take a while to
@@ -7279,8 +4369,7 @@ export interface Formulas {
      *
      * @param {string} name The name of the formula.
      *
-     * @param {object} formula A formula for creating a VM, specifying an image
-     * base and other parameters
+     * @param {object} formula
      *
      * @param {string} [formula.description] The description of the formula.
      *
@@ -7288,14 +4377,9 @@ export interface Formulas {
      *
      * @param {string} [formula.osType] The OS type of the formula.
      *
+     * @param {date} [formula.creationDate] The creation date of the formula.
+     *
      * @param {object} [formula.formulaContent] The content of the formula.
-     *
-     * @param {object} [formula.formulaContent.bulkCreationParameters] The number
-     * of virtual machine instances to create.
-     *
-     * @param {number}
-     * [formula.formulaContent.bulkCreationParameters.instanceCount] The number of
-     * virtual machine instances to create.
      *
      * @param {string} [formula.formulaContent.notes] The notes of the virtual
      * machine.
@@ -7303,17 +4387,11 @@ export interface Formulas {
      * @param {string} [formula.formulaContent.ownerObjectId] The object identifier
      * of the owner of the virtual machine.
      *
-     * @param {string} [formula.formulaContent.ownerUserPrincipalName] The user
-     * principal name of the virtual machine owner.
-     *
      * @param {string} [formula.formulaContent.createdByUserId] The object
      * identifier of the creator of the virtual machine.
      *
      * @param {string} [formula.formulaContent.createdByUser] The email address of
      * creator of the virtual machine.
-     *
-     * @param {date} [formula.formulaContent.createdDate] The creation date of the
-     * virtual machine.
      *
      * @param {string} [formula.formulaContent.computeId] The resource identifier
      * (Microsoft.Compute) of the virtual machine.
@@ -7336,8 +4414,8 @@ export interface Formulas {
      * @param {string} [formula.formulaContent.sshKey] The SSH key of the virtual
      * machine administrator.
      *
-     * @param {boolean} [formula.formulaContent.isAuthenticationWithSshKey]
-     * Indicates whether this virtual machine uses an SSH key for authentication.
+     * @param {boolean} [formula.formulaContent.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
      *
      * @param {string} [formula.formulaContent.fqdn] The fully-qualified domain
      * name of the virtual machine.
@@ -7387,77 +4465,17 @@ export interface Formulas {
      * @param {string} [formula.formulaContent.galleryImageReference.version] The
      * version of the gallery image.
      *
-     * @param {string} [formula.formulaContent.planId] The id of the plan
-     * associated with the virtual machine image
+     * @param {string} [formula.formulaContent.provisioningState] The provisioning
+     * status of the resource.
      *
-     * @param {object} [formula.formulaContent.networkInterface] The network
-     * interface properties.
+     * @param {string} [formula.formulaContent.id] The identifier of the resource.
      *
-     * @param {string} [formula.formulaContent.networkInterface.virtualNetworkId]
-     * The resource ID of the virtual network.
+     * @param {string} [formula.formulaContent.name] The name of the resource.
      *
-     * @param {string} [formula.formulaContent.networkInterface.subnetId] The
-     * resource ID of the sub net.
+     * @param {string} [formula.formulaContent.type] The type of the resource.
      *
-     * @param {string} [formula.formulaContent.networkInterface.publicIpAddressId]
-     * The resource ID of the public IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.publicIpAddress]
-     * The public IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.privateIpAddress]
-     * The private IP address.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.dnsName] The DNS
-     * name.
-     *
-     * @param {string} [formula.formulaContent.networkInterface.rdpAuthority] The
-     * RdpAuthority property is a server DNS host name or IP address followed by
-     * the service port number for RDP (Remote Desktop Protocol).
-     *
-     * @param {string} [formula.formulaContent.networkInterface.sshAuthority] The
-     * SshAuthority property is a server DNS host name or IP address followed by
-     * the service port number for SSH.
-     *
-     * @param {object}
-     * [formula.formulaContent.networkInterface.sharedPublicIpAddressConfiguration]
-     * The configuration for sharing a public IP address across multiple virtual
-     * machines.
-     *
-     * @param {array}
-     * [formula.formulaContent.networkInterface.sharedPublicIpAddressConfiguration.inboundNatRules]
-     * The incoming NAT rules
-     *
-     * @param {date} [formula.formulaContent.expirationDate] The expiration date
-     * for VM.
-     *
-     * @param {boolean} [formula.formulaContent.allowClaim] Indicates whether
-     * another user can take ownership of the virtual machine
-     *
-     * @param {string} [formula.formulaContent.storageType] Storage type to use for
-     * virtual machine (i.e. Standard, Premium).
-     *
-     * @param {string} [formula.formulaContent.virtualMachineCreationSource] Tells
-     * source of creation of lab virtual machine. Output property only. Possible
-     * values include: 'FromCustomImage', 'FromGalleryImage'
-     *
-     * @param {string} [formula.formulaContent.environmentId] The resource ID of
-     * the environment that contains this virtual machine, if any.
-     *
-     * @param {array} [formula.formulaContent.dataDiskParameters] New or existing
-     * data disks to attach to the virtual machine after creation
-     *
-     * @param {array} [formula.formulaContent.scheduleParameters] Virtual Machine
-     * schedules to be created
-     *
-     * @param {string} [formula.formulaContent.lastKnownPowerState] Last known
-     * compute power state captured in DTL
-     *
-     * @param {string} [formula.formulaContent.name] The name of the virtual
-     * machine or environment
-     *
-     * @param {string} [formula.formulaContent.location] The location of the new
-     * virtual machine or environment
+     * @param {string} [formula.formulaContent.location] The location of the
+     * resource.
      *
      * @param {object} [formula.formulaContent.tags] The tags of the resource.
      *
@@ -7466,6 +4484,15 @@ export interface Formulas {
      *
      * @param {string} [formula.vm.labVmId] The identifier of the VM from which a
      * formula is to be created.
+     *
+     * @param {string} [formula.provisioningState] The provisioning status of the
+     * resource.
+     *
+     * @param {string} [formula.id] The identifier of the resource.
+     *
+     * @param {string} [formula.name] The name of the resource.
+     *
+     * @param {string} [formula.type] The type of the resource.
      *
      * @param {string} [formula.location] The location of the resource.
      *
@@ -7498,13 +4525,13 @@ export interface Formulas {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, name: string, formula: models.Formula, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Formula>;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, name: string, formula: models.Formula, callback: ServiceCallback<models.Formula>): void;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, name: string, formula: models.Formula, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Formula>): void;
+    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, formula: models.Formula, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Formula>;
+    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, formula: models.Formula, callback: ServiceCallback<models.Formula>): void;
+    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, formula: models.Formula, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Formula>): void;
 
 
     /**
-     * List formulas in a given lab.
+     * List formulas.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -7516,163 +4543,14 @@ export interface Formulas {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<FormulaList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationFormula>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FormulaList>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationFormula>>;
 
     /**
-     * List formulas in a given lab.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {FormulaList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {FormulaList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link FormulaList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FormulaList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.FormulaList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FormulaList>): void;
-}
-
-/**
- * @class
- * GalleryImages
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DevTestLabsClient.
- */
-export interface GalleryImages {
-
-
-    /**
-     * List gallery images in a given lab.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=author)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<GalleryImageList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageList>>;
-
-    /**
-     * List gallery images in a given lab.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=author)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {GalleryImageList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {GalleryImageList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GalleryImageList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageList>;
-    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.GalleryImageList>): void;
-    list(resourceGroupName: string, labName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageList>): void;
-
-
-    /**
-     * List gallery images in a given lab.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<GalleryImageList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageList>>;
-
-    /**
-     * List gallery images in a given lab.
+     * List formulas.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -7689,7 +4567,7 @@ export interface GalleryImages {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {GalleryImageList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationFormula} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -7697,599 +4575,169 @@ export interface GalleryImages {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {GalleryImageList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GalleryImageList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.GalleryImageList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageList>): void;
-}
-
-/**
- * @class
- * NotificationChannels
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DevTestLabsClient.
- */
-export interface NotificationChannels {
-
-
-    /**
-     * List notification channels in a given lab.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=webHookUrl)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<NotificationChannelList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NotificationChannelList>>;
-
-    /**
-     * List notification channels in a given lab.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=webHookUrl)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {NotificationChannelList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {NotificationChannelList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NotificationChannelList} for more
+     *                      {ResponseWithContinuationFormula} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationFormula} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.NotificationChannelList>;
-    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.NotificationChannelList>): void;
-    list(resourceGroupName: string, labName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NotificationChannelList>): void;
-
-
-    /**
-     * Get notification channel.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the notificationChannel.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=webHookUrl)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<NotificationChannel>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NotificationChannel>>;
-
-    /**
-     * Get notification channel.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the notificationChannel.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=webHookUrl)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {NotificationChannel} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {NotificationChannel} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NotificationChannel} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.NotificationChannel>;
-    get(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.NotificationChannel>): void;
-    get(resourceGroupName: string, labName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NotificationChannel>): void;
-
-
-    /**
-     * Create or replace an existing notificationChannel.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the notificationChannel.
-     *
-     * @param {object} notificationChannel A notification.
-     *
-     * @param {string} [notificationChannel.webHookUrl] The webhook URL to send
-     * notifications to.
-     *
-     * @param {string} [notificationChannel.emailRecipient] The email recipient to
-     * send notifications to (can be a list of semi-colon separated email
-     * addresses).
-     *
-     * @param {string} [notificationChannel.notificationLocale] The locale to use
-     * when sending a notification (fallback for unsupported languages is EN).
-     *
-     * @param {string} [notificationChannel.description] Description of
-     * notification.
-     *
-     * @param {array} [notificationChannel.events] The list of event for which this
-     * notification is enabled.
-     *
-     * @param {string} [notificationChannel.location] The location of the resource.
-     *
-     * @param {object} [notificationChannel.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<NotificationChannel>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, notificationChannel: models.NotificationChannel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NotificationChannel>>;
-
-    /**
-     * Create or replace an existing notificationChannel.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the notificationChannel.
-     *
-     * @param {object} notificationChannel A notification.
-     *
-     * @param {string} [notificationChannel.webHookUrl] The webhook URL to send
-     * notifications to.
-     *
-     * @param {string} [notificationChannel.emailRecipient] The email recipient to
-     * send notifications to (can be a list of semi-colon separated email
-     * addresses).
-     *
-     * @param {string} [notificationChannel.notificationLocale] The locale to use
-     * when sending a notification (fallback for unsupported languages is EN).
-     *
-     * @param {string} [notificationChannel.description] Description of
-     * notification.
-     *
-     * @param {array} [notificationChannel.events] The list of event for which this
-     * notification is enabled.
-     *
-     * @param {string} [notificationChannel.location] The location of the resource.
-     *
-     * @param {object} [notificationChannel.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {NotificationChannel} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {NotificationChannel} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NotificationChannel} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, notificationChannel: models.NotificationChannel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NotificationChannel>;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, notificationChannel: models.NotificationChannel, callback: ServiceCallback<models.NotificationChannel>): void;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, notificationChannel: models.NotificationChannel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NotificationChannel>): void;
-
-
-    /**
-     * Delete notification channel.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the notificationChannel.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete notification channel.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the notificationChannel.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Modify properties of notification channels.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the notificationChannel.
-     *
-     * @param {object} notificationChannel A notification.
-     *
-     * @param {string} [notificationChannel.webHookUrl] The webhook URL to send
-     * notifications to.
-     *
-     * @param {string} [notificationChannel.emailRecipient] The email recipient to
-     * send notifications to (can be a list of semi-colon separated email
-     * addresses).
-     *
-     * @param {string} [notificationChannel.notificationLocale] The locale to use
-     * when sending a notification (fallback for unsupported languages is EN).
-     *
-     * @param {string} [notificationChannel.description] Description of
-     * notification.
-     *
-     * @param {array} [notificationChannel.events] The list of event for which this
-     * notification is enabled.
-     *
-     * @param {object} [notificationChannel.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<NotificationChannel>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, notificationChannel: models.NotificationChannelFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NotificationChannel>>;
-
-    /**
-     * Modify properties of notification channels.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the notificationChannel.
-     *
-     * @param {object} notificationChannel A notification.
-     *
-     * @param {string} [notificationChannel.webHookUrl] The webhook URL to send
-     * notifications to.
-     *
-     * @param {string} [notificationChannel.emailRecipient] The email recipient to
-     * send notifications to (can be a list of semi-colon separated email
-     * addresses).
-     *
-     * @param {string} [notificationChannel.notificationLocale] The locale to use
-     * when sending a notification (fallback for unsupported languages is EN).
-     *
-     * @param {string} [notificationChannel.description] Description of
-     * notification.
-     *
-     * @param {array} [notificationChannel.events] The list of event for which this
-     * notification is enabled.
-     *
-     * @param {object} [notificationChannel.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {NotificationChannel} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {NotificationChannel} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NotificationChannel} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, labName: string, name: string, notificationChannel: models.NotificationChannelFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NotificationChannel>;
-    update(resourceGroupName: string, labName: string, name: string, notificationChannel: models.NotificationChannelFragment, callback: ServiceCallback<models.NotificationChannel>): void;
-    update(resourceGroupName: string, labName: string, name: string, notificationChannel: models.NotificationChannelFragment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NotificationChannel>): void;
-
-
-    /**
-     * Send notification to provided channel.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the notificationChannel.
-     *
-     * @param {object} notifyParameters Properties for generating a Notification.
-     *
-     * @param {string} [notifyParameters.eventName] The type of event (i.e.
-     * AutoShutdown, Cost). Possible values include: 'AutoShutdown', 'Cost'
-     *
-     * @param {string} [notifyParameters.jsonPayload] Properties for the
-     * notification in json format.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    notifyWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, notifyParameters: models.NotifyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Send notification to provided channel.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the notificationChannel.
-     *
-     * @param {object} notifyParameters Properties for generating a Notification.
-     *
-     * @param {string} [notifyParameters.eventName] The type of event (i.e.
-     * AutoShutdown, Cost). Possible values include: 'AutoShutdown', 'Cost'
-     *
-     * @param {string} [notifyParameters.jsonPayload] Properties for the
-     * notification in json format.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    notify(resourceGroupName: string, labName: string, name: string, notifyParameters: models.NotifyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    notify(resourceGroupName: string, labName: string, name: string, notifyParameters: models.NotifyParameters, callback: ServiceCallback<void>): void;
-    notify(resourceGroupName: string, labName: string, name: string, notifyParameters: models.NotifyParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * List notification channels in a given lab.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<NotificationChannelList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NotificationChannelList>>;
-
-    /**
-     * List notification channels in a given lab.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {NotificationChannelList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {NotificationChannelList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NotificationChannelList} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NotificationChannelList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.NotificationChannelList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NotificationChannelList>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationFormula>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ResponseWithContinuationFormula>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationFormula>): void;
 }
 
 /**
  * @class
- * PolicySets
+ * GalleryImageOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DevTestLabsClient.
  */
-export interface PolicySets {
+export interface GalleryImageOperations {
 
 
     /**
-     * Evaluates lab policy.
+     * List gallery images.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.top]
+     *
+     * @param {string} [options.orderBy]
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResponseWithContinuationGalleryImage>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationGalleryImage>>;
+
+    /**
+     * List gallery images.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.top]
+     *
+     * @param {string} [options.orderBy]
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResponseWithContinuationGalleryImage} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResponseWithContinuationGalleryImage} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationGalleryImage} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationGalleryImage>;
+    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.ResponseWithContinuationGalleryImage>): void;
+    list(resourceGroupName: string, labName: string, options: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationGalleryImage>): void;
+
+
+    /**
+     * List gallery images.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResponseWithContinuationGalleryImage>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationGalleryImage>>;
+
+    /**
+     * List gallery images.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResponseWithContinuationGalleryImage} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResponseWithContinuationGalleryImage} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationGalleryImage} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationGalleryImage>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ResponseWithContinuationGalleryImage>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationGalleryImage>): void;
+}
+
+/**
+ * @class
+ * PolicySet
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DevTestLabsClient.
+ */
+export interface PolicySet {
+
+
+    /**
+     * Evaluates Lab Policy.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -8297,8 +4745,7 @@ export interface PolicySets {
      *
      * @param {string} name The name of the policy set.
      *
-     * @param {object} evaluatePoliciesRequest Request body for evaluating a policy
-     * set.
+     * @param {object} evaluatePoliciesRequest
      *
      * @param {array} [evaluatePoliciesRequest.policies] Policies to evaluate.
      *
@@ -8316,7 +4763,7 @@ export interface PolicySets {
     evaluatePoliciesWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, evaluatePoliciesRequest: models.EvaluatePoliciesRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EvaluatePoliciesResponse>>;
 
     /**
-     * Evaluates lab policy.
+     * Evaluates Lab Policy.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -8324,8 +4771,7 @@ export interface PolicySets {
      *
      * @param {string} name The name of the policy set.
      *
-     * @param {object} evaluatePoliciesRequest Request body for evaluating a policy
-     * set.
+     * @param {object} evaluatePoliciesRequest
      *
      * @param {array} [evaluatePoliciesRequest.policies] Policies to evaluate.
      *
@@ -8364,15 +4810,15 @@ export interface PolicySets {
 
 /**
  * @class
- * Policies
+ * PolicyOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DevTestLabsClient.
  */
-export interface Policies {
+export interface PolicyOperations {
 
 
     /**
-     * List policies in a given policy set.
+     * List policies.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -8382,31 +4828,25 @@ export interface Policies {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=description)'
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
+     * @param {number} [options.top]
      *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<PolicyList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationPolicy>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, policySetName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyList>>;
+    listWithHttpOperationResponse(resourceGroupName: string, labName: string, policySetName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationPolicy>>;
 
     /**
-     * List policies in a given policy set.
+     * List policies.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -8416,17 +4856,11 @@ export interface Policies {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=description)'
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
+     * @param {number} [options.top]
      *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -8438,7 +4872,7 @@ export interface Policies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {PolicyList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationPolicy} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8446,16 +4880,17 @@ export interface Policies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {PolicyList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PolicyList} for more information.
+     *                      {ResponseWithContinuationPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationPolicy} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, labName: string, policySetName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyList>;
-    list(resourceGroupName: string, labName: string, policySetName: string, callback: ServiceCallback<models.PolicyList>): void;
-    list(resourceGroupName: string, labName: string, policySetName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyList>): void;
+    list(resourceGroupName: string, labName: string, policySetName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationPolicy>;
+    list(resourceGroupName: string, labName: string, policySetName: string, callback: ServiceCallback<models.ResponseWithContinuationPolicy>): void;
+    list(resourceGroupName: string, labName: string, policySetName: string, options: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationPolicy>): void;
 
 
     /**
@@ -8470,9 +4905,6 @@ export interface Policies {
      * @param {string} name The name of the policy.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=description)'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -8483,7 +4915,7 @@ export interface Policies {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, policySetName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Policy>>;
+    getResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, policySetName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Policy>>;
 
     /**
      * Get policy.
@@ -8497,9 +4929,6 @@ export interface Policies {
      * @param {string} name The name of the policy.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=description)'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -8526,9 +4955,9 @@ export interface Policies {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, labName: string, policySetName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Policy>;
-    get(resourceGroupName: string, labName: string, policySetName: string, name: string, callback: ServiceCallback<models.Policy>): void;
-    get(resourceGroupName: string, labName: string, policySetName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Policy>): void;
+    getResource(resourceGroupName: string, labName: string, policySetName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Policy>;
+    getResource(resourceGroupName: string, labName: string, policySetName: string, name: string, callback: ServiceCallback<models.Policy>): void;
+    getResource(resourceGroupName: string, labName: string, policySetName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Policy>): void;
 
 
     /**
@@ -8542,29 +4971,32 @@ export interface Policies {
      *
      * @param {string} name The name of the policy.
      *
-     * @param {object} policy A Policy.
+     * @param {object} policy
      *
      * @param {string} [policy.description] The description of the policy.
      *
      * @param {string} [policy.status] The status of the policy. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [policy.factName] The fact name of the policy (e.g.
-     * LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc. Possible values include:
-     * 'UserOwnedLabVmCount', 'UserOwnedLabPremiumVmCount', 'LabVmCount',
-     * 'LabPremiumVmCount', 'LabVmSize', 'GalleryImage',
-     * 'UserOwnedLabVmCountInSubnet', 'LabTargetCost', 'EnvironmentTemplate',
-     * 'ScheduleEditPermission'
+     * @param {string} [policy.factName] The fact name of the policy. Possible
+     * values include: 'UserOwnedLabVmCount', 'LabVmCount', 'LabVmSize',
+     * 'GalleryImage', 'UserOwnedLabVmCountInSubnet'
      *
      * @param {string} [policy.factData] The fact data of the policy.
      *
-     * @param {string} [policy.threshold] The threshold of the policy (i.e. a
-     * number for MaxValuePolicy, and a JSON array of values for
-     * AllowedValuesPolicy).
+     * @param {string} [policy.threshold] The threshold of the policy.
      *
-     * @param {string} [policy.evaluatorType] The evaluator type of the policy
-     * (i.e. AllowedValuesPolicy, MaxValuePolicy). Possible values include:
-     * 'AllowedValuesPolicy', 'MaxValuePolicy'
+     * @param {string} [policy.evaluatorType] The evaluator type of the policy.
+     * Possible values include: 'AllowedValuesPolicy', 'MaxValuePolicy'
+     *
+     * @param {string} [policy.provisioningState] The provisioning status of the
+     * resource.
+     *
+     * @param {string} [policy.id] The identifier of the resource.
+     *
+     * @param {string} [policy.name] The name of the resource.
+     *
+     * @param {string} [policy.type] The type of the resource.
      *
      * @param {string} [policy.location] The location of the resource.
      *
@@ -8581,7 +5013,7 @@ export interface Policies {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, policySetName: string, name: string, policy: models.Policy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Policy>>;
+    createOrUpdateResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, policySetName: string, name: string, policy: models.Policy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Policy>>;
 
     /**
      * Create or replace an existing policy.
@@ -8594,29 +5026,32 @@ export interface Policies {
      *
      * @param {string} name The name of the policy.
      *
-     * @param {object} policy A Policy.
+     * @param {object} policy
      *
      * @param {string} [policy.description] The description of the policy.
      *
      * @param {string} [policy.status] The status of the policy. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [policy.factName] The fact name of the policy (e.g.
-     * LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc. Possible values include:
-     * 'UserOwnedLabVmCount', 'UserOwnedLabPremiumVmCount', 'LabVmCount',
-     * 'LabPremiumVmCount', 'LabVmSize', 'GalleryImage',
-     * 'UserOwnedLabVmCountInSubnet', 'LabTargetCost', 'EnvironmentTemplate',
-     * 'ScheduleEditPermission'
+     * @param {string} [policy.factName] The fact name of the policy. Possible
+     * values include: 'UserOwnedLabVmCount', 'LabVmCount', 'LabVmSize',
+     * 'GalleryImage', 'UserOwnedLabVmCountInSubnet'
      *
      * @param {string} [policy.factData] The fact data of the policy.
      *
-     * @param {string} [policy.threshold] The threshold of the policy (i.e. a
-     * number for MaxValuePolicy, and a JSON array of values for
-     * AllowedValuesPolicy).
+     * @param {string} [policy.threshold] The threshold of the policy.
      *
-     * @param {string} [policy.evaluatorType] The evaluator type of the policy
-     * (i.e. AllowedValuesPolicy, MaxValuePolicy). Possible values include:
-     * 'AllowedValuesPolicy', 'MaxValuePolicy'
+     * @param {string} [policy.evaluatorType] The evaluator type of the policy.
+     * Possible values include: 'AllowedValuesPolicy', 'MaxValuePolicy'
+     *
+     * @param {string} [policy.provisioningState] The provisioning status of the
+     * resource.
+     *
+     * @param {string} [policy.id] The identifier of the resource.
+     *
+     * @param {string} [policy.name] The name of the resource.
+     *
+     * @param {string} [policy.type] The type of the resource.
      *
      * @param {string} [policy.location] The location of the resource.
      *
@@ -8649,9 +5084,9 @@ export interface Policies {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, labName: string, policySetName: string, name: string, policy: models.Policy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Policy>;
-    createOrUpdate(resourceGroupName: string, labName: string, policySetName: string, name: string, policy: models.Policy, callback: ServiceCallback<models.Policy>): void;
-    createOrUpdate(resourceGroupName: string, labName: string, policySetName: string, name: string, policy: models.Policy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Policy>): void;
+    createOrUpdateResource(resourceGroupName: string, labName: string, policySetName: string, name: string, policy: models.Policy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Policy>;
+    createOrUpdateResource(resourceGroupName: string, labName: string, policySetName: string, name: string, policy: models.Policy, callback: ServiceCallback<models.Policy>): void;
+    createOrUpdateResource(resourceGroupName: string, labName: string, policySetName: string, name: string, policy: models.Policy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Policy>): void;
 
 
     /**
@@ -8676,7 +5111,7 @@ export interface Policies {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, policySetName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, policySetName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete policy.
@@ -8715,9 +5150,9 @@ export interface Policies {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, labName: string, policySetName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, labName: string, policySetName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, labName: string, policySetName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteResource(resourceGroupName: string, labName: string, policySetName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteResource(resourceGroupName: string, labName: string, policySetName: string, name: string, callback: ServiceCallback<void>): void;
+    deleteResource(resourceGroupName: string, labName: string, policySetName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -8731,29 +5166,34 @@ export interface Policies {
      *
      * @param {string} name The name of the policy.
      *
-     * @param {object} policy A Policy.
+     * @param {object} policy
      *
      * @param {string} [policy.description] The description of the policy.
      *
      * @param {string} [policy.status] The status of the policy. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [policy.factName] The fact name of the policy (e.g.
-     * LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc. Possible values include:
-     * 'UserOwnedLabVmCount', 'UserOwnedLabPremiumVmCount', 'LabVmCount',
-     * 'LabPremiumVmCount', 'LabVmSize', 'GalleryImage',
-     * 'UserOwnedLabVmCountInSubnet', 'LabTargetCost', 'EnvironmentTemplate',
-     * 'ScheduleEditPermission'
+     * @param {string} [policy.factName] The fact name of the policy. Possible
+     * values include: 'UserOwnedLabVmCount', 'LabVmCount', 'LabVmSize',
+     * 'GalleryImage', 'UserOwnedLabVmCountInSubnet'
      *
      * @param {string} [policy.factData] The fact data of the policy.
      *
-     * @param {string} [policy.threshold] The threshold of the policy (i.e. a
-     * number for MaxValuePolicy, and a JSON array of values for
-     * AllowedValuesPolicy).
+     * @param {string} [policy.threshold] The threshold of the policy.
      *
-     * @param {string} [policy.evaluatorType] The evaluator type of the policy
-     * (i.e. AllowedValuesPolicy, MaxValuePolicy). Possible values include:
-     * 'AllowedValuesPolicy', 'MaxValuePolicy'
+     * @param {string} [policy.evaluatorType] The evaluator type of the policy.
+     * Possible values include: 'AllowedValuesPolicy', 'MaxValuePolicy'
+     *
+     * @param {string} [policy.provisioningState] The provisioning status of the
+     * resource.
+     *
+     * @param {string} [policy.id] The identifier of the resource.
+     *
+     * @param {string} [policy.name] The name of the resource.
+     *
+     * @param {string} [policy.type] The type of the resource.
+     *
+     * @param {string} [policy.location] The location of the resource.
      *
      * @param {object} [policy.tags] The tags of the resource.
      *
@@ -8768,7 +5208,7 @@ export interface Policies {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, labName: string, policySetName: string, name: string, policy: models.PolicyFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Policy>>;
+    patchResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, policySetName: string, name: string, policy: models.Policy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Policy>>;
 
     /**
      * Modify properties of policies.
@@ -8781,29 +5221,34 @@ export interface Policies {
      *
      * @param {string} name The name of the policy.
      *
-     * @param {object} policy A Policy.
+     * @param {object} policy
      *
      * @param {string} [policy.description] The description of the policy.
      *
      * @param {string} [policy.status] The status of the policy. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [policy.factName] The fact name of the policy (e.g.
-     * LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc. Possible values include:
-     * 'UserOwnedLabVmCount', 'UserOwnedLabPremiumVmCount', 'LabVmCount',
-     * 'LabPremiumVmCount', 'LabVmSize', 'GalleryImage',
-     * 'UserOwnedLabVmCountInSubnet', 'LabTargetCost', 'EnvironmentTemplate',
-     * 'ScheduleEditPermission'
+     * @param {string} [policy.factName] The fact name of the policy. Possible
+     * values include: 'UserOwnedLabVmCount', 'LabVmCount', 'LabVmSize',
+     * 'GalleryImage', 'UserOwnedLabVmCountInSubnet'
      *
      * @param {string} [policy.factData] The fact data of the policy.
      *
-     * @param {string} [policy.threshold] The threshold of the policy (i.e. a
-     * number for MaxValuePolicy, and a JSON array of values for
-     * AllowedValuesPolicy).
+     * @param {string} [policy.threshold] The threshold of the policy.
      *
-     * @param {string} [policy.evaluatorType] The evaluator type of the policy
-     * (i.e. AllowedValuesPolicy, MaxValuePolicy). Possible values include:
-     * 'AllowedValuesPolicy', 'MaxValuePolicy'
+     * @param {string} [policy.evaluatorType] The evaluator type of the policy.
+     * Possible values include: 'AllowedValuesPolicy', 'MaxValuePolicy'
+     *
+     * @param {string} [policy.provisioningState] The provisioning status of the
+     * resource.
+     *
+     * @param {string} [policy.id] The identifier of the resource.
+     *
+     * @param {string} [policy.name] The name of the resource.
+     *
+     * @param {string} [policy.type] The type of the resource.
+     *
+     * @param {string} [policy.location] The location of the resource.
      *
      * @param {object} [policy.tags] The tags of the resource.
      *
@@ -8834,13 +5279,13 @@ export interface Policies {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, labName: string, policySetName: string, name: string, policy: models.PolicyFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Policy>;
-    update(resourceGroupName: string, labName: string, policySetName: string, name: string, policy: models.PolicyFragment, callback: ServiceCallback<models.Policy>): void;
-    update(resourceGroupName: string, labName: string, policySetName: string, name: string, policy: models.PolicyFragment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Policy>): void;
+    patchResource(resourceGroupName: string, labName: string, policySetName: string, name: string, policy: models.Policy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Policy>;
+    patchResource(resourceGroupName: string, labName: string, policySetName: string, name: string, policy: models.Policy, callback: ServiceCallback<models.Policy>): void;
+    patchResource(resourceGroupName: string, labName: string, policySetName: string, name: string, policy: models.Policy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Policy>): void;
 
 
     /**
-     * List policies in a given policy set.
+     * List policies.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -8852,14 +5297,14 @@ export interface Policies {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<PolicyList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationPolicy>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyList>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationPolicy>>;
 
     /**
-     * List policies in a given policy set.
+     * List policies.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -8876,7 +5321,7 @@ export interface Policies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {PolicyList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationPolicy} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8884,29 +5329,30 @@ export interface Policies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {PolicyList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PolicyList} for more information.
+     *                      {ResponseWithContinuationPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationPolicy} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.PolicyList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyList>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationPolicy>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ResponseWithContinuationPolicy>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationPolicy>): void;
 }
 
 /**
  * @class
- * Schedules
+ * ScheduleOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DevTestLabsClient.
  */
-export interface Schedules {
+export interface ScheduleOperations {
 
 
     /**
-     * List schedules in a given lab.
+     * List schedules.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -8914,31 +5360,25 @@ export interface Schedules {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
+     * @param {number} [options.top]
      *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ScheduleList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationSchedule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduleList>>;
+    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationSchedule>>;
 
     /**
-     * List schedules in a given lab.
+     * List schedules.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -8946,17 +5386,11 @@ export interface Schedules {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
+     * @param {number} [options.top]
      *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -8968,7 +5402,7 @@ export interface Schedules {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ScheduleList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationSchedule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8976,16 +5410,17 @@ export interface Schedules {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ScheduleList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ScheduleList} for more information.
+     *                      {ResponseWithContinuationSchedule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationSchedule} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduleList>;
-    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.ScheduleList>): void;
-    list(resourceGroupName: string, labName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduleList>): void;
+    list(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationSchedule>;
+    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.ResponseWithContinuationSchedule>): void;
+    list(resourceGroupName: string, labName: string, options: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationSchedule>): void;
 
 
     /**
@@ -8998,9 +5433,6 @@ export interface Schedules {
      * @param {string} name The name of the schedule.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9011,7 +5443,7 @@ export interface Schedules {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
+    getResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
 
     /**
      * Get schedule.
@@ -9023,9 +5455,6 @@ export interface Schedules {
      * @param {string} name The name of the schedule.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9052,13 +5481,14 @@ export interface Schedules {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
-    get(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.Schedule>): void;
-    get(resourceGroupName: string, labName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
+    getResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
+    getResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.Schedule>): void;
+    getResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
 
 
     /**
-     * Create or replace an existing schedule.
+     * Create or replace an existing schedule. This operation can take a while to
+     * complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -9066,60 +5496,42 @@ export interface Schedules {
      *
      * @param {string} name The name of the schedule.
      *
-     * @param {object} schedule A schedule.
+     * @param {object} schedule
      *
-     * @param {string} [schedule.status] The status of the schedule (i.e. Enabled,
-     * Disabled). Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [schedule.status] The status of the schedule. Possible
+     * values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [schedule.taskType] The task type of the schedule (e.g.
-     * LabVmsShutdownTask, LabVmAutoStart).
+     * @param {string} [schedule.taskType] The task type of the schedule. Possible
+     * values include: 'LabVmsShutdownTask', 'LabVmsStartupTask', 'LabBillingTask'
      *
-     * @param {object} [schedule.weeklyRecurrence] If the schedule will occur only
-     * some days of the week, specify the weekly recurrence.
+     * @param {object} [schedule.weeklyRecurrence] The weekly recurrence of the
+     * schedule.
      *
-     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week for
-     * which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
+     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week.
      *
-     * @param {string} [schedule.weeklyRecurrence.time] The time of the day the
-     * schedule will occur.
+     * @param {string} [schedule.weeklyRecurrence.time] The time of the day.
      *
-     * @param {object} [schedule.dailyRecurrence] If the schedule will occur once
-     * each day of the week, specify the daily recurrence.
+     * @param {object} [schedule.dailyRecurrence] The daily recurrence of the
+     * schedule.
      *
-     * @param {string} [schedule.dailyRecurrence.time] The time of day the schedule
-     * will occur.
+     * @param {string} [schedule.dailyRecurrence.time]
      *
-     * @param {object} [schedule.hourlyRecurrence] If the schedule will occur
-     * multiple times a day, specify the hourly recurrence.
+     * @param {object} [schedule.hourlyRecurrence] The hourly recurrence of the
+     * schedule.
      *
      * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
      * schedule will run.
      *
-     * @param {string} [schedule.timeZoneId] The time zone ID (e.g. Pacific
-     * Standard time).
+     * @param {string} [schedule.timeZoneId] The time zone id.
      *
-     * @param {object} [schedule.notificationSettings] Notification settings.
+     * @param {string} [schedule.provisioningState] The provisioning status of the
+     * resource.
      *
-     * @param {string} [schedule.notificationSettings.status] If notifications are
-     * enabled for this schedule (i.e. Enabled, Disabled). Possible values include:
-     * 'Enabled', 'Disabled'
+     * @param {string} [schedule.id] The identifier of the resource.
      *
-     * @param {number} [schedule.notificationSettings.timeInMinutes] Time in
-     * minutes before event at which notification will be sent.
+     * @param {string} [schedule.name] The name of the resource.
      *
-     * @param {string} [schedule.notificationSettings.webhookUrl] The webhook URL
-     * to which the notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon separated
-     * email addresses).
-     *
-     * @param {string} [schedule.notificationSettings.notificationLocale] The
-     * locale to use when sending a notification (fallback for unsupported
-     * languages is EN).
-     *
-     * @param {string} [schedule.targetResourceId] The resource ID to which the
-     * schedule belongs
+     * @param {string} [schedule.type] The type of the resource.
      *
      * @param {string} [schedule.location] The location of the resource.
      *
@@ -9136,10 +5548,11 @@ export interface Schedules {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
+    createOrUpdateResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
 
     /**
-     * Create or replace an existing schedule.
+     * Create or replace an existing schedule. This operation can take a while to
+     * complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -9147,60 +5560,42 @@ export interface Schedules {
      *
      * @param {string} name The name of the schedule.
      *
-     * @param {object} schedule A schedule.
+     * @param {object} schedule
      *
-     * @param {string} [schedule.status] The status of the schedule (i.e. Enabled,
-     * Disabled). Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [schedule.status] The status of the schedule. Possible
+     * values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [schedule.taskType] The task type of the schedule (e.g.
-     * LabVmsShutdownTask, LabVmAutoStart).
+     * @param {string} [schedule.taskType] The task type of the schedule. Possible
+     * values include: 'LabVmsShutdownTask', 'LabVmsStartupTask', 'LabBillingTask'
      *
-     * @param {object} [schedule.weeklyRecurrence] If the schedule will occur only
-     * some days of the week, specify the weekly recurrence.
+     * @param {object} [schedule.weeklyRecurrence] The weekly recurrence of the
+     * schedule.
      *
-     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week for
-     * which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
+     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week.
      *
-     * @param {string} [schedule.weeklyRecurrence.time] The time of the day the
-     * schedule will occur.
+     * @param {string} [schedule.weeklyRecurrence.time] The time of the day.
      *
-     * @param {object} [schedule.dailyRecurrence] If the schedule will occur once
-     * each day of the week, specify the daily recurrence.
+     * @param {object} [schedule.dailyRecurrence] The daily recurrence of the
+     * schedule.
      *
-     * @param {string} [schedule.dailyRecurrence.time] The time of day the schedule
-     * will occur.
+     * @param {string} [schedule.dailyRecurrence.time]
      *
-     * @param {object} [schedule.hourlyRecurrence] If the schedule will occur
-     * multiple times a day, specify the hourly recurrence.
+     * @param {object} [schedule.hourlyRecurrence] The hourly recurrence of the
+     * schedule.
      *
      * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
      * schedule will run.
      *
-     * @param {string} [schedule.timeZoneId] The time zone ID (e.g. Pacific
-     * Standard time).
+     * @param {string} [schedule.timeZoneId] The time zone id.
      *
-     * @param {object} [schedule.notificationSettings] Notification settings.
+     * @param {string} [schedule.provisioningState] The provisioning status of the
+     * resource.
      *
-     * @param {string} [schedule.notificationSettings.status] If notifications are
-     * enabled for this schedule (i.e. Enabled, Disabled). Possible values include:
-     * 'Enabled', 'Disabled'
+     * @param {string} [schedule.id] The identifier of the resource.
      *
-     * @param {number} [schedule.notificationSettings.timeInMinutes] Time in
-     * minutes before event at which notification will be sent.
+     * @param {string} [schedule.name] The name of the resource.
      *
-     * @param {string} [schedule.notificationSettings.webhookUrl] The webhook URL
-     * to which the notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon separated
-     * email addresses).
-     *
-     * @param {string} [schedule.notificationSettings.notificationLocale] The
-     * locale to use when sending a notification (fallback for unsupported
-     * languages is EN).
-     *
-     * @param {string} [schedule.targetResourceId] The resource ID to which the
-     * schedule belongs
+     * @param {string} [schedule.type] The type of the resource.
      *
      * @param {string} [schedule.location] The location of the resource.
      *
@@ -9233,13 +5628,13 @@ export interface Schedules {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, callback: ServiceCallback<models.Schedule>): void;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, callback: ServiceCallback<models.Schedule>): void;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
 
 
     /**
-     * Delete schedule.
+     * Delete schedule. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -9258,10 +5653,10 @@ export interface Schedules {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete schedule.
+     * Delete schedule. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -9295,9 +5690,9 @@ export interface Schedules {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+    deleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -9309,60 +5704,44 @@ export interface Schedules {
      *
      * @param {string} name The name of the schedule.
      *
-     * @param {object} schedule A schedule.
+     * @param {object} schedule
      *
-     * @param {string} [schedule.status] The status of the schedule (i.e. Enabled,
-     * Disabled). Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [schedule.status] The status of the schedule. Possible
+     * values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [schedule.taskType] The task type of the schedule (e.g.
-     * LabVmsShutdownTask, LabVmAutoStart).
+     * @param {string} [schedule.taskType] The task type of the schedule. Possible
+     * values include: 'LabVmsShutdownTask', 'LabVmsStartupTask', 'LabBillingTask'
      *
-     * @param {object} [schedule.weeklyRecurrence] If the schedule will occur only
-     * some days of the week, specify the weekly recurrence.
+     * @param {object} [schedule.weeklyRecurrence] The weekly recurrence of the
+     * schedule.
      *
-     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week for
-     * which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
+     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week.
      *
-     * @param {string} [schedule.weeklyRecurrence.time] The time of the day the
-     * schedule will occur.
+     * @param {string} [schedule.weeklyRecurrence.time] The time of the day.
      *
-     * @param {object} [schedule.dailyRecurrence] If the schedule will occur once
-     * each day of the week, specify the daily recurrence.
+     * @param {object} [schedule.dailyRecurrence] The daily recurrence of the
+     * schedule.
      *
-     * @param {string} [schedule.dailyRecurrence.time] The time of day the schedule
-     * will occur.
+     * @param {string} [schedule.dailyRecurrence.time]
      *
-     * @param {object} [schedule.hourlyRecurrence] If the schedule will occur
-     * multiple times a day, specify the hourly recurrence.
+     * @param {object} [schedule.hourlyRecurrence] The hourly recurrence of the
+     * schedule.
      *
      * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
      * schedule will run.
      *
-     * @param {string} [schedule.timeZoneId] The time zone ID (e.g. Pacific
-     * Standard time).
+     * @param {string} [schedule.timeZoneId] The time zone id.
      *
-     * @param {object} [schedule.notificationSettings] Notification settings.
+     * @param {string} [schedule.provisioningState] The provisioning status of the
+     * resource.
      *
-     * @param {string} [schedule.notificationSettings.status] If notifications are
-     * enabled for this schedule (i.e. Enabled, Disabled). Possible values include:
-     * 'Enabled', 'Disabled'
+     * @param {string} [schedule.id] The identifier of the resource.
      *
-     * @param {number} [schedule.notificationSettings.timeInMinutes] Time in
-     * minutes before event at which notification will be sent.
+     * @param {string} [schedule.name] The name of the resource.
      *
-     * @param {string} [schedule.notificationSettings.webhookUrl] The webhook URL
-     * to which the notification will be sent.
+     * @param {string} [schedule.type] The type of the resource.
      *
-     * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon separated
-     * email addresses).
-     *
-     * @param {string} [schedule.notificationSettings.notificationLocale] The
-     * locale to use when sending a notification (fallback for unsupported
-     * languages is EN).
-     *
-     * @param {string} [schedule.targetResourceId] The resource ID to which the
-     * schedule belongs
+     * @param {string} [schedule.location] The location of the resource.
      *
      * @param {object} [schedule.tags] The tags of the resource.
      *
@@ -9377,7 +5756,7 @@ export interface Schedules {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, schedule: models.ScheduleFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
+    patchResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
 
     /**
      * Modify properties of schedules.
@@ -9388,60 +5767,44 @@ export interface Schedules {
      *
      * @param {string} name The name of the schedule.
      *
-     * @param {object} schedule A schedule.
+     * @param {object} schedule
      *
-     * @param {string} [schedule.status] The status of the schedule (i.e. Enabled,
-     * Disabled). Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [schedule.status] The status of the schedule. Possible
+     * values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [schedule.taskType] The task type of the schedule (e.g.
-     * LabVmsShutdownTask, LabVmAutoStart).
+     * @param {string} [schedule.taskType] The task type of the schedule. Possible
+     * values include: 'LabVmsShutdownTask', 'LabVmsStartupTask', 'LabBillingTask'
      *
-     * @param {object} [schedule.weeklyRecurrence] If the schedule will occur only
-     * some days of the week, specify the weekly recurrence.
+     * @param {object} [schedule.weeklyRecurrence] The weekly recurrence of the
+     * schedule.
      *
-     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week for
-     * which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
+     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week.
      *
-     * @param {string} [schedule.weeklyRecurrence.time] The time of the day the
-     * schedule will occur.
+     * @param {string} [schedule.weeklyRecurrence.time] The time of the day.
      *
-     * @param {object} [schedule.dailyRecurrence] If the schedule will occur once
-     * each day of the week, specify the daily recurrence.
+     * @param {object} [schedule.dailyRecurrence] The daily recurrence of the
+     * schedule.
      *
-     * @param {string} [schedule.dailyRecurrence.time] The time of day the schedule
-     * will occur.
+     * @param {string} [schedule.dailyRecurrence.time]
      *
-     * @param {object} [schedule.hourlyRecurrence] If the schedule will occur
-     * multiple times a day, specify the hourly recurrence.
+     * @param {object} [schedule.hourlyRecurrence] The hourly recurrence of the
+     * schedule.
      *
      * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
      * schedule will run.
      *
-     * @param {string} [schedule.timeZoneId] The time zone ID (e.g. Pacific
-     * Standard time).
+     * @param {string} [schedule.timeZoneId] The time zone id.
      *
-     * @param {object} [schedule.notificationSettings] Notification settings.
+     * @param {string} [schedule.provisioningState] The provisioning status of the
+     * resource.
      *
-     * @param {string} [schedule.notificationSettings.status] If notifications are
-     * enabled for this schedule (i.e. Enabled, Disabled). Possible values include:
-     * 'Enabled', 'Disabled'
+     * @param {string} [schedule.id] The identifier of the resource.
      *
-     * @param {number} [schedule.notificationSettings.timeInMinutes] Time in
-     * minutes before event at which notification will be sent.
+     * @param {string} [schedule.name] The name of the resource.
      *
-     * @param {string} [schedule.notificationSettings.webhookUrl] The webhook URL
-     * to which the notification will be sent.
+     * @param {string} [schedule.type] The type of the resource.
      *
-     * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon separated
-     * email addresses).
-     *
-     * @param {string} [schedule.notificationSettings.notificationLocale] The
-     * locale to use when sending a notification (fallback for unsupported
-     * languages is EN).
-     *
-     * @param {string} [schedule.targetResourceId] The resource ID to which the
-     * schedule belongs
+     * @param {string} [schedule.location] The location of the resource.
      *
      * @param {object} [schedule.tags] The tags of the resource.
      *
@@ -9472,9 +5835,9 @@ export interface Schedules {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, labName: string, name: string, schedule: models.ScheduleFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
-    update(resourceGroupName: string, labName: string, name: string, schedule: models.ScheduleFragment, callback: ServiceCallback<models.Schedule>): void;
-    update(resourceGroupName: string, labName: string, name: string, schedule: models.ScheduleFragment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
+    patchResource(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
+    patchResource(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, callback: ServiceCallback<models.Schedule>): void;
+    patchResource(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
 
 
     /**
@@ -9540,7 +5903,154 @@ export interface Schedules {
 
 
     /**
-     * Lists all applicable schedules
+     * Create or replace an existing schedule. This operation can take a while to
+     * complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {string} name The name of the schedule.
+     *
+     * @param {object} schedule
+     *
+     * @param {string} [schedule.status] The status of the schedule. Possible
+     * values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [schedule.taskType] The task type of the schedule. Possible
+     * values include: 'LabVmsShutdownTask', 'LabVmsStartupTask', 'LabBillingTask'
+     *
+     * @param {object} [schedule.weeklyRecurrence] The weekly recurrence of the
+     * schedule.
+     *
+     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week.
+     *
+     * @param {string} [schedule.weeklyRecurrence.time] The time of the day.
+     *
+     * @param {object} [schedule.dailyRecurrence] The daily recurrence of the
+     * schedule.
+     *
+     * @param {string} [schedule.dailyRecurrence.time]
+     *
+     * @param {object} [schedule.hourlyRecurrence] The hourly recurrence of the
+     * schedule.
+     *
+     * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
+     * schedule will run.
+     *
+     * @param {string} [schedule.timeZoneId] The time zone id.
+     *
+     * @param {string} [schedule.provisioningState] The provisioning status of the
+     * resource.
+     *
+     * @param {string} [schedule.id] The identifier of the resource.
+     *
+     * @param {string} [schedule.name] The name of the resource.
+     *
+     * @param {string} [schedule.type] The type of the resource.
+     *
+     * @param {string} [schedule.location] The location of the resource.
+     *
+     * @param {object} [schedule.tags] The tags of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Schedule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
+
+    /**
+     * Create or replace an existing schedule. This operation can take a while to
+     * complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {string} name The name of the schedule.
+     *
+     * @param {object} schedule
+     *
+     * @param {string} [schedule.status] The status of the schedule. Possible
+     * values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [schedule.taskType] The task type of the schedule. Possible
+     * values include: 'LabVmsShutdownTask', 'LabVmsStartupTask', 'LabBillingTask'
+     *
+     * @param {object} [schedule.weeklyRecurrence] The weekly recurrence of the
+     * schedule.
+     *
+     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week.
+     *
+     * @param {string} [schedule.weeklyRecurrence.time] The time of the day.
+     *
+     * @param {object} [schedule.dailyRecurrence] The daily recurrence of the
+     * schedule.
+     *
+     * @param {string} [schedule.dailyRecurrence.time]
+     *
+     * @param {object} [schedule.hourlyRecurrence] The hourly recurrence of the
+     * schedule.
+     *
+     * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
+     * schedule will run.
+     *
+     * @param {string} [schedule.timeZoneId] The time zone id.
+     *
+     * @param {string} [schedule.provisioningState] The provisioning status of the
+     * resource.
+     *
+     * @param {string} [schedule.id] The identifier of the resource.
+     *
+     * @param {string} [schedule.name] The name of the resource.
+     *
+     * @param {string} [schedule.type] The type of the resource.
+     *
+     * @param {string} [schedule.location] The location of the resource.
+     *
+     * @param {object} [schedule.tags] The tags of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Schedule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Schedule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Schedule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
+    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, callback: ServiceCallback<models.Schedule>): void;
+    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
+
+
+    /**
+     * Delete schedule. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -9555,14 +6065,14 @@ export interface Schedules {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ScheduleList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listApplicableWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduleList>>;
+    beginDeleteResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Lists all applicable schedules
+     * Delete schedule. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -9582,7 +6092,7 @@ export interface Schedules {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ScheduleList} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9590,16 +6100,15 @@ export interface Schedules {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ScheduleList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ScheduleList} for more information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listApplicable(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduleList>;
-    listApplicable(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.ScheduleList>): void;
-    listApplicable(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduleList>): void;
+    beginDeleteResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+    beginDeleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -9665,7 +6174,7 @@ export interface Schedules {
 
 
     /**
-     * List schedules in a given lab.
+     * List schedules.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -9677,14 +6186,14 @@ export interface Schedules {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ScheduleList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationSchedule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduleList>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationSchedule>>;
 
     /**
-     * List schedules in a given lab.
+     * List schedules.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -9701,7 +6210,7 @@ export interface Schedules {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ScheduleList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationSchedule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9709,86 +6218,30 @@ export interface Schedules {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ScheduleList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ScheduleList} for more information.
+     *                      {ResponseWithContinuationSchedule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationSchedule} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduleList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ScheduleList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduleList>): void;
-
-
-    /**
-     * Lists all applicable schedules
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ScheduleList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listApplicableNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduleList>>;
-
-    /**
-     * Lists all applicable schedules
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ScheduleList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ScheduleList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ScheduleList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listApplicableNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduleList>;
-    listApplicableNext(nextPageLink: string, callback: ServiceCallback<models.ScheduleList>): void;
-    listApplicableNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduleList>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationSchedule>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ResponseWithContinuationSchedule>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationSchedule>): void;
 }
 
 /**
  * @class
- * ServiceRunners
+ * VirtualMachine
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DevTestLabsClient.
  */
-export interface ServiceRunners {
+export interface VirtualMachine {
 
 
     /**
-     * List service runners in a given lab.
+     * List virtual machines.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -9796,28 +6249,25 @@ export interface ServiceRunners {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
+     * @param {number} [options.top]
      *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ServiceRunnerList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationLabVirtualMachine>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceRunnerList>>;
+    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationLabVirtualMachine>>;
 
     /**
-     * List service runners in a given lab.
+     * List virtual machines.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -9825,14 +6275,11 @@ export interface ServiceRunners {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
+     * @param {number} [options.top]
      *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9844,7 +6291,7 @@ export interface ServiceRunners {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ServiceRunnerList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationLabVirtualMachine} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9852,5143 +6299,17 @@ export interface ServiceRunners {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ServiceRunnerList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceRunnerList} for more information.
+     *                      {ResponseWithContinuationLabVirtualMachine} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationLabVirtualMachine}
+     *                      for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceRunnerList>;
-    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.ServiceRunnerList>): void;
-    list(resourceGroupName: string, labName: string, options: { filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceRunnerList>): void;
-
-
-    /**
-     * Get service runner.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the service runner.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceRunner>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceRunner>>;
-
-    /**
-     * Get service runner.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the service runner.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceRunner} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceRunner} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceRunner} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceRunner>;
-    get(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.ServiceRunner>): void;
-    get(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceRunner>): void;
-
-
-    /**
-     * Create or replace an existing Service runner.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the service runner.
-     *
-     * @param {object} serviceRunner A container for a managed identity to execute
-     * DevTest lab services.
-     *
-     * @param {object} [serviceRunner.identity] The identity of the resource.
-     *
-     * @param {string} [serviceRunner.identity.type] Managed identity.
-     *
-     * @param {string} [serviceRunner.identity.principalId] The principal id of
-     * resource identity.
-     *
-     * @param {string} [serviceRunner.identity.tenantId] The tenant identifier of
-     * resource.
-     *
-     * @param {string} [serviceRunner.identity.clientSecretUrl] The client secret
-     * URL of the identity.
-     *
-     * @param {string} [serviceRunner.location] The location of the resource.
-     *
-     * @param {object} [serviceRunner.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceRunner>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, serviceRunner: models.ServiceRunner, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceRunner>>;
-
-    /**
-     * Create or replace an existing Service runner.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the service runner.
-     *
-     * @param {object} serviceRunner A container for a managed identity to execute
-     * DevTest lab services.
-     *
-     * @param {object} [serviceRunner.identity] The identity of the resource.
-     *
-     * @param {string} [serviceRunner.identity.type] Managed identity.
-     *
-     * @param {string} [serviceRunner.identity.principalId] The principal id of
-     * resource identity.
-     *
-     * @param {string} [serviceRunner.identity.tenantId] The tenant identifier of
-     * resource.
-     *
-     * @param {string} [serviceRunner.identity.clientSecretUrl] The client secret
-     * URL of the identity.
-     *
-     * @param {string} [serviceRunner.location] The location of the resource.
-     *
-     * @param {object} [serviceRunner.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceRunner} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceRunner} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceRunner} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, serviceRunner: models.ServiceRunner, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceRunner>;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, serviceRunner: models.ServiceRunner, callback: ServiceCallback<models.ServiceRunner>): void;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, serviceRunner: models.ServiceRunner, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceRunner>): void;
-
-
-    /**
-     * Delete service runner.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the service runner.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete service runner.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the service runner.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * List service runners in a given lab.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceRunnerList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceRunnerList>>;
-
-    /**
-     * List service runners in a given lab.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceRunnerList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceRunnerList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceRunnerList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceRunnerList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ServiceRunnerList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceRunnerList>): void;
-}
-
-/**
- * @class
- * Users
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DevTestLabsClient.
- */
-export interface Users {
-
-
-    /**
-     * List user profiles in a given lab.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=identity)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<UserList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UserList>>;
-
-    /**
-     * List user profiles in a given lab.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=identity)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {UserList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {UserList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link UserList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.UserList>;
-    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.UserList>): void;
-    list(resourceGroupName: string, labName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UserList>): void;
-
-
-    /**
-     * Get user profile.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the user profile.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=identity)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<User>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.User>>;
-
-    /**
-     * Get user profile.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the user profile.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=identity)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {User} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {User} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link User} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.User>;
-    get(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.User>): void;
-    get(resourceGroupName: string, labName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.User>): void;
-
-
-    /**
-     * Create or replace an existing user profile. This operation can take a while
-     * to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the user profile.
-     *
-     * @param {object} user Profile of a lab user.
-     *
-     * @param {object} [user.identity] The identity of the user.
-     *
-     * @param {string} [user.identity.principalName] Set to the principal name /
-     * UPN of the client JWT making the request.
-     *
-     * @param {string} [user.identity.principalId] Set to the principal Id of the
-     * client JWT making the request. Service principal will not have the principal
-     * Id.
-     *
-     * @param {string} [user.identity.tenantId] Set to the tenant ID of the client
-     * JWT making the request.
-     *
-     * @param {string} [user.identity.objectId] Set to the object Id of the client
-     * JWT making the request. Not all users have object Id. For CSP (reseller)
-     * scenarios for example, object Id is not available.
-     *
-     * @param {string} [user.identity.appId] Set to the app Id of the client JWT
-     * making the request.
-     *
-     * @param {object} [user.secretStore] The secret store of the user.
-     *
-     * @param {string} [user.secretStore.keyVaultUri] The URI of the user's Key
-     * vault.
-     *
-     * @param {string} [user.secretStore.keyVaultId] The ID of the user's Key
-     * vault.
-     *
-     * @param {string} [user.location] The location of the resource.
-     *
-     * @param {object} [user.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<User>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, user: models.User, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.User>>;
-
-    /**
-     * Create or replace an existing user profile. This operation can take a while
-     * to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the user profile.
-     *
-     * @param {object} user Profile of a lab user.
-     *
-     * @param {object} [user.identity] The identity of the user.
-     *
-     * @param {string} [user.identity.principalName] Set to the principal name /
-     * UPN of the client JWT making the request.
-     *
-     * @param {string} [user.identity.principalId] Set to the principal Id of the
-     * client JWT making the request. Service principal will not have the principal
-     * Id.
-     *
-     * @param {string} [user.identity.tenantId] Set to the tenant ID of the client
-     * JWT making the request.
-     *
-     * @param {string} [user.identity.objectId] Set to the object Id of the client
-     * JWT making the request. Not all users have object Id. For CSP (reseller)
-     * scenarios for example, object Id is not available.
-     *
-     * @param {string} [user.identity.appId] Set to the app Id of the client JWT
-     * making the request.
-     *
-     * @param {object} [user.secretStore] The secret store of the user.
-     *
-     * @param {string} [user.secretStore.keyVaultUri] The URI of the user's Key
-     * vault.
-     *
-     * @param {string} [user.secretStore.keyVaultId] The ID of the user's Key
-     * vault.
-     *
-     * @param {string} [user.location] The location of the resource.
-     *
-     * @param {object} [user.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {User} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {User} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link User} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, user: models.User, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.User>;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, user: models.User, callback: ServiceCallback<models.User>): void;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, user: models.User, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.User>): void;
-
-
-    /**
-     * Delete user profile. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the user profile.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete user profile. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the user profile.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Modify properties of user profiles.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the user profile.
-     *
-     * @param {object} user Profile of a lab user.
-     *
-     * @param {object} [user.identity] The identity of the user.
-     *
-     * @param {string} [user.identity.principalName] Set to the principal name /
-     * UPN of the client JWT making the request.
-     *
-     * @param {string} [user.identity.principalId] Set to the principal Id of the
-     * client JWT making the request. Service principal will not have the principal
-     * Id.
-     *
-     * @param {string} [user.identity.tenantId] Set to the tenant ID of the client
-     * JWT making the request.
-     *
-     * @param {string} [user.identity.objectId] Set to the object Id of the client
-     * JWT making the request. Not all users have object Id. For CSP (reseller)
-     * scenarios for example, object Id is not available.
-     *
-     * @param {string} [user.identity.appId] Set to the app Id of the client JWT
-     * making the request.
-     *
-     * @param {object} [user.secretStore] The secret store of the user.
-     *
-     * @param {string} [user.secretStore.keyVaultUri] The URI of the user's Key
-     * vault.
-     *
-     * @param {string} [user.secretStore.keyVaultId] The ID of the user's Key
-     * vault.
-     *
-     * @param {object} [user.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<User>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, user: models.UserFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.User>>;
-
-    /**
-     * Modify properties of user profiles.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the user profile.
-     *
-     * @param {object} user Profile of a lab user.
-     *
-     * @param {object} [user.identity] The identity of the user.
-     *
-     * @param {string} [user.identity.principalName] Set to the principal name /
-     * UPN of the client JWT making the request.
-     *
-     * @param {string} [user.identity.principalId] Set to the principal Id of the
-     * client JWT making the request. Service principal will not have the principal
-     * Id.
-     *
-     * @param {string} [user.identity.tenantId] Set to the tenant ID of the client
-     * JWT making the request.
-     *
-     * @param {string} [user.identity.objectId] Set to the object Id of the client
-     * JWT making the request. Not all users have object Id. For CSP (reseller)
-     * scenarios for example, object Id is not available.
-     *
-     * @param {string} [user.identity.appId] Set to the app Id of the client JWT
-     * making the request.
-     *
-     * @param {object} [user.secretStore] The secret store of the user.
-     *
-     * @param {string} [user.secretStore.keyVaultUri] The URI of the user's Key
-     * vault.
-     *
-     * @param {string} [user.secretStore.keyVaultId] The ID of the user's Key
-     * vault.
-     *
-     * @param {object} [user.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {User} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {User} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link User} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, labName: string, name: string, user: models.UserFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.User>;
-    update(resourceGroupName: string, labName: string, name: string, user: models.UserFragment, callback: ServiceCallback<models.User>): void;
-    update(resourceGroupName: string, labName: string, name: string, user: models.UserFragment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.User>): void;
-
-
-    /**
-     * Create or replace an existing user profile. This operation can take a while
-     * to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the user profile.
-     *
-     * @param {object} user Profile of a lab user.
-     *
-     * @param {object} [user.identity] The identity of the user.
-     *
-     * @param {string} [user.identity.principalName] Set to the principal name /
-     * UPN of the client JWT making the request.
-     *
-     * @param {string} [user.identity.principalId] Set to the principal Id of the
-     * client JWT making the request. Service principal will not have the principal
-     * Id.
-     *
-     * @param {string} [user.identity.tenantId] Set to the tenant ID of the client
-     * JWT making the request.
-     *
-     * @param {string} [user.identity.objectId] Set to the object Id of the client
-     * JWT making the request. Not all users have object Id. For CSP (reseller)
-     * scenarios for example, object Id is not available.
-     *
-     * @param {string} [user.identity.appId] Set to the app Id of the client JWT
-     * making the request.
-     *
-     * @param {object} [user.secretStore] The secret store of the user.
-     *
-     * @param {string} [user.secretStore.keyVaultUri] The URI of the user's Key
-     * vault.
-     *
-     * @param {string} [user.secretStore.keyVaultId] The ID of the user's Key
-     * vault.
-     *
-     * @param {string} [user.location] The location of the resource.
-     *
-     * @param {object} [user.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<User>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, user: models.User, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.User>>;
-
-    /**
-     * Create or replace an existing user profile. This operation can take a while
-     * to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the user profile.
-     *
-     * @param {object} user Profile of a lab user.
-     *
-     * @param {object} [user.identity] The identity of the user.
-     *
-     * @param {string} [user.identity.principalName] Set to the principal name /
-     * UPN of the client JWT making the request.
-     *
-     * @param {string} [user.identity.principalId] Set to the principal Id of the
-     * client JWT making the request. Service principal will not have the principal
-     * Id.
-     *
-     * @param {string} [user.identity.tenantId] Set to the tenant ID of the client
-     * JWT making the request.
-     *
-     * @param {string} [user.identity.objectId] Set to the object Id of the client
-     * JWT making the request. Not all users have object Id. For CSP (reseller)
-     * scenarios for example, object Id is not available.
-     *
-     * @param {string} [user.identity.appId] Set to the app Id of the client JWT
-     * making the request.
-     *
-     * @param {object} [user.secretStore] The secret store of the user.
-     *
-     * @param {string} [user.secretStore.keyVaultUri] The URI of the user's Key
-     * vault.
-     *
-     * @param {string} [user.secretStore.keyVaultId] The ID of the user's Key
-     * vault.
-     *
-     * @param {string} [user.location] The location of the resource.
-     *
-     * @param {object} [user.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {User} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {User} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link User} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, name: string, user: models.User, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.User>;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, name: string, user: models.User, callback: ServiceCallback<models.User>): void;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, name: string, user: models.User, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.User>): void;
-
-
-    /**
-     * Delete user profile. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the user profile.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete user profile. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the user profile.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * List user profiles in a given lab.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<UserList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UserList>>;
-
-    /**
-     * List user profiles in a given lab.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {UserList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {UserList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link UserList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UserList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.UserList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UserList>): void;
-}
-
-/**
- * @class
- * Disks
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DevTestLabsClient.
- */
-export interface Disks {
-
-
-    /**
-     * List disks in a given user profile.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=diskType)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DiskList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiskList>>;
-
-    /**
-     * List disks in a given user profile.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=diskType)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DiskList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DiskList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DiskList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, labName: string, userName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DiskList>;
-    list(resourceGroupName: string, labName: string, userName: string, callback: ServiceCallback<models.DiskList>): void;
-    list(resourceGroupName: string, labName: string, userName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiskList>): void;
-
-
-    /**
-     * Get disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=diskType)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Disk>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
-
-    /**
-     * Get disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=diskType)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Disk} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Disk} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Disk} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, labName: string, userName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
-    get(resourceGroupName: string, labName: string, userName: string, name: string, callback: ServiceCallback<models.Disk>): void;
-    get(resourceGroupName: string, labName: string, userName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
-
-
-    /**
-     * Create or replace an existing disk. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} disk A Disk.
-     *
-     * @param {string} [disk.diskType] The storage type for the disk (i.e.
-     * Standard, Premium). Possible values include: 'Standard', 'Premium'
-     *
-     * @param {number} [disk.diskSizeGiB] The size of the disk in Gibibytes.
-     *
-     * @param {string} [disk.leasedByLabVmId] The resource ID of the VM to which
-     * this disk is leased.
-     *
-     * @param {string} [disk.diskBlobName] When backed by a blob, the name of the
-     * VHD blob without extension.
-     *
-     * @param {string} [disk.diskUri] When backed by a blob, the URI of underlying
-     * blob.
-     *
-     * @param {string} [disk.hostCaching] The host caching policy of the disk (i.e.
-     * None, ReadOnly, ReadWrite).
-     *
-     * @param {string} [disk.managedDiskId] When backed by managed disk, this is
-     * the ID of the compute disk resource.
-     *
-     * @param {string} [disk.location] The location of the resource.
-     *
-     * @param {object} [disk.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Disk>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
-
-    /**
-     * Create or replace an existing disk. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} disk A Disk.
-     *
-     * @param {string} [disk.diskType] The storage type for the disk (i.e.
-     * Standard, Premium). Possible values include: 'Standard', 'Premium'
-     *
-     * @param {number} [disk.diskSizeGiB] The size of the disk in Gibibytes.
-     *
-     * @param {string} [disk.leasedByLabVmId] The resource ID of the VM to which
-     * this disk is leased.
-     *
-     * @param {string} [disk.diskBlobName] When backed by a blob, the name of the
-     * VHD blob without extension.
-     *
-     * @param {string} [disk.diskUri] When backed by a blob, the URI of underlying
-     * blob.
-     *
-     * @param {string} [disk.hostCaching] The host caching policy of the disk (i.e.
-     * None, ReadOnly, ReadWrite).
-     *
-     * @param {string} [disk.managedDiskId] When backed by managed disk, this is
-     * the ID of the compute disk resource.
-     *
-     * @param {string} [disk.location] The location of the resource.
-     *
-     * @param {object} [disk.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Disk} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Disk} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Disk} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
-    createOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, disk: models.Disk, callback: ServiceCallback<models.Disk>): void;
-    createOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, disk: models.Disk, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
-
-
-    /**
-     * Delete disk. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete disk. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Modify properties of disks.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} disk A Disk.
-     *
-     * @param {string} [disk.diskType] The storage type for the disk (i.e.
-     * Standard, Premium). Possible values include: 'Standard', 'Premium'
-     *
-     * @param {number} [disk.diskSizeGiB] The size of the disk in Gibibytes.
-     *
-     * @param {string} [disk.leasedByLabVmId] The resource ID of the VM to which
-     * this disk is leased.
-     *
-     * @param {string} [disk.diskBlobName] When backed by a blob, the name of the
-     * VHD blob without extension.
-     *
-     * @param {string} [disk.diskUri] When backed by a blob, the URI of underlying
-     * blob.
-     *
-     * @param {string} [disk.hostCaching] The host caching policy of the disk (i.e.
-     * None, ReadOnly, ReadWrite).
-     *
-     * @param {string} [disk.managedDiskId] When backed by managed disk, this is
-     * the ID of the compute disk resource.
-     *
-     * @param {object} [disk.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Disk>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, disk: models.DiskFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
-
-    /**
-     * Modify properties of disks.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} disk A Disk.
-     *
-     * @param {string} [disk.diskType] The storage type for the disk (i.e.
-     * Standard, Premium). Possible values include: 'Standard', 'Premium'
-     *
-     * @param {number} [disk.diskSizeGiB] The size of the disk in Gibibytes.
-     *
-     * @param {string} [disk.leasedByLabVmId] The resource ID of the VM to which
-     * this disk is leased.
-     *
-     * @param {string} [disk.diskBlobName] When backed by a blob, the name of the
-     * VHD blob without extension.
-     *
-     * @param {string} [disk.diskUri] When backed by a blob, the URI of underlying
-     * blob.
-     *
-     * @param {string} [disk.hostCaching] The host caching policy of the disk (i.e.
-     * None, ReadOnly, ReadWrite).
-     *
-     * @param {string} [disk.managedDiskId] When backed by managed disk, this is
-     * the ID of the compute disk resource.
-     *
-     * @param {object} [disk.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Disk} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Disk} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Disk} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, labName: string, userName: string, name: string, disk: models.DiskFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
-    update(resourceGroupName: string, labName: string, userName: string, name: string, disk: models.DiskFragment, callback: ServiceCallback<models.Disk>): void;
-    update(resourceGroupName: string, labName: string, userName: string, name: string, disk: models.DiskFragment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
-
-
-    /**
-     * Attach and create the lease of the disk to the virtual machine. This
-     * operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} attachDiskProperties Properties of the disk to attach.
-     *
-     * @param {string} [attachDiskProperties.leasedByLabVmId] The resource ID of
-     * the Lab virtual machine to which the disk is attached.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    attachWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, attachDiskProperties: models.AttachDiskProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Attach and create the lease of the disk to the virtual machine. This
-     * operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} attachDiskProperties Properties of the disk to attach.
-     *
-     * @param {string} [attachDiskProperties.leasedByLabVmId] The resource ID of
-     * the Lab virtual machine to which the disk is attached.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    attach(resourceGroupName: string, labName: string, userName: string, name: string, attachDiskProperties: models.AttachDiskProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    attach(resourceGroupName: string, labName: string, userName: string, name: string, attachDiskProperties: models.AttachDiskProperties, callback: ServiceCallback<void>): void;
-    attach(resourceGroupName: string, labName: string, userName: string, name: string, attachDiskProperties: models.AttachDiskProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Detach and break the lease of the disk attached to the virtual machine. This
-     * operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} detachDiskProperties Properties of the disk to detach.
-     *
-     * @param {string} [detachDiskProperties.leasedByLabVmId] The resource ID of
-     * the Lab VM to which the disk is attached.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    detachWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, detachDiskProperties: models.DetachDiskProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Detach and break the lease of the disk attached to the virtual machine. This
-     * operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} detachDiskProperties Properties of the disk to detach.
-     *
-     * @param {string} [detachDiskProperties.leasedByLabVmId] The resource ID of
-     * the Lab VM to which the disk is attached.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    detach(resourceGroupName: string, labName: string, userName: string, name: string, detachDiskProperties: models.DetachDiskProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    detach(resourceGroupName: string, labName: string, userName: string, name: string, detachDiskProperties: models.DetachDiskProperties, callback: ServiceCallback<void>): void;
-    detach(resourceGroupName: string, labName: string, userName: string, name: string, detachDiskProperties: models.DetachDiskProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Create or replace an existing disk. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} disk A Disk.
-     *
-     * @param {string} [disk.diskType] The storage type for the disk (i.e.
-     * Standard, Premium). Possible values include: 'Standard', 'Premium'
-     *
-     * @param {number} [disk.diskSizeGiB] The size of the disk in Gibibytes.
-     *
-     * @param {string} [disk.leasedByLabVmId] The resource ID of the VM to which
-     * this disk is leased.
-     *
-     * @param {string} [disk.diskBlobName] When backed by a blob, the name of the
-     * VHD blob without extension.
-     *
-     * @param {string} [disk.diskUri] When backed by a blob, the URI of underlying
-     * blob.
-     *
-     * @param {string} [disk.hostCaching] The host caching policy of the disk (i.e.
-     * None, ReadOnly, ReadWrite).
-     *
-     * @param {string} [disk.managedDiskId] When backed by managed disk, this is
-     * the ID of the compute disk resource.
-     *
-     * @param {string} [disk.location] The location of the resource.
-     *
-     * @param {object} [disk.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Disk>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
-
-    /**
-     * Create or replace an existing disk. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} disk A Disk.
-     *
-     * @param {string} [disk.diskType] The storage type for the disk (i.e.
-     * Standard, Premium). Possible values include: 'Standard', 'Premium'
-     *
-     * @param {number} [disk.diskSizeGiB] The size of the disk in Gibibytes.
-     *
-     * @param {string} [disk.leasedByLabVmId] The resource ID of the VM to which
-     * this disk is leased.
-     *
-     * @param {string} [disk.diskBlobName] When backed by a blob, the name of the
-     * VHD blob without extension.
-     *
-     * @param {string} [disk.diskUri] When backed by a blob, the URI of underlying
-     * blob.
-     *
-     * @param {string} [disk.hostCaching] The host caching policy of the disk (i.e.
-     * None, ReadOnly, ReadWrite).
-     *
-     * @param {string} [disk.managedDiskId] When backed by managed disk, this is
-     * the ID of the compute disk resource.
-     *
-     * @param {string} [disk.location] The location of the resource.
-     *
-     * @param {object} [disk.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Disk} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Disk} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Disk} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, disk: models.Disk, callback: ServiceCallback<models.Disk>): void;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, disk: models.Disk, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
-
-
-    /**
-     * Delete disk. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete disk. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Attach and create the lease of the disk to the virtual machine. This
-     * operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} attachDiskProperties Properties of the disk to attach.
-     *
-     * @param {string} [attachDiskProperties.leasedByLabVmId] The resource ID of
-     * the Lab virtual machine to which the disk is attached.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginAttachWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, attachDiskProperties: models.AttachDiskProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Attach and create the lease of the disk to the virtual machine. This
-     * operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} attachDiskProperties Properties of the disk to attach.
-     *
-     * @param {string} [attachDiskProperties.leasedByLabVmId] The resource ID of
-     * the Lab virtual machine to which the disk is attached.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginAttach(resourceGroupName: string, labName: string, userName: string, name: string, attachDiskProperties: models.AttachDiskProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginAttach(resourceGroupName: string, labName: string, userName: string, name: string, attachDiskProperties: models.AttachDiskProperties, callback: ServiceCallback<void>): void;
-    beginAttach(resourceGroupName: string, labName: string, userName: string, name: string, attachDiskProperties: models.AttachDiskProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Detach and break the lease of the disk attached to the virtual machine. This
-     * operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} detachDiskProperties Properties of the disk to detach.
-     *
-     * @param {string} [detachDiskProperties.leasedByLabVmId] The resource ID of
-     * the Lab VM to which the disk is attached.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDetachWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, detachDiskProperties: models.DetachDiskProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Detach and break the lease of the disk attached to the virtual machine. This
-     * operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the disk.
-     *
-     * @param {object} detachDiskProperties Properties of the disk to detach.
-     *
-     * @param {string} [detachDiskProperties.leasedByLabVmId] The resource ID of
-     * the Lab VM to which the disk is attached.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDetach(resourceGroupName: string, labName: string, userName: string, name: string, detachDiskProperties: models.DetachDiskProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDetach(resourceGroupName: string, labName: string, userName: string, name: string, detachDiskProperties: models.DetachDiskProperties, callback: ServiceCallback<void>): void;
-    beginDetach(resourceGroupName: string, labName: string, userName: string, name: string, detachDiskProperties: models.DetachDiskProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * List disks in a given user profile.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DiskList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiskList>>;
-
-    /**
-     * List disks in a given user profile.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DiskList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DiskList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DiskList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiskList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.DiskList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiskList>): void;
-}
-
-/**
- * @class
- * Environments
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DevTestLabsClient.
- */
-export interface Environments {
-
-
-    /**
-     * List environments in a given user profile.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=deploymentProperties)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DtlEnvironmentList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DtlEnvironmentList>>;
-
-    /**
-     * List environments in a given user profile.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=deploymentProperties)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DtlEnvironmentList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DtlEnvironmentList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DtlEnvironmentList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, labName: string, userName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DtlEnvironmentList>;
-    list(resourceGroupName: string, labName: string, userName: string, callback: ServiceCallback<models.DtlEnvironmentList>): void;
-    list(resourceGroupName: string, labName: string, userName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DtlEnvironmentList>): void;
-
-
-    /**
-     * Get environment.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the environment.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=deploymentProperties)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DtlEnvironment>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DtlEnvironment>>;
-
-    /**
-     * Get environment.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the environment.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=deploymentProperties)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DtlEnvironment} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DtlEnvironment} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DtlEnvironment} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, labName: string, userName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DtlEnvironment>;
-    get(resourceGroupName: string, labName: string, userName: string, name: string, callback: ServiceCallback<models.DtlEnvironment>): void;
-    get(resourceGroupName: string, labName: string, userName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DtlEnvironment>): void;
-
-
-    /**
-     * Create or replace an existing environment. This operation can take a while
-     * to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the environment.
-     *
-     * @param {object} dtlEnvironment An environment, which is essentially an ARM
-     * template deployment.
-     *
-     * @param {object} [dtlEnvironment.deploymentProperties] The deployment
-     * properties of the environment.
-     *
-     * @param {string} [dtlEnvironment.deploymentProperties.armTemplateId] The
-     * Azure Resource Manager template's identifier.
-     *
-     * @param {array} [dtlEnvironment.deploymentProperties.parameters] The
-     * parameters of the Azure Resource Manager template.
-     *
-     * @param {string} [dtlEnvironment.armTemplateDisplayName] The display name of
-     * the Azure Resource Manager template that produced the environment.
-     *
-     * @param {string} [dtlEnvironment.location] The location of the resource.
-     *
-     * @param {object} [dtlEnvironment.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DtlEnvironment>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, dtlEnvironment: models.DtlEnvironment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DtlEnvironment>>;
-
-    /**
-     * Create or replace an existing environment. This operation can take a while
-     * to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the environment.
-     *
-     * @param {object} dtlEnvironment An environment, which is essentially an ARM
-     * template deployment.
-     *
-     * @param {object} [dtlEnvironment.deploymentProperties] The deployment
-     * properties of the environment.
-     *
-     * @param {string} [dtlEnvironment.deploymentProperties.armTemplateId] The
-     * Azure Resource Manager template's identifier.
-     *
-     * @param {array} [dtlEnvironment.deploymentProperties.parameters] The
-     * parameters of the Azure Resource Manager template.
-     *
-     * @param {string} [dtlEnvironment.armTemplateDisplayName] The display name of
-     * the Azure Resource Manager template that produced the environment.
-     *
-     * @param {string} [dtlEnvironment.location] The location of the resource.
-     *
-     * @param {object} [dtlEnvironment.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DtlEnvironment} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DtlEnvironment} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DtlEnvironment} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, dtlEnvironment: models.DtlEnvironment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DtlEnvironment>;
-    createOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, dtlEnvironment: models.DtlEnvironment, callback: ServiceCallback<models.DtlEnvironment>): void;
-    createOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, dtlEnvironment: models.DtlEnvironment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DtlEnvironment>): void;
-
-
-    /**
-     * Delete environment. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the environment.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete environment. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the environment.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Modify properties of environments.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the environment.
-     *
-     * @param {object} dtlEnvironment An environment, which is essentially an ARM
-     * template deployment.
-     *
-     * @param {object} [dtlEnvironment.deploymentProperties] The deployment
-     * properties of the environment.
-     *
-     * @param {string} [dtlEnvironment.deploymentProperties.armTemplateId] The
-     * Azure Resource Manager template's identifier.
-     *
-     * @param {array} [dtlEnvironment.deploymentProperties.parameters] The
-     * parameters of the Azure Resource Manager template.
-     *
-     * @param {string} [dtlEnvironment.armTemplateDisplayName] The display name of
-     * the Azure Resource Manager template that produced the environment.
-     *
-     * @param {object} [dtlEnvironment.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DtlEnvironment>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, dtlEnvironment: models.DtlEnvironmentFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DtlEnvironment>>;
-
-    /**
-     * Modify properties of environments.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the environment.
-     *
-     * @param {object} dtlEnvironment An environment, which is essentially an ARM
-     * template deployment.
-     *
-     * @param {object} [dtlEnvironment.deploymentProperties] The deployment
-     * properties of the environment.
-     *
-     * @param {string} [dtlEnvironment.deploymentProperties.armTemplateId] The
-     * Azure Resource Manager template's identifier.
-     *
-     * @param {array} [dtlEnvironment.deploymentProperties.parameters] The
-     * parameters of the Azure Resource Manager template.
-     *
-     * @param {string} [dtlEnvironment.armTemplateDisplayName] The display name of
-     * the Azure Resource Manager template that produced the environment.
-     *
-     * @param {object} [dtlEnvironment.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DtlEnvironment} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DtlEnvironment} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DtlEnvironment} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, labName: string, userName: string, name: string, dtlEnvironment: models.DtlEnvironmentFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DtlEnvironment>;
-    update(resourceGroupName: string, labName: string, userName: string, name: string, dtlEnvironment: models.DtlEnvironmentFragment, callback: ServiceCallback<models.DtlEnvironment>): void;
-    update(resourceGroupName: string, labName: string, userName: string, name: string, dtlEnvironment: models.DtlEnvironmentFragment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DtlEnvironment>): void;
-
-
-    /**
-     * Create or replace an existing environment. This operation can take a while
-     * to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the environment.
-     *
-     * @param {object} dtlEnvironment An environment, which is essentially an ARM
-     * template deployment.
-     *
-     * @param {object} [dtlEnvironment.deploymentProperties] The deployment
-     * properties of the environment.
-     *
-     * @param {string} [dtlEnvironment.deploymentProperties.armTemplateId] The
-     * Azure Resource Manager template's identifier.
-     *
-     * @param {array} [dtlEnvironment.deploymentProperties.parameters] The
-     * parameters of the Azure Resource Manager template.
-     *
-     * @param {string} [dtlEnvironment.armTemplateDisplayName] The display name of
-     * the Azure Resource Manager template that produced the environment.
-     *
-     * @param {string} [dtlEnvironment.location] The location of the resource.
-     *
-     * @param {object} [dtlEnvironment.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DtlEnvironment>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, dtlEnvironment: models.DtlEnvironment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DtlEnvironment>>;
-
-    /**
-     * Create or replace an existing environment. This operation can take a while
-     * to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the environment.
-     *
-     * @param {object} dtlEnvironment An environment, which is essentially an ARM
-     * template deployment.
-     *
-     * @param {object} [dtlEnvironment.deploymentProperties] The deployment
-     * properties of the environment.
-     *
-     * @param {string} [dtlEnvironment.deploymentProperties.armTemplateId] The
-     * Azure Resource Manager template's identifier.
-     *
-     * @param {array} [dtlEnvironment.deploymentProperties.parameters] The
-     * parameters of the Azure Resource Manager template.
-     *
-     * @param {string} [dtlEnvironment.armTemplateDisplayName] The display name of
-     * the Azure Resource Manager template that produced the environment.
-     *
-     * @param {string} [dtlEnvironment.location] The location of the resource.
-     *
-     * @param {object} [dtlEnvironment.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DtlEnvironment} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DtlEnvironment} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DtlEnvironment} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, dtlEnvironment: models.DtlEnvironment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DtlEnvironment>;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, dtlEnvironment: models.DtlEnvironment, callback: ServiceCallback<models.DtlEnvironment>): void;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, dtlEnvironment: models.DtlEnvironment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DtlEnvironment>): void;
-
-
-    /**
-     * Delete environment. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the environment.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete environment. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the environment.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * List environments in a given user profile.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DtlEnvironmentList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DtlEnvironmentList>>;
-
-    /**
-     * List environments in a given user profile.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DtlEnvironmentList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DtlEnvironmentList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DtlEnvironmentList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DtlEnvironmentList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.DtlEnvironmentList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DtlEnvironmentList>): void;
-}
-
-/**
- * @class
- * Secrets
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DevTestLabsClient.
- */
-export interface Secrets {
-
-
-    /**
-     * List secrets in a given user profile.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=value)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SecretList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretList>>;
-
-    /**
-     * List secrets in a given user profile.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=value)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SecretList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SecretList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SecretList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, labName: string, userName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretList>;
-    list(resourceGroupName: string, labName: string, userName: string, callback: ServiceCallback<models.SecretList>): void;
-    list(resourceGroupName: string, labName: string, userName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretList>): void;
-
-
-    /**
-     * Get secret.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the secret.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=value)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Secret>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Secret>>;
-
-    /**
-     * Get secret.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the secret.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=value)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Secret} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Secret} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Secret} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, labName: string, userName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Secret>;
-    get(resourceGroupName: string, labName: string, userName: string, name: string, callback: ServiceCallback<models.Secret>): void;
-    get(resourceGroupName: string, labName: string, userName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Secret>): void;
-
-
-    /**
-     * Create or replace an existing secret. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the secret.
-     *
-     * @param {object} secret A secret.
-     *
-     * @param {string} [secret.value] The value of the secret for secret creation.
-     *
-     * @param {string} [secret.location] The location of the resource.
-     *
-     * @param {object} [secret.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Secret>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, secret: models.Secret, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Secret>>;
-
-    /**
-     * Create or replace an existing secret. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the secret.
-     *
-     * @param {object} secret A secret.
-     *
-     * @param {string} [secret.value] The value of the secret for secret creation.
-     *
-     * @param {string} [secret.location] The location of the resource.
-     *
-     * @param {object} [secret.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Secret} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Secret} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Secret} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, secret: models.Secret, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Secret>;
-    createOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, secret: models.Secret, callback: ServiceCallback<models.Secret>): void;
-    createOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, secret: models.Secret, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Secret>): void;
-
-
-    /**
-     * Delete secret.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the secret.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete secret.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the secret.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Modify properties of secrets.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the secret.
-     *
-     * @param {object} secret A secret.
-     *
-     * @param {string} [secret.value] The value of the secret for secret creation.
-     *
-     * @param {object} [secret.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Secret>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, secret: models.SecretFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Secret>>;
-
-    /**
-     * Modify properties of secrets.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the secret.
-     *
-     * @param {object} secret A secret.
-     *
-     * @param {string} [secret.value] The value of the secret for secret creation.
-     *
-     * @param {object} [secret.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Secret} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Secret} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Secret} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, labName: string, userName: string, name: string, secret: models.SecretFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Secret>;
-    update(resourceGroupName: string, labName: string, userName: string, name: string, secret: models.SecretFragment, callback: ServiceCallback<models.Secret>): void;
-    update(resourceGroupName: string, labName: string, userName: string, name: string, secret: models.SecretFragment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Secret>): void;
-
-
-    /**
-     * Create or replace an existing secret. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the secret.
-     *
-     * @param {object} secret A secret.
-     *
-     * @param {string} [secret.value] The value of the secret for secret creation.
-     *
-     * @param {string} [secret.location] The location of the resource.
-     *
-     * @param {object} [secret.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Secret>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, secret: models.Secret, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Secret>>;
-
-    /**
-     * Create or replace an existing secret. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the secret.
-     *
-     * @param {object} secret A secret.
-     *
-     * @param {string} [secret.value] The value of the secret for secret creation.
-     *
-     * @param {string} [secret.location] The location of the resource.
-     *
-     * @param {object} [secret.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Secret} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Secret} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Secret} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, secret: models.Secret, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Secret>;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, secret: models.Secret, callback: ServiceCallback<models.Secret>): void;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, secret: models.Secret, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Secret>): void;
-
-
-    /**
-     * List secrets in a given user profile.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SecretList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretList>>;
-
-    /**
-     * List secrets in a given user profile.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SecretList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SecretList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SecretList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.SecretList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretList>): void;
-}
-
-/**
- * @class
- * ServiceFabrics
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DevTestLabsClient.
- */
-export interface ServiceFabrics {
-
-
-    /**
-     * List service fabrics in a given user profile.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($expand=applicableSchedule)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceFabricList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceFabricList>>;
-
-    /**
-     * List service fabrics in a given user profile.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($expand=applicableSchedule)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceFabricList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceFabricList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceFabricList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, labName: string, userName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceFabricList>;
-    list(resourceGroupName: string, labName: string, userName: string, callback: ServiceCallback<models.ServiceFabricList>): void;
-    list(resourceGroupName: string, labName: string, userName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceFabricList>): void;
-
-
-    /**
-     * Get service fabric.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($expand=applicableSchedule)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceFabric>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceFabric>>;
-
-    /**
-     * Get service fabric.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($expand=applicableSchedule)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceFabric} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceFabric} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceFabric} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, labName: string, userName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceFabric>;
-    get(resourceGroupName: string, labName: string, userName: string, name: string, callback: ServiceCallback<models.ServiceFabric>): void;
-    get(resourceGroupName: string, labName: string, userName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceFabric>): void;
-
-
-    /**
-     * Create or replace an existing Service Fabric. This operation can take a
-     * while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} serviceFabric A Service Fabric.
-     *
-     * @param {string} [serviceFabric.externalServiceFabricId] The backing service
-     * fabric resource's id
-     *
-     * @param {string} [serviceFabric.environmentId] The resource id of the
-     * environment under which the service fabric resource is present
-     *
-     * @param {string} [serviceFabric.location] The location of the resource.
-     *
-     * @param {object} [serviceFabric.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceFabric>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, serviceFabric: models.ServiceFabric, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceFabric>>;
-
-    /**
-     * Create or replace an existing Service Fabric. This operation can take a
-     * while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} serviceFabric A Service Fabric.
-     *
-     * @param {string} [serviceFabric.externalServiceFabricId] The backing service
-     * fabric resource's id
-     *
-     * @param {string} [serviceFabric.environmentId] The resource id of the
-     * environment under which the service fabric resource is present
-     *
-     * @param {string} [serviceFabric.location] The location of the resource.
-     *
-     * @param {object} [serviceFabric.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceFabric} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceFabric} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceFabric} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, serviceFabric: models.ServiceFabric, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceFabric>;
-    createOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, serviceFabric: models.ServiceFabric, callback: ServiceCallback<models.ServiceFabric>): void;
-    createOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, serviceFabric: models.ServiceFabric, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceFabric>): void;
-
-
-    /**
-     * Delete service fabric. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete service fabric. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Modify properties of service fabrics.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} serviceFabric A Service Fabric.
-     *
-     * @param {string} [serviceFabric.externalServiceFabricId] The backing service
-     * fabric resource's id
-     *
-     * @param {string} [serviceFabric.environmentId] The resource id of the
-     * environment under which the service fabric resource is present
-     *
-     * @param {object} [serviceFabric.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceFabric>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, serviceFabric: models.ServiceFabricFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceFabric>>;
-
-    /**
-     * Modify properties of service fabrics.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} serviceFabric A Service Fabric.
-     *
-     * @param {string} [serviceFabric.externalServiceFabricId] The backing service
-     * fabric resource's id
-     *
-     * @param {string} [serviceFabric.environmentId] The resource id of the
-     * environment under which the service fabric resource is present
-     *
-     * @param {object} [serviceFabric.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceFabric} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceFabric} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceFabric} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, labName: string, userName: string, name: string, serviceFabric: models.ServiceFabricFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceFabric>;
-    update(resourceGroupName: string, labName: string, userName: string, name: string, serviceFabric: models.ServiceFabricFragment, callback: ServiceCallback<models.ServiceFabric>): void;
-    update(resourceGroupName: string, labName: string, userName: string, name: string, serviceFabric: models.ServiceFabricFragment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceFabric>): void;
-
-
-    /**
-     * Lists the applicable start/stop schedules, if any.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicableSchedule>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listApplicableSchedulesWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicableSchedule>>;
-
-    /**
-     * Lists the applicable start/stop schedules, if any.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicableSchedule} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicableSchedule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicableSchedule} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listApplicableSchedules(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicableSchedule>;
-    listApplicableSchedules(resourceGroupName: string, labName: string, userName: string, name: string, callback: ServiceCallback<models.ApplicableSchedule>): void;
-    listApplicableSchedules(resourceGroupName: string, labName: string, userName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicableSchedule>): void;
-
-
-    /**
-     * Start a service fabric. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    startWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Start a service fabric. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    start(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    start(resourceGroupName: string, labName: string, userName: string, name: string, callback: ServiceCallback<void>): void;
-    start(resourceGroupName: string, labName: string, userName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Stop a service fabric This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    stopWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Stop a service fabric This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    stop(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    stop(resourceGroupName: string, labName: string, userName: string, name: string, callback: ServiceCallback<void>): void;
-    stop(resourceGroupName: string, labName: string, userName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Create or replace an existing Service Fabric. This operation can take a
-     * while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} serviceFabric A Service Fabric.
-     *
-     * @param {string} [serviceFabric.externalServiceFabricId] The backing service
-     * fabric resource's id
-     *
-     * @param {string} [serviceFabric.environmentId] The resource id of the
-     * environment under which the service fabric resource is present
-     *
-     * @param {string} [serviceFabric.location] The location of the resource.
-     *
-     * @param {object} [serviceFabric.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceFabric>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, serviceFabric: models.ServiceFabric, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceFabric>>;
-
-    /**
-     * Create or replace an existing Service Fabric. This operation can take a
-     * while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} serviceFabric A Service Fabric.
-     *
-     * @param {string} [serviceFabric.externalServiceFabricId] The backing service
-     * fabric resource's id
-     *
-     * @param {string} [serviceFabric.environmentId] The resource id of the
-     * environment under which the service fabric resource is present
-     *
-     * @param {string} [serviceFabric.location] The location of the resource.
-     *
-     * @param {object} [serviceFabric.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceFabric} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceFabric} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceFabric} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, serviceFabric: models.ServiceFabric, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceFabric>;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, serviceFabric: models.ServiceFabric, callback: ServiceCallback<models.ServiceFabric>): void;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, userName: string, name: string, serviceFabric: models.ServiceFabric, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceFabric>): void;
-
-
-    /**
-     * Delete service fabric. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete service fabric. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, labName: string, userName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Start a service fabric. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginStartWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Start a service fabric. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginStart(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginStart(resourceGroupName: string, labName: string, userName: string, name: string, callback: ServiceCallback<void>): void;
-    beginStart(resourceGroupName: string, labName: string, userName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Stop a service fabric This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginStopWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Stop a service fabric This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} name The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginStop(resourceGroupName: string, labName: string, userName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginStop(resourceGroupName: string, labName: string, userName: string, name: string, callback: ServiceCallback<void>): void;
-    beginStop(resourceGroupName: string, labName: string, userName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * List service fabrics in a given user profile.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceFabricList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceFabricList>>;
-
-    /**
-     * List service fabrics in a given user profile.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceFabricList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceFabricList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceFabricList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceFabricList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ServiceFabricList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceFabricList>): void;
-}
-
-/**
- * @class
- * ServiceFabricSchedules
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DevTestLabsClient.
- */
-export interface ServiceFabricSchedules {
-
-
-    /**
-     * List schedules in a given service fabric.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} serviceFabricName The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ScheduleList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduleList>>;
-
-    /**
-     * List schedules in a given service fabric.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} serviceFabricName The name of the service Fabric.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ScheduleList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ScheduleList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ScheduleList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduleList>;
-    list(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, callback: ServiceCallback<models.ScheduleList>): void;
-    list(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduleList>): void;
-
-
-    /**
-     * Get schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} serviceFabricName The name of the service Fabric.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Schedule>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
-
-    /**
-     * Get schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} serviceFabricName The name of the service Fabric.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Schedule} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Schedule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Schedule} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
-    get(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, callback: ServiceCallback<models.Schedule>): void;
-    get(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
-
-
-    /**
-     * Create or replace an existing schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} serviceFabricName The name of the service Fabric.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} schedule A schedule.
-     *
-     * @param {string} [schedule.status] The status of the schedule (i.e. Enabled,
-     * Disabled). Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [schedule.taskType] The task type of the schedule (e.g.
-     * LabVmsShutdownTask, LabVmAutoStart).
-     *
-     * @param {object} [schedule.weeklyRecurrence] If the schedule will occur only
-     * some days of the week, specify the weekly recurrence.
-     *
-     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week for
-     * which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
-     *
-     * @param {string} [schedule.weeklyRecurrence.time] The time of the day the
-     * schedule will occur.
-     *
-     * @param {object} [schedule.dailyRecurrence] If the schedule will occur once
-     * each day of the week, specify the daily recurrence.
-     *
-     * @param {string} [schedule.dailyRecurrence.time] The time of day the schedule
-     * will occur.
-     *
-     * @param {object} [schedule.hourlyRecurrence] If the schedule will occur
-     * multiple times a day, specify the hourly recurrence.
-     *
-     * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
-     * schedule will run.
-     *
-     * @param {string} [schedule.timeZoneId] The time zone ID (e.g. Pacific
-     * Standard time).
-     *
-     * @param {object} [schedule.notificationSettings] Notification settings.
-     *
-     * @param {string} [schedule.notificationSettings.status] If notifications are
-     * enabled for this schedule (i.e. Enabled, Disabled). Possible values include:
-     * 'Enabled', 'Disabled'
-     *
-     * @param {number} [schedule.notificationSettings.timeInMinutes] Time in
-     * minutes before event at which notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.webhookUrl] The webhook URL
-     * to which the notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon separated
-     * email addresses).
-     *
-     * @param {string} [schedule.notificationSettings.notificationLocale] The
-     * locale to use when sending a notification (fallback for unsupported
-     * languages is EN).
-     *
-     * @param {string} [schedule.targetResourceId] The resource ID to which the
-     * schedule belongs
-     *
-     * @param {string} [schedule.location] The location of the resource.
-     *
-     * @param {object} [schedule.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Schedule>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, schedule: models.Schedule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
-
-    /**
-     * Create or replace an existing schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} serviceFabricName The name of the service Fabric.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} schedule A schedule.
-     *
-     * @param {string} [schedule.status] The status of the schedule (i.e. Enabled,
-     * Disabled). Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [schedule.taskType] The task type of the schedule (e.g.
-     * LabVmsShutdownTask, LabVmAutoStart).
-     *
-     * @param {object} [schedule.weeklyRecurrence] If the schedule will occur only
-     * some days of the week, specify the weekly recurrence.
-     *
-     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week for
-     * which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
-     *
-     * @param {string} [schedule.weeklyRecurrence.time] The time of the day the
-     * schedule will occur.
-     *
-     * @param {object} [schedule.dailyRecurrence] If the schedule will occur once
-     * each day of the week, specify the daily recurrence.
-     *
-     * @param {string} [schedule.dailyRecurrence.time] The time of day the schedule
-     * will occur.
-     *
-     * @param {object} [schedule.hourlyRecurrence] If the schedule will occur
-     * multiple times a day, specify the hourly recurrence.
-     *
-     * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
-     * schedule will run.
-     *
-     * @param {string} [schedule.timeZoneId] The time zone ID (e.g. Pacific
-     * Standard time).
-     *
-     * @param {object} [schedule.notificationSettings] Notification settings.
-     *
-     * @param {string} [schedule.notificationSettings.status] If notifications are
-     * enabled for this schedule (i.e. Enabled, Disabled). Possible values include:
-     * 'Enabled', 'Disabled'
-     *
-     * @param {number} [schedule.notificationSettings.timeInMinutes] Time in
-     * minutes before event at which notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.webhookUrl] The webhook URL
-     * to which the notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon separated
-     * email addresses).
-     *
-     * @param {string} [schedule.notificationSettings.notificationLocale] The
-     * locale to use when sending a notification (fallback for unsupported
-     * languages is EN).
-     *
-     * @param {string} [schedule.targetResourceId] The resource ID to which the
-     * schedule belongs
-     *
-     * @param {string} [schedule.location] The location of the resource.
-     *
-     * @param {object} [schedule.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Schedule} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Schedule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Schedule} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, schedule: models.Schedule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
-    createOrUpdate(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, schedule: models.Schedule, callback: ServiceCallback<models.Schedule>): void;
-    createOrUpdate(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, schedule: models.Schedule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
-
-
-    /**
-     * Delete schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} serviceFabricName The name of the service Fabric.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} serviceFabricName The name of the service Fabric.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Modify properties of schedules.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} serviceFabricName The name of the service Fabric.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} schedule A schedule.
-     *
-     * @param {string} [schedule.status] The status of the schedule (i.e. Enabled,
-     * Disabled). Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [schedule.taskType] The task type of the schedule (e.g.
-     * LabVmsShutdownTask, LabVmAutoStart).
-     *
-     * @param {object} [schedule.weeklyRecurrence] If the schedule will occur only
-     * some days of the week, specify the weekly recurrence.
-     *
-     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week for
-     * which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
-     *
-     * @param {string} [schedule.weeklyRecurrence.time] The time of the day the
-     * schedule will occur.
-     *
-     * @param {object} [schedule.dailyRecurrence] If the schedule will occur once
-     * each day of the week, specify the daily recurrence.
-     *
-     * @param {string} [schedule.dailyRecurrence.time] The time of day the schedule
-     * will occur.
-     *
-     * @param {object} [schedule.hourlyRecurrence] If the schedule will occur
-     * multiple times a day, specify the hourly recurrence.
-     *
-     * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
-     * schedule will run.
-     *
-     * @param {string} [schedule.timeZoneId] The time zone ID (e.g. Pacific
-     * Standard time).
-     *
-     * @param {object} [schedule.notificationSettings] Notification settings.
-     *
-     * @param {string} [schedule.notificationSettings.status] If notifications are
-     * enabled for this schedule (i.e. Enabled, Disabled). Possible values include:
-     * 'Enabled', 'Disabled'
-     *
-     * @param {number} [schedule.notificationSettings.timeInMinutes] Time in
-     * minutes before event at which notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.webhookUrl] The webhook URL
-     * to which the notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon separated
-     * email addresses).
-     *
-     * @param {string} [schedule.notificationSettings.notificationLocale] The
-     * locale to use when sending a notification (fallback for unsupported
-     * languages is EN).
-     *
-     * @param {string} [schedule.targetResourceId] The resource ID to which the
-     * schedule belongs
-     *
-     * @param {object} [schedule.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Schedule>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, schedule: models.ScheduleFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
-
-    /**
-     * Modify properties of schedules.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} serviceFabricName The name of the service Fabric.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} schedule A schedule.
-     *
-     * @param {string} [schedule.status] The status of the schedule (i.e. Enabled,
-     * Disabled). Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [schedule.taskType] The task type of the schedule (e.g.
-     * LabVmsShutdownTask, LabVmAutoStart).
-     *
-     * @param {object} [schedule.weeklyRecurrence] If the schedule will occur only
-     * some days of the week, specify the weekly recurrence.
-     *
-     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week for
-     * which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
-     *
-     * @param {string} [schedule.weeklyRecurrence.time] The time of the day the
-     * schedule will occur.
-     *
-     * @param {object} [schedule.dailyRecurrence] If the schedule will occur once
-     * each day of the week, specify the daily recurrence.
-     *
-     * @param {string} [schedule.dailyRecurrence.time] The time of day the schedule
-     * will occur.
-     *
-     * @param {object} [schedule.hourlyRecurrence] If the schedule will occur
-     * multiple times a day, specify the hourly recurrence.
-     *
-     * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
-     * schedule will run.
-     *
-     * @param {string} [schedule.timeZoneId] The time zone ID (e.g. Pacific
-     * Standard time).
-     *
-     * @param {object} [schedule.notificationSettings] Notification settings.
-     *
-     * @param {string} [schedule.notificationSettings.status] If notifications are
-     * enabled for this schedule (i.e. Enabled, Disabled). Possible values include:
-     * 'Enabled', 'Disabled'
-     *
-     * @param {number} [schedule.notificationSettings.timeInMinutes] Time in
-     * minutes before event at which notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.webhookUrl] The webhook URL
-     * to which the notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon separated
-     * email addresses).
-     *
-     * @param {string} [schedule.notificationSettings.notificationLocale] The
-     * locale to use when sending a notification (fallback for unsupported
-     * languages is EN).
-     *
-     * @param {string} [schedule.targetResourceId] The resource ID to which the
-     * schedule belongs
-     *
-     * @param {object} [schedule.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Schedule} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Schedule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Schedule} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, schedule: models.ScheduleFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
-    update(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, schedule: models.ScheduleFragment, callback: ServiceCallback<models.Schedule>): void;
-    update(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, schedule: models.ScheduleFragment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
-
-
-    /**
-     * Execute a schedule. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} serviceFabricName The name of the service Fabric.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    executeWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Execute a schedule. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} serviceFabricName The name of the service Fabric.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    execute(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    execute(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, callback: ServiceCallback<void>): void;
-    execute(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Execute a schedule. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} serviceFabricName The name of the service Fabric.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginExecuteWithHttpOperationResponse(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Execute a schedule. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} userName The name of the user profile.
-     *
-     * @param {string} serviceFabricName The name of the service Fabric.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginExecute(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginExecute(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, callback: ServiceCallback<void>): void;
-    beginExecute(resourceGroupName: string, labName: string, userName: string, serviceFabricName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * List schedules in a given service fabric.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ScheduleList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduleList>>;
-
-    /**
-     * List schedules in a given service fabric.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ScheduleList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ScheduleList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ScheduleList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduleList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ScheduleList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduleList>): void;
-}
-
-/**
- * @class
- * VirtualMachines
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DevTestLabsClient.
- */
-export interface VirtualMachines {
-
-
-    /**
-     * List virtual machines in a given lab.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($expand=artifacts,computeVm,networkInterface,applicableSchedule)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<LabVirtualMachineList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabVirtualMachineList>>;
-
-    /**
-     * List virtual machines in a given lab.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($expand=artifacts,computeVm,networkInterface,applicableSchedule)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {LabVirtualMachineList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {LabVirtualMachineList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LabVirtualMachineList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.LabVirtualMachineList>;
-    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.LabVirtualMachineList>): void;
-    list(resourceGroupName: string, labName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabVirtualMachineList>): void;
+    list(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationLabVirtualMachine>;
+    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.ResponseWithContinuationLabVirtualMachine>): void;
+    list(resourceGroupName: string, labName: string, options: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationLabVirtualMachine>): void;
 
 
     /**
@@ -14998,12 +6319,9 @@ export interface VirtualMachines {
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($expand=artifacts,computeVm,networkInterface,applicableSchedule)'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -15014,7 +6332,7 @@ export interface VirtualMachines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabVirtualMachine>>;
+    getResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabVirtualMachine>>;
 
     /**
      * Get virtual machine.
@@ -15023,12 +6341,9 @@ export interface VirtualMachines {
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($expand=artifacts,computeVm,networkInterface,applicableSchedule)'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -15055,39 +6370,33 @@ export interface VirtualMachines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.LabVirtualMachine>;
-    get(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.LabVirtualMachine>): void;
-    get(resourceGroupName: string, labName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabVirtualMachine>): void;
+    getResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LabVirtualMachine>;
+    getResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.LabVirtualMachine>): void;
+    getResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabVirtualMachine>): void;
 
 
     /**
-     * Create or replace an existing Virtual machine. This operation can take a
+     * Create or replace an existing Virtual Machine. This operation can take a
      * while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
-     * @param {object} labVirtualMachine A virtual machine.
+     * @param {object} labVirtualMachine
      *
      * @param {string} [labVirtualMachine.notes] The notes of the virtual machine.
      *
      * @param {string} [labVirtualMachine.ownerObjectId] The object identifier of
      * the owner of the virtual machine.
      *
-     * @param {string} [labVirtualMachine.ownerUserPrincipalName] The user
-     * principal name of the virtual machine owner.
-     *
      * @param {string} [labVirtualMachine.createdByUserId] The object identifier of
      * the creator of the virtual machine.
      *
      * @param {string} [labVirtualMachine.createdByUser] The email address of
      * creator of the virtual machine.
-     *
-     * @param {date} [labVirtualMachine.createdDate] The creation date of the
-     * virtual machine.
      *
      * @param {string} [labVirtualMachine.computeId] The resource identifier
      * (Microsoft.Compute) of the virtual machine.
@@ -15109,8 +6418,8 @@ export interface VirtualMachines {
      * @param {string} [labVirtualMachine.sshKey] The SSH key of the virtual
      * machine administrator.
      *
-     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] Indicates
-     * whether this virtual machine uses an SSH key for authentication.
+     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
      *
      * @param {string} [labVirtualMachine.fqdn] The fully-qualified domain name of
      * the virtual machine.
@@ -15159,69 +6468,14 @@ export interface VirtualMachines {
      * @param {string} [labVirtualMachine.galleryImageReference.version] The
      * version of the gallery image.
      *
-     * @param {string} [labVirtualMachine.planId] The id of the plan associated
-     * with the virtual machine image
+     * @param {string} [labVirtualMachine.provisioningState] The provisioning
+     * status of the resource.
      *
-     * @param {object} [labVirtualMachine.networkInterface] The network interface
-     * properties.
+     * @param {string} [labVirtualMachine.id] The identifier of the resource.
      *
-     * @param {string} [labVirtualMachine.networkInterface.virtualNetworkId] The
-     * resource ID of the virtual network.
+     * @param {string} [labVirtualMachine.name] The name of the resource.
      *
-     * @param {string} [labVirtualMachine.networkInterface.subnetId] The resource
-     * ID of the sub net.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.publicIpAddressId] The
-     * resource ID of the public IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.publicIpAddress] The
-     * public IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.privateIpAddress] The
-     * private IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.dnsName] The DNS name.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.rdpAuthority] The
-     * RdpAuthority property is a server DNS host name or IP address followed by
-     * the service port number for RDP (Remote Desktop Protocol).
-     *
-     * @param {string} [labVirtualMachine.networkInterface.sshAuthority] The
-     * SshAuthority property is a server DNS host name or IP address followed by
-     * the service port number for SSH.
-     *
-     * @param {object}
-     * [labVirtualMachine.networkInterface.sharedPublicIpAddressConfiguration] The
-     * configuration for sharing a public IP address across multiple virtual
-     * machines.
-     *
-     * @param {array}
-     * [labVirtualMachine.networkInterface.sharedPublicIpAddressConfiguration.inboundNatRules]
-     * The incoming NAT rules
-     *
-     * @param {date} [labVirtualMachine.expirationDate] The expiration date for VM.
-     *
-     * @param {boolean} [labVirtualMachine.allowClaim] Indicates whether another
-     * user can take ownership of the virtual machine
-     *
-     * @param {string} [labVirtualMachine.storageType] Storage type to use for
-     * virtual machine (i.e. Standard, Premium).
-     *
-     * @param {string} [labVirtualMachine.virtualMachineCreationSource] Tells
-     * source of creation of lab virtual machine. Output property only. Possible
-     * values include: 'FromCustomImage', 'FromGalleryImage'
-     *
-     * @param {string} [labVirtualMachine.environmentId] The resource ID of the
-     * environment that contains this virtual machine, if any.
-     *
-     * @param {array} [labVirtualMachine.dataDiskParameters] New or existing data
-     * disks to attach to the virtual machine after creation
-     *
-     * @param {array} [labVirtualMachine.scheduleParameters] Virtual Machine
-     * schedules to be created
-     *
-     * @param {string} [labVirtualMachine.lastKnownPowerState] Last known compute
-     * power state captured in DTL
+     * @param {string} [labVirtualMachine.type] The type of the resource.
      *
      * @param {string} [labVirtualMachine.location] The location of the resource.
      *
@@ -15238,36 +6492,30 @@ export interface VirtualMachines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabVirtualMachine>>;
+    createOrUpdateResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabVirtualMachine>>;
 
     /**
-     * Create or replace an existing Virtual machine. This operation can take a
+     * Create or replace an existing Virtual Machine. This operation can take a
      * while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
-     * @param {object} labVirtualMachine A virtual machine.
+     * @param {object} labVirtualMachine
      *
      * @param {string} [labVirtualMachine.notes] The notes of the virtual machine.
      *
      * @param {string} [labVirtualMachine.ownerObjectId] The object identifier of
      * the owner of the virtual machine.
      *
-     * @param {string} [labVirtualMachine.ownerUserPrincipalName] The user
-     * principal name of the virtual machine owner.
-     *
      * @param {string} [labVirtualMachine.createdByUserId] The object identifier of
      * the creator of the virtual machine.
      *
      * @param {string} [labVirtualMachine.createdByUser] The email address of
      * creator of the virtual machine.
-     *
-     * @param {date} [labVirtualMachine.createdDate] The creation date of the
-     * virtual machine.
      *
      * @param {string} [labVirtualMachine.computeId] The resource identifier
      * (Microsoft.Compute) of the virtual machine.
@@ -15289,8 +6537,8 @@ export interface VirtualMachines {
      * @param {string} [labVirtualMachine.sshKey] The SSH key of the virtual
      * machine administrator.
      *
-     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] Indicates
-     * whether this virtual machine uses an SSH key for authentication.
+     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
      *
      * @param {string} [labVirtualMachine.fqdn] The fully-qualified domain name of
      * the virtual machine.
@@ -15339,69 +6587,14 @@ export interface VirtualMachines {
      * @param {string} [labVirtualMachine.galleryImageReference.version] The
      * version of the gallery image.
      *
-     * @param {string} [labVirtualMachine.planId] The id of the plan associated
-     * with the virtual machine image
+     * @param {string} [labVirtualMachine.provisioningState] The provisioning
+     * status of the resource.
      *
-     * @param {object} [labVirtualMachine.networkInterface] The network interface
-     * properties.
+     * @param {string} [labVirtualMachine.id] The identifier of the resource.
      *
-     * @param {string} [labVirtualMachine.networkInterface.virtualNetworkId] The
-     * resource ID of the virtual network.
+     * @param {string} [labVirtualMachine.name] The name of the resource.
      *
-     * @param {string} [labVirtualMachine.networkInterface.subnetId] The resource
-     * ID of the sub net.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.publicIpAddressId] The
-     * resource ID of the public IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.publicIpAddress] The
-     * public IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.privateIpAddress] The
-     * private IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.dnsName] The DNS name.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.rdpAuthority] The
-     * RdpAuthority property is a server DNS host name or IP address followed by
-     * the service port number for RDP (Remote Desktop Protocol).
-     *
-     * @param {string} [labVirtualMachine.networkInterface.sshAuthority] The
-     * SshAuthority property is a server DNS host name or IP address followed by
-     * the service port number for SSH.
-     *
-     * @param {object}
-     * [labVirtualMachine.networkInterface.sharedPublicIpAddressConfiguration] The
-     * configuration for sharing a public IP address across multiple virtual
-     * machines.
-     *
-     * @param {array}
-     * [labVirtualMachine.networkInterface.sharedPublicIpAddressConfiguration.inboundNatRules]
-     * The incoming NAT rules
-     *
-     * @param {date} [labVirtualMachine.expirationDate] The expiration date for VM.
-     *
-     * @param {boolean} [labVirtualMachine.allowClaim] Indicates whether another
-     * user can take ownership of the virtual machine
-     *
-     * @param {string} [labVirtualMachine.storageType] Storage type to use for
-     * virtual machine (i.e. Standard, Premium).
-     *
-     * @param {string} [labVirtualMachine.virtualMachineCreationSource] Tells
-     * source of creation of lab virtual machine. Output property only. Possible
-     * values include: 'FromCustomImage', 'FromGalleryImage'
-     *
-     * @param {string} [labVirtualMachine.environmentId] The resource ID of the
-     * environment that contains this virtual machine, if any.
-     *
-     * @param {array} [labVirtualMachine.dataDiskParameters] New or existing data
-     * disks to attach to the virtual machine after creation
-     *
-     * @param {array} [labVirtualMachine.scheduleParameters] Virtual Machine
-     * schedules to be created
-     *
-     * @param {string} [labVirtualMachine.lastKnownPowerState] Last known compute
-     * power state captured in DTL
+     * @param {string} [labVirtualMachine.type] The type of the resource.
      *
      * @param {string} [labVirtualMachine.location] The location of the resource.
      *
@@ -15434,9 +6627,9 @@ export interface VirtualMachines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LabVirtualMachine>;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, callback: ServiceCallback<models.LabVirtualMachine>): void;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabVirtualMachine>): void;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LabVirtualMachine>;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, callback: ServiceCallback<models.LabVirtualMachine>): void;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabVirtualMachine>): void;
 
 
     /**
@@ -15446,7 +6639,7 @@ export interface VirtualMachines {
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -15459,7 +6652,7 @@ export interface VirtualMachines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete virtual machine. This operation can take a while to complete.
@@ -15468,7 +6661,7 @@ export interface VirtualMachines {
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -15496,9 +6689,9 @@ export interface VirtualMachines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+    deleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -15508,26 +6701,20 @@ export interface VirtualMachines {
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
-     * @param {object} labVirtualMachine A virtual machine.
+     * @param {object} labVirtualMachine
      *
      * @param {string} [labVirtualMachine.notes] The notes of the virtual machine.
      *
      * @param {string} [labVirtualMachine.ownerObjectId] The object identifier of
      * the owner of the virtual machine.
      *
-     * @param {string} [labVirtualMachine.ownerUserPrincipalName] The user
-     * principal name of the virtual machine owner.
-     *
      * @param {string} [labVirtualMachine.createdByUserId] The object identifier of
      * the creator of the virtual machine.
      *
      * @param {string} [labVirtualMachine.createdByUser] The email address of
      * creator of the virtual machine.
-     *
-     * @param {date} [labVirtualMachine.createdDate] The creation date of the
-     * virtual machine.
      *
      * @param {string} [labVirtualMachine.computeId] The resource identifier
      * (Microsoft.Compute) of the virtual machine.
@@ -15549,8 +6736,8 @@ export interface VirtualMachines {
      * @param {string} [labVirtualMachine.sshKey] The SSH key of the virtual
      * machine administrator.
      *
-     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] Indicates
-     * whether this virtual machine uses an SSH key for authentication.
+     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
      *
      * @param {string} [labVirtualMachine.fqdn] The fully-qualified domain name of
      * the virtual machine.
@@ -15599,69 +6786,16 @@ export interface VirtualMachines {
      * @param {string} [labVirtualMachine.galleryImageReference.version] The
      * version of the gallery image.
      *
-     * @param {string} [labVirtualMachine.planId] The id of the plan associated
-     * with the virtual machine image
+     * @param {string} [labVirtualMachine.provisioningState] The provisioning
+     * status of the resource.
      *
-     * @param {object} [labVirtualMachine.networkInterface] The network interface
-     * properties.
+     * @param {string} [labVirtualMachine.id] The identifier of the resource.
      *
-     * @param {string} [labVirtualMachine.networkInterface.virtualNetworkId] The
-     * resource ID of the virtual network.
+     * @param {string} [labVirtualMachine.name] The name of the resource.
      *
-     * @param {string} [labVirtualMachine.networkInterface.subnetId] The resource
-     * ID of the sub net.
+     * @param {string} [labVirtualMachine.type] The type of the resource.
      *
-     * @param {string} [labVirtualMachine.networkInterface.publicIpAddressId] The
-     * resource ID of the public IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.publicIpAddress] The
-     * public IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.privateIpAddress] The
-     * private IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.dnsName] The DNS name.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.rdpAuthority] The
-     * RdpAuthority property is a server DNS host name or IP address followed by
-     * the service port number for RDP (Remote Desktop Protocol).
-     *
-     * @param {string} [labVirtualMachine.networkInterface.sshAuthority] The
-     * SshAuthority property is a server DNS host name or IP address followed by
-     * the service port number for SSH.
-     *
-     * @param {object}
-     * [labVirtualMachine.networkInterface.sharedPublicIpAddressConfiguration] The
-     * configuration for sharing a public IP address across multiple virtual
-     * machines.
-     *
-     * @param {array}
-     * [labVirtualMachine.networkInterface.sharedPublicIpAddressConfiguration.inboundNatRules]
-     * The incoming NAT rules
-     *
-     * @param {date} [labVirtualMachine.expirationDate] The expiration date for VM.
-     *
-     * @param {boolean} [labVirtualMachine.allowClaim] Indicates whether another
-     * user can take ownership of the virtual machine
-     *
-     * @param {string} [labVirtualMachine.storageType] Storage type to use for
-     * virtual machine (i.e. Standard, Premium).
-     *
-     * @param {string} [labVirtualMachine.virtualMachineCreationSource] Tells
-     * source of creation of lab virtual machine. Output property only. Possible
-     * values include: 'FromCustomImage', 'FromGalleryImage'
-     *
-     * @param {string} [labVirtualMachine.environmentId] The resource ID of the
-     * environment that contains this virtual machine, if any.
-     *
-     * @param {array} [labVirtualMachine.dataDiskParameters] New or existing data
-     * disks to attach to the virtual machine after creation
-     *
-     * @param {array} [labVirtualMachine.scheduleParameters] Virtual Machine
-     * schedules to be created
-     *
-     * @param {string} [labVirtualMachine.lastKnownPowerState] Last known compute
-     * power state captured in DTL
+     * @param {string} [labVirtualMachine.location] The location of the resource.
      *
      * @param {object} [labVirtualMachine.tags] The tags of the resource.
      *
@@ -15676,7 +6810,7 @@ export interface VirtualMachines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachineFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabVirtualMachine>>;
+    patchResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabVirtualMachine>>;
 
     /**
      * Modify properties of virtual machines.
@@ -15685,26 +6819,20 @@ export interface VirtualMachines {
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
-     * @param {object} labVirtualMachine A virtual machine.
+     * @param {object} labVirtualMachine
      *
      * @param {string} [labVirtualMachine.notes] The notes of the virtual machine.
      *
      * @param {string} [labVirtualMachine.ownerObjectId] The object identifier of
      * the owner of the virtual machine.
      *
-     * @param {string} [labVirtualMachine.ownerUserPrincipalName] The user
-     * principal name of the virtual machine owner.
-     *
      * @param {string} [labVirtualMachine.createdByUserId] The object identifier of
      * the creator of the virtual machine.
      *
      * @param {string} [labVirtualMachine.createdByUser] The email address of
      * creator of the virtual machine.
-     *
-     * @param {date} [labVirtualMachine.createdDate] The creation date of the
-     * virtual machine.
      *
      * @param {string} [labVirtualMachine.computeId] The resource identifier
      * (Microsoft.Compute) of the virtual machine.
@@ -15726,8 +6854,8 @@ export interface VirtualMachines {
      * @param {string} [labVirtualMachine.sshKey] The SSH key of the virtual
      * machine administrator.
      *
-     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] Indicates
-     * whether this virtual machine uses an SSH key for authentication.
+     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
      *
      * @param {string} [labVirtualMachine.fqdn] The fully-qualified domain name of
      * the virtual machine.
@@ -15776,69 +6904,16 @@ export interface VirtualMachines {
      * @param {string} [labVirtualMachine.galleryImageReference.version] The
      * version of the gallery image.
      *
-     * @param {string} [labVirtualMachine.planId] The id of the plan associated
-     * with the virtual machine image
+     * @param {string} [labVirtualMachine.provisioningState] The provisioning
+     * status of the resource.
      *
-     * @param {object} [labVirtualMachine.networkInterface] The network interface
-     * properties.
+     * @param {string} [labVirtualMachine.id] The identifier of the resource.
      *
-     * @param {string} [labVirtualMachine.networkInterface.virtualNetworkId] The
-     * resource ID of the virtual network.
+     * @param {string} [labVirtualMachine.name] The name of the resource.
      *
-     * @param {string} [labVirtualMachine.networkInterface.subnetId] The resource
-     * ID of the sub net.
+     * @param {string} [labVirtualMachine.type] The type of the resource.
      *
-     * @param {string} [labVirtualMachine.networkInterface.publicIpAddressId] The
-     * resource ID of the public IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.publicIpAddress] The
-     * public IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.privateIpAddress] The
-     * private IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.dnsName] The DNS name.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.rdpAuthority] The
-     * RdpAuthority property is a server DNS host name or IP address followed by
-     * the service port number for RDP (Remote Desktop Protocol).
-     *
-     * @param {string} [labVirtualMachine.networkInterface.sshAuthority] The
-     * SshAuthority property is a server DNS host name or IP address followed by
-     * the service port number for SSH.
-     *
-     * @param {object}
-     * [labVirtualMachine.networkInterface.sharedPublicIpAddressConfiguration] The
-     * configuration for sharing a public IP address across multiple virtual
-     * machines.
-     *
-     * @param {array}
-     * [labVirtualMachine.networkInterface.sharedPublicIpAddressConfiguration.inboundNatRules]
-     * The incoming NAT rules
-     *
-     * @param {date} [labVirtualMachine.expirationDate] The expiration date for VM.
-     *
-     * @param {boolean} [labVirtualMachine.allowClaim] Indicates whether another
-     * user can take ownership of the virtual machine
-     *
-     * @param {string} [labVirtualMachine.storageType] Storage type to use for
-     * virtual machine (i.e. Standard, Premium).
-     *
-     * @param {string} [labVirtualMachine.virtualMachineCreationSource] Tells
-     * source of creation of lab virtual machine. Output property only. Possible
-     * values include: 'FromCustomImage', 'FromGalleryImage'
-     *
-     * @param {string} [labVirtualMachine.environmentId] The resource ID of the
-     * environment that contains this virtual machine, if any.
-     *
-     * @param {array} [labVirtualMachine.dataDiskParameters] New or existing data
-     * disks to attach to the virtual machine after creation
-     *
-     * @param {array} [labVirtualMachine.scheduleParameters] Virtual Machine
-     * schedules to be created
-     *
-     * @param {string} [labVirtualMachine.lastKnownPowerState] Last known compute
-     * power state captured in DTL
+     * @param {string} [labVirtualMachine.location] The location of the resource.
      *
      * @param {object} [labVirtualMachine.tags] The tags of the resource.
      *
@@ -15869,133 +6944,21 @@ export interface VirtualMachines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachineFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LabVirtualMachine>;
-    update(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachineFragment, callback: ServiceCallback<models.LabVirtualMachine>): void;
-    update(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachineFragment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabVirtualMachine>): void;
+    patchResource(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LabVirtualMachine>;
+    patchResource(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, callback: ServiceCallback<models.LabVirtualMachine>): void;
+    patchResource(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabVirtualMachine>): void;
 
 
     /**
-     * Attach a new or existing data disk to virtual machine. This operation can
-     * take a while to complete.
+     * Apply artifacts to Lab VM. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
-     * @param {object} dataDiskProperties Request body for adding a new or existing
-     * data disk to a virtual machine.
-     *
-     * @param {object} [dataDiskProperties.attachNewDataDiskOptions] Specifies
-     * options to attach a new disk to the virtual machine.
-     *
-     * @param {number} [dataDiskProperties.attachNewDataDiskOptions.diskSizeGiB]
-     * Size of the disk to be attached in Gibibytes.
-     *
-     * @param {string} [dataDiskProperties.attachNewDataDiskOptions.diskName] The
-     * name of the disk to be attached.
-     *
-     * @param {string} [dataDiskProperties.attachNewDataDiskOptions.diskType] The
-     * storage type for the disk (i.e. Standard, Premium). Possible values include:
-     * 'Standard', 'Premium'
-     *
-     * @param {string} [dataDiskProperties.existingLabDiskId] Specifies the
-     * existing lab disk id to attach to virtual machine.
-     *
-     * @param {string} [dataDiskProperties.hostCaching] Caching option for a data
-     * disk (i.e. None, ReadOnly, ReadWrite). Possible values include: 'None',
-     * 'ReadOnly', 'ReadWrite'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    addDataDiskWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, dataDiskProperties: models.DataDiskProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Attach a new or existing data disk to virtual machine. This operation can
-     * take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} dataDiskProperties Request body for adding a new or existing
-     * data disk to a virtual machine.
-     *
-     * @param {object} [dataDiskProperties.attachNewDataDiskOptions] Specifies
-     * options to attach a new disk to the virtual machine.
-     *
-     * @param {number} [dataDiskProperties.attachNewDataDiskOptions.diskSizeGiB]
-     * Size of the disk to be attached in Gibibytes.
-     *
-     * @param {string} [dataDiskProperties.attachNewDataDiskOptions.diskName] The
-     * name of the disk to be attached.
-     *
-     * @param {string} [dataDiskProperties.attachNewDataDiskOptions.diskType] The
-     * storage type for the disk (i.e. Standard, Premium). Possible values include:
-     * 'Standard', 'Premium'
-     *
-     * @param {string} [dataDiskProperties.existingLabDiskId] Specifies the
-     * existing lab disk id to attach to virtual machine.
-     *
-     * @param {string} [dataDiskProperties.hostCaching] Caching option for a data
-     * disk (i.e. None, ReadOnly, ReadWrite). Possible values include: 'None',
-     * 'ReadOnly', 'ReadWrite'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    addDataDisk(resourceGroupName: string, labName: string, name: string, dataDiskProperties: models.DataDiskProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    addDataDisk(resourceGroupName: string, labName: string, name: string, dataDiskProperties: models.DataDiskProperties, callback: ServiceCallback<void>): void;
-    addDataDisk(resourceGroupName: string, labName: string, name: string, dataDiskProperties: models.DataDiskProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Apply artifacts to virtual machine. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} applyArtifactsRequest Request body for applying artifacts to
-     * a virtual machine.
+     * @param {object} applyArtifactsRequest
      *
      * @param {array} [applyArtifactsRequest.artifacts] The list of artifacts to
      * apply.
@@ -16014,17 +6977,15 @@ export interface VirtualMachines {
     applyArtifactsWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, applyArtifactsRequest: models.ApplyArtifactsRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Apply artifacts to virtual machine. This operation can take a while to
-     * complete.
+     * Apply artifacts to Lab VM. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
-     * @param {object} applyArtifactsRequest Request body for applying artifacts to
-     * a virtual machine.
+     * @param {object} applyArtifactsRequest
      *
      * @param {array} [applyArtifactsRequest.artifacts] The list of artifacts to
      * apply.
@@ -16061,479 +7022,13 @@ export interface VirtualMachines {
 
 
     /**
-     * Take ownership of an existing virtual machine This operation can take a
-     * while to complete.
+     * Start a Lab VM. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    claimWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Take ownership of an existing virtual machine This operation can take a
-     * while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    claim(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    claim(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    claim(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Detach the specified disk from the virtual machine. This operation can take
-     * a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} detachDataDiskProperties Request body for detaching data
-     * disk from a virtual machine.
-     *
-     * @param {string} [detachDataDiskProperties.existingLabDiskId] Specifies the
-     * disk resource ID to detach from virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    detachDataDiskWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, detachDataDiskProperties: models.DetachDataDiskProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Detach the specified disk from the virtual machine. This operation can take
-     * a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} detachDataDiskProperties Request body for detaching data
-     * disk from a virtual machine.
-     *
-     * @param {string} [detachDataDiskProperties.existingLabDiskId] Specifies the
-     * disk resource ID to detach from virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    detachDataDisk(resourceGroupName: string, labName: string, name: string, detachDataDiskProperties: models.DetachDataDiskProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    detachDataDisk(resourceGroupName: string, labName: string, name: string, detachDataDiskProperties: models.DetachDataDiskProperties, callback: ServiceCallback<void>): void;
-    detachDataDisk(resourceGroupName: string, labName: string, name: string, detachDataDiskProperties: models.DetachDataDiskProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets a string that represents the contents of the RDP file for the virtual
-     * machine
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RdpConnection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getRdpFileContentsWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RdpConnection>>;
-
-    /**
-     * Gets a string that represents the contents of the RDP file for the virtual
-     * machine
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RdpConnection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RdpConnection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RdpConnection} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getRdpFileContents(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RdpConnection>;
-    getRdpFileContents(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.RdpConnection>): void;
-    getRdpFileContents(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RdpConnection>): void;
-
-
-    /**
-     * Lists the applicable start/stop schedules, if any.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicableSchedule>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listApplicableSchedulesWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicableSchedule>>;
-
-    /**
-     * Lists the applicable start/stop schedules, if any.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicableSchedule} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicableSchedule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicableSchedule} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listApplicableSchedules(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicableSchedule>;
-    listApplicableSchedules(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.ApplicableSchedule>): void;
-    listApplicableSchedules(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicableSchedule>): void;
-
-
-    /**
-     * Redeploy a virtual machine This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    redeployWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Redeploy a virtual machine This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    redeploy(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    redeploy(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    redeploy(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Resize Virtual Machine. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} resizeLabVirtualMachineProperties Request body for resizing
-     * a virtual machine.
-     *
-     * @param {string} [resizeLabVirtualMachineProperties.size] Specifies the size
-     * of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    resizeWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, resizeLabVirtualMachineProperties: models.ResizeLabVirtualMachineProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Resize Virtual Machine. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} resizeLabVirtualMachineProperties Request body for resizing
-     * a virtual machine.
-     *
-     * @param {string} [resizeLabVirtualMachineProperties.size] Specifies the size
-     * of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    resize(resourceGroupName: string, labName: string, name: string, resizeLabVirtualMachineProperties: models.ResizeLabVirtualMachineProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    resize(resourceGroupName: string, labName: string, name: string, resizeLabVirtualMachineProperties: models.ResizeLabVirtualMachineProperties, callback: ServiceCallback<void>): void;
-    resize(resourceGroupName: string, labName: string, name: string, resizeLabVirtualMachineProperties: models.ResizeLabVirtualMachineProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Restart a virtual machine. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    restartWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Restart a virtual machine. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    restart(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    restart(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    restart(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Start a virtual machine. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16549,13 +7044,13 @@ export interface VirtualMachines {
     startWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Start a virtual machine. This operation can take a while to complete.
+     * Start a Lab VM. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16589,13 +7084,13 @@ export interface VirtualMachines {
 
 
     /**
-     * Stop a virtual machine This operation can take a while to complete.
+     * Stop a Lab VM. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16611,13 +7106,13 @@ export interface VirtualMachines {
     stopWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Stop a virtual machine This operation can take a while to complete.
+     * Stop a Lab VM. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16651,161 +7146,27 @@ export interface VirtualMachines {
 
 
     /**
-     * Transfers all data disks attached to the virtual machine to be owned by the
-     * current user. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    transferDisksWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Transfers all data disks attached to the virtual machine to be owned by the
-     * current user. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    transferDisks(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    transferDisks(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    transferDisks(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Release ownership of an existing virtual machine This operation can take a
+     * Create or replace an existing Virtual Machine. This operation can take a
      * while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    unClaimWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Release ownership of an existing virtual machine This operation can take a
-     * while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    unClaim(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    unClaim(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    unClaim(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Create or replace an existing Virtual machine. This operation can take a
-     * while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} labVirtualMachine A virtual machine.
+     * @param {object} labVirtualMachine
      *
      * @param {string} [labVirtualMachine.notes] The notes of the virtual machine.
      *
      * @param {string} [labVirtualMachine.ownerObjectId] The object identifier of
      * the owner of the virtual machine.
      *
-     * @param {string} [labVirtualMachine.ownerUserPrincipalName] The user
-     * principal name of the virtual machine owner.
-     *
      * @param {string} [labVirtualMachine.createdByUserId] The object identifier of
      * the creator of the virtual machine.
      *
      * @param {string} [labVirtualMachine.createdByUser] The email address of
      * creator of the virtual machine.
-     *
-     * @param {date} [labVirtualMachine.createdDate] The creation date of the
-     * virtual machine.
      *
      * @param {string} [labVirtualMachine.computeId] The resource identifier
      * (Microsoft.Compute) of the virtual machine.
@@ -16827,8 +7188,8 @@ export interface VirtualMachines {
      * @param {string} [labVirtualMachine.sshKey] The SSH key of the virtual
      * machine administrator.
      *
-     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] Indicates
-     * whether this virtual machine uses an SSH key for authentication.
+     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
      *
      * @param {string} [labVirtualMachine.fqdn] The fully-qualified domain name of
      * the virtual machine.
@@ -16877,69 +7238,14 @@ export interface VirtualMachines {
      * @param {string} [labVirtualMachine.galleryImageReference.version] The
      * version of the gallery image.
      *
-     * @param {string} [labVirtualMachine.planId] The id of the plan associated
-     * with the virtual machine image
+     * @param {string} [labVirtualMachine.provisioningState] The provisioning
+     * status of the resource.
      *
-     * @param {object} [labVirtualMachine.networkInterface] The network interface
-     * properties.
+     * @param {string} [labVirtualMachine.id] The identifier of the resource.
      *
-     * @param {string} [labVirtualMachine.networkInterface.virtualNetworkId] The
-     * resource ID of the virtual network.
+     * @param {string} [labVirtualMachine.name] The name of the resource.
      *
-     * @param {string} [labVirtualMachine.networkInterface.subnetId] The resource
-     * ID of the sub net.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.publicIpAddressId] The
-     * resource ID of the public IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.publicIpAddress] The
-     * public IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.privateIpAddress] The
-     * private IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.dnsName] The DNS name.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.rdpAuthority] The
-     * RdpAuthority property is a server DNS host name or IP address followed by
-     * the service port number for RDP (Remote Desktop Protocol).
-     *
-     * @param {string} [labVirtualMachine.networkInterface.sshAuthority] The
-     * SshAuthority property is a server DNS host name or IP address followed by
-     * the service port number for SSH.
-     *
-     * @param {object}
-     * [labVirtualMachine.networkInterface.sharedPublicIpAddressConfiguration] The
-     * configuration for sharing a public IP address across multiple virtual
-     * machines.
-     *
-     * @param {array}
-     * [labVirtualMachine.networkInterface.sharedPublicIpAddressConfiguration.inboundNatRules]
-     * The incoming NAT rules
-     *
-     * @param {date} [labVirtualMachine.expirationDate] The expiration date for VM.
-     *
-     * @param {boolean} [labVirtualMachine.allowClaim] Indicates whether another
-     * user can take ownership of the virtual machine
-     *
-     * @param {string} [labVirtualMachine.storageType] Storage type to use for
-     * virtual machine (i.e. Standard, Premium).
-     *
-     * @param {string} [labVirtualMachine.virtualMachineCreationSource] Tells
-     * source of creation of lab virtual machine. Output property only. Possible
-     * values include: 'FromCustomImage', 'FromGalleryImage'
-     *
-     * @param {string} [labVirtualMachine.environmentId] The resource ID of the
-     * environment that contains this virtual machine, if any.
-     *
-     * @param {array} [labVirtualMachine.dataDiskParameters] New or existing data
-     * disks to attach to the virtual machine after creation
-     *
-     * @param {array} [labVirtualMachine.scheduleParameters] Virtual Machine
-     * schedules to be created
-     *
-     * @param {string} [labVirtualMachine.lastKnownPowerState] Last known compute
-     * power state captured in DTL
+     * @param {string} [labVirtualMachine.type] The type of the resource.
      *
      * @param {string} [labVirtualMachine.location] The location of the resource.
      *
@@ -16956,36 +7262,30 @@ export interface VirtualMachines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabVirtualMachine>>;
+    beginCreateOrUpdateResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabVirtualMachine>>;
 
     /**
-     * Create or replace an existing Virtual machine. This operation can take a
+     * Create or replace an existing Virtual Machine. This operation can take a
      * while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
-     * @param {object} labVirtualMachine A virtual machine.
+     * @param {object} labVirtualMachine
      *
      * @param {string} [labVirtualMachine.notes] The notes of the virtual machine.
      *
      * @param {string} [labVirtualMachine.ownerObjectId] The object identifier of
      * the owner of the virtual machine.
      *
-     * @param {string} [labVirtualMachine.ownerUserPrincipalName] The user
-     * principal name of the virtual machine owner.
-     *
      * @param {string} [labVirtualMachine.createdByUserId] The object identifier of
      * the creator of the virtual machine.
      *
      * @param {string} [labVirtualMachine.createdByUser] The email address of
      * creator of the virtual machine.
-     *
-     * @param {date} [labVirtualMachine.createdDate] The creation date of the
-     * virtual machine.
      *
      * @param {string} [labVirtualMachine.computeId] The resource identifier
      * (Microsoft.Compute) of the virtual machine.
@@ -17007,8 +7307,8 @@ export interface VirtualMachines {
      * @param {string} [labVirtualMachine.sshKey] The SSH key of the virtual
      * machine administrator.
      *
-     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] Indicates
-     * whether this virtual machine uses an SSH key for authentication.
+     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
      *
      * @param {string} [labVirtualMachine.fqdn] The fully-qualified domain name of
      * the virtual machine.
@@ -17057,69 +7357,14 @@ export interface VirtualMachines {
      * @param {string} [labVirtualMachine.galleryImageReference.version] The
      * version of the gallery image.
      *
-     * @param {string} [labVirtualMachine.planId] The id of the plan associated
-     * with the virtual machine image
+     * @param {string} [labVirtualMachine.provisioningState] The provisioning
+     * status of the resource.
      *
-     * @param {object} [labVirtualMachine.networkInterface] The network interface
-     * properties.
+     * @param {string} [labVirtualMachine.id] The identifier of the resource.
      *
-     * @param {string} [labVirtualMachine.networkInterface.virtualNetworkId] The
-     * resource ID of the virtual network.
+     * @param {string} [labVirtualMachine.name] The name of the resource.
      *
-     * @param {string} [labVirtualMachine.networkInterface.subnetId] The resource
-     * ID of the sub net.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.publicIpAddressId] The
-     * resource ID of the public IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.publicIpAddress] The
-     * public IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.privateIpAddress] The
-     * private IP address.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.dnsName] The DNS name.
-     *
-     * @param {string} [labVirtualMachine.networkInterface.rdpAuthority] The
-     * RdpAuthority property is a server DNS host name or IP address followed by
-     * the service port number for RDP (Remote Desktop Protocol).
-     *
-     * @param {string} [labVirtualMachine.networkInterface.sshAuthority] The
-     * SshAuthority property is a server DNS host name or IP address followed by
-     * the service port number for SSH.
-     *
-     * @param {object}
-     * [labVirtualMachine.networkInterface.sharedPublicIpAddressConfiguration] The
-     * configuration for sharing a public IP address across multiple virtual
-     * machines.
-     *
-     * @param {array}
-     * [labVirtualMachine.networkInterface.sharedPublicIpAddressConfiguration.inboundNatRules]
-     * The incoming NAT rules
-     *
-     * @param {date} [labVirtualMachine.expirationDate] The expiration date for VM.
-     *
-     * @param {boolean} [labVirtualMachine.allowClaim] Indicates whether another
-     * user can take ownership of the virtual machine
-     *
-     * @param {string} [labVirtualMachine.storageType] Storage type to use for
-     * virtual machine (i.e. Standard, Premium).
-     *
-     * @param {string} [labVirtualMachine.virtualMachineCreationSource] Tells
-     * source of creation of lab virtual machine. Output property only. Possible
-     * values include: 'FromCustomImage', 'FromGalleryImage'
-     *
-     * @param {string} [labVirtualMachine.environmentId] The resource ID of the
-     * environment that contains this virtual machine, if any.
-     *
-     * @param {array} [labVirtualMachine.dataDiskParameters] New or existing data
-     * disks to attach to the virtual machine after creation
-     *
-     * @param {array} [labVirtualMachine.scheduleParameters] Virtual Machine
-     * schedules to be created
-     *
-     * @param {string} [labVirtualMachine.lastKnownPowerState] Last known compute
-     * power state captured in DTL
+     * @param {string} [labVirtualMachine.type] The type of the resource.
      *
      * @param {string} [labVirtualMachine.location] The location of the resource.
      *
@@ -17152,9 +7397,9 @@ export interface VirtualMachines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LabVirtualMachine>;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, callback: ServiceCallback<models.LabVirtualMachine>): void;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabVirtualMachine>): void;
+    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LabVirtualMachine>;
+    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, callback: ServiceCallback<models.LabVirtualMachine>): void;
+    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabVirtualMachine>): void;
 
 
     /**
@@ -17164,7 +7409,7 @@ export interface VirtualMachines {
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17177,7 +7422,7 @@ export interface VirtualMachines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete virtual machine. This operation can take a while to complete.
@@ -17186,7 +7431,7 @@ export interface VirtualMachines {
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17214,133 +7459,21 @@ export interface VirtualMachines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+    beginDeleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Attach a new or existing data disk to virtual machine. This operation can
-     * take a while to complete.
+     * Apply artifacts to Lab VM. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
-     * @param {object} dataDiskProperties Request body for adding a new or existing
-     * data disk to a virtual machine.
-     *
-     * @param {object} [dataDiskProperties.attachNewDataDiskOptions] Specifies
-     * options to attach a new disk to the virtual machine.
-     *
-     * @param {number} [dataDiskProperties.attachNewDataDiskOptions.diskSizeGiB]
-     * Size of the disk to be attached in Gibibytes.
-     *
-     * @param {string} [dataDiskProperties.attachNewDataDiskOptions.diskName] The
-     * name of the disk to be attached.
-     *
-     * @param {string} [dataDiskProperties.attachNewDataDiskOptions.diskType] The
-     * storage type for the disk (i.e. Standard, Premium). Possible values include:
-     * 'Standard', 'Premium'
-     *
-     * @param {string} [dataDiskProperties.existingLabDiskId] Specifies the
-     * existing lab disk id to attach to virtual machine.
-     *
-     * @param {string} [dataDiskProperties.hostCaching] Caching option for a data
-     * disk (i.e. None, ReadOnly, ReadWrite). Possible values include: 'None',
-     * 'ReadOnly', 'ReadWrite'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginAddDataDiskWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, dataDiskProperties: models.DataDiskProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Attach a new or existing data disk to virtual machine. This operation can
-     * take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} dataDiskProperties Request body for adding a new or existing
-     * data disk to a virtual machine.
-     *
-     * @param {object} [dataDiskProperties.attachNewDataDiskOptions] Specifies
-     * options to attach a new disk to the virtual machine.
-     *
-     * @param {number} [dataDiskProperties.attachNewDataDiskOptions.diskSizeGiB]
-     * Size of the disk to be attached in Gibibytes.
-     *
-     * @param {string} [dataDiskProperties.attachNewDataDiskOptions.diskName] The
-     * name of the disk to be attached.
-     *
-     * @param {string} [dataDiskProperties.attachNewDataDiskOptions.diskType] The
-     * storage type for the disk (i.e. Standard, Premium). Possible values include:
-     * 'Standard', 'Premium'
-     *
-     * @param {string} [dataDiskProperties.existingLabDiskId] Specifies the
-     * existing lab disk id to attach to virtual machine.
-     *
-     * @param {string} [dataDiskProperties.hostCaching] Caching option for a data
-     * disk (i.e. None, ReadOnly, ReadWrite). Possible values include: 'None',
-     * 'ReadOnly', 'ReadWrite'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginAddDataDisk(resourceGroupName: string, labName: string, name: string, dataDiskProperties: models.DataDiskProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginAddDataDisk(resourceGroupName: string, labName: string, name: string, dataDiskProperties: models.DataDiskProperties, callback: ServiceCallback<void>): void;
-    beginAddDataDisk(resourceGroupName: string, labName: string, name: string, dataDiskProperties: models.DataDiskProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Apply artifacts to virtual machine. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} applyArtifactsRequest Request body for applying artifacts to
-     * a virtual machine.
+     * @param {object} applyArtifactsRequest
      *
      * @param {array} [applyArtifactsRequest.artifacts] The list of artifacts to
      * apply.
@@ -17359,17 +7492,15 @@ export interface VirtualMachines {
     beginApplyArtifactsWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, applyArtifactsRequest: models.ApplyArtifactsRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Apply artifacts to virtual machine. This operation can take a while to
-     * complete.
+     * Apply artifacts to Lab VM. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
-     * @param {object} applyArtifactsRequest Request body for applying artifacts to
-     * a virtual machine.
+     * @param {object} applyArtifactsRequest
      *
      * @param {array} [applyArtifactsRequest.artifacts] The list of artifacts to
      * apply.
@@ -17406,351 +7537,13 @@ export interface VirtualMachines {
 
 
     /**
-     * Take ownership of an existing virtual machine This operation can take a
-     * while to complete.
+     * Start a Lab VM. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginClaimWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Take ownership of an existing virtual machine This operation can take a
-     * while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginClaim(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginClaim(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    beginClaim(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Detach the specified disk from the virtual machine. This operation can take
-     * a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} detachDataDiskProperties Request body for detaching data
-     * disk from a virtual machine.
-     *
-     * @param {string} [detachDataDiskProperties.existingLabDiskId] Specifies the
-     * disk resource ID to detach from virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDetachDataDiskWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, detachDataDiskProperties: models.DetachDataDiskProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Detach the specified disk from the virtual machine. This operation can take
-     * a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} detachDataDiskProperties Request body for detaching data
-     * disk from a virtual machine.
-     *
-     * @param {string} [detachDataDiskProperties.existingLabDiskId] Specifies the
-     * disk resource ID to detach from virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDetachDataDisk(resourceGroupName: string, labName: string, name: string, detachDataDiskProperties: models.DetachDataDiskProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDetachDataDisk(resourceGroupName: string, labName: string, name: string, detachDataDiskProperties: models.DetachDataDiskProperties, callback: ServiceCallback<void>): void;
-    beginDetachDataDisk(resourceGroupName: string, labName: string, name: string, detachDataDiskProperties: models.DetachDataDiskProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Redeploy a virtual machine This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginRedeployWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Redeploy a virtual machine This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginRedeploy(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginRedeploy(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    beginRedeploy(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Resize Virtual Machine. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} resizeLabVirtualMachineProperties Request body for resizing
-     * a virtual machine.
-     *
-     * @param {string} [resizeLabVirtualMachineProperties.size] Specifies the size
-     * of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginResizeWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, resizeLabVirtualMachineProperties: models.ResizeLabVirtualMachineProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Resize Virtual Machine. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} resizeLabVirtualMachineProperties Request body for resizing
-     * a virtual machine.
-     *
-     * @param {string} [resizeLabVirtualMachineProperties.size] Specifies the size
-     * of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginResize(resourceGroupName: string, labName: string, name: string, resizeLabVirtualMachineProperties: models.ResizeLabVirtualMachineProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginResize(resourceGroupName: string, labName: string, name: string, resizeLabVirtualMachineProperties: models.ResizeLabVirtualMachineProperties, callback: ServiceCallback<void>): void;
-    beginResize(resourceGroupName: string, labName: string, name: string, resizeLabVirtualMachineProperties: models.ResizeLabVirtualMachineProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Restart a virtual machine. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginRestartWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Restart a virtual machine. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginRestart(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginRestart(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    beginRestart(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Start a virtual machine. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17766,13 +7559,13 @@ export interface VirtualMachines {
     beginStartWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Start a virtual machine. This operation can take a while to complete.
+     * Start a Lab VM. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17806,13 +7599,13 @@ export interface VirtualMachines {
 
 
     /**
-     * Stop a virtual machine This operation can take a while to complete.
+     * Stop a Lab VM. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17828,13 +7621,13 @@ export interface VirtualMachines {
     beginStopWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Stop a virtual machine This operation can take a while to complete.
+     * Stop a Lab VM. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} name The name of the virtual machine.
+     * @param {string} name The name of the virtual Machine.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17868,135 +7661,7 @@ export interface VirtualMachines {
 
 
     /**
-     * Transfers all data disks attached to the virtual machine to be owned by the
-     * current user. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginTransferDisksWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Transfers all data disks attached to the virtual machine to be owned by the
-     * current user. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginTransferDisks(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginTransferDisks(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    beginTransferDisks(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Release ownership of an existing virtual machine This operation can take a
-     * while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginUnClaimWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Release ownership of an existing virtual machine This operation can take a
-     * while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginUnClaim(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginUnClaim(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    beginUnClaim(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * List virtual machines in a given lab.
+     * List virtual machines.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -18008,14 +7673,14 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<LabVirtualMachineList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationLabVirtualMachine>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabVirtualMachineList>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationLabVirtualMachine>>;
 
     /**
-     * List virtual machines in a given lab.
+     * List virtual machines.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -18032,7 +7697,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {LabVirtualMachineList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationLabVirtualMachine} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -18040,83 +7705,68 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {LabVirtualMachineList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LabVirtualMachineList} for more information.
+     *                      {ResponseWithContinuationLabVirtualMachine} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationLabVirtualMachine}
+     *                      for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LabVirtualMachineList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.LabVirtualMachineList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabVirtualMachineList>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationLabVirtualMachine>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ResponseWithContinuationLabVirtualMachine>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationLabVirtualMachine>): void;
 }
 
 /**
  * @class
- * VirtualMachineSchedules
+ * VirtualNetworkOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DevTestLabsClient.
  */
-export interface VirtualMachineSchedules {
+export interface VirtualNetworkOperations {
 
 
     /**
-     * List schedules in a given virtual machine.
+     * List virtual networks.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} virtualMachineName The name of the virtual machine.
-     *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
+     * @param {number} [options.top]
      *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ScheduleList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationVirtualNetwork>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, virtualMachineName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduleList>>;
+    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationVirtualNetwork>>;
 
     /**
-     * List schedules in a given virtual machine.
+     * List virtual networks.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} labName The name of the lab.
      *
-     * @param {string} virtualMachineName The name of the virtual machine.
-     *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
+     * @param {number} [options.top]
      *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
+     * @param {string} [options.orderBy]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -18128,7 +7778,7 @@ export interface VirtualMachineSchedules {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ScheduleList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationVirtualNetwork} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -18136,802 +7786,17 @@ export interface VirtualMachineSchedules {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ScheduleList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ScheduleList} for more information.
+     *                      {ResponseWithContinuationVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationVirtualNetwork} for
+     *                      more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, labName: string, virtualMachineName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduleList>;
-    list(resourceGroupName: string, labName: string, virtualMachineName: string, callback: ServiceCallback<models.ScheduleList>): void;
-    list(resourceGroupName: string, labName: string, virtualMachineName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduleList>): void;
-
-
-    /**
-     * Get schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} virtualMachineName The name of the virtual machine.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Schedule>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
-
-    /**
-     * Get schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} virtualMachineName The name of the virtual machine.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($select=status)'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Schedule} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Schedule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Schedule} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
-    get(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, callback: ServiceCallback<models.Schedule>): void;
-    get(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
-
-
-    /**
-     * Create or replace an existing schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} virtualMachineName The name of the virtual machine.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} schedule A schedule.
-     *
-     * @param {string} [schedule.status] The status of the schedule (i.e. Enabled,
-     * Disabled). Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [schedule.taskType] The task type of the schedule (e.g.
-     * LabVmsShutdownTask, LabVmAutoStart).
-     *
-     * @param {object} [schedule.weeklyRecurrence] If the schedule will occur only
-     * some days of the week, specify the weekly recurrence.
-     *
-     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week for
-     * which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
-     *
-     * @param {string} [schedule.weeklyRecurrence.time] The time of the day the
-     * schedule will occur.
-     *
-     * @param {object} [schedule.dailyRecurrence] If the schedule will occur once
-     * each day of the week, specify the daily recurrence.
-     *
-     * @param {string} [schedule.dailyRecurrence.time] The time of day the schedule
-     * will occur.
-     *
-     * @param {object} [schedule.hourlyRecurrence] If the schedule will occur
-     * multiple times a day, specify the hourly recurrence.
-     *
-     * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
-     * schedule will run.
-     *
-     * @param {string} [schedule.timeZoneId] The time zone ID (e.g. Pacific
-     * Standard time).
-     *
-     * @param {object} [schedule.notificationSettings] Notification settings.
-     *
-     * @param {string} [schedule.notificationSettings.status] If notifications are
-     * enabled for this schedule (i.e. Enabled, Disabled). Possible values include:
-     * 'Enabled', 'Disabled'
-     *
-     * @param {number} [schedule.notificationSettings.timeInMinutes] Time in
-     * minutes before event at which notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.webhookUrl] The webhook URL
-     * to which the notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon separated
-     * email addresses).
-     *
-     * @param {string} [schedule.notificationSettings.notificationLocale] The
-     * locale to use when sending a notification (fallback for unsupported
-     * languages is EN).
-     *
-     * @param {string} [schedule.targetResourceId] The resource ID to which the
-     * schedule belongs
-     *
-     * @param {string} [schedule.location] The location of the resource.
-     *
-     * @param {object} [schedule.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Schedule>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, schedule: models.Schedule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
-
-    /**
-     * Create or replace an existing schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} virtualMachineName The name of the virtual machine.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} schedule A schedule.
-     *
-     * @param {string} [schedule.status] The status of the schedule (i.e. Enabled,
-     * Disabled). Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [schedule.taskType] The task type of the schedule (e.g.
-     * LabVmsShutdownTask, LabVmAutoStart).
-     *
-     * @param {object} [schedule.weeklyRecurrence] If the schedule will occur only
-     * some days of the week, specify the weekly recurrence.
-     *
-     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week for
-     * which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
-     *
-     * @param {string} [schedule.weeklyRecurrence.time] The time of the day the
-     * schedule will occur.
-     *
-     * @param {object} [schedule.dailyRecurrence] If the schedule will occur once
-     * each day of the week, specify the daily recurrence.
-     *
-     * @param {string} [schedule.dailyRecurrence.time] The time of day the schedule
-     * will occur.
-     *
-     * @param {object} [schedule.hourlyRecurrence] If the schedule will occur
-     * multiple times a day, specify the hourly recurrence.
-     *
-     * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
-     * schedule will run.
-     *
-     * @param {string} [schedule.timeZoneId] The time zone ID (e.g. Pacific
-     * Standard time).
-     *
-     * @param {object} [schedule.notificationSettings] Notification settings.
-     *
-     * @param {string} [schedule.notificationSettings.status] If notifications are
-     * enabled for this schedule (i.e. Enabled, Disabled). Possible values include:
-     * 'Enabled', 'Disabled'
-     *
-     * @param {number} [schedule.notificationSettings.timeInMinutes] Time in
-     * minutes before event at which notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.webhookUrl] The webhook URL
-     * to which the notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon separated
-     * email addresses).
-     *
-     * @param {string} [schedule.notificationSettings.notificationLocale] The
-     * locale to use when sending a notification (fallback for unsupported
-     * languages is EN).
-     *
-     * @param {string} [schedule.targetResourceId] The resource ID to which the
-     * schedule belongs
-     *
-     * @param {string} [schedule.location] The location of the resource.
-     *
-     * @param {object} [schedule.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Schedule} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Schedule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Schedule} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, schedule: models.Schedule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
-    createOrUpdate(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, schedule: models.Schedule, callback: ServiceCallback<models.Schedule>): void;
-    createOrUpdate(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, schedule: models.Schedule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
-
-
-    /**
-     * Delete schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} virtualMachineName The name of the virtual machine.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete schedule.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} virtualMachineName The name of the virtual machine.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Modify properties of schedules.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} virtualMachineName The name of the virtual machine.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} schedule A schedule.
-     *
-     * @param {string} [schedule.status] The status of the schedule (i.e. Enabled,
-     * Disabled). Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [schedule.taskType] The task type of the schedule (e.g.
-     * LabVmsShutdownTask, LabVmAutoStart).
-     *
-     * @param {object} [schedule.weeklyRecurrence] If the schedule will occur only
-     * some days of the week, specify the weekly recurrence.
-     *
-     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week for
-     * which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
-     *
-     * @param {string} [schedule.weeklyRecurrence.time] The time of the day the
-     * schedule will occur.
-     *
-     * @param {object} [schedule.dailyRecurrence] If the schedule will occur once
-     * each day of the week, specify the daily recurrence.
-     *
-     * @param {string} [schedule.dailyRecurrence.time] The time of day the schedule
-     * will occur.
-     *
-     * @param {object} [schedule.hourlyRecurrence] If the schedule will occur
-     * multiple times a day, specify the hourly recurrence.
-     *
-     * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
-     * schedule will run.
-     *
-     * @param {string} [schedule.timeZoneId] The time zone ID (e.g. Pacific
-     * Standard time).
-     *
-     * @param {object} [schedule.notificationSettings] Notification settings.
-     *
-     * @param {string} [schedule.notificationSettings.status] If notifications are
-     * enabled for this schedule (i.e. Enabled, Disabled). Possible values include:
-     * 'Enabled', 'Disabled'
-     *
-     * @param {number} [schedule.notificationSettings.timeInMinutes] Time in
-     * minutes before event at which notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.webhookUrl] The webhook URL
-     * to which the notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon separated
-     * email addresses).
-     *
-     * @param {string} [schedule.notificationSettings.notificationLocale] The
-     * locale to use when sending a notification (fallback for unsupported
-     * languages is EN).
-     *
-     * @param {string} [schedule.targetResourceId] The resource ID to which the
-     * schedule belongs
-     *
-     * @param {object} [schedule.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Schedule>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, schedule: models.ScheduleFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
-
-    /**
-     * Modify properties of schedules.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} virtualMachineName The name of the virtual machine.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} schedule A schedule.
-     *
-     * @param {string} [schedule.status] The status of the schedule (i.e. Enabled,
-     * Disabled). Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [schedule.taskType] The task type of the schedule (e.g.
-     * LabVmsShutdownTask, LabVmAutoStart).
-     *
-     * @param {object} [schedule.weeklyRecurrence] If the schedule will occur only
-     * some days of the week, specify the weekly recurrence.
-     *
-     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week for
-     * which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
-     *
-     * @param {string} [schedule.weeklyRecurrence.time] The time of the day the
-     * schedule will occur.
-     *
-     * @param {object} [schedule.dailyRecurrence] If the schedule will occur once
-     * each day of the week, specify the daily recurrence.
-     *
-     * @param {string} [schedule.dailyRecurrence.time] The time of day the schedule
-     * will occur.
-     *
-     * @param {object} [schedule.hourlyRecurrence] If the schedule will occur
-     * multiple times a day, specify the hourly recurrence.
-     *
-     * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
-     * schedule will run.
-     *
-     * @param {string} [schedule.timeZoneId] The time zone ID (e.g. Pacific
-     * Standard time).
-     *
-     * @param {object} [schedule.notificationSettings] Notification settings.
-     *
-     * @param {string} [schedule.notificationSettings.status] If notifications are
-     * enabled for this schedule (i.e. Enabled, Disabled). Possible values include:
-     * 'Enabled', 'Disabled'
-     *
-     * @param {number} [schedule.notificationSettings.timeInMinutes] Time in
-     * minutes before event at which notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.webhookUrl] The webhook URL
-     * to which the notification will be sent.
-     *
-     * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon separated
-     * email addresses).
-     *
-     * @param {string} [schedule.notificationSettings.notificationLocale] The
-     * locale to use when sending a notification (fallback for unsupported
-     * languages is EN).
-     *
-     * @param {string} [schedule.targetResourceId] The resource ID to which the
-     * schedule belongs
-     *
-     * @param {object} [schedule.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Schedule} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Schedule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Schedule} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, schedule: models.ScheduleFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
-    update(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, schedule: models.ScheduleFragment, callback: ServiceCallback<models.Schedule>): void;
-    update(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, schedule: models.ScheduleFragment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
-
-
-    /**
-     * Execute a schedule. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} virtualMachineName The name of the virtual machine.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    executeWithHttpOperationResponse(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Execute a schedule. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} virtualMachineName The name of the virtual machine.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    execute(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    execute(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, callback: ServiceCallback<void>): void;
-    execute(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Execute a schedule. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} virtualMachineName The name of the virtual machine.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginExecuteWithHttpOperationResponse(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Execute a schedule. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} virtualMachineName The name of the virtual machine.
-     *
-     * @param {string} name The name of the schedule.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginExecute(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginExecute(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, callback: ServiceCallback<void>): void;
-    beginExecute(resourceGroupName: string, labName: string, virtualMachineName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * List schedules in a given virtual machine.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ScheduleList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduleList>>;
-
-    /**
-     * List schedules in a given virtual machine.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ScheduleList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ScheduleList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ScheduleList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduleList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ScheduleList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduleList>): void;
-}
-
-/**
- * @class
- * VirtualNetworks
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DevTestLabsClient.
- */
-export interface VirtualNetworks {
-
-
-    /**
-     * List virtual networks in a given lab.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($expand=externalSubnets)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualNetworkList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkList>>;
-
-    /**
-     * List virtual networks in a given lab.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($expand=externalSubnets)'
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     * Example: '$filter=contains(name,'myName')
-     *
-     * @param {number} [options.top] The maximum number of resources to return from
-     * the operation. Example: '$top=10'
-     *
-     * @param {string} [options.orderby] The ordering expression for the results,
-     * using OData notation. Example: '$orderby=name desc'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualNetworkList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualNetworkList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualNetworkList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, labName: string, options?: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkList>;
-    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.VirtualNetworkList>): void;
-    list(resourceGroupName: string, labName: string, options: { expand? : string, filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkList>): void;
+    list(resourceGroupName: string, labName: string, options?: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationVirtualNetwork>;
+    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.ResponseWithContinuationVirtualNetwork>): void;
+    list(resourceGroupName: string, labName: string, options: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationVirtualNetwork>): void;
 
 
     /**
@@ -18945,9 +7810,6 @@ export interface VirtualNetworks {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($expand=externalSubnets)'
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -18957,7 +7819,7 @@ export interface VirtualNetworks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetwork>>;
+    getResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetwork>>;
 
     /**
      * Get virtual network.
@@ -18970,9 +7832,6 @@ export interface VirtualNetworks {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.expand] Specify the $expand query. Example:
-     * 'properties($expand=externalSubnets)'
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -18998,9 +7857,9 @@ export interface VirtualNetworks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, labName: string, name: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetwork>;
-    get(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.VirtualNetwork>): void;
-    get(resourceGroupName: string, labName: string, name: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetwork>): void;
+    getResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetwork>;
+    getResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.VirtualNetwork>): void;
+    getResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetwork>): void;
 
 
     /**
@@ -19013,7 +7872,7 @@ export interface VirtualNetworks {
      *
      * @param {string} name The name of the virtual network.
      *
-     * @param {object} virtualNetwork A virtual network.
+     * @param {object} virtualNetwork
      *
      * @param {array} [virtualNetwork.allowedSubnets] The allowed subnets of the
      * virtual network.
@@ -19026,6 +7885,15 @@ export interface VirtualNetworks {
      *
      * @param {array} [virtualNetwork.subnetOverrides] The subnet overrides of the
      * virtual network.
+     *
+     * @param {string} [virtualNetwork.provisioningState] The provisioning status
+     * of the resource.
+     *
+     * @param {string} [virtualNetwork.id] The identifier of the resource.
+     *
+     * @param {string} [virtualNetwork.name] The name of the resource.
+     *
+     * @param {string} [virtualNetwork.type] The type of the resource.
      *
      * @param {string} [virtualNetwork.location] The location of the resource.
      *
@@ -19042,7 +7910,7 @@ export interface VirtualNetworks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetwork>>;
+    createOrUpdateResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetwork>>;
 
     /**
      * Create or replace an existing virtual network. This operation can take a
@@ -19054,7 +7922,7 @@ export interface VirtualNetworks {
      *
      * @param {string} name The name of the virtual network.
      *
-     * @param {object} virtualNetwork A virtual network.
+     * @param {object} virtualNetwork
      *
      * @param {array} [virtualNetwork.allowedSubnets] The allowed subnets of the
      * virtual network.
@@ -19067,6 +7935,15 @@ export interface VirtualNetworks {
      *
      * @param {array} [virtualNetwork.subnetOverrides] The subnet overrides of the
      * virtual network.
+     *
+     * @param {string} [virtualNetwork.provisioningState] The provisioning status
+     * of the resource.
+     *
+     * @param {string} [virtualNetwork.id] The identifier of the resource.
+     *
+     * @param {string} [virtualNetwork.name] The name of the resource.
+     *
+     * @param {string} [virtualNetwork.type] The type of the resource.
      *
      * @param {string} [virtualNetwork.location] The location of the resource.
      *
@@ -19099,9 +7976,9 @@ export interface VirtualNetworks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetwork>;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, callback: ServiceCallback<models.VirtualNetwork>): void;
-    createOrUpdate(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetwork>): void;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetwork>;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, callback: ServiceCallback<models.VirtualNetwork>): void;
+    createOrUpdateResource(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetwork>): void;
 
 
     /**
@@ -19124,7 +8001,7 @@ export interface VirtualNetworks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete virtual network. This operation can take a while to complete.
@@ -19161,9 +8038,9 @@ export interface VirtualNetworks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+    deleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -19175,7 +8052,7 @@ export interface VirtualNetworks {
      *
      * @param {string} name The name of the virtual network.
      *
-     * @param {object} virtualNetwork A virtual network.
+     * @param {object} virtualNetwork
      *
      * @param {array} [virtualNetwork.allowedSubnets] The allowed subnets of the
      * virtual network.
@@ -19189,101 +8066,14 @@ export interface VirtualNetworks {
      * @param {array} [virtualNetwork.subnetOverrides] The subnet overrides of the
      * virtual network.
      *
-     * @param {object} [virtualNetwork.tags] The tags of the resource.
+     * @param {string} [virtualNetwork.provisioningState] The provisioning status
+     * of the resource.
      *
-     * @param {object} [options] Optional Parameters.
+     * @param {string} [virtualNetwork.id] The identifier of the resource.
      *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
+     * @param {string} [virtualNetwork.name] The name of the resource.
      *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualNetwork>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetworkFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetwork>>;
-
-    /**
-     * Modify properties of virtual networks.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual network.
-     *
-     * @param {object} virtualNetwork A virtual network.
-     *
-     * @param {array} [virtualNetwork.allowedSubnets] The allowed subnets of the
-     * virtual network.
-     *
-     * @param {string} [virtualNetwork.description] The description of the virtual
-     * network.
-     *
-     * @param {string} [virtualNetwork.externalProviderResourceId] The
-     * Microsoft.Network resource identifier of the virtual network.
-     *
-     * @param {array} [virtualNetwork.subnetOverrides] The subnet overrides of the
-     * virtual network.
-     *
-     * @param {object} [virtualNetwork.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualNetwork} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualNetwork} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualNetwork} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetworkFragment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetwork>;
-    update(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetworkFragment, callback: ServiceCallback<models.VirtualNetwork>): void;
-    update(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetworkFragment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetwork>): void;
-
-
-    /**
-     * Create or replace an existing virtual network. This operation can take a
-     * while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} labName The name of the lab.
-     *
-     * @param {string} name The name of the virtual network.
-     *
-     * @param {object} virtualNetwork A virtual network.
-     *
-     * @param {array} [virtualNetwork.allowedSubnets] The allowed subnets of the
-     * virtual network.
-     *
-     * @param {string} [virtualNetwork.description] The description of the virtual
-     * network.
-     *
-     * @param {string} [virtualNetwork.externalProviderResourceId] The
-     * Microsoft.Network resource identifier of the virtual network.
-     *
-     * @param {array} [virtualNetwork.subnetOverrides] The subnet overrides of the
-     * virtual network.
+     * @param {string} [virtualNetwork.type] The type of the resource.
      *
      * @param {string} [virtualNetwork.location] The location of the resource.
      *
@@ -19300,11 +8090,10 @@ export interface VirtualNetworks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetwork>>;
+    patchResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetwork>>;
 
     /**
-     * Create or replace an existing virtual network. This operation can take a
-     * while to complete.
+     * Modify properties of virtual networks.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -19312,7 +8101,7 @@ export interface VirtualNetworks {
      *
      * @param {string} name The name of the virtual network.
      *
-     * @param {object} virtualNetwork A virtual network.
+     * @param {object} virtualNetwork
      *
      * @param {array} [virtualNetwork.allowedSubnets] The allowed subnets of the
      * virtual network.
@@ -19325,6 +8114,15 @@ export interface VirtualNetworks {
      *
      * @param {array} [virtualNetwork.subnetOverrides] The subnet overrides of the
      * virtual network.
+     *
+     * @param {string} [virtualNetwork.provisioningState] The provisioning status
+     * of the resource.
+     *
+     * @param {string} [virtualNetwork.id] The identifier of the resource.
+     *
+     * @param {string} [virtualNetwork.name] The name of the resource.
+     *
+     * @param {string} [virtualNetwork.type] The type of the resource.
      *
      * @param {string} [virtualNetwork.location] The location of the resource.
      *
@@ -19357,9 +8155,128 @@ export interface VirtualNetworks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetwork>;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, callback: ServiceCallback<models.VirtualNetwork>): void;
-    beginCreateOrUpdate(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetwork>): void;
+    patchResource(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetwork>;
+    patchResource(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, callback: ServiceCallback<models.VirtualNetwork>): void;
+    patchResource(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetwork>): void;
+
+
+    /**
+     * Create or replace an existing virtual network. This operation can take a
+     * while to complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {string} name The name of the virtual network.
+     *
+     * @param {object} virtualNetwork
+     *
+     * @param {array} [virtualNetwork.allowedSubnets] The allowed subnets of the
+     * virtual network.
+     *
+     * @param {string} [virtualNetwork.description] The description of the virtual
+     * network.
+     *
+     * @param {string} [virtualNetwork.externalProviderResourceId] The
+     * Microsoft.Network resource identifier of the virtual network.
+     *
+     * @param {array} [virtualNetwork.subnetOverrides] The subnet overrides of the
+     * virtual network.
+     *
+     * @param {string} [virtualNetwork.provisioningState] The provisioning status
+     * of the resource.
+     *
+     * @param {string} [virtualNetwork.id] The identifier of the resource.
+     *
+     * @param {string} [virtualNetwork.name] The name of the resource.
+     *
+     * @param {string} [virtualNetwork.type] The type of the resource.
+     *
+     * @param {string} [virtualNetwork.location] The location of the resource.
+     *
+     * @param {object} [virtualNetwork.tags] The tags of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetwork>>;
+
+    /**
+     * Create or replace an existing virtual network. This operation can take a
+     * while to complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} labName The name of the lab.
+     *
+     * @param {string} name The name of the virtual network.
+     *
+     * @param {object} virtualNetwork
+     *
+     * @param {array} [virtualNetwork.allowedSubnets] The allowed subnets of the
+     * virtual network.
+     *
+     * @param {string} [virtualNetwork.description] The description of the virtual
+     * network.
+     *
+     * @param {string} [virtualNetwork.externalProviderResourceId] The
+     * Microsoft.Network resource identifier of the virtual network.
+     *
+     * @param {array} [virtualNetwork.subnetOverrides] The subnet overrides of the
+     * virtual network.
+     *
+     * @param {string} [virtualNetwork.provisioningState] The provisioning status
+     * of the resource.
+     *
+     * @param {string} [virtualNetwork.id] The identifier of the resource.
+     *
+     * @param {string} [virtualNetwork.name] The name of the resource.
+     *
+     * @param {string} [virtualNetwork.type] The type of the resource.
+     *
+     * @param {string} [virtualNetwork.location] The location of the resource.
+     *
+     * @param {object} [virtualNetwork.tags] The tags of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetwork>;
+    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, callback: ServiceCallback<models.VirtualNetwork>): void;
+    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetwork>): void;
 
 
     /**
@@ -19382,7 +8299,7 @@ export interface VirtualNetworks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteResourceWithHttpOperationResponse(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete virtual network. This operation can take a while to complete.
@@ -19419,13 +8336,13 @@ export interface VirtualNetworks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteResource(resourceGroupName: string, labName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+    beginDeleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * List virtual networks in a given lab.
+     * List virtual networks.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -19437,14 +8354,14 @@ export interface VirtualNetworks {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<VirtualNetworkList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ResponseWithContinuationVirtualNetwork>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkList>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResponseWithContinuationVirtualNetwork>>;
 
     /**
-     * List virtual networks in a given lab.
+     * List virtual networks.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -19461,7 +8378,7 @@ export interface VirtualNetworks {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {VirtualNetworkList} - The deserialized result object.
+     *                      @resolve {ResponseWithContinuationVirtualNetwork} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -19469,14 +8386,15 @@ export interface VirtualNetworks {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {VirtualNetworkList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualNetworkList} for more information.
+     *                      {ResponseWithContinuationVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResponseWithContinuationVirtualNetwork} for
+     *                      more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.VirtualNetworkList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkList>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResponseWithContinuationVirtualNetwork>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ResponseWithContinuationVirtualNetwork>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationVirtualNetwork>): void;
 }
