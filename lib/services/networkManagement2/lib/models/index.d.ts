@@ -1788,6 +1788,31 @@ export interface ApplicationGatewayRequestRoutingRule extends SubResource {
 }
 
 /**
+ * Set of conditions in the Rewrite Rule in Application Gateway.
+*/
+export interface ApplicationGatewayRewriteRuleCondition {
+  /**
+   * The condition parameter of the RewriteRuleCondition.
+  */
+  variable?: string;
+  /**
+   * The pattern, either fixed string or regular expression, that evaluates the truthfulness of the
+   * condition
+  */
+  pattern?: string;
+  /**
+   * Setting this paramter to truth value with force the pattern to do a case in-sensitive
+   * comparison.
+  */
+  ignoreCase?: boolean;
+  /**
+   * Setting this value as truth will force to check the negation of the condition given by the
+   * user.
+  */
+  negate?: boolean;
+}
+
+/**
  * Header configuration of the Actions set in Application Gateway.
 */
 export interface ApplicationGatewayHeaderConfiguration {
@@ -1823,6 +1848,15 @@ export interface ApplicationGatewayRewriteRule {
    * Name of the rewrite rule that is unique within an Application Gateway.
   */
   name?: string;
+  /**
+   * Rule Sequence of the rewrite rule that determines the order of execution of a particular rule
+   * in a RewriteRuleSet.
+  */
+  ruleSequence?: number;
+  /**
+   * Conditions based on which the action set execution will be evaluated.
+  */
+  conditions?: ApplicationGatewayRewriteRuleCondition[];
   /**
    * Set of actions to be done as part of the rewrite Rule.
   */
@@ -2028,13 +2062,100 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
 }
 
 /**
- * Application Gateway autoscale configuration.
+ * Defines contents of a web application firewall global configuration
 */
-export interface ApplicationGatewayAutoscaleConfiguration {
+export interface PolicySettings {
   /**
-   * Lower bound on number of Application Gateway instances
+   * describes if the policy is in enabled state or disabled state. Possible values include:
+   * 'Disabled', 'Enabled'
   */
-  minCapacity: number;
+  enabledState?: string;
+  /**
+   * Describes if it is in detection mode  or prevention mode at policy level. Possible values
+   * include: 'Prevention', 'Detection'
+  */
+  mode?: string;
+}
+
+/**
+ * Define match variables
+*/
+export interface MatchVariable1 {
+  /**
+   * Match Variable. Possible values include: 'RemoteAddr', 'RequestMethod', 'QueryString',
+   * 'PostArgs', 'RequestUri', 'RequestHeaders', 'RequestBody', 'RequestCookies'
+  */
+  name: string;
+  /**
+   * Describes field of the matchVariable collection
+  */
+  selector?: string;
+}
+
+/**
+ * Define match conditions
+*/
+export interface MatchCondition {
+  /**
+   * List of match variables
+  */
+  matchVariables: MatchVariable1[];
+  /**
+   * Describes operator to be matched. Possible values include: 'IPMatch', 'Equal', 'Contains',
+   * 'LessThan', 'GreaterThan', 'LessThanOrEqual', 'GreaterThanOrEqual', 'BeginsWith', 'EndsWith',
+   * 'Regex'
+  */
+  operator: string;
+  /**
+   * Describes if this is negate condition or not
+  */
+  negateCondition?: boolean;
+  /**
+   * Match value
+  */
+  matchValues: string[];
+  /**
+   * List of transforms
+  */
+  transforms?: string[];
+}
+
+/**
+ * Defines contents of a web application rule
+*/
+export interface CustomRule {
+  /**
+   * Gets name of the resource that is unique within a policy. This name can be used to access the
+   * resource.
+  */
+  name?: string;
+  /**
+   * Gets a unique read-only string that changes whenever the resource is updated.
+  */
+  readonly etag?: string;
+  /**
+   * Describes priority of the rule. Rules with a lower value will be evaluated before rules with a
+   * higher value
+  */
+  priority: number;
+  /**
+   * List of match conditions
+  */
+  matchConditions: MatchCondition[];
+  /**
+   * Type of Actions. Possible values include: 'Allow', 'Block', 'Log'
+  */
+  action: string;
+}
+
+/**
+ * Defines contents of custom rules
+*/
+export interface CustomRules {
+  /**
+   * List of rules
+  */
+  rules?: CustomRule[];
 }
 
 export interface ManagedServiceIdentityUserAssignedIdentitiesValue {
@@ -2156,6 +2277,10 @@ export interface ApplicationGateway extends Resource {
   */
   webApplicationFirewallConfiguration?: ApplicationGatewayWebApplicationFirewallConfiguration;
   /**
+   * Web application firewall policy.
+  */
+  firewallPolicy?: WebApplicationFirewallPolicy1;
+  /**
    * Whether HTTP2 is enabled on the application gateway resource.
   */
   enableHttp2?: boolean;
@@ -2195,33 +2320,49 @@ export interface ApplicationGateway extends Resource {
 }
 
 /**
- * Response for ApplicationGatewayAvailableServerVariables API service call.
+ * Defines web application firewall policy.
 */
-export interface ApplicationGatewayAvailableServerVariablesResult {
+export interface WebApplicationFirewallPolicy1 extends Resource {
   /**
-   * The list of supported server variables in application gateway.
+   * Describes  policySettings for policy
   */
-  value?: string[];
+  policySettings?: PolicySettings;
+  /**
+   * Describes custom rules inside the policy
+  */
+  customRules?: CustomRules;
+  /**
+   * A collection of references to application gateways.
+  */
+  readonly applicationGateways?: ApplicationGateway[];
+  /**
+   * Provisioning state of the WebApplicationFirewallPolicy.
+  */
+  readonly provisioningState?: string;
+  /**
+   * @summary Resource status of the policy.
+   * @description Possible values include: 'Creating', 'Enabling', 'Enabled', 'Disabling',
+   * 'Disabled', 'Deleting'
+  */
+  readonly resourceState?: string;
+  /**
+   * Gets a unique read-only string that changes whenever the resource is updated.
+  */
+  etag?: string;
 }
 
 /**
- * Response for ApplicationGatewayAvailableRequestHeaders API service call.
+ * Application Gateway autoscale configuration.
 */
-export interface ApplicationGatewayAvailableRequestHeadersResult {
+export interface ApplicationGatewayAutoscaleConfiguration {
   /**
-   * The list of supported request headers in application gateway.
+   * Lower bound on number of Application Gateway instances
   */
-  value?: string[];
-}
-
-/**
- * Response for ApplicationGatewayAvailableResponeHeaders API service call.
-*/
-export interface ApplicationGatewayAvailableResponseHeadersResult {
+  minCapacity: number;
   /**
-   * The list of supported response header in application gateway.
+   * Upper bound on number of Application Gateway capacity
   */
-  value?: string[];
+  maxCapacity?: number;
 }
 
 /**
@@ -2525,7 +2666,8 @@ export interface AzureFirewallNatRule {
   */
   sourceAddresses?: string[];
   /**
-   * List of destination IP addresses for this rule.
+   * List of destination IP addresses for this rule. Supports IP ranges, prefixes, and service
+   * tags.
   */
   destinationAddresses?: string[];
   /**
@@ -5596,7 +5738,7 @@ export interface ConnectionStateSnapshot {
 */
 export interface ConnectionMonitorQueryResult {
   /**
-   * Status of connection monitor source. Possible values include: 'Uknown', 'Active', 'Inactive'
+   * Status of connection monitor source. Possible values include: 'Unknown', 'Active', 'Inactive'
   */
   sourceStatus?: string;
   /**
@@ -6312,6 +6454,39 @@ export interface VirtualNetworkUsage {
    * Usage units. Returns 'Count'
   */
   readonly unit?: string;
+}
+
+/**
+ * Network Intent Policy resource.
+*/
+export interface NetworkIntentPolicy extends Resource {
+  /**
+   * Gets a unique read-only string that changes whenever the resource is updated.
+  */
+  etag?: string;
+}
+
+export interface NetworkIntentPolicyConfiguration {
+  /**
+   * The name of the Network Intent Policy for storing in target subscription.
+  */
+  networkIntentPolicyName?: string;
+  sourceNetworkIntentPolicy?: NetworkIntentPolicy;
+}
+
+export interface PrepareNetworkPoliciesRequest {
+  /**
+   * The name of the service for which subnet is being prepared for.
+  */
+  serviceName?: string;
+  /**
+   * The name of the resource group where the Network Intent Policy will be stored.
+  */
+  resourceGroupName?: string;
+  /**
+   * A list of NetworkIntentPolicyConfiguration.
+  */
+  networkIntentPolicyConfigurations?: NetworkIntentPolicyConfiguration[];
 }
 
 /**

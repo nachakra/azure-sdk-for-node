@@ -263,6 +263,33 @@ export interface ApplicationGateways {
      * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
      * The exclusion list.
      *
+     * @param {object} [parameters.firewallPolicy] Web application firewall policy.
+     *
+     * @param {object} [parameters.firewallPolicy.policySettings] Describes
+     * policySettings for policy
+     *
+     * @param {string} [parameters.firewallPolicy.policySettings.enabledState]
+     * describes if the policy is in enabled state or disabled state. Possible
+     * values include: 'Disabled', 'Enabled'
+     *
+     * @param {string} [parameters.firewallPolicy.policySettings.mode] Describes if
+     * it is in detection mode  or prevention mode at policy level. Possible values
+     * include: 'Prevention', 'Detection'
+     *
+     * @param {object} [parameters.firewallPolicy.customRules] Describes custom
+     * rules inside the policy
+     *
+     * @param {array} [parameters.firewallPolicy.customRules.rules] List of rules
+     *
+     * @param {string} [parameters.firewallPolicy.etag] Gets a unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.firewallPolicy.id] Resource ID.
+     *
+     * @param {string} [parameters.firewallPolicy.location] Resource location.
+     *
+     * @param {object} [parameters.firewallPolicy.tags] Resource tags.
+     *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
@@ -273,6 +300,9 @@ export interface ApplicationGateways {
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
      * number of Application Gateway instances
+     *
+     * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
+     * on number of Application Gateway capacity
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -449,6 +479,33 @@ export interface ApplicationGateways {
      * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
      * The exclusion list.
      *
+     * @param {object} [parameters.firewallPolicy] Web application firewall policy.
+     *
+     * @param {object} [parameters.firewallPolicy.policySettings] Describes
+     * policySettings for policy
+     *
+     * @param {string} [parameters.firewallPolicy.policySettings.enabledState]
+     * describes if the policy is in enabled state or disabled state. Possible
+     * values include: 'Disabled', 'Enabled'
+     *
+     * @param {string} [parameters.firewallPolicy.policySettings.mode] Describes if
+     * it is in detection mode  or prevention mode at policy level. Possible values
+     * include: 'Prevention', 'Detection'
+     *
+     * @param {object} [parameters.firewallPolicy.customRules] Describes custom
+     * rules inside the policy
+     *
+     * @param {array} [parameters.firewallPolicy.customRules.rules] List of rules
+     *
+     * @param {string} [parameters.firewallPolicy.etag] Gets a unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.firewallPolicy.id] Resource ID.
+     *
+     * @param {string} [parameters.firewallPolicy.location] Resource location.
+     *
+     * @param {object} [parameters.firewallPolicy.tags] Resource tags.
+     *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
@@ -459,6 +516,9 @@ export interface ApplicationGateways {
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
      * number of Application Gateway instances
+     *
+     * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
+     * on number of Application Gateway capacity
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -900,11 +960,11 @@ export interface ApplicationGateways {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableServerVariablesResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAvailableServerVariablesWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableServerVariablesResult>>;
+    listAvailableServerVariablesWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
 
     /**
      * Lists all available server variables.
@@ -921,7 +981,7 @@ export interface ApplicationGateways {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationGatewayAvailableServerVariablesResult} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -929,18 +989,15 @@ export interface ApplicationGateways {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationGatewayAvailableServerVariablesResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link
-     *                      ApplicationGatewayAvailableServerVariablesResult} for
-     *                      more information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAvailableServerVariables(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableServerVariablesResult>;
-    listAvailableServerVariables(callback: ServiceCallback<models.ApplicationGatewayAvailableServerVariablesResult>): void;
-    listAvailableServerVariables(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableServerVariablesResult>): void;
+    listAvailableServerVariables(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
+    listAvailableServerVariables(callback: ServiceCallback<string[]>): void;
+    listAvailableServerVariables(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
 
 
     /**
@@ -953,11 +1010,11 @@ export interface ApplicationGateways {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableRequestHeadersResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAvailableRequestHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableRequestHeadersResult>>;
+    listAvailableRequestHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
 
     /**
      * Lists all available request headers.
@@ -974,7 +1031,7 @@ export interface ApplicationGateways {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationGatewayAvailableRequestHeadersResult} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -982,18 +1039,15 @@ export interface ApplicationGateways {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationGatewayAvailableRequestHeadersResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link
-     *                      ApplicationGatewayAvailableRequestHeadersResult} for
-     *                      more information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAvailableRequestHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableRequestHeadersResult>;
-    listAvailableRequestHeaders(callback: ServiceCallback<models.ApplicationGatewayAvailableRequestHeadersResult>): void;
-    listAvailableRequestHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableRequestHeadersResult>): void;
+    listAvailableRequestHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
+    listAvailableRequestHeaders(callback: ServiceCallback<string[]>): void;
+    listAvailableRequestHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
 
 
     /**
@@ -1006,11 +1060,11 @@ export interface ApplicationGateways {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableResponseHeadersResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAvailableResponseHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableResponseHeadersResult>>;
+    listAvailableResponseHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
 
     /**
      * Lists all available response headers.
@@ -1027,7 +1081,7 @@ export interface ApplicationGateways {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationGatewayAvailableResponseHeadersResult} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1035,18 +1089,15 @@ export interface ApplicationGateways {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationGatewayAvailableResponseHeadersResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link
-     *                      ApplicationGatewayAvailableResponseHeadersResult} for
-     *                      more information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAvailableResponseHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableResponseHeadersResult>;
-    listAvailableResponseHeaders(callback: ServiceCallback<models.ApplicationGatewayAvailableResponseHeadersResult>): void;
-    listAvailableResponseHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableResponseHeadersResult>): void;
+    listAvailableResponseHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
+    listAvailableResponseHeaders(callback: ServiceCallback<string[]>): void;
+    listAvailableResponseHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
 
 
     /**
@@ -1446,6 +1497,33 @@ export interface ApplicationGateways {
      * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
      * The exclusion list.
      *
+     * @param {object} [parameters.firewallPolicy] Web application firewall policy.
+     *
+     * @param {object} [parameters.firewallPolicy.policySettings] Describes
+     * policySettings for policy
+     *
+     * @param {string} [parameters.firewallPolicy.policySettings.enabledState]
+     * describes if the policy is in enabled state or disabled state. Possible
+     * values include: 'Disabled', 'Enabled'
+     *
+     * @param {string} [parameters.firewallPolicy.policySettings.mode] Describes if
+     * it is in detection mode  or prevention mode at policy level. Possible values
+     * include: 'Prevention', 'Detection'
+     *
+     * @param {object} [parameters.firewallPolicy.customRules] Describes custom
+     * rules inside the policy
+     *
+     * @param {array} [parameters.firewallPolicy.customRules.rules] List of rules
+     *
+     * @param {string} [parameters.firewallPolicy.etag] Gets a unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.firewallPolicy.id] Resource ID.
+     *
+     * @param {string} [parameters.firewallPolicy.location] Resource location.
+     *
+     * @param {object} [parameters.firewallPolicy.tags] Resource tags.
+     *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
@@ -1456,6 +1534,9 @@ export interface ApplicationGateways {
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
      * number of Application Gateway instances
+     *
+     * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
+     * on number of Application Gateway capacity
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -1632,6 +1713,33 @@ export interface ApplicationGateways {
      * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
      * The exclusion list.
      *
+     * @param {object} [parameters.firewallPolicy] Web application firewall policy.
+     *
+     * @param {object} [parameters.firewallPolicy.policySettings] Describes
+     * policySettings for policy
+     *
+     * @param {string} [parameters.firewallPolicy.policySettings.enabledState]
+     * describes if the policy is in enabled state or disabled state. Possible
+     * values include: 'Disabled', 'Enabled'
+     *
+     * @param {string} [parameters.firewallPolicy.policySettings.mode] Describes if
+     * it is in detection mode  or prevention mode at policy level. Possible values
+     * include: 'Prevention', 'Detection'
+     *
+     * @param {object} [parameters.firewallPolicy.customRules] Describes custom
+     * rules inside the policy
+     *
+     * @param {array} [parameters.firewallPolicy.customRules.rules] List of rules
+     *
+     * @param {string} [parameters.firewallPolicy.etag] Gets a unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.firewallPolicy.id] Resource ID.
+     *
+     * @param {string} [parameters.firewallPolicy.location] Resource location.
+     *
+     * @param {object} [parameters.firewallPolicy.tags] Resource tags.
+     *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
@@ -1642,6 +1750,9 @@ export interface ApplicationGateways {
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
      * number of Application Gateway instances
+     *
+     * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
+     * on number of Application Gateway capacity
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -35186,6 +35297,96 @@ export interface Subnets {
 
 
     /**
+     * Prepares a subnet by applying network intent policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {string} subnetName The name of the subnet.
+     *
+     * @param {object} prepareNetworkPoliciesRequestParameters Parameters supplied
+     * to prepare subnet by applying network intent policies.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.serviceName] The
+     * name of the service for which subnet is being prepared for.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.resourceGroupName]
+     * The name of the resource group where the Network Intent Policy will be
+     * stored.
+     *
+     * @param {array}
+     * [prepareNetworkPoliciesRequestParameters.networkIntentPolicyConfigurations]
+     * A list of NetworkIntentPolicyConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    prepareNetworkPoliciesWithHttpOperationResponse(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Prepares a subnet by applying network intent policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {string} subnetName The name of the subnet.
+     *
+     * @param {object} prepareNetworkPoliciesRequestParameters Parameters supplied
+     * to prepare subnet by applying network intent policies.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.serviceName] The
+     * name of the service for which subnet is being prepared for.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.resourceGroupName]
+     * The name of the resource group where the Network Intent Policy will be
+     * stored.
+     *
+     * @param {array}
+     * [prepareNetworkPoliciesRequestParameters.networkIntentPolicyConfigurations]
+     * A list of NetworkIntentPolicyConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    prepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    prepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, callback: ServiceCallback<void>): void;
+    prepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Gets all subnets in a virtual network.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -35537,6 +35738,96 @@ export interface Subnets {
     beginCreateOrUpdate(resourceGroupName: string, virtualNetworkName: string, subnetName: string, subnetParameters: models.Subnet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Subnet>;
     beginCreateOrUpdate(resourceGroupName: string, virtualNetworkName: string, subnetName: string, subnetParameters: models.Subnet, callback: ServiceCallback<models.Subnet>): void;
     beginCreateOrUpdate(resourceGroupName: string, virtualNetworkName: string, subnetName: string, subnetParameters: models.Subnet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Subnet>): void;
+
+
+    /**
+     * Prepares a subnet by applying network intent policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {string} subnetName The name of the subnet.
+     *
+     * @param {object} prepareNetworkPoliciesRequestParameters Parameters supplied
+     * to prepare subnet by applying network intent policies.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.serviceName] The
+     * name of the service for which subnet is being prepared for.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.resourceGroupName]
+     * The name of the resource group where the Network Intent Policy will be
+     * stored.
+     *
+     * @param {array}
+     * [prepareNetworkPoliciesRequestParameters.networkIntentPolicyConfigurations]
+     * A list of NetworkIntentPolicyConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginPrepareNetworkPoliciesWithHttpOperationResponse(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Prepares a subnet by applying network intent policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {string} subnetName The name of the subnet.
+     *
+     * @param {object} prepareNetworkPoliciesRequestParameters Parameters supplied
+     * to prepare subnet by applying network intent policies.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.serviceName] The
+     * name of the service for which subnet is being prepared for.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.resourceGroupName]
+     * The name of the resource group where the Network Intent Policy will be
+     * stored.
+     *
+     * @param {array}
+     * [prepareNetworkPoliciesRequestParameters.networkIntentPolicyConfigurations]
+     * A list of NetworkIntentPolicyConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginPrepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPrepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, callback: ServiceCallback<void>): void;
+    beginPrepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
