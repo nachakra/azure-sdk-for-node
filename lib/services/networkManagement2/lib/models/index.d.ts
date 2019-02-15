@@ -2080,7 +2080,7 @@ export interface PolicySettings {
 /**
  * Define match variables
 */
-export interface MatchVariable1 {
+export interface MatchVariable {
   /**
    * Match Variable. Possible values include: 'RemoteAddr', 'RequestMethod', 'QueryString',
    * 'PostArgs', 'RequestUri', 'RequestHeaders', 'RequestBody', 'RequestCookies'
@@ -2099,7 +2099,7 @@ export interface MatchCondition {
   /**
    * List of match variables
   */
-  matchVariables: MatchVariable1[];
+  matchVariables: MatchVariable[];
   /**
    * Describes operator to be matched. Possible values include: 'IPMatch', 'Equal', 'Contains',
    * 'LessThan', 'GreaterThan', 'LessThanOrEqual', 'GreaterThanOrEqual', 'BeginsWith', 'EndsWith',
