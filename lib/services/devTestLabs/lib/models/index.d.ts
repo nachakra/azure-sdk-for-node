@@ -55,7 +55,7 @@ export interface HourDetails {
 export interface NotificationSettings {
   /**
    * If notifications are enabled for this schedule (i.e. Enabled, Disabled). Possible values
-   * include: 'Enabled', 'Disabled'
+   * include: 'Disabled', 'Enabled'
    */
   status?: string;
   /**
@@ -66,15 +66,6 @@ export interface NotificationSettings {
    * The webhook URL to which the notification will be sent.
    */
   webhookUrl?: string;
-  /**
-   * The email recipient to send notifications to (can be a list of semi-colon separated email
-   * addresses).
-   */
-  emailRecipient?: string;
-  /**
-   * The locale to use when sending a notification (fallback for unsupported languages is EN).
-   */
-  notificationLocale?: string;
 }
 
 /**
@@ -147,11 +138,11 @@ export interface Schedule extends Resource {
   /**
    * The provisioning status of the resource.
    */
-  readonly provisioningState?: string;
+  provisioningState?: string;
   /**
    * The unique immutable identifier of a resource (Guid).
    */
-  readonly uniqueIdentifier?: string;
+  uniqueIdentifier?: string;
 }
 
 /**
@@ -209,7 +200,7 @@ export interface HourDetailsFragment {
 export interface NotificationSettingsFragment {
   /**
    * If notifications are enabled for this schedule (i.e. Enabled, Disabled). Possible values
-   * include: 'Enabled', 'Disabled'
+   * include: 'Disabled', 'Enabled'
    */
   status?: string;
   /**
@@ -220,31 +211,12 @@ export interface NotificationSettingsFragment {
    * The webhook URL to which the notification will be sent.
    */
   webhookUrl?: string;
-  /**
-   * The email recipient to send notifications to (can be a list of semi-colon separated email
-   * addresses).
-   */
-  emailRecipient?: string;
-  /**
-   * The locale to use when sending a notification (fallback for unsupported languages is EN).
-   */
-  notificationLocale?: string;
-}
-
-/**
- * Represents an update resource
- */
-export interface UpdateResource {
-  /**
-   * The tags of the resource.
-   */
-  tags?: { [propertyName: string]: string };
 }
 
 /**
  * A schedule.
  */
-export interface ScheduleFragment extends UpdateResource {
+export interface ScheduleFragment extends Resource {
   /**
    * The status of the schedule (i.e. Enabled, Disabled). Possible values include: 'Enabled',
    * 'Disabled'
@@ -278,13 +250,21 @@ export interface ScheduleFragment extends UpdateResource {
    * The resource ID to which the schedule belongs
    */
   targetResourceId?: string;
+  /**
+   * The provisioning status of the resource.
+   */
+  provisioningState?: string;
+  /**
+   * The unique immutable identifier of a resource (Guid).
+   */
+  uniqueIdentifier?: string;
 }
 
 /**
  * Schedules applicable to a virtual machine. The schedules may have been defined on a VM or on lab
  * level.
  */
-export interface ApplicableScheduleFragment extends UpdateResource {
+export interface ApplicableScheduleFragment extends Resource {
   /**
    * The auto-shutdown schedule, if one has been set at the lab or lab resource level.
    */
@@ -317,10 +297,6 @@ export interface ArtifactInstallProperties {
    * The artifact's identifier.
    */
   artifactId?: string;
-  /**
-   * The artifact's title.
-   */
-  artifactTitle?: string;
   /**
    * The parameters of the artifact.
    */
@@ -400,10 +376,6 @@ export interface ArmTemplate extends Resource {
    * template.
    */
   readonly parametersValueFilesInfo?: ParametersValueFileInfo[];
-  /**
-   * Whether or not ARM template is enabled for use by lab user.
-   */
-  readonly enabled?: boolean;
 }
 
 /**
@@ -424,20 +396,6 @@ export interface ArmTemplateInfo {
  * Properties of an Azure Resource Manager template parameter.
  */
 export interface ArmTemplateParameterProperties {
-  /**
-   * The name of the template parameter.
-   */
-  name?: string;
-  /**
-   * The value of the template parameter.
-   */
-  value?: string;
-}
-
-/**
- * Properties of an Azure Resource Manager template parameter.
- */
-export interface ArmTemplateParameterPropertiesFragment {
   /**
    * The name of the template parameter.
    */
@@ -545,10 +503,6 @@ export interface ArtifactInstallPropertiesFragment {
    */
   artifactId?: string;
   /**
-   * The artifact's title.
-   */
-  artifactTitle?: string;
-  /**
    * The parameters of the artifact.
    */
   parameters?: ArtifactParameterPropertiesFragment[];
@@ -614,17 +568,17 @@ export interface ArtifactSource extends Resource {
   /**
    * The provisioning status of the resource.
    */
-  readonly provisioningState?: string;
+  provisioningState?: string;
   /**
    * The unique immutable identifier of a resource (Guid).
    */
-  readonly uniqueIdentifier?: string;
+  uniqueIdentifier?: string;
 }
 
 /**
  * Properties of an artifact source.
  */
-export interface ArtifactSourceFragment extends UpdateResource {
+export interface ArtifactSourceFragment extends Resource {
   /**
    * The artifact source's display name.
    */
@@ -658,6 +612,14 @@ export interface ArtifactSourceFragment extends UpdateResource {
    * include: 'Enabled', 'Disabled'
    */
   status?: string;
+  /**
+   * The provisioning status of the resource.
+   */
+  provisioningState?: string;
+  /**
+   * The unique immutable identifier of a resource (Guid).
+   */
+  uniqueIdentifier?: string;
 }
 
 /**
@@ -690,38 +652,9 @@ export interface AttachNewDataDiskOptions {
 }
 
 /**
- * Properties to attach new disk to the Virtual Machine.
- */
-export interface AttachNewDataDiskOptionsFragment {
-  /**
-   * Size of the disk to be attached in Gibibytes.
-   */
-  diskSizeGiB?: number;
-  /**
-   * The name of the disk to be attached.
-   */
-  diskName?: string;
-  /**
-   * The storage type for the disk (i.e. Standard, Premium). Possible values include: 'Standard',
-   * 'Premium'
-   */
-  diskType?: string;
-}
-
-/**
  * Parameters for creating multiple virtual machines as a single action.
  */
 export interface BulkCreationParameters {
-  /**
-   * The number of virtual machine instances to create.
-   */
-  instanceCount?: number;
-}
-
-/**
- * Parameters for creating multiple virtual machines as a single action.
- */
-export interface BulkCreationParametersFragment {
   /**
    * The number of virtual machine instances to create.
    */
@@ -974,38 +907,6 @@ export interface CustomImagePropertiesCustom {
 }
 
 /**
- * Storage information about the data disks present in the custom image
- */
-export interface DataDiskStorageTypeInfo {
-  /**
-   * Disk Lun
-   */
-  lun?: string;
-  /**
-   * Disk Storage Type. Possible values include: 'Standard', 'Premium'
-   */
-  storageType?: string;
-}
-
-/**
- * Properties for plan on a custom image.
- */
-export interface CustomImagePropertiesFromPlan {
-  /**
-   * The id of the plan, equivalent to name of the plan
-   */
-  id?: string;
-  /**
-   * The publisher for the plan from the marketplace image the custom image is derived from
-   */
-  publisher?: string;
-  /**
-   * The offer for the plan from the marketplace image the custom image is derived from
-   */
-  offer?: string;
-}
-
-/**
  * A custom image.
  */
 export interface CustomImage extends Resource {
@@ -1034,164 +935,13 @@ export interface CustomImage extends Resource {
    */
   managedImageId?: string;
   /**
-   * The Managed Snapshot Id backing the custom image.
-   */
-  managedSnapshotId?: string;
-  /**
-   * Storage information about the data disks present in the custom image
-   */
-  dataDiskStorageInfo?: DataDiskStorageTypeInfo[];
-  /**
-   * Storage information about the plan related to this custom image
-   */
-  customImagePlan?: CustomImagePropertiesFromPlan;
-  /**
-   * Whether or not the custom images underlying offer/plan has been enabled for programmatic
-   * deployment
-   */
-  isPlanAuthorized?: boolean;
-  /**
    * The provisioning status of the resource.
    */
-  readonly provisioningState?: string;
+  provisioningState?: string;
   /**
    * The unique immutable identifier of a resource (Guid).
    */
-  readonly uniqueIdentifier?: string;
-}
-
-/**
- * Information about a Windows OS.
- */
-export interface WindowsOsInfoFragment {
-  /**
-   * The state of the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied). Possible
-   * values include: 'NonSysprepped', 'SysprepRequested', 'SysprepApplied'
-   */
-  windowsOsState?: string;
-}
-
-/**
- * Information about a Linux OS.
- */
-export interface LinuxOsInfoFragment {
-  /**
-   * The state of the Linux OS (i.e. NonDeprovisioned, DeprovisionRequested, DeprovisionApplied).
-   * Possible values include: 'NonDeprovisioned', 'DeprovisionRequested', 'DeprovisionApplied'
-   */
-  linuxOsState?: string;
-}
-
-/**
- * Properties for creating a custom image from a virtual machine.
- */
-export interface CustomImagePropertiesFromVmFragment {
-  /**
-   * The source vm identifier.
-   */
-  sourceVmId?: string;
-  /**
-   * The Windows OS information of the VM.
-   */
-  windowsOsInfo?: WindowsOsInfoFragment;
-  /**
-   * The Linux OS information of the VM.
-   */
-  linuxOsInfo?: LinuxOsInfoFragment;
-}
-
-/**
- * Properties for creating a custom image from a VHD.
- */
-export interface CustomImagePropertiesCustomFragment {
-  /**
-   * The image name.
-   */
-  imageName?: string;
-  /**
-   * Indicates whether sysprep has been run on the VHD.
-   */
-  sysPrep?: boolean;
-  /**
-   * The OS type of the custom image (i.e. Windows, Linux). Possible values include: 'Windows',
-   * 'Linux', 'None'
-   */
-  osType?: string;
-}
-
-/**
- * Storage information about the data disks present in the custom image
- */
-export interface DataDiskStorageTypeInfoFragment {
-  /**
-   * Disk Lun
-   */
-  lun?: string;
-  /**
-   * Disk Storage Type. Possible values include: 'Standard', 'Premium'
-   */
-  storageType?: string;
-}
-
-/**
- * Properties for plan on a custom image.
- */
-export interface CustomImagePropertiesFromPlanFragment {
-  /**
-   * The id of the plan, equivalent to name of the plan
-   */
-  id?: string;
-  /**
-   * The publisher for the plan from the marketplace image the custom image is derived from
-   */
-  publisher?: string;
-  /**
-   * The offer for the plan from the marketplace image the custom image is derived from
-   */
-  offer?: string;
-}
-
-/**
- * A custom image.
- */
-export interface CustomImageFragment extends UpdateResource {
-  /**
-   * The virtual machine from which the image is to be created.
-   */
-  vm?: CustomImagePropertiesFromVmFragment;
-  /**
-   * The VHD from which the image is to be created.
-   */
-  vhd?: CustomImagePropertiesCustomFragment;
-  /**
-   * The description of the custom image.
-   */
-  description?: string;
-  /**
-   * The author of the custom image.
-   */
-  author?: string;
-  /**
-   * The Managed Image Id backing the custom image.
-   */
-  managedImageId?: string;
-  /**
-   * The Managed Snapshot Id backing the custom image.
-   */
-  managedSnapshotId?: string;
-  /**
-   * Storage information about the data disks present in the custom image
-   */
-  dataDiskStorageInfo?: DataDiskStorageTypeInfoFragment[];
-  /**
-   * Storage information about the plan related to this custom image
-   */
-  customImagePlan?: CustomImagePropertiesFromPlanFragment;
-  /**
-   * Whether or not the custom images underlying offer/plan has been enabled for programmatic
-   * deployment
-   */
-  isPlanAuthorized?: boolean;
+  uniqueIdentifier?: string;
 }
 
 /**
@@ -1202,25 +952,6 @@ export interface DataDiskProperties {
    * Specifies options to attach a new disk to the virtual machine.
    */
   attachNewDataDiskOptions?: AttachNewDataDiskOptions;
-  /**
-   * Specifies the existing lab disk id to attach to virtual machine.
-   */
-  existingLabDiskId?: string;
-  /**
-   * Caching option for a data disk (i.e. None, ReadOnly, ReadWrite). Possible values include:
-   * 'None', 'ReadOnly', 'ReadWrite'
-   */
-  hostCaching?: string;
-}
-
-/**
- * Request body for adding a new or existing data disk to a virtual machine.
- */
-export interface DataDiskPropertiesFragment {
-  /**
-   * Specifies options to attach a new disk to the virtual machine.
-   */
-  attachNewDataDiskOptions?: AttachNewDataDiskOptionsFragment;
   /**
    * Specifies the existing lab disk id to attach to virtual machine.
    */
@@ -1292,46 +1023,11 @@ export interface Disk extends Resource {
   /**
    * The provisioning status of the resource.
    */
-  readonly provisioningState?: string;
+  provisioningState?: string;
   /**
    * The unique immutable identifier of a resource (Guid).
    */
-  readonly uniqueIdentifier?: string;
-}
-
-/**
- * A Disk.
- */
-export interface DiskFragment extends UpdateResource {
-  /**
-   * The storage type for the disk (i.e. Standard, Premium). Possible values include: 'Standard',
-   * 'Premium'
-   */
-  diskType?: string;
-  /**
-   * The size of the disk in Gibibytes.
-   */
-  diskSizeGiB?: number;
-  /**
-   * The resource ID of the VM to which this disk is leased.
-   */
-  leasedByLabVmId?: string;
-  /**
-   * When backed by a blob, the name of the VHD blob without extension.
-   */
-  diskBlobName?: string;
-  /**
-   * When backed by a blob, the URI of underlying blob.
-   */
-  diskUri?: string;
-  /**
-   * The host caching policy of the disk (i.e. None, ReadOnly, ReadWrite).
-   */
-  hostCaching?: string;
-  /**
-   * When backed by managed disk, this is the ID of the compute disk resource.
-   */
-  managedDiskId?: string;
+  uniqueIdentifier?: string;
 }
 
 /**
@@ -1371,39 +1067,11 @@ export interface DtlEnvironment extends Resource {
   /**
    * The provisioning status of the resource.
    */
-  readonly provisioningState?: string;
+  provisioningState?: string;
   /**
    * The unique immutable identifier of a resource (Guid).
    */
-  readonly uniqueIdentifier?: string;
-}
-
-/**
- * Properties of an environment deployment.
- */
-export interface EnvironmentDeploymentPropertiesFragment {
-  /**
-   * The Azure Resource Manager template's identifier.
-   */
-  armTemplateId?: string;
-  /**
-   * The parameters of the Azure Resource Manager template.
-   */
-  parameters?: ArmTemplateParameterPropertiesFragment[];
-}
-
-/**
- * An environment, which is essentially an ARM template deployment.
- */
-export interface DtlEnvironmentFragment extends UpdateResource {
-  /**
-   * The deployment properties of the environment.
-   */
-  deploymentProperties?: EnvironmentDeploymentPropertiesFragment;
-  /**
-   * The display name of the Azure Resource Manager template that produced the environment.
-   */
-  armTemplateDisplayName?: string;
+  uniqueIdentifier?: string;
 }
 
 /**
@@ -1422,10 +1090,6 @@ export interface EvaluatePoliciesProperties {
    * The value offset.
    */
   valueOffset?: string;
-  /**
-   * The user for which policies will be evaluated
-   */
-  userObjectId?: string;
 }
 
 /**
@@ -1643,57 +1307,6 @@ export interface NetworkInterfaceProperties {
 }
 
 /**
- * Properties for creating a schedule.
- */
-export interface ScheduleCreationParameter {
-  /**
-   * The status of the schedule (i.e. Enabled, Disabled). Possible values include: 'Enabled',
-   * 'Disabled'
-   */
-  status?: string;
-  /**
-   * The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
-   */
-  taskType?: string;
-  /**
-   * If the schedule will occur only some days of the week, specify the weekly recurrence.
-   */
-  weeklyRecurrence?: WeekDetails;
-  /**
-   * If the schedule will occur once each day of the week, specify the daily recurrence.
-   */
-  dailyRecurrence?: DayDetails;
-  /**
-   * If the schedule will occur multiple times a day, specify the hourly recurrence.
-   */
-  hourlyRecurrence?: HourDetails;
-  /**
-   * The time zone ID (e.g. Pacific Standard time).
-   */
-  timeZoneId?: string;
-  /**
-   * Notification settings.
-   */
-  notificationSettings?: NotificationSettings;
-  /**
-   * The resource ID to which the schedule belongs
-   */
-  targetResourceId?: string;
-  /**
-   * The name of the virtual machine or environment
-   */
-  name?: string;
-  /**
-   * The location of the new virtual machine or environment
-   */
-  location?: string;
-  /**
-   * The tags of the resource.
-   */
-  tags?: { [propertyName: string]: string };
-}
-
-/**
  * Properties for creating a virtual machine.
  */
 export interface LabVirtualMachineCreationParameter {
@@ -1725,10 +1338,6 @@ export interface LabVirtualMachineCreationParameter {
    * The creation date of the virtual machine.
    */
   createdDate?: Date;
-  /**
-   * The resource identifier (Microsoft.Compute) of the virtual machine.
-   */
-  computeId?: string;
   /**
    * The custom image identifier of the virtual machine.
    */
@@ -1786,13 +1395,17 @@ export interface LabVirtualMachineCreationParameter {
    */
   galleryImageReference?: GalleryImageReference;
   /**
-   * The id of the plan associated with the virtual machine image
+   * The compute virtual machine properties.
    */
-  planId?: string;
+  computeVm?: ComputeVmProperties;
   /**
    * The network interface properties.
    */
   networkInterface?: NetworkInterfaceProperties;
+  /**
+   * The applicable schedule for the virtual machine.
+   */
+  applicableSchedule?: ApplicableSchedule;
   /**
    * The expiration date for VM.
    */
@@ -1815,17 +1428,13 @@ export interface LabVirtualMachineCreationParameter {
    */
   environmentId?: string;
   /**
-   * New or existing data disks to attach to the virtual machine after creation
+   * The provisioning status of the resource.
    */
-  dataDiskParameters?: DataDiskProperties[];
+  provisioningState?: string;
   /**
-   * Virtual Machine schedules to be created
+   * The unique immutable identifier of a resource (Guid).
    */
-  scheduleParameters?: ScheduleCreationParameter[];
-  /**
-   * Last known compute power state captured in DTL
-   */
-  lastKnownPowerState?: string;
+  uniqueIdentifier?: string;
   /**
    * The name of the virtual machine or environment
    */
@@ -1881,345 +1490,11 @@ export interface Formula extends Resource {
   /**
    * The provisioning status of the resource.
    */
-  readonly provisioningState?: string;
+  provisioningState?: string;
   /**
    * The unique immutable identifier of a resource (Guid).
    */
-  readonly uniqueIdentifier?: string;
-}
-
-/**
- * The reference information for an Azure Marketplace image.
- */
-export interface GalleryImageReferenceFragment {
-  /**
-   * The offer of the gallery image.
-   */
-  offer?: string;
-  /**
-   * The publisher of the gallery image.
-   */
-  publisher?: string;
-  /**
-   * The SKU of the gallery image.
-   */
-  sku?: string;
-  /**
-   * The OS type of the gallery image.
-   */
-  osType?: string;
-  /**
-   * The version of the gallery image.
-   */
-  version?: string;
-}
-
-/**
- * A rule for NAT - exposing a VM's port (backendPort) on the public IP address using a load
- * balancer.
- */
-export interface InboundNatRuleFragment {
-  /**
-   * The transport protocol for the endpoint. Possible values include: 'Tcp', 'Udp'
-   */
-  transportProtocol?: string;
-  /**
-   * The external endpoint port of the inbound connection. Possible values range between 1 and
-   * 65535, inclusive. If unspecified, a value will be allocated automatically.
-   */
-  frontendPort?: number;
-  /**
-   * The port to which the external traffic will be redirected.
-   */
-  backendPort?: number;
-}
-
-/**
- * Properties of a virtual machine that determine how it is connected to a load balancer.
- */
-export interface SharedPublicIpAddressConfigurationFragment {
-  /**
-   * The incoming NAT rules
-   */
-  inboundNatRules?: InboundNatRuleFragment[];
-}
-
-/**
- * Properties of a network interface.
- */
-export interface NetworkInterfacePropertiesFragment {
-  /**
-   * The resource ID of the virtual network.
-   */
-  virtualNetworkId?: string;
-  /**
-   * The resource ID of the sub net.
-   */
-  subnetId?: string;
-  /**
-   * The resource ID of the public IP address.
-   */
-  publicIpAddressId?: string;
-  /**
-   * The public IP address.
-   */
-  publicIpAddress?: string;
-  /**
-   * The private IP address.
-   */
-  privateIpAddress?: string;
-  /**
-   * The DNS name.
-   */
-  dnsName?: string;
-  /**
-   * The RdpAuthority property is a server DNS host name or IP address followed by the service port
-   * number for RDP (Remote Desktop Protocol).
-   */
-  rdpAuthority?: string;
-  /**
-   * The SshAuthority property is a server DNS host name or IP address followed by the service port
-   * number for SSH.
-   */
-  sshAuthority?: string;
-  /**
-   * The configuration for sharing a public IP address across multiple virtual machines.
-   */
-  sharedPublicIpAddressConfiguration?: SharedPublicIpAddressConfigurationFragment;
-}
-
-/**
- * Properties for creating a schedule.
- */
-export interface ScheduleCreationParameterFragment {
-  /**
-   * The status of the schedule (i.e. Enabled, Disabled). Possible values include: 'Enabled',
-   * 'Disabled'
-   */
-  status?: string;
-  /**
-   * The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
-   */
-  taskType?: string;
-  /**
-   * If the schedule will occur only some days of the week, specify the weekly recurrence.
-   */
-  weeklyRecurrence?: WeekDetailsFragment;
-  /**
-   * If the schedule will occur once each day of the week, specify the daily recurrence.
-   */
-  dailyRecurrence?: DayDetailsFragment;
-  /**
-   * If the schedule will occur multiple times a day, specify the hourly recurrence.
-   */
-  hourlyRecurrence?: HourDetailsFragment;
-  /**
-   * The time zone ID (e.g. Pacific Standard time).
-   */
-  timeZoneId?: string;
-  /**
-   * Notification settings.
-   */
-  notificationSettings?: NotificationSettingsFragment;
-  /**
-   * The resource ID to which the schedule belongs
-   */
-  targetResourceId?: string;
-  /**
-   * The name of the virtual machine or environment
-   */
-  name?: string;
-  /**
-   * The location of the new virtual machine or environment
-   */
-  location?: string;
-  /**
-   * The tags of the resource.
-   */
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * Properties for creating a virtual machine.
- */
-export interface LabVirtualMachineCreationParameterFragment {
-  /**
-   * The number of virtual machine instances to create.
-   */
-  bulkCreationParameters?: BulkCreationParametersFragment;
-  /**
-   * The notes of the virtual machine.
-   */
-  notes?: string;
-  /**
-   * The object identifier of the owner of the virtual machine.
-   */
-  ownerObjectId?: string;
-  /**
-   * The user principal name of the virtual machine owner.
-   */
-  ownerUserPrincipalName?: string;
-  /**
-   * The object identifier of the creator of the virtual machine.
-   */
-  createdByUserId?: string;
-  /**
-   * The email address of creator of the virtual machine.
-   */
-  createdByUser?: string;
-  /**
-   * The creation date of the virtual machine.
-   */
-  createdDate?: Date;
-  /**
-   * The resource identifier (Microsoft.Compute) of the virtual machine.
-   */
-  computeId?: string;
-  /**
-   * The custom image identifier of the virtual machine.
-   */
-  customImageId?: string;
-  /**
-   * The OS type of the virtual machine.
-   */
-  osType?: string;
-  /**
-   * The size of the virtual machine.
-   */
-  size?: string;
-  /**
-   * The user name of the virtual machine.
-   */
-  userName?: string;
-  /**
-   * The password of the virtual machine administrator.
-   */
-  password?: string;
-  /**
-   * The SSH key of the virtual machine administrator.
-   */
-  sshKey?: string;
-  /**
-   * Indicates whether this virtual machine uses an SSH key for authentication.
-   */
-  isAuthenticationWithSshKey?: boolean;
-  /**
-   * The fully-qualified domain name of the virtual machine.
-   */
-  fqdn?: string;
-  /**
-   * The lab subnet name of the virtual machine.
-   */
-  labSubnetName?: string;
-  /**
-   * The lab virtual network identifier of the virtual machine.
-   */
-  labVirtualNetworkId?: string;
-  /**
-   * Indicates whether the virtual machine is to be created without a public IP address.
-   */
-  disallowPublicIpAddress?: boolean;
-  /**
-   * The artifacts to be installed on the virtual machine.
-   */
-  artifacts?: ArtifactInstallPropertiesFragment[];
-  /**
-   * The artifact deployment status for the virtual machine.
-   */
-  artifactDeploymentStatus?: ArtifactDeploymentStatusPropertiesFragment;
-  /**
-   * The Microsoft Azure Marketplace image reference of the virtual machine.
-   */
-  galleryImageReference?: GalleryImageReferenceFragment;
-  /**
-   * The id of the plan associated with the virtual machine image
-   */
-  planId?: string;
-  /**
-   * The network interface properties.
-   */
-  networkInterface?: NetworkInterfacePropertiesFragment;
-  /**
-   * The expiration date for VM.
-   */
-  expirationDate?: Date;
-  /**
-   * Indicates whether another user can take ownership of the virtual machine
-   */
-  allowClaim?: boolean;
-  /**
-   * Storage type to use for virtual machine (i.e. Standard, Premium).
-   */
-  storageType?: string;
-  /**
-   * Tells source of creation of lab virtual machine. Output property only. Possible values
-   * include: 'FromCustomImage', 'FromGalleryImage'
-   */
-  virtualMachineCreationSource?: string;
-  /**
-   * The resource ID of the environment that contains this virtual machine, if any.
-   */
-  environmentId?: string;
-  /**
-   * New or existing data disks to attach to the virtual machine after creation
-   */
-  dataDiskParameters?: DataDiskPropertiesFragment[];
-  /**
-   * Virtual Machine schedules to be created
-   */
-  scheduleParameters?: ScheduleCreationParameterFragment[];
-  /**
-   * Last known compute power state captured in DTL
-   */
-  lastKnownPowerState?: string;
-  /**
-   * The name of the virtual machine or environment
-   */
-  name?: string;
-  /**
-   * The location of the new virtual machine or environment
-   */
-  location?: string;
-  /**
-   * The tags of the resource.
-   */
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * Information about a VM from which a formula is to be created.
- */
-export interface FormulaPropertiesFromVmFragment {
-  /**
-   * The identifier of the VM from which a formula is to be created.
-   */
-  labVmId?: string;
-}
-
-/**
- * A formula for creating a VM, specifying an image base and other parameters
- */
-export interface FormulaFragment extends UpdateResource {
-  /**
-   * The description of the formula.
-   */
-  description?: string;
-  /**
-   * The author of the formula.
-   */
-  author?: string;
-  /**
-   * The OS type of the formula.
-   */
-  osType?: string;
-  /**
-   * The content of the formula.
-   */
-  formulaContent?: LabVirtualMachineCreationParameterFragment;
-  /**
-   * Information about a VM from which a formula is to be created.
-   */
-  vm?: FormulaPropertiesFromVmFragment;
+  uniqueIdentifier?: string;
 }
 
 /**
@@ -2250,14 +1525,32 @@ export interface GalleryImage extends Resource {
    * Indicates whether this gallery image is enabled.
    */
   enabled?: boolean;
+}
+
+/**
+ * The reference information for an Azure Marketplace image.
+ */
+export interface GalleryImageReferenceFragment {
   /**
-   * The third party plan that applies to this image
+   * The offer of the gallery image.
    */
-  planId?: string;
+  offer?: string;
   /**
-   * Indicates if the plan has been authorized for programmatic deployment.
+   * The publisher of the gallery image.
    */
-  isPlanAuthorized?: boolean;
+  publisher?: string;
+  /**
+   * The SKU of the gallery image.
+   */
+  sku?: string;
+  /**
+   * The OS type of the gallery image.
+   */
+  osType?: string;
+  /**
+   * The version of the gallery image.
+   */
+  version?: string;
 }
 
 /**
@@ -2340,70 +1633,23 @@ export interface IdentityProperties {
 }
 
 /**
- * This represents the payload required to import a virtual machine from a different lab into the
- * current one
+ * A rule for NAT - exposing a VM's port (backendPort) on the public IP address using a load
+ * balancer.
  */
-export interface ImportLabVirtualMachineRequest {
+export interface InboundNatRuleFragment {
   /**
-   * The full resource ID of the virtual machine to be imported.
+   * The transport protocol for the endpoint. Possible values include: 'Tcp', 'Udp'
    */
-  sourceVirtualMachineResourceId?: string;
+  transportProtocol?: string;
   /**
-   * The name of the virtual machine in the destination lab
+   * The external endpoint port of the inbound connection. Possible values range between 1 and
+   * 65535, inclusive. If unspecified, a value will be allocated automatically.
    */
-  destinationVirtualMachineName?: string;
-}
-
-/**
- * Properties of a lab's announcement banner
- */
-export interface LabAnnouncementProperties {
+  frontendPort?: number;
   /**
-   * The plain text title for the lab announcement
+   * The port to which the external traffic will be redirected.
    */
-  title?: string;
-  /**
-   * The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will
-   * be shown.
-   */
-  markdown?: string;
-  /**
-   * Is the lab announcement active/enabled at this time?. Possible values include: 'Enabled',
-   * 'Disabled'
-   */
-  enabled?: string;
-  /**
-   * The time at which the announcement expires (null for never)
-   */
-  expirationDate?: Date;
-  /**
-   * Has this announcement expired?
-   */
-  expired?: boolean;
-  /**
-   * The provisioning status of the resource.
-   */
-  readonly provisioningState?: string;
-  /**
-   * The unique immutable identifier of a resource (Guid).
-   */
-  readonly uniqueIdentifier?: string;
-}
-
-/**
- * Properties of a lab's support banner
- */
-export interface LabSupportProperties {
-  /**
-   * Is the lab support banner active/enabled at this time?. Possible values include: 'Enabled',
-   * 'Disabled'
-   */
-  enabled?: string;
-  /**
-   * The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will
-   * be shown.
-   */
-  markdown?: string;
+  backendPort?: number;
 }
 
 /**
@@ -2436,16 +1682,6 @@ export interface Lab extends Resource {
    */
   labStorageType?: string;
   /**
-   * The ordered list of artifact resource IDs that should be applied on all Linux VM creations by
-   * default, prior to the artifacts specified by the user.
-   */
-  mandatoryArtifactsResourceIdsLinux?: string[];
-  /**
-   * The ordered list of artifact resource IDs that should be applied on all Windows VM creations
-   * by default, prior to the artifacts specified by the user.
-   */
-  mandatoryArtifactsResourceIdsWindows?: string[];
-  /**
    * The creation date of the lab.
    */
   readonly createdDate?: Date;
@@ -2457,74 +1693,13 @@ export interface Lab extends Resource {
    */
   premiumDataDisks?: string;
   /**
-   * The access rights to be granted to the user when provisioning an environment. Possible values
-   * include: 'Reader', 'Contributor'
-   */
-  environmentPermission?: string;
-  /**
-   * The properties of any lab announcement associated with this lab
-   */
-  announcement?: LabAnnouncementProperties;
-  /**
-   * The properties of any lab support message associated with this lab
-   */
-  support?: LabSupportProperties;
-  /**
-   * The resource group in which lab virtual machines will be created in.
-   */
-  readonly vmCreationResourceGroup?: string;
-  /**
-   * The public IP address for the lab's load balancer.
-   */
-  readonly publicIpId?: string;
-  /**
-   * The load balancer used to for lab VMs that use shared IP address.
-   */
-  readonly loadBalancerId?: string;
-  /**
-   * The Network Security Group attached to the lab VMs Network interfaces to restrict open ports.
-   */
-  readonly networkSecurityGroupId?: string;
-  /**
-   * Extended properties of the lab used for experimental features
-   */
-  extendedProperties?: { [propertyName: string]: string };
-  /**
    * The provisioning status of the resource.
    */
-  readonly provisioningState?: string;
+  provisioningState?: string;
   /**
    * The unique immutable identifier of a resource (Guid).
    */
-  readonly uniqueIdentifier?: string;
-}
-
-/**
- * Properties of a lab's announcement banner
- */
-export interface LabAnnouncementPropertiesFragment {
-  /**
-   * The plain text title for the lab announcement
-   */
-  title?: string;
-  /**
-   * The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will
-   * be shown.
-   */
-  markdown?: string;
-  /**
-   * Is the lab announcement active/enabled at this time?. Possible values include: 'Enabled',
-   * 'Disabled'
-   */
-  enabled?: string;
-  /**
-   * The time at which the announcement expires (null for never)
-   */
-  expirationDate?: Date;
-  /**
-   * Has this announcement expired?
-   */
-  expired?: boolean;
+  uniqueIdentifier?: string;
 }
 
 /**
@@ -2666,48 +1841,22 @@ export interface LabCost extends Resource {
   /**
    * The provisioning status of the resource.
    */
-  readonly provisioningState?: string;
+  provisioningState?: string;
   /**
    * The unique immutable identifier of a resource (Guid).
    */
-  readonly uniqueIdentifier?: string;
-}
-
-/**
- * Properties of a lab's support banner
- */
-export interface LabSupportPropertiesFragment {
-  /**
-   * Is the lab support banner active/enabled at this time?. Possible values include: 'Enabled',
-   * 'Disabled'
-   */
-  enabled?: string;
-  /**
-   * The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will
-   * be shown.
-   */
-  markdown?: string;
+  uniqueIdentifier?: string;
 }
 
 /**
  * A lab.
  */
-export interface LabFragment extends UpdateResource {
+export interface LabFragment extends Resource {
   /**
    * Type of storage used by the lab. It can be either Premium or Standard. Default is Premium.
    * Possible values include: 'Standard', 'Premium'
    */
   labStorageType?: string;
-  /**
-   * The ordered list of artifact resource IDs that should be applied on all Linux VM creations by
-   * default, prior to the artifacts specified by the user.
-   */
-  mandatoryArtifactsResourceIdsLinux?: string[];
-  /**
-   * The ordered list of artifact resource IDs that should be applied on all Windows VM creations
-   * by default, prior to the artifacts specified by the user.
-   */
-  mandatoryArtifactsResourceIdsWindows?: string[];
   /**
    * The setting to enable usage of premium data disks.
    * When its value is 'Enabled', creation of standard or premium data disks is allowed.
@@ -2716,22 +1865,13 @@ export interface LabFragment extends UpdateResource {
    */
   premiumDataDisks?: string;
   /**
-   * The access rights to be granted to the user when provisioning an environment. Possible values
-   * include: 'Reader', 'Contributor'
+   * The provisioning status of the resource.
    */
-  environmentPermission?: string;
+  provisioningState?: string;
   /**
-   * The properties of any lab announcement associated with this lab
+   * The unique immutable identifier of a resource (Guid).
    */
-  announcement?: LabAnnouncementPropertiesFragment;
-  /**
-   * The properties of any lab support message associated with this lab
-   */
-  support?: LabSupportPropertiesFragment;
-  /**
-   * Extended properties of the lab used for experimental features
-   */
-  extendedProperties?: { [propertyName: string]: string };
+  uniqueIdentifier?: string;
 }
 
 /**
@@ -2775,7 +1915,7 @@ export interface LabVirtualMachine extends Resource {
   /**
    * The resource identifier (Microsoft.Compute) of the virtual machine.
    */
-  computeId?: string;
+  readonly computeId?: string;
   /**
    * The custom image identifier of the virtual machine.
    */
@@ -2833,13 +1973,9 @@ export interface LabVirtualMachine extends Resource {
    */
   galleryImageReference?: GalleryImageReference;
   /**
-   * The id of the plan associated with the virtual machine image
-   */
-  planId?: string;
-  /**
    * The compute virtual machine properties.
    */
-  readonly computeVm?: ComputeVmProperties;
+  computeVm?: ComputeVmProperties;
   /**
    * The network interface properties.
    */
@@ -2847,7 +1983,7 @@ export interface LabVirtualMachine extends Resource {
   /**
    * The applicable schedule for the virtual machine.
    */
-  readonly applicableSchedule?: ApplicableSchedule;
+  applicableSchedule?: ApplicableSchedule;
   /**
    * The expiration date for VM.
    */
@@ -2870,31 +2006,73 @@ export interface LabVirtualMachine extends Resource {
    */
   environmentId?: string;
   /**
-   * New or existing data disks to attach to the virtual machine after creation
-   */
-  dataDiskParameters?: DataDiskProperties[];
-  /**
-   * Virtual Machine schedules to be created
-   */
-  scheduleParameters?: ScheduleCreationParameter[];
-  /**
-   * Last known compute power state captured in DTL
-   */
-  lastKnownPowerState?: string;
-  /**
    * The provisioning status of the resource.
    */
-  readonly provisioningState?: string;
+  provisioningState?: string;
   /**
    * The unique immutable identifier of a resource (Guid).
    */
-  readonly uniqueIdentifier?: string;
+  uniqueIdentifier?: string;
+}
+
+/**
+ * Properties of a virtual machine that determine how it is connected to a load balancer.
+ */
+export interface SharedPublicIpAddressConfigurationFragment {
+  /**
+   * The incoming NAT rules
+   */
+  inboundNatRules?: InboundNatRuleFragment[];
+}
+
+/**
+ * Properties of a network interface.
+ */
+export interface NetworkInterfacePropertiesFragment {
+  /**
+   * The resource ID of the virtual network.
+   */
+  virtualNetworkId?: string;
+  /**
+   * The resource ID of the sub net.
+   */
+  subnetId?: string;
+  /**
+   * The resource ID of the public IP address.
+   */
+  publicIpAddressId?: string;
+  /**
+   * The public IP address.
+   */
+  publicIpAddress?: string;
+  /**
+   * The private IP address.
+   */
+  privateIpAddress?: string;
+  /**
+   * The DNS name.
+   */
+  dnsName?: string;
+  /**
+   * The RdpAuthority property is a server DNS host name or IP address followed by the service port
+   * number for RDP (Remote Desktop Protocol).
+   */
+  rdpAuthority?: string;
+  /**
+   * The SshAuthority property is a server DNS host name or IP address followed by the service port
+   * number for SSH.
+   */
+  sshAuthority?: string;
+  /**
+   * The configuration for sharing a public IP address across multiple virtual machines.
+   */
+  sharedPublicIpAddressConfiguration?: SharedPublicIpAddressConfigurationFragment;
 }
 
 /**
  * A virtual machine.
  */
-export interface LabVirtualMachineFragment extends UpdateResource {
+export interface LabVirtualMachineFragment extends Resource {
   /**
    * The notes of the virtual machine.
    */
@@ -2919,10 +2097,6 @@ export interface LabVirtualMachineFragment extends UpdateResource {
    * The creation date of the virtual machine.
    */
   createdDate?: Date;
-  /**
-   * The resource identifier (Microsoft.Compute) of the virtual machine.
-   */
-  computeId?: string;
   /**
    * The custom image identifier of the virtual machine.
    */
@@ -2980,13 +2154,17 @@ export interface LabVirtualMachineFragment extends UpdateResource {
    */
   galleryImageReference?: GalleryImageReferenceFragment;
   /**
-   * The id of the plan associated with the virtual machine image
+   * The compute virtual machine properties.
    */
-  planId?: string;
+  computeVm?: ComputeVmPropertiesFragment;
   /**
    * The network interface properties.
    */
   networkInterface?: NetworkInterfacePropertiesFragment;
+  /**
+   * The applicable schedule for the virtual machine.
+   */
+  applicableSchedule?: ApplicableScheduleFragment;
   /**
    * The expiration date for VM.
    */
@@ -3009,17 +2187,13 @@ export interface LabVirtualMachineFragment extends UpdateResource {
    */
   environmentId?: string;
   /**
-   * New or existing data disks to attach to the virtual machine after creation
+   * The provisioning status of the resource.
    */
-  dataDiskParameters?: DataDiskPropertiesFragment[];
+  provisioningState?: string;
   /**
-   * Virtual Machine schedules to be created
+   * The unique immutable identifier of a resource (Guid).
    */
-  scheduleParameters?: ScheduleCreationParameterFragment[];
-  /**
-   * Last known compute power state captured in DTL
-   */
-  lastKnownPowerState?: string;
+  uniqueIdentifier?: string;
 }
 
 /**
@@ -3030,15 +2204,6 @@ export interface NotificationChannel extends Resource {
    * The webhook URL to send notifications to.
    */
   webHookUrl?: string;
-  /**
-   * The email recipient to send notifications to (can be a list of semi-colon separated email
-   * addresses).
-   */
-  emailRecipient?: string;
-  /**
-   * The locale to use when sending a notification (fallback for unsupported languages is EN).
-   */
-  notificationLocale?: string;
   /**
    * Description of notification.
    */
@@ -3054,30 +2219,21 @@ export interface NotificationChannel extends Resource {
   /**
    * The provisioning status of the resource.
    */
-  readonly provisioningState?: string;
+  provisioningState?: string;
   /**
    * The unique immutable identifier of a resource (Guid).
    */
-  readonly uniqueIdentifier?: string;
+  uniqueIdentifier?: string;
 }
 
 /**
  * A notification.
  */
-export interface NotificationChannelFragment extends UpdateResource {
+export interface NotificationChannelFragment extends Resource {
   /**
    * The webhook URL to send notifications to.
    */
   webHookUrl?: string;
-  /**
-   * The email recipient to send notifications to (can be a list of semi-colon separated email
-   * addresses).
-   */
-  emailRecipient?: string;
-  /**
-   * The locale to use when sending a notification (fallback for unsupported languages is EN).
-   */
-  notificationLocale?: string;
   /**
    * Description of notification.
    */
@@ -3086,6 +2242,14 @@ export interface NotificationChannelFragment extends UpdateResource {
    * The list of event for which this notification is enabled.
    */
   events?: EventFragment[];
+  /**
+   * The provisioning status of the resource.
+   */
+  provisioningState?: string;
+  /**
+   * The unique immutable identifier of a resource (Guid).
+   */
+  uniqueIdentifier?: string;
 }
 
 /**
@@ -3195,7 +2359,7 @@ export interface Policy extends Resource {
    * The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc. Possible
    * values include: 'UserOwnedLabVmCount', 'UserOwnedLabPremiumVmCount', 'LabVmCount',
    * 'LabPremiumVmCount', 'LabVmSize', 'GalleryImage', 'UserOwnedLabVmCountInSubnet',
-   * 'LabTargetCost', 'EnvironmentTemplate', 'ScheduleEditPermission'
+   * 'LabTargetCost'
    */
   factName?: string;
   /**
@@ -3219,17 +2383,17 @@ export interface Policy extends Resource {
   /**
    * The provisioning status of the resource.
    */
-  readonly provisioningState?: string;
+  provisioningState?: string;
   /**
    * The unique immutable identifier of a resource (Guid).
    */
-  readonly uniqueIdentifier?: string;
+  uniqueIdentifier?: string;
 }
 
 /**
  * A Policy.
  */
-export interface PolicyFragment extends UpdateResource {
+export interface PolicyFragment extends Resource {
   /**
    * The description of the policy.
    */
@@ -3242,7 +2406,7 @@ export interface PolicyFragment extends UpdateResource {
    * The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc. Possible
    * values include: 'UserOwnedLabVmCount', 'UserOwnedLabPremiumVmCount', 'LabVmCount',
    * 'LabPremiumVmCount', 'LabVmSize', 'GalleryImage', 'UserOwnedLabVmCountInSubnet',
-   * 'LabTargetCost', 'EnvironmentTemplate', 'ScheduleEditPermission'
+   * 'LabTargetCost'
    */
   factName?: string;
   /**
@@ -3259,6 +2423,14 @@ export interface PolicyFragment extends UpdateResource {
    * include: 'AllowedValuesPolicy', 'MaxValuePolicy'
    */
   evaluatorType?: string;
+  /**
+   * The provisioning status of the resource.
+   */
+  provisioningState?: string;
+  /**
+   * The unique immutable identifier of a resource (Guid).
+   */
+  uniqueIdentifier?: string;
 }
 
 /**
@@ -3290,26 +2462,6 @@ export interface PortFragment {
 }
 
 /**
- * Represents a .rdp file
- */
-export interface RdpConnection {
-  /**
-   * The contents of the .rdp file
-   */
-  contents?: string;
-}
-
-/**
- * Request body for resizing a virtual machine.
- */
-export interface ResizeLabVirtualMachineProperties {
-  /**
-   * Specifies the size of the virtual machine.
-   */
-  size?: string;
-}
-
-/**
  * Properties for retargeting a virtual machine schedule.
  */
 export interface RetargetScheduleProperties {
@@ -3334,61 +2486,11 @@ export interface Secret extends Resource {
   /**
    * The provisioning status of the resource.
    */
-  readonly provisioningState?: string;
+  provisioningState?: string;
   /**
    * The unique immutable identifier of a resource (Guid).
    */
-  readonly uniqueIdentifier?: string;
-}
-
-/**
- * A secret.
- */
-export interface SecretFragment extends UpdateResource {
-  /**
-   * The value of the secret for secret creation.
-   */
-  value?: string;
-}
-
-/**
- * A Service Fabric.
- */
-export interface ServiceFabric extends Resource {
-  /**
-   * The backing service fabric resource's id
-   */
-  externalServiceFabricId?: string;
-  /**
-   * The resource id of the environment under which the service fabric resource is present
-   */
-  environmentId?: string;
-  /**
-   * The applicable schedule for the virtual machine.
-   */
-  readonly applicableSchedule?: ApplicableSchedule;
-  /**
-   * The provisioning status of the resource.
-   */
-  readonly provisioningState?: string;
-  /**
-   * The unique immutable identifier of a resource (Guid).
-   */
-  readonly uniqueIdentifier?: string;
-}
-
-/**
- * A Service Fabric.
- */
-export interface ServiceFabricFragment extends UpdateResource {
-  /**
-   * The backing service fabric resource's id
-   */
-  externalServiceFabricId?: string;
-  /**
-   * The resource id of the environment under which the service fabric resource is present
-   */
-  environmentId?: string;
+  uniqueIdentifier?: string;
 }
 
 /**
@@ -3430,14 +2532,6 @@ export interface ShutdownNotificationContent {
    * The owner of the virtual machine.
    */
   owner?: string;
-  /**
-   * The URL of the virtual machine.
-   */
-  vmUrl?: string;
-  /**
-   * Minutes remaining until shutdown
-   */
-  minutesUntilShutdown?: string;
   /**
    * The event for which a notification will be sent.
    */
@@ -3643,11 +2737,11 @@ export interface User extends Resource {
   /**
    * The provisioning status of the resource.
    */
-  readonly provisioningState?: string;
+  provisioningState?: string;
   /**
    * The unique immutable identifier of a resource (Guid).
    */
-  readonly uniqueIdentifier?: string;
+  uniqueIdentifier?: string;
 }
 
 /**
@@ -3695,7 +2789,7 @@ export interface UserSecretStoreFragment {
 /**
  * Profile of a lab user.
  */
-export interface UserFragment extends UpdateResource {
+export interface UserFragment extends Resource {
   /**
    * The identity of the user.
    */
@@ -3704,6 +2798,14 @@ export interface UserFragment extends UpdateResource {
    * The secret store of the user.
    */
   secretStore?: UserSecretStoreFragment;
+  /**
+   * The provisioning status of the resource.
+   */
+  provisioningState?: string;
+  /**
+   * The unique immutable identifier of a resource (Guid).
+   */
+  uniqueIdentifier?: string;
 }
 
 /**
@@ -3725,7 +2827,7 @@ export interface VirtualNetwork extends Resource {
   /**
    * The external subnet properties.
    */
-  readonly externalSubnets?: ExternalSubnet[];
+  externalSubnets?: ExternalSubnet[];
   /**
    * The subnet overrides of the virtual network.
    */
@@ -3737,17 +2839,17 @@ export interface VirtualNetwork extends Resource {
   /**
    * The provisioning status of the resource.
    */
-  readonly provisioningState?: string;
+  provisioningState?: string;
   /**
    * The unique immutable identifier of a resource (Guid).
    */
-  readonly uniqueIdentifier?: string;
+  uniqueIdentifier?: string;
 }
 
 /**
  * A virtual network.
  */
-export interface VirtualNetworkFragment extends UpdateResource {
+export interface VirtualNetworkFragment extends Resource {
   /**
    * The allowed subnets of the virtual network.
    */
@@ -3761,9 +2863,21 @@ export interface VirtualNetworkFragment extends UpdateResource {
    */
   externalProviderResourceId?: string;
   /**
+   * The external subnet properties.
+   */
+  externalSubnets?: ExternalSubnetFragment[];
+  /**
    * The subnet overrides of the virtual network.
    */
   subnetOverrides?: SubnetOverrideFragment[];
+  /**
+   * The provisioning status of the resource.
+   */
+  provisioningState?: string;
+  /**
+   * The unique immutable identifier of a resource (Guid).
+   */
+  uniqueIdentifier?: string;
 }
 
 /**
@@ -3779,7 +2893,7 @@ export interface ProviderOperationResult extends Array<OperationMetadata> {
 /**
  * The response of a list operation.
  */
-export interface LabList extends Array<Lab> {
+export interface ResponseWithContinuationLab extends Array<Lab> {
   /**
    * Link for next set of results.
    */
@@ -3789,7 +2903,7 @@ export interface LabList extends Array<Lab> {
 /**
  * The response of a list operation.
  */
-export interface LabVhdList extends Array<LabVhd> {
+export interface ResponseWithContinuationLabVhd extends Array<LabVhd> {
   /**
    * Link for next set of results.
    */
@@ -3799,7 +2913,7 @@ export interface LabVhdList extends Array<LabVhd> {
 /**
  * The response of a list operation.
  */
-export interface ScheduleList extends Array<Schedule> {
+export interface ResponseWithContinuationSchedule extends Array<Schedule> {
   /**
    * Link for next set of results.
    */
@@ -3809,7 +2923,7 @@ export interface ScheduleList extends Array<Schedule> {
 /**
  * The response of a list operation.
  */
-export interface ArtifactSourceList extends Array<ArtifactSource> {
+export interface ResponseWithContinuationArtifactSource extends Array<ArtifactSource> {
   /**
    * Link for next set of results.
    */
@@ -3819,7 +2933,7 @@ export interface ArtifactSourceList extends Array<ArtifactSource> {
 /**
  * The response of a list operation.
  */
-export interface ArmTemplateList extends Array<ArmTemplate> {
+export interface ResponseWithContinuationArmTemplate extends Array<ArmTemplate> {
   /**
    * Link for next set of results.
    */
@@ -3829,7 +2943,7 @@ export interface ArmTemplateList extends Array<ArmTemplate> {
 /**
  * The response of a list operation.
  */
-export interface ArtifactList extends Array<Artifact> {
+export interface ResponseWithContinuationArtifact extends Array<Artifact> {
   /**
    * Link for next set of results.
    */
@@ -3839,7 +2953,7 @@ export interface ArtifactList extends Array<Artifact> {
 /**
  * The response of a list operation.
  */
-export interface CustomImageList extends Array<CustomImage> {
+export interface ResponseWithContinuationCustomImage extends Array<CustomImage> {
   /**
    * Link for next set of results.
    */
@@ -3849,7 +2963,7 @@ export interface CustomImageList extends Array<CustomImage> {
 /**
  * The response of a list operation.
  */
-export interface FormulaList extends Array<Formula> {
+export interface ResponseWithContinuationFormula extends Array<Formula> {
   /**
    * Link for next set of results.
    */
@@ -3859,7 +2973,7 @@ export interface FormulaList extends Array<Formula> {
 /**
  * The response of a list operation.
  */
-export interface GalleryImageList extends Array<GalleryImage> {
+export interface ResponseWithContinuationGalleryImage extends Array<GalleryImage> {
   /**
    * Link for next set of results.
    */
@@ -3869,7 +2983,7 @@ export interface GalleryImageList extends Array<GalleryImage> {
 /**
  * The response of a list operation.
  */
-export interface NotificationChannelList extends Array<NotificationChannel> {
+export interface ResponseWithContinuationNotificationChannel extends Array<NotificationChannel> {
   /**
    * Link for next set of results.
    */
@@ -3879,7 +2993,7 @@ export interface NotificationChannelList extends Array<NotificationChannel> {
 /**
  * The response of a list operation.
  */
-export interface PolicyList extends Array<Policy> {
+export interface ResponseWithContinuationPolicy extends Array<Policy> {
   /**
    * Link for next set of results.
    */
@@ -3889,7 +3003,7 @@ export interface PolicyList extends Array<Policy> {
 /**
  * The response of a list operation.
  */
-export interface ServiceRunnerList extends Array<ServiceRunner> {
+export interface ResponseWithContinuationServiceRunner extends Array<ServiceRunner> {
   /**
    * Link for next set of results.
    */
@@ -3899,7 +3013,7 @@ export interface ServiceRunnerList extends Array<ServiceRunner> {
 /**
  * The response of a list operation.
  */
-export interface UserList extends Array<User> {
+export interface ResponseWithContinuationUser extends Array<User> {
   /**
    * Link for next set of results.
    */
@@ -3909,7 +3023,7 @@ export interface UserList extends Array<User> {
 /**
  * The response of a list operation.
  */
-export interface DiskList extends Array<Disk> {
+export interface ResponseWithContinuationDisk extends Array<Disk> {
   /**
    * Link for next set of results.
    */
@@ -3919,7 +3033,7 @@ export interface DiskList extends Array<Disk> {
 /**
  * The response of a list operation.
  */
-export interface DtlEnvironmentList extends Array<DtlEnvironment> {
+export interface ResponseWithContinuationDtlEnvironment extends Array<DtlEnvironment> {
   /**
    * Link for next set of results.
    */
@@ -3929,7 +3043,7 @@ export interface DtlEnvironmentList extends Array<DtlEnvironment> {
 /**
  * The response of a list operation.
  */
-export interface SecretList extends Array<Secret> {
+export interface ResponseWithContinuationSecret extends Array<Secret> {
   /**
    * Link for next set of results.
    */
@@ -3939,7 +3053,7 @@ export interface SecretList extends Array<Secret> {
 /**
  * The response of a list operation.
  */
-export interface ServiceFabricList extends Array<ServiceFabric> {
+export interface ResponseWithContinuationLabVirtualMachine extends Array<LabVirtualMachine> {
   /**
    * Link for next set of results.
    */
@@ -3949,17 +3063,7 @@ export interface ServiceFabricList extends Array<ServiceFabric> {
 /**
  * The response of a list operation.
  */
-export interface LabVirtualMachineList extends Array<LabVirtualMachine> {
-  /**
-   * Link for next set of results.
-   */
-  nextLink?: string;
-}
-
-/**
- * The response of a list operation.
- */
-export interface VirtualNetworkList extends Array<VirtualNetwork> {
+export interface ResponseWithContinuationVirtualNetwork extends Array<VirtualNetwork> {
   /**
    * Link for next set of results.
    */

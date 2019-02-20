@@ -76,8 +76,6 @@ export default class DevTestLabsClient extends AzureServiceClient {
   disks: operations.Disks;
   environments: operations.Environments;
   secrets: operations.Secrets;
-  serviceFabrics: operations.ServiceFabrics;
-  serviceFabricSchedules: operations.ServiceFabricSchedules;
   virtualMachines: operations.VirtualMachines;
   virtualMachineSchedules: operations.VirtualMachineSchedules;
   virtualNetworks: operations.VirtualNetworks;
