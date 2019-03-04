@@ -382,15 +382,15 @@ export interface FilesNotSyncingError {
   /**
    * Error code (HResult)
   */
-  readonly errorCode?: number;
+  readonly errorCode: number;
   /**
    * Count of persistent files not syncing with the specified error code
   */
-  readonly persistentCount?: number;
+  readonly persistentCount: number;
   /**
    * Count of transient files not syncing with the specified error code
   */
-  readonly transientCount?: number;
+  readonly transientCount: number;
 }
 
 /**
@@ -400,11 +400,11 @@ export interface SyncSessionStatus {
   /**
    * Last sync result (HResult)
   */
-  readonly lastSyncResult?: number;
+  readonly lastSyncResult: number;
   /**
    * Last sync timestamp
   */
-  readonly lastSyncTimestamp?: Date;
+  readonly lastSyncTimestamp: Date;
   /**
    * Last sync success timestamp
   */
@@ -412,7 +412,7 @@ export interface SyncSessionStatus {
   /**
    * Last sync per item error count.
   */
-  lastSyncPerItemErrorCount?: number;
+  readonly lastSyncPerItemErrorCount: number;
   /**
    * Count of persistent files not syncing. Reserved for future use.
   */
@@ -434,15 +434,15 @@ export interface SyncActivityStatus {
   /**
    * Timestamp when properties were updated
   */
-  readonly timestamp?: Date;
+  readonly timestamp: Date;
   /**
    * Per item error count
   */
-  readonly perItemErrorCount?: number;
+  readonly perItemErrorCount: number;
   /**
    * Applied item count.
   */
-  readonly appliedItemCount?: number;
+  readonly appliedItemCount: number;
   /**
    * Total item count (if available)
   */
@@ -450,7 +450,7 @@ export interface SyncActivityStatus {
   /**
    * Applied bytes
   */
-  readonly appliedBytes?: number;
+  readonly appliedBytes: number;
   /**
    * Total bytes (if available)
   */
@@ -543,15 +543,15 @@ export interface ServerEndpoint extends ProxyResource {
   /**
    * ServerEndpoint Provisioning State
   */
-  provisioningState?: string;
+  readonly provisioningState?: string;
   /**
    * ServerEndpoint lastWorkflowId
   */
-  lastWorkflowId?: string;
+  readonly lastWorkflowId?: string;
   /**
    * Resource Last Operation Name
   */
-  lastOperationName?: string;
+  readonly lastOperationName?: string;
   /**
    * Server Endpoint sync status
   */
