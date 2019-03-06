@@ -216,9 +216,6 @@ export interface ApplicationGateways {
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
      *
-     * @param {array} [parameters.rewriteRuleSets] Rewrite rules for the
-     * application gateway resource.
-     *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
      * of the application gateway resource.
      *
@@ -272,10 +269,7 @@ export interface ApplicationGateways {
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
-     * number of Application Gateway capacity
-     *
-     * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
-     * on number of Application Gateway capacity
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -292,21 +286,6 @@ export interface ApplicationGateways {
      *
      * @param {array} [parameters.zones] A list of availability zones denoting
      * where the resource needs to come from.
-     *
-     * @param {object} [parameters.identity] The identity of the application
-     * gateway, if configured.
-     *
-     * @param {string} [parameters.identity.type] The type of identity used for the
-     * resource. The type 'SystemAssigned, UserAssigned' includes both an
-     * implicitly created identity and a set of user assigned identities. The type
-     * 'None' will remove any identities from the virtual machine. Possible values
-     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
-     * 'None'
-     *
-     * @param {object} [parameters.identity.userAssignedIdentities] The list of
-     * user identities associated with resource. The user identity dictionary key
-     * references will be ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -405,9 +384,6 @@ export interface ApplicationGateways {
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
      *
-     * @param {array} [parameters.rewriteRuleSets] Rewrite rules for the
-     * application gateway resource.
-     *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
      * of the application gateway resource.
      *
@@ -461,10 +437,7 @@ export interface ApplicationGateways {
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
-     * number of Application Gateway capacity
-     *
-     * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
-     * on number of Application Gateway capacity
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -481,21 +454,6 @@ export interface ApplicationGateways {
      *
      * @param {array} [parameters.zones] A list of availability zones denoting
      * where the resource needs to come from.
-     *
-     * @param {object} [parameters.identity] The identity of the application
-     * gateway, if configured.
-     *
-     * @param {string} [parameters.identity.type] The type of identity used for the
-     * resource. The type 'SystemAssigned, UserAssigned' includes both an
-     * implicitly created identity and a set of user assigned identities. The type
-     * 'None' will remove any identities from the virtual machine. Possible values
-     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
-     * 'None'
-     *
-     * @param {object} [parameters.identity.userAssignedIdentities] The list of
-     * user identities associated with resource. The user identity dictionary key
-     * references will be ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -897,156 +855,6 @@ export interface ApplicationGateways {
 
 
     /**
-     * Lists all available server variables.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listAvailableServerVariablesWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
-
-    /**
-     * Lists all available server variables.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Array} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listAvailableServerVariables(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
-    listAvailableServerVariables(callback: ServiceCallback<string[]>): void;
-    listAvailableServerVariables(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
-
-
-    /**
-     * Lists all available request headers.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listAvailableRequestHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
-
-    /**
-     * Lists all available request headers.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Array} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listAvailableRequestHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
-    listAvailableRequestHeaders(callback: ServiceCallback<string[]>): void;
-    listAvailableRequestHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
-
-
-    /**
-     * Lists all available response headers.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listAvailableResponseHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
-
-    /**
-     * Lists all available response headers.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Array} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listAvailableResponseHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
-    listAvailableResponseHeaders(callback: ServiceCallback<string[]>): void;
-    listAvailableResponseHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
-
-
-    /**
      * Lists all available web application firewall rule sets.
      *
      * @param {object} [options] Optional Parameters.
@@ -1396,9 +1204,6 @@ export interface ApplicationGateways {
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
      *
-     * @param {array} [parameters.rewriteRuleSets] Rewrite rules for the
-     * application gateway resource.
-     *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
      * of the application gateway resource.
      *
@@ -1452,10 +1257,7 @@ export interface ApplicationGateways {
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
-     * number of Application Gateway capacity
-     *
-     * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
-     * on number of Application Gateway capacity
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -1472,21 +1274,6 @@ export interface ApplicationGateways {
      *
      * @param {array} [parameters.zones] A list of availability zones denoting
      * where the resource needs to come from.
-     *
-     * @param {object} [parameters.identity] The identity of the application
-     * gateway, if configured.
-     *
-     * @param {string} [parameters.identity.type] The type of identity used for the
-     * resource. The type 'SystemAssigned, UserAssigned' includes both an
-     * implicitly created identity and a set of user assigned identities. The type
-     * 'None' will remove any identities from the virtual machine. Possible values
-     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
-     * 'None'
-     *
-     * @param {object} [parameters.identity.userAssignedIdentities] The list of
-     * user identities associated with resource. The user identity dictionary key
-     * references will be ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -1585,9 +1372,6 @@ export interface ApplicationGateways {
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
      *
-     * @param {array} [parameters.rewriteRuleSets] Rewrite rules for the
-     * application gateway resource.
-     *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
      * of the application gateway resource.
      *
@@ -1641,10 +1425,7 @@ export interface ApplicationGateways {
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
-     * number of Application Gateway capacity
-     *
-     * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
-     * on number of Application Gateway capacity
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -1661,21 +1442,6 @@ export interface ApplicationGateways {
      *
      * @param {array} [parameters.zones] A list of availability zones denoting
      * where the resource needs to come from.
-     *
-     * @param {object} [parameters.identity] The identity of the application
-     * gateway, if configured.
-     *
-     * @param {string} [parameters.identity.type] The type of identity used for the
-     * resource. The type 'SystemAssigned, UserAssigned' includes both an
-     * implicitly created identity and a set of user assigned identities. The type
-     * 'None' will remove any identities from the virtual machine. Possible values
-     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
-     * 'None'
-     *
-     * @param {object} [parameters.identity.userAssignedIdentities] The list of
-     * user identities associated with resource. The user identity dictionary key
-     * references will be ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -2355,78 +2121,6 @@ export interface ApplicationSecurityGroups {
 
 
     /**
-     * Updates an application security group's tags.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} applicationSecurityGroupName The name of the application
-     * security group.
-     *
-     * @param {object} parameters Parameters supplied to update application
-     * security group tags.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicationSecurityGroup>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateTagsWithHttpOperationResponse(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationSecurityGroup>>;
-
-    /**
-     * Updates an application security group's tags.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} applicationSecurityGroupName The name of the application
-     * security group.
-     *
-     * @param {object} parameters Parameters supplied to update application
-     * security group tags.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicationSecurityGroup} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicationSecurityGroup} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationSecurityGroup} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    updateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationSecurityGroup>;
-    updateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
-    updateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
-
-
-    /**
      * Gets all application security groups in a subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -2672,78 +2366,6 @@ export interface ApplicationSecurityGroups {
     beginCreateOrUpdate(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.ApplicationSecurityGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationSecurityGroup>;
     beginCreateOrUpdate(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.ApplicationSecurityGroup, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
     beginCreateOrUpdate(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.ApplicationSecurityGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
-
-
-    /**
-     * Updates an application security group's tags.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} applicationSecurityGroupName The name of the application
-     * security group.
-     *
-     * @param {object} parameters Parameters supplied to update application
-     * security group tags.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicationSecurityGroup>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationSecurityGroup>>;
-
-    /**
-     * Updates an application security group's tags.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} applicationSecurityGroupName The name of the application
-     * security group.
-     *
-     * @param {object} parameters Parameters supplied to update application
-     * security group tags.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicationSecurityGroup} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicationSecurityGroup} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationSecurityGroup} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginUpdateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationSecurityGroup>;
-    beginUpdateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
-    beginUpdateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
 
 
     /**
@@ -3272,9 +2894,6 @@ export interface AzureFirewalls {
      * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
      *
-     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
-     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
-     *
      * @param {string} [parameters.id] Resource ID.
      *
      * @param {string} [parameters.location] Resource location.
@@ -3319,9 +2938,6 @@ export interface AzureFirewalls {
      * @param {string} [parameters.provisioningState] The provisioning state of the
      * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
-     *
-     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
-     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -3553,9 +3169,6 @@ export interface AzureFirewalls {
      * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
      *
-     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
-     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
-     *
      * @param {string} [parameters.id] Resource ID.
      *
      * @param {string} [parameters.location] Resource location.
@@ -3600,9 +3213,6 @@ export interface AzureFirewalls {
      * @param {string} [parameters.provisioningState] The provisioning state of the
      * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
-     *
-     * @param {string} [parameters.threatIntelMode] The operation mode for Threat
-     * Intelligence. Possible values include: 'Alert', 'Deny', 'Off'
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -3875,494 +3485,6 @@ export interface AzureFirewallFqdnTags {
     listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureFirewallFqdnTagListResult>;
     listAllNext(nextPageLink: string, callback: ServiceCallback<models.AzureFirewallFqdnTagListResult>): void;
     listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureFirewallFqdnTagListResult>): void;
-}
-
-/**
- * @class
- * DdosCustomPolicies
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the NetworkManagementClient.
- */
-export interface DdosCustomPolicies {
-
-
-    /**
-     * Deletes the specified DDoS custom policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the specified DDoS custom policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets information about the specified DDoS custom policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DdosCustomPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosCustomPolicy>>;
-
-    /**
-     * Gets information about the specified DDoS custom policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DdosCustomPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DdosCustomPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DdosCustomPolicy} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosCustomPolicy>;
-    get(resourceGroupName: string, ddosCustomPolicyName: string, callback: ServiceCallback<models.DdosCustomPolicy>): void;
-    get(resourceGroupName: string, ddosCustomPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosCustomPolicy>): void;
-
-
-    /**
-     * Creates or updates a DDoS custom policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
-     *
-     * @param {object} parameters Parameters supplied to the create or update
-     * operation.
-     *
-     * @param {array} [parameters.protocolCustomSettings] The protocol-specific
-     * DDoS policy customization parameters.
-     *
-     * @param {string} [parameters.id] Resource ID.
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DdosCustomPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosCustomPolicy>>;
-
-    /**
-     * Creates or updates a DDoS custom policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
-     *
-     * @param {object} parameters Parameters supplied to the create or update
-     * operation.
-     *
-     * @param {array} [parameters.protocolCustomSettings] The protocol-specific
-     * DDoS policy customization parameters.
-     *
-     * @param {string} [parameters.id] Resource ID.
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DdosCustomPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DdosCustomPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DdosCustomPolicy} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosCustomPolicy>;
-    createOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, callback: ServiceCallback<models.DdosCustomPolicy>): void;
-    createOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosCustomPolicy>): void;
-
-
-    /**
-     * Update a DDoS custom policy tags
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
-     *
-     * @param {object} parameters Parameters supplied to the update DDoS custom
-     * policy resource tags.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DdosCustomPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateTagsWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosCustomPolicy>>;
-
-    /**
-     * Update a DDoS custom policy tags
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
-     *
-     * @param {object} parameters Parameters supplied to the update DDoS custom
-     * policy resource tags.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DdosCustomPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DdosCustomPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DdosCustomPolicy} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    updateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosCustomPolicy>;
-    updateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, callback: ServiceCallback<models.DdosCustomPolicy>): void;
-    updateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosCustomPolicy>): void;
-
-
-    /**
-     * Deletes the specified DDoS custom policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the specified DDoS custom policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Creates or updates a DDoS custom policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
-     *
-     * @param {object} parameters Parameters supplied to the create or update
-     * operation.
-     *
-     * @param {array} [parameters.protocolCustomSettings] The protocol-specific
-     * DDoS policy customization parameters.
-     *
-     * @param {string} [parameters.id] Resource ID.
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DdosCustomPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosCustomPolicy>>;
-
-    /**
-     * Creates or updates a DDoS custom policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
-     *
-     * @param {object} parameters Parameters supplied to the create or update
-     * operation.
-     *
-     * @param {array} [parameters.protocolCustomSettings] The protocol-specific
-     * DDoS policy customization parameters.
-     *
-     * @param {string} [parameters.id] Resource ID.
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DdosCustomPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DdosCustomPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DdosCustomPolicy} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosCustomPolicy>;
-    beginCreateOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, callback: ServiceCallback<models.DdosCustomPolicy>): void;
-    beginCreateOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosCustomPolicy>): void;
-
-
-    /**
-     * Update a DDoS custom policy tags
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
-     *
-     * @param {object} parameters Parameters supplied to the update DDoS custom
-     * policy resource tags.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DdosCustomPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosCustomPolicy>>;
-
-    /**
-     * Update a DDoS custom policy tags
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
-     *
-     * @param {object} parameters Parameters supplied to the update DDoS custom
-     * policy resource tags.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DdosCustomPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DdosCustomPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DdosCustomPolicy} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginUpdateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosCustomPolicy>;
-    beginUpdateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, callback: ServiceCallback<models.DdosCustomPolicy>): void;
-    beginUpdateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosCustomPolicy>): void;
 }
 
 /**
@@ -6826,72 +5948,6 @@ export interface ExpressRouteCircuitConnections {
 
 
     /**
-     * Gets all global reach connections associated with a private peering in an
-     * express route circuit.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} circuitName The name of the circuit.
-     *
-     * @param {string} peeringName The name of the peering.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ExpressRouteCircuitConnectionListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, circuitName: string, peeringName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteCircuitConnectionListResult>>;
-
-    /**
-     * Gets all global reach connections associated with a private peering in an
-     * express route circuit.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} circuitName The name of the circuit.
-     *
-     * @param {string} peeringName The name of the peering.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ExpressRouteCircuitConnectionListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ExpressRouteCircuitConnectionListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ExpressRouteCircuitConnectionListResult} for
-     *                      more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, circuitName: string, peeringName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteCircuitConnectionListResult>;
-    list(resourceGroupName: string, circuitName: string, peeringName: string, callback: ServiceCallback<models.ExpressRouteCircuitConnectionListResult>): void;
-    list(resourceGroupName: string, circuitName: string, peeringName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitConnectionListResult>): void;
-
-
-    /**
      * Deletes the specified Express Route Circuit Connection from the specified
      * express route circuit.
      *
@@ -7089,66 +6145,6 @@ export interface ExpressRouteCircuitConnections {
     beginCreateOrUpdate(resourceGroupName: string, circuitName: string, peeringName: string, connectionName: string, expressRouteCircuitConnectionParameters: models.ExpressRouteCircuitConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteCircuitConnection>;
     beginCreateOrUpdate(resourceGroupName: string, circuitName: string, peeringName: string, connectionName: string, expressRouteCircuitConnectionParameters: models.ExpressRouteCircuitConnection, callback: ServiceCallback<models.ExpressRouteCircuitConnection>): void;
     beginCreateOrUpdate(resourceGroupName: string, circuitName: string, peeringName: string, connectionName: string, expressRouteCircuitConnectionParameters: models.ExpressRouteCircuitConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitConnection>): void;
-
-
-    /**
-     * Gets all global reach connections associated with a private peering in an
-     * express route circuit.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ExpressRouteCircuitConnectionListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteCircuitConnectionListResult>>;
-
-    /**
-     * Gets all global reach connections associated with a private peering in an
-     * express route circuit.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ExpressRouteCircuitConnectionListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ExpressRouteCircuitConnectionListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ExpressRouteCircuitConnectionListResult} for
-     *                      more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteCircuitConnectionListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRouteCircuitConnectionListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitConnectionListResult>): void;
 }
 
 /**
@@ -19015,20 +18011,6 @@ export interface NetworkInterfaceTapConfigurations {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
-     * @param {object}
-     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
-     * The DDoS protection custom policy associated with the public IP address.
-     *
-     * @param {object}
-     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
-     * The DDoS custom policy associated with the public IP.
-     *
-     * @param {string}
-     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
-     * The DDoS protection policy customizability of the public IP. Only standard
-     * coverage will have the ability to be customized. Possible values include:
-     * 'Basic', 'Standard'
-     *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -19412,20 +18394,6 @@ export interface NetworkInterfaceTapConfigurations {
      * that resolves to this public IP address. If the reverseFqdn is specified,
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
-     *
-     * @param {object}
-     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
-     * The DDoS protection custom policy associated with the public IP address.
-     *
-     * @param {object}
-     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
-     * The DDoS custom policy associated with the public IP.
-     *
-     * @param {string}
-     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
-     * The DDoS protection policy customizability of the public IP. Only standard
-     * coverage will have the ability to be customized. Possible values include:
-     * 'Basic', 'Standard'
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
@@ -19953,20 +18921,6 @@ export interface NetworkInterfaceTapConfigurations {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
-     * @param {object}
-     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
-     * The DDoS protection custom policy associated with the public IP address.
-     *
-     * @param {object}
-     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
-     * The DDoS custom policy associated with the public IP.
-     *
-     * @param {string}
-     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
-     * The DDoS protection policy customizability of the public IP. Only standard
-     * coverage will have the ability to be customized. Possible values include:
-     * 'Basic', 'Standard'
-     *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -20351,20 +19305,6 @@ export interface NetworkInterfaceTapConfigurations {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
-     * @param {object}
-     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
-     * The DDoS protection custom policy associated with the public IP address.
-     *
-     * @param {object}
-     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
-     * The DDoS custom policy associated with the public IP.
-     *
-     * @param {string}
-     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
-     * The DDoS protection policy customizability of the public IP. Only standard
-     * coverage will have the ability to be customized. Possible values include:
-     * 'Basic', 'Standard'
-     *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -20630,7 +19570,7 @@ export interface NetworkProfiles {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} networkProfileName The name of the public IP prefix.
+     * @param {string} networkProfileName The name of the Public IP Prefix.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -20652,7 +19592,7 @@ export interface NetworkProfiles {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} networkProfileName The name of the public IP prefix.
+     * @param {string} networkProfileName The name of the Public IP Prefix.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23736,14 +22676,6 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
-     * @param {object} [parameters.format]
-     *
-     * @param {string} [parameters.format.type] The file type of flow log. Possible
-     * values include: 'JSON'
-     *
-     * @param {number} [parameters.format.version] The version (revision) of the
-     * flow log.
-     *
      * @param {object} [parameters.flowAnalyticsConfiguration]
      *
      * @param {object}
@@ -23764,11 +22696,6 @@ export interface NetworkWatchers {
      * @param {string}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
      * Resource Id of the attached workspace
-     *
-     * @param {number}
-     * [parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
-     * The interval in minutes which would decide how frequently TA service should
-     * do flow analytics
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23811,14 +22738,6 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
-     * @param {object} [parameters.format]
-     *
-     * @param {string} [parameters.format.type] The file type of flow log. Possible
-     * values include: 'JSON'
-     *
-     * @param {number} [parameters.format.version] The version (revision) of the
-     * flow log.
-     *
      * @param {object} [parameters.flowAnalyticsConfiguration]
      *
      * @param {object}
@@ -23839,11 +22758,6 @@ export interface NetworkWatchers {
      * @param {string}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
      * Resource Id of the attached workspace
-     *
-     * @param {number}
-     * [parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
-     * The interval in minutes which would decide how frequently TA service should
-     * do flow analytics
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -24901,14 +23815,6 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
-     * @param {object} [parameters.format]
-     *
-     * @param {string} [parameters.format.type] The file type of flow log. Possible
-     * values include: 'JSON'
-     *
-     * @param {number} [parameters.format.version] The version (revision) of the
-     * flow log.
-     *
      * @param {object} [parameters.flowAnalyticsConfiguration]
      *
      * @param {object}
@@ -24929,11 +23835,6 @@ export interface NetworkWatchers {
      * @param {string}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
      * Resource Id of the attached workspace
-     *
-     * @param {number}
-     * [parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
-     * The interval in minutes which would decide how frequently TA service should
-     * do flow analytics
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -24976,14 +23877,6 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
-     * @param {object} [parameters.format]
-     *
-     * @param {string} [parameters.format.type] The file type of flow log. Possible
-     * values include: 'JSON'
-     *
-     * @param {number} [parameters.format.version] The version (revision) of the
-     * flow log.
-     *
      * @param {object} [parameters.flowAnalyticsConfiguration]
      *
      * @param {object}
@@ -25004,11 +23897,6 @@ export interface NetworkWatchers {
      * @param {string}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
      * Resource Id of the attached workspace
-     *
-     * @param {number}
-     * [parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
-     * The interval in minutes which would decide how frequently TA service should
-     * do flow analytics
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -27519,17 +26407,6 @@ export interface PublicIPAddresses {
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
      *
-     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
-     * associated with the public IP address.
-     *
-     * @param {object} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
-     * policy associated with the public IP.
-     *
-     * @param {string} [parameters.ddosSettings.protectionCoverage] The DDoS
-     * protection policy customizability of the public IP. Only standard coverage
-     * will have the ability to be customized. Possible values include: 'Basic',
-     * 'Standard'
-     *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
      *
@@ -27617,17 +26494,6 @@ export interface PublicIPAddresses {
      * this public IP address. If the reverseFqdn is specified, then a PTR DNS
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
-     *
-     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
-     * associated with the public IP address.
-     *
-     * @param {object} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
-     * policy associated with the public IP.
-     *
-     * @param {string} [parameters.ddosSettings.protectionCoverage] The DDoS
-     * protection policy customizability of the public IP. Only standard coverage
-     * will have the ability to be customized. Possible values include: 'Basic',
-     * 'Standard'
      *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
@@ -28192,17 +27058,6 @@ export interface PublicIPAddresses {
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
      *
-     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
-     * associated with the public IP address.
-     *
-     * @param {object} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
-     * policy associated with the public IP.
-     *
-     * @param {string} [parameters.ddosSettings.protectionCoverage] The DDoS
-     * protection policy customizability of the public IP. Only standard coverage
-     * will have the ability to be customized. Possible values include: 'Basic',
-     * 'Standard'
-     *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
      *
@@ -28290,17 +27145,6 @@ export interface PublicIPAddresses {
      * this public IP address. If the reverseFqdn is specified, then a PTR DNS
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
-     *
-     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
-     * associated with the public IP address.
-     *
-     * @param {object} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
-     * policy associated with the public IP.
-     *
-     * @param {string} [parameters.ddosSettings.protectionCoverage] The DDoS
-     * protection policy customizability of the public IP. Only standard coverage
-     * will have the ability to be customized. Possible values include: 'Basic',
-     * 'Standard'
      *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
@@ -28744,7 +27588,7 @@ export interface PublicIPPrefixes {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} publicIpPrefixName The name of the public IP prefix.
+     * @param {string} publicIpPrefixName The name of the Public IP Prefix.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -28766,7 +27610,7 @@ export interface PublicIPPrefixes {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} publicIpPrefixName The name of the public IP prefix.
+     * @param {string} publicIpPrefixName The name of the Public IP Prefix.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -35201,96 +34045,6 @@ export interface Subnets {
 
 
     /**
-     * Prepares a subnet by applying network intent policies.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} virtualNetworkName The name of the virtual network.
-     *
-     * @param {string} subnetName The name of the subnet.
-     *
-     * @param {object} prepareNetworkPoliciesRequestParameters Parameters supplied
-     * to prepare subnet by applying network intent policies.
-     *
-     * @param {string} [prepareNetworkPoliciesRequestParameters.serviceName] The
-     * name of the service for which subnet is being prepared for.
-     *
-     * @param {string} [prepareNetworkPoliciesRequestParameters.resourceGroupName]
-     * The name of the resource group where the Network Intent Policy will be
-     * stored.
-     *
-     * @param {array}
-     * [prepareNetworkPoliciesRequestParameters.networkIntentPolicyConfigurations]
-     * A list of NetworkIntentPolicyConfiguration.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    prepareNetworkPoliciesWithHttpOperationResponse(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Prepares a subnet by applying network intent policies.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} virtualNetworkName The name of the virtual network.
-     *
-     * @param {string} subnetName The name of the subnet.
-     *
-     * @param {object} prepareNetworkPoliciesRequestParameters Parameters supplied
-     * to prepare subnet by applying network intent policies.
-     *
-     * @param {string} [prepareNetworkPoliciesRequestParameters.serviceName] The
-     * name of the service for which subnet is being prepared for.
-     *
-     * @param {string} [prepareNetworkPoliciesRequestParameters.resourceGroupName]
-     * The name of the resource group where the Network Intent Policy will be
-     * stored.
-     *
-     * @param {array}
-     * [prepareNetworkPoliciesRequestParameters.networkIntentPolicyConfigurations]
-     * A list of NetworkIntentPolicyConfiguration.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    prepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    prepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, callback: ServiceCallback<void>): void;
-    prepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
      * Gets all subnets in a virtual network.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -35642,96 +34396,6 @@ export interface Subnets {
     beginCreateOrUpdate(resourceGroupName: string, virtualNetworkName: string, subnetName: string, subnetParameters: models.Subnet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Subnet>;
     beginCreateOrUpdate(resourceGroupName: string, virtualNetworkName: string, subnetName: string, subnetParameters: models.Subnet, callback: ServiceCallback<models.Subnet>): void;
     beginCreateOrUpdate(resourceGroupName: string, virtualNetworkName: string, subnetName: string, subnetParameters: models.Subnet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Subnet>): void;
-
-
-    /**
-     * Prepares a subnet by applying network intent policies.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} virtualNetworkName The name of the virtual network.
-     *
-     * @param {string} subnetName The name of the subnet.
-     *
-     * @param {object} prepareNetworkPoliciesRequestParameters Parameters supplied
-     * to prepare subnet by applying network intent policies.
-     *
-     * @param {string} [prepareNetworkPoliciesRequestParameters.serviceName] The
-     * name of the service for which subnet is being prepared for.
-     *
-     * @param {string} [prepareNetworkPoliciesRequestParameters.resourceGroupName]
-     * The name of the resource group where the Network Intent Policy will be
-     * stored.
-     *
-     * @param {array}
-     * [prepareNetworkPoliciesRequestParameters.networkIntentPolicyConfigurations]
-     * A list of NetworkIntentPolicyConfiguration.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginPrepareNetworkPoliciesWithHttpOperationResponse(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Prepares a subnet by applying network intent policies.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} virtualNetworkName The name of the virtual network.
-     *
-     * @param {string} subnetName The name of the subnet.
-     *
-     * @param {object} prepareNetworkPoliciesRequestParameters Parameters supplied
-     * to prepare subnet by applying network intent policies.
-     *
-     * @param {string} [prepareNetworkPoliciesRequestParameters.serviceName] The
-     * name of the service for which subnet is being prepared for.
-     *
-     * @param {string} [prepareNetworkPoliciesRequestParameters.resourceGroupName]
-     * The name of the resource group where the Network Intent Policy will be
-     * stored.
-     *
-     * @param {array}
-     * [prepareNetworkPoliciesRequestParameters.networkIntentPolicyConfigurations]
-     * A list of NetworkIntentPolicyConfiguration.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginPrepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginPrepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, callback: ServiceCallback<void>): void;
-    beginPrepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -39444,7 +38108,7 @@ export interface VirtualNetworkGatewayConnections {
      * @param {object} [parameters.localNetworkGateway2.tags] Resource tags.
      *
      * @param {string} parameters.connectionType Gateway connection type. Possible
-     * values are: 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible
+     * values are: 'IPsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible
      * values include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
      *
      * @param {string} [parameters.connectionProtocol] Connection protocol used for
@@ -39644,7 +38308,7 @@ export interface VirtualNetworkGatewayConnections {
      * @param {object} [parameters.localNetworkGateway2.tags] Resource tags.
      *
      * @param {string} parameters.connectionType Gateway connection type. Possible
-     * values are: 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible
+     * values are: 'IPsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible
      * values include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
      *
      * @param {string} [parameters.connectionProtocol] Connection protocol used for
@@ -40348,7 +39012,7 @@ export interface VirtualNetworkGatewayConnections {
      * @param {object} [parameters.localNetworkGateway2.tags] Resource tags.
      *
      * @param {string} parameters.connectionType Gateway connection type. Possible
-     * values are: 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible
+     * values are: 'IPsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible
      * values include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
      *
      * @param {string} [parameters.connectionProtocol] Connection protocol used for
@@ -40548,7 +39212,7 @@ export interface VirtualNetworkGatewayConnections {
      * @param {object} [parameters.localNetworkGateway2.tags] Resource tags.
      *
      * @param {string} parameters.connectionType Gateway connection type. Possible
-     * values are: 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible
+     * values are: 'IPsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible
      * values include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
      *
      * @param {string} [parameters.connectionProtocol] Connection protocol used for
@@ -42070,20 +40734,6 @@ export interface VirtualNetworkTaps {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
-     * The DDoS protection custom policy associated with the public IP address.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
-     * The DDoS custom policy associated with the public IP.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
-     * The DDoS protection policy customizability of the public IP. Only standard
-     * coverage will have the ability to be customized. Possible values include:
-     * 'Basic', 'Standard'
-     *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -42443,20 +41093,6 @@ export interface VirtualNetworkTaps {
      * that resolves to this public IP address. If the reverseFqdn is specified,
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
-     * The DDoS protection custom policy associated with the public IP address.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
-     * The DDoS custom policy associated with the public IP.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
-     * The DDoS protection policy customizability of the public IP. Only standard
-     * coverage will have the ability to be customized. Possible values include:
-     * 'Basic', 'Standard'
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
@@ -43072,20 +41708,6 @@ export interface VirtualNetworkTaps {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
-     * The DDoS protection custom policy associated with the public IP address.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
-     * The DDoS custom policy associated with the public IP.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
-     * The DDoS protection policy customizability of the public IP. Only standard
-     * coverage will have the ability to be customized. Possible values include:
-     * 'Basic', 'Standard'
-     *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -43445,20 +42067,6 @@ export interface VirtualNetworkTaps {
      * that resolves to this public IP address. If the reverseFqdn is specified,
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
-     * The DDoS protection custom policy associated with the public IP address.
-     *
-     * @param {object}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
-     * The DDoS custom policy associated with the public IP.
-     *
-     * @param {string}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
-     * The DDoS protection policy customizability of the public IP. Only standard
-     * coverage will have the ability to be customized. Possible values include:
-     * 'Basic', 'Standard'
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
@@ -48140,7 +46748,7 @@ export interface P2sVpnServerConfigurations {
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesName]
      * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
      * in a resource group. This name can be used to access the resource along with
-     * Paren VirtualWan resource name.
+     * Parent VirtualWan resource name.
      *
      * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
@@ -48213,7 +46821,7 @@ export interface P2sVpnServerConfigurations {
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesName]
      * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
      * in a resource group. This name can be used to access the resource along with
-     * Paren VirtualWan resource name.
+     * Parent VirtualWan resource name.
      *
      * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
@@ -48432,7 +47040,7 @@ export interface P2sVpnServerConfigurations {
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesName]
      * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
      * in a resource group. This name can be used to access the resource along with
-     * Paren VirtualWan resource name.
+     * Parent VirtualWan resource name.
      *
      * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
@@ -48505,7 +47113,7 @@ export interface P2sVpnServerConfigurations {
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesName]
      * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
      * in a resource group. This name can be used to access the resource along with
-     * Paren VirtualWan resource name.
+     * Parent VirtualWan resource name.
      *
      * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
